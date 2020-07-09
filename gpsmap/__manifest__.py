@@ -30,6 +30,7 @@ Main Features
         'fleet',
     ],
     'data': [
+        'data/data.xml',
         'security/security.xml',
         #'security/access.csv',
         #'views/solesgpsmap_website.xml',
