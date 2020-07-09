@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="assets_backend" name="gpsmap_assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/gpsmap/static/src/css/index.css"/>
+            <t t-set="gpsmap_key" t-value="request.env['ir.config_parameter'].sudo().get_param('gpsmap_key')"/>
+            <script t-attf-src="https://maps.googleapis.com/maps/api/js?key={{gpsmap_key}}"></script>                        
+            <script type="text/javascript" src="/gpsmap/static/src/js/index.js"/>
+        </xpath>
+    </template>
+
+    <data noupdate="1">
+
+        <record forcecreate="True" id="ir_cron_gpsmap_position_get" model="ir.cron">
+            <field name="name">gpsmap: Get positions</field>
+            <field name="model_id" ref="model_gpsmap_positions"/>
+            <field name="state">code</field>
+            <field name="code">model.run_scheduler_get_position()</field>
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field name="active" eval="True"/>
+        </record>
+    </data>        
+
+    <record id="view_gpsmap_vehicle_form_inherit" model="ir.ui.view">
+        <field name="name">gpsmap.vehicle.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="after">            
+                <group col="4" string="GPS Configuration">
+                    <field name="imei"/>
+                    <field name="phone"/>
+                    <field name="economic_number"/>
+                    <field name="image_vehicle"/>
+                    <field name="speed"/>
+                    <field name="temporal_id"/>
+                </group>                
+            </xpath>
+            <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
+                <button name="toggle_motor" type="object" class="oe_stat_button" icon="fa-key">
+                    <field name="motor" widget="boolean_button"/>                    
+                </button>       
+            </xpath>                
+        </field>
+    </record>        
+
+
+
+    <record id='gpsmap_positions_view_form' model='ir.ui.view'>
+        <field name="name">gpsmap.positions.form</field>
+        <field name="model">gpsmap.positions</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle">
+                <div class="oe_title">
+                    <h1>
+                    <field name="deviceid" placeholder="e.g. Model S"/>
+                    </h1>
+                </div>                                                          
+                <div style="position:relative; width:100%; height:100%;">
+                    <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
+                    <div style="z-index:100; text-align:left; position:absolute; bottom:0px; left:0px; width:100%; height:70px; background-color:#222; color:#aaa; padding:10px;">
+                        <div id="tablero2"  style="float:left;"></div>                       
+                        <div id="tablero"  style="float:left;"></div>
+                    </div>  
+                </div>
+
+                <script>
+                    if($("div#vehiculos.menu_soles").length>0)
+                        $("div#vehiculos.menu_soles").html("");                        
+
+                    if($("ol.breadcrumb li.active:contains('gpsmap.positions,')").length)
+                    {
+                        var obj             ="ol.breadcrumb li.active:contains('gpsmap.positions,')";
+                        var sid             =String($(obj).html());
+                        var vid             =sid.split(",");
+                        var id              =parseInt(vid[1]);
+
+                        var variables       =serializar_url(location.hash.substring(1));
+
+                        local.vehicles      =Array();
+                        local.positions     =undefined;    
+                        gpsmaps_obj.map("map_tree");
+                        console.log("Positions " + id + " ############################### " + variables["id"]);             
+                        gpsmaps_obj.position(id);            
+                    }    
+                </script>
+            </form>
+        </field>
+    </record>
+
+    <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
+        <field name="name">gpsmap.positions.tree</field>
+        <field name="model">gpsmap.positions</field>
+        <field name="arch" type="xml">
+            <tree string="Models">
+                <field name="deviceid" />
+                <field name="devicetime"/>
+                <field name="speed"/>
+                <field name="address" />
+                <field name="event" />
+                <field name="leido" />
+            </tree>
+        </field>
+    </record>
+
+    <record id='gpsmap_positions_view_search' model='ir.ui.view'>
+        <field name="name">gpsmap.positions.search</field>
+        <field name="model">gpsmap.positions</field>
+        <field name="arch" type="xml">
+            <search string="Vehicles costs" >
+                <filter name="filter_in_motion" domain="[('speed','>',5)]" string="In Motion"/>
+                <filter name="filter_stop" domain="[('speed','=',0)]" string="Stop"/>
+                <group expand="1" string="Group By">
+                    <filter name="groupby_devieid" separator="1" context="{'group_by' : 'deviceid'}" string="Vehicle"/>
+                    <separator/>
+                    <filter name="groupby_day" context="{'group_by': 'devicetime:day'}" string="Day"/>
+                    <filter name="groupby_day" context="{'group_by': 'devicetime:week'}" string="Week"/>
+                    <filter name="groupby_day" context="{'group_by': 'devicetime:month'}" string="Month"/>
+                </group>
+            </search>
+        </field>
+    </record>    
+
+
+    <record id="gpsmap_mail_alert" model="ir.mail_server"> 
+        <field name="name">gpsmap SMTP Alert</field>
+        <field name="smtp_host">solesgps.com</field>
+        <field name="smtp_port">465</field>
+        <field name="sequence">465</field>
+        <field name="smtp_encryption">ssl</field>
+        <field name="smtp_user">odoo_alerts@solesgps.com</field>
+        <field name="smtp_pass">Odoo_alerts1</field>          
+    </record>
+    
+    
+
+    
+<!--
+    <record id="gpsmap_mail_install" model="mail.mail"> 
+        <field name="subject">Install module Odoo gpsmap Map</field>
+        <field name="email_to">e.vizcaino@gpsmap.com</field>
+        <field name="body_html">Installacion de modulo...</field>          
+        <field name="message_type">email</field>
+        <field name="mail_server_id" ref="gpsmap_mail_alert" />
+    </record>
+
+3122698
+-->    
+
+
+
+    <record id='gpsmap_speed_view_tree' model='ir.ui.view'>
+        <field name="name">gpsmap.speed.tree</field>
+        <field name="model">gpsmap.speed</field>
+        <field name="arch" type="xml">
+            <tree string="Models">
+                <field name="deviceid" />
+                <field name="speed" />
+                <field name="starttime" />
+                <field name="endtime" />
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="gpsmap_key_map" model="ir.config_parameter"> 
+        <field name="key">gpsmap_key</field>
+        <field name="value">AIzaSyA9DH6EDTSe3u7pKNAafndHxwX1BkGW1Q4</field>
+    </record>
+    <record id="gpsmap_host" model="ir.config_parameter"> 
+        <field name="key">gpsmap_host</field>
+        <field name="value">http://solesgps.com/sitio_web/ajax/odoo.php?key=</field>
+    </record>
+  
+</odoo>

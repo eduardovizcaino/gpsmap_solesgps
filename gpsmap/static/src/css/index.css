@@ -1,0 +1,101 @@
+.fields1 {
+    float:left;
+	height: 60px;
+}
+.fields2 {
+    float:left;
+	height: 120px;
+}
+.vehicle_active {
+    background-color: #7c7bad;
+    border-radius: 0;
+    color: white;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:15px;
+}
+
+div#odometro div#centro {
+    z-index:        101; 
+    overflow:       hidden; 
+    position:       absolute; 
+    width:          220px; 
+    height:         165px
+}
+div#centro div {
+    background-color:#eee; 
+    position:       absolute; 
+    bottom:         255px; 
+    left:           -140px; 
+    width:          50px; 
+    height:         50px;
+}
+div#centro div svg {
+    width:          360px; 
+    height:         305px;
+}
+
+
+/* ####################################### */
+/* ######      DESKTOP GRANDE       ###### */
+/* ####################################### */
+@media (min-width:1200px)
+{
+    div#odometro div#centro {
+        bottom:         0px; 
+        left:           100px; 
+    }
+
+}
+
+
+/* ####################################### */
+/* ######      DESKTOP MEDIO        ###### */
+/* ####################################### */
+@media (max-width:1199px) and (min-width:992px)
+{
+    div#odometro div#centro {
+        bottom:         0px; 
+        left:           100px; 
+    }
+
+}
+
+
+/* ####################################### */
+/* ######         TABLETS           ###### */
+/* ####################################### */
+@media (max-width:991px) and (min-width:768px)
+{
+    div#odometro  div#centro {
+        bottom:         0px; 
+        right:          -160px; 
+        width:          190px; 
+    }
+    div#odometro  div#gsm {
+        display:        none;
+    }
+}
+
+/* ####################################### */
+/* ######         MOVILES           ###### */
+/* ####################################### */
+@media (max-width:767px)
+{
+    div#odometro  div#centro {
+        bottom:         0px; 
+        right:          -160px; 
+        width:          190px; 
+    }
+    div#odometro  div#gsm {
+        display:        none;
+    }
+
+}
+
+
+
+
+
+
+
