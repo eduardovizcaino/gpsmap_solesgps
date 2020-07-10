@@ -32,7 +32,7 @@ Main Features
     'data': [
         'data/data.xml',
         'security/security.xml',
-        #'security/access.csv',
+        'security/access.csv',
         #'views/solesgpsmap_website.xml',
         'views/menuitem.xml',
         'views/views.xml',
