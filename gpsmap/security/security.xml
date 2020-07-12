@@ -73,7 +73,7 @@
         <record id="access_gpsmap_positions_user" model="ir.rule">
             <field name="name">User can only see his/her vehicle</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
-            <field name="domain_force">[('deviceid.company_id.id','=',user.company_id.id)]</field>
+            <field name="domain_force">[('deviceid.company_id','=',user.company_id)]</field>
             <field name="groups" eval="[(4, ref('gpsmap_group_user'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
