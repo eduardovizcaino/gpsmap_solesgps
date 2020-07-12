@@ -9,7 +9,9 @@
         <record id="gpsmap_group_temporal" model="res.groups">
             <field name="name">Temporal</field>
             <field name="category_id" ref="module_gpsmap_category"/>
+            <!--
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            -->
         </record>
         <record id="gpsmap_group_user" model="res.groups">
             <field name="name">User</field>
