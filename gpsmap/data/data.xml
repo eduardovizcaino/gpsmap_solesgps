@@ -13,7 +13,7 @@
     <data noupdate="1">
 
         <record forcecreate="True" id="ir_cron_gpsmap_position_get" model="ir.cron">
-            <field name="name">gpsmap: Get positions</field>
+            <field name="name">GPSMap: Read positions</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
             <field name="state">code</field>
             <field name="code">model.run_scheduler_get_position()</field>
