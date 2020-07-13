@@ -21,8 +21,6 @@ class vehicle_model_brand(models.Model):
     _inherit = "fleet.vehicle.model.brand"
 
 
-
-
 class vehicle(models.Model):
     _inherit = "fleet.vehicle"
     image_vehicle = fields.Selection([
@@ -48,11 +46,7 @@ class vehicle(models.Model):
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     def toggle_motor(self):
         print('TOOGLE--------------- MOTOR')          
-        
-        
-        
-    
-
+            
 class speed(models.Model):
     _name = "gpsmap.speed"
     _description = 'Positions Speed'
@@ -224,6 +218,10 @@ class positions(models.Model):
                                                         
                 position["leido"]=1                
                 positions_obj.write(position)
+            
+            
+            
+            
                 
 class geofence(models.Model):
     _name = "gpsmap.geofence"
