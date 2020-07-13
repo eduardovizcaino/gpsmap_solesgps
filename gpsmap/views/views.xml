@@ -10,21 +10,6 @@
         </xpath>
     </template>
 
-    <data noupdate="1">
-
-        <record forcecreate="True" id="ir_cron_gpsmap_position_get" model="ir.cron">
-            <field name="name">gpsmap: Get positions</field>
-            <field name="model_id" ref="model_gpsmap_positions"/>
-            <field name="state">code</field>
-            <field name="code">model.run_scheduler_get_position()</field>
-            <field name="user_id" ref="base.user_root" />
-            <field name="interval_number">1</field>
-            <field name="interval_type">minutes</field>
-            <field name="numbercall">-1</field>
-            <field eval="False" name="doall" />
-            <field name="active" eval="True"/>
-        </record>
-    </data>        
 
     <record id="view_gpsmap_vehicle_form_inherit" model="ir.ui.view">
         <field name="name">gpsmap.vehicle.form</field>
