@@ -243,4 +243,26 @@ class geofence(models.Model):
     hidden = fields.Boolean('Hidden')
 
     def geofences(self):
-        return false                        
+        alerts_obj      =self.env['gpsmap.geofence_device']
+
+        alerts_args    =[]
+        alerts_data    =alerts_obj.search(alerts_args, offset=0, limit=None, order=None)
+
+        if len(alerts_data)>0:                     
+            #for alerts in alerts_data:
+            #    print('ALERT ====================',alerts.name)        
+            return alerts_data
+                
+        
+        
+class geofence_device(models.Model):
+    _name = "gpsmap.geofence_device"
+    _description = 'GPS Geofence Device'
+    _pointOnVertex=""
+    name = fields.Char('Name', size=75)
+    description = fields.Char('Description', size=150)
+    mail_in = fields.Char('Mail In', size=150)
+    mail_out = fields.Char('Mail Out', size=150)
+    
+    geofence_ids = fields.Many2many('gpsmap.geofence', 'alert_geofence', 'geofence_id', 'alert_id', string='Geofence')
+    device_ids = fields.Many2many('fleet.vehicle', 'alert_device', 'device_id', 'alert_id', string='Device')            
