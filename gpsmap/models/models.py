@@ -167,7 +167,13 @@ class positions(models.Model):
                 speed_arg                       =[['deviceid','=',position.deviceid.id],['endtime','=',False]]                
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                 
-                if float(vehicle.speed) < float(position.speed):
+                
+                if(vehicle.odometer_unit=="kilometers")     ts=1.852
+                if(vehicle.odometer_unit=="miles")          ts=1.15
+                else                                        ts=1.852
+                                                                
+                                
+                if float(vehicle.speed) < float(position.speed * ts):
                     if(len(speed_data)==0):
                         speed                       ={}
                         speed["deviceid"]           =position.deviceid.id
@@ -181,13 +187,12 @@ class positions(models.Model):
                         mail["message_type"]        ="comment"                        
                         mail["body"]                ="Contenido del mensaje %s" %(vehicle.name) 
                         
-                        #mail_obj.create(mail)        
+                        mail_obj.create(mail)        
                         #print('Exceso de velocidad')                        
                 else:
                     if(len(speed_data)>0):
                         speed                       ={}
                         for speed in speed_data:
-
                             speed["endtime"]        =position.devicetime
                             speed_obj.write(speed)                        
                             #print('Saliendo del exceso de velocidad')
