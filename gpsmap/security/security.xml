@@ -67,21 +67,20 @@
 
         <record id="access_gpsmap_positions_temporal" model="ir.rule">
             <field name="name">User can only see his/her position</field>
-            <field name="model_id" ref="model_gpsmap_positions"/>        
-            
+            <field name="model_id" ref="model_gpsmap_positions"/>                    
+            <field name="domain_force"></field>            
+            <field name="groups"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>            
         </record>
-<!--
-<field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
 
         <record id="access_gpsmap_positions_user" model="ir.rule">
             <field name="name">User can only see his/her vehicle</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
             <field name="domain_force"></field>            
-            <field name="groups" eval="[(4, ref('gpsmap_group_user'))]"/>
+            <field name="groups" eval="[(4)]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
@@ -94,12 +93,19 @@
             <field name="name">User can only see his/her vehicle</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
             <field name="domain_force"></field>            
-            <field name="groups" eval="[(4, ref('gpsmap_group_manager'))]"/>
+            <field name="groups" eval=""/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="False"/>            
         </record>
+
+
+
+
+
+<!--
+<field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
 
 
 
