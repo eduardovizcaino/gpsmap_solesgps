@@ -69,6 +69,19 @@
         <field name="domain_force">[('deviceid.company_id.id','=',user.company_id.id)]</field>            
 
 -->
+        <record id="access_gpsmap_position_temporal" model="ir.rule">
+            <field name="name">User can only see his/her manager vehicle</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="domain_force"></field>            
+            <field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+
+
 
 
         <record id="gpsmap_mail_chanel" model="mail.channel">
