@@ -188,7 +188,7 @@ class positions(models.Model):
                         mail["body"]                ="Contenido del mensaje %s" %(vehicle.name) 
                         
                         mail_obj.create(mail)        
-                        #print('Exceso de velocidad')                        
+                        print('Exceso de velocidad===================')                        
                 else:
                     if(len(speed_data)>0):
                         speed                       ={}
