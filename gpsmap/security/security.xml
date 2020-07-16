@@ -93,6 +93,9 @@
         </record>
 
 
+
+
+
         <record id="gpsmap_mail_chanel" model="mail.channel">
             <field name="name">SolesGPS</field>
             <field name="group_public_id" ref="gpsmap_group_manager"/>
