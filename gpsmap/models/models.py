@@ -138,9 +138,10 @@ class positions(models.Model):
                 data_create['event']            =''
                 
                 positions_obj.create(data_create)    
-        self.run_scheduler_position()
+        self.run_scheduler_get_position()
                 
-    def run_scheduler_position(self):
+        #run_scheduler_get_position        
+    def run_scheduler_get_position(self):
         now                                     = datetime.datetime.now()
         
         positions_obj                           =self.env['gpsmap.positions']
