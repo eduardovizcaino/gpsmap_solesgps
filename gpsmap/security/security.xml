@@ -73,6 +73,7 @@
             <field name="name">User can only see his/her position</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
             <field name="domain_force"></field>            
+            <field name="domain_force">[('deviceid.company_id','=',user.company_id)]</field>
             <field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
