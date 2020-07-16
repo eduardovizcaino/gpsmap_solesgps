@@ -168,9 +168,9 @@ class positions(models.Model):
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                 
                 
-                if(vehicle.odometer_unit=="kilometers")     ts=1.852
-                if(vehicle.odometer_unit=="miles")          ts=1.15
-                else                                        ts=1.852
+                if(vehicle.odometer_unit=="kilometers"):     ts=1.852
+                if(vehicle.odometer_unit=="miles"):          ts=1.15
+                else:                                        ts=1.852
                                                                 
                                 
                 if float(vehicle.speed) < float(position.speed * ts):
