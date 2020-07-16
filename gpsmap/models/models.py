@@ -167,6 +167,7 @@ class positions(models.Model):
                 speed_arg                       =[['deviceid','=',position.deviceid.id],['endtime','=',False]]                
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                 
+                print('=============== POSITION ===================')                        
                 
                 if(vehicle.odometer_unit=="kilometers"):     ts=1.852
                 if(vehicle.odometer_unit=="miles"):          ts=1.15
