@@ -55,24 +55,7 @@ class speed(models.Model):
     starttime                                   = fields.Datetime('Start Time')
     endtime                                     = fields.Datetime('End Time')
     speed                                       = fields.Float('Velocidad',digits=(3,2))
-    """
-class motor(models.Model):
-    _name = "gpsmap.motor"
-    _description = 'Motor'
-    _order = "starttime DESC"
-    deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
-    command                                     = fields.Char('Command', size=50)
-    starttime                                   = fields.Datetime('Start Time')  
-    endtime                                     = fields.Datetime('End Time')
-    
-     15 arena
-      7 grava
-    250 ladrillos
-      2 mortero
-      1 cemento
-      
-      3113388    $1509
-    """
+
 class positions(models.Model):
     _name = "gpsmap.positions"
     _description = 'GPS Positions'
