@@ -67,8 +67,7 @@
 
         <record id="access_gpsmap_positions_temporal" model="ir.rule">
             <field name="name">User can only see his/her position</field>
-            <field name="model_id" ref="model_gpsmap_positions"/>
-            <field name="domain_force"></field>            
+            <field name="model_id" ref="model_gpsmap_positions"/>        
             
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
