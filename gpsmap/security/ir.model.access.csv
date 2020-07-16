@@ -16,3 +16,4 @@ access_gpsmap_contract,access_gpsmap_contract,model_fleet_vehicle_log_contract,g
 access_gpsmap_odometer,access_gpsmap_odometer,model_fleet_vehicle_odometer,gpsmap_group_manager,1,0,0,0
 access_gpsmap_model,access_gpsmap_model,model_fleet_vehicle_model,gpsmap_group_manager,1,1,0,0
 access_gpsmap_modelbrand,access_gpsmap_modelbrand,model_fleet_vehicle_model_brand,gpsmap_group_manager,1,1,0,0
+access_gpsmap_positions,access_gpsmap_positions,model_gpsmap_positions,base.group_user,1,0,0,0
