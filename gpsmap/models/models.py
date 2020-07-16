@@ -173,7 +173,7 @@ class positions(models.Model):
                 else:                                        ts=1.852
                                                                 
                                 
-                if float(vehicle.speed) < float(position.speed * ts):
+                if float(vehicle.speed) < float(position.speed) * ts:
                     if(len(speed_data)==0):
                         speed                       ={}
                         speed["deviceid"]           =position.deviceid.id
