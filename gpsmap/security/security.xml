@@ -7,8 +7,6 @@
         </record>
 
 
-
-
         <record id="gpsmap_group_temporal" model="res.groups">
             <field name="name">Temporal</field>
             <field name="category_id" ref="module_gpsmap_category"/>
@@ -72,7 +70,7 @@
 
 
         <record id="access_gpsmap_positions_temporal" model="ir.rule">
-            <field name="name">User can only see his/her vehicle</field>
+            <field name="name">User can only see his/her position</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
             <field name="domain_force"></field>            
             <field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
