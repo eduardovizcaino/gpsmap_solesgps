@@ -144,6 +144,7 @@ class positions(models.Model):
     def run_scheduler_get_position(self):
         now                                     = datetime.datetime.now()
         
+        print('=============== READ POSITION ===================')                        
         positions_obj                           =self.env['gpsmap.positions']
         vehicle_obj                             =self.env['fleet.vehicle']
         speed_obj                               =self.env['gpsmap.speed']
