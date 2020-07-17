@@ -172,7 +172,7 @@
                     <field name="color"/>
                     <field name="hidden"/>                        
                     <field name="points" class="points" invisible="0"/>
-                    <field name="company_id" groups="base.group_multi_company"/>
+                    <field name="company_id">
                 </group>
                 <div id="map_tree" style="width:100%; height:400px;"> MAPA</div>
                 <script>
