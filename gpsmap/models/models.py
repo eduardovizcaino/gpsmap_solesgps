@@ -157,9 +157,10 @@ class positions(models.Model):
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
         
         print('===============', len(positions_data))                        
-        """
+        
         if len(positions_data)>0:         
             for position in positions_data:
+                """
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 if vehicle.speed=='':
@@ -209,11 +210,11 @@ class positions(models.Model):
                         print('===========',alerts.name)
                         print('===========',alerts.device_ids)
                         print('===========',alerts.geofence_ids)                                
-                                                        
+                """                                        
                 position["leido"]=1                
                 positions_obj.write(position)
             
-        """    
+                    
             
             
                 
