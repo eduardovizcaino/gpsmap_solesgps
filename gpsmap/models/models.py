@@ -155,8 +155,9 @@ class positions(models.Model):
         
         positions_arg                           =[('leido','=',0)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
-
+        
         print('===============', len(positions_data))                        
+        """
         if len(positions_data)>0:         
             for position in positions_data:
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
@@ -212,7 +213,7 @@ class positions(models.Model):
                 position["leido"]=1                
                 positions_obj.write(position)
             
-            
+        """    
             
             
                 
