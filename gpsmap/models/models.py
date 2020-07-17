@@ -75,7 +75,7 @@ class positions(models.Model):
     address                                     = fields.Char('Calle', size=150)
     attributes                                  = fields.Char('Atributos', size=5000)
     status                                      = fields.Char('Type', size=5000)
-    leido                                       = fields.Integer('Leido')
+    leido                                       = fields.Integer('Leido',default=0)
     event                                       = fields.Char('Evento', size=70)
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
