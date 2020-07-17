@@ -160,7 +160,7 @@ class positions(models.Model):
         
         if len(positions_data)>0:         
             for position in positions_data:
-                """
+                
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 if vehicle.speed=='':
@@ -172,7 +172,7 @@ class positions(models.Model):
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                 
                 
-                
+                """
                 if(vehicle.odometer_unit=="kilometers"):     ts=1.852
                 if(vehicle.odometer_unit=="miles"):          ts=1.15
                 else:                                        ts=1.852
