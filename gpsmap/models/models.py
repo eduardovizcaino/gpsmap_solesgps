@@ -204,13 +204,13 @@ class positions(models.Model):
                             speed_obj.write(speed)                        
                             #print('Saliendo del exceso de velocidad')
                     #if len(speed_data)>0:
-                """                    
+                                    
                 if len(alerts_data)>0:                     
                     for alerts in alerts_data:
                         print('===========',alerts.name)
                         print('===========',alerts.device_ids)
                         print('===========',alerts.geofence_ids)                                
-                """                                        
+                                                        
                 position["leido"]=1                
                 positions_obj.write(position)
             
@@ -243,10 +243,11 @@ class geofence(models.Model):
         alerts_args    =[]
         alerts_data    =alerts_obj.search(alerts_args, offset=0, limit=None, order=None)
 
-        if len(alerts_data)>0:                     
+        #if len(alerts_data)>0:                     
             #for alerts in alerts_data:
             #    print('ALERT ====================',alerts.name)        
-            return alerts_data
+        
+        return alerts_data
                 
         
         
