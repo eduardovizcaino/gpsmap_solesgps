@@ -236,7 +236,8 @@ class geofence(models.Model):
         ('yellow', 'Yellow'),
         ], 'Color', default='green', help='Color of geofence', required=True)
     hidden = fields.Boolean('Hidden')
-
+    company_id = fields.Many2one('res.company', 'Company', required=True)
+    
     def geofences(self):
         alerts_obj      =self.env['gpsmap.geofence_device']
 
