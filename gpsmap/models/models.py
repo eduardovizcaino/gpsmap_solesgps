@@ -172,7 +172,7 @@ class positions(models.Model):
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                 
                 
-                """
+                
                 if(vehicle.odometer_unit=="kilometers"):     ts=1.852
                 if(vehicle.odometer_unit=="miles"):          ts=1.15
                 else:                                        ts=1.852
@@ -204,7 +204,7 @@ class positions(models.Model):
                             speed_obj.write(speed)                        
                             #print('Saliendo del exceso de velocidad')
                     #if len(speed_data)>0:
-                                    
+                """                    
                 if len(alerts_data)>0:                     
                     for alerts in alerts_data:
                         print('===========',alerts.name)
