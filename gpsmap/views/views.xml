@@ -17,7 +17,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group" position="after">            
                 <group col="4" string="GPS Configuration">
-                    <field name="imei" />
+                    <field name="imei"/>
                     <field name="phone"/>
                     <field name="economic_number"/>
                     <field name="image_vehicle"/>
