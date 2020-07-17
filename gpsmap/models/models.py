@@ -156,7 +156,7 @@ class positions(models.Model):
         positions_arg                           =[('leido','=',0)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
 
-
+        print('===============', len(positions_data))                        
         if len(positions_data)>0:         
             for position in positions_data:
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
@@ -169,7 +169,7 @@ class positions(models.Model):
                 speed_arg                       =[['deviceid','=',position.deviceid.id],['endtime','=',False]]                
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                 
-                print('=============== POSITION ===================')                        
+                
                 
                 if(vehicle.odometer_unit=="kilometers"):     ts=1.852
                 if(vehicle.odometer_unit=="miles"):          ts=1.15
