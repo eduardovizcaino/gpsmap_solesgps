@@ -144,7 +144,7 @@ class positions(models.Model):
     def run_scheduler_get_position(self):
         now                                     = datetime.datetime.now()
         
-        print('=============== READ POSITION ===================')                        
+        
         positions_obj                           =self.env['gpsmap.positions']
         vehicle_obj                             =self.env['fleet.vehicle']
         speed_obj                               =self.env['gpsmap.speed']
@@ -156,7 +156,7 @@ class positions(models.Model):
         positions_arg                           =[('leido','=',0)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
         
-        print('===============', len(positions_data))                        
+        print('=============== READ POSITION ===================', len(positions_data))                        
         
         if len(positions_data)>0:         
             for position in positions_data:
