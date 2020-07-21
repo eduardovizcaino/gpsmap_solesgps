@@ -27,7 +27,7 @@
         </record>
 
 
-
+        <!-- MODULE fleet_vehicle -->
 
         <record id="access_gpsmap_vehicle_temporal" model="ir.rule">
             <field name="name">User can only see his/her temporal vehicle</field>
@@ -61,12 +61,9 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>
         </record>
+        
+        <!-- MODULE gpsmap_positions -->
 
-
-<!--
-        <field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
-        <field name="domain_force">[('deviceid.company_id.id','=',user.company_id.id)]</field>            
--->
         <record id="access_gpsmap_positions_temporal" model="ir.rule">
             <field name="name">User can only see his/her manager vehicle</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
@@ -78,6 +75,8 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
+        <!-- MODULE gpsmap_geofence -->
+        
         <record id="access_gpsmap_geofence_temporal" model="ir.rule">
             <field name="name">User can only see his/her geofence</field>
             <field name="model_id" ref="model_gpsmap_geofence"/>
@@ -88,6 +87,54 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
+        <record id="access_gpsmap_geofence_user" model="ir.rule">
+            <field name="name">User can only see his/her geofence</field>
+            <field name="model_id" ref="model_gpsmap_geofence"/>
+            <field name="domain_force"></field>            
+            <field name="groups" eval="[(4, ref('gpsmap_group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+        <record id="access_gpsmap_geofence_manager" model="ir.rule">
+            <field name="name">User can only see his/her geofence</field>
+            <field name="model_id" ref="model_gpsmap_geofence"/>
+            <field name="domain_force"></field>            
+            <field name="groups" eval="[(4, ref('gpsmap_group_manager'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+        
+        <!-- MODULE gpsmap_geofence_device -->
+        
+        <record id="access_gpsmap_geofence_device_temporal" model="ir.rule">
+            <field name="name">User can only see his/her geofence_device</field>
+            <field name="model_id" ref="model_gpsmap_geofence_device"/>
+            <field name="domain_force"></field>            
+            <field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record id="access_gpsmap_geofence_device_user" model="ir.rule">
+            <field name="name">User can only see his/her geofence_device</field>
+            <field name="model_id" ref="model_gpsmap_geofence_device"/>
+            <field name="domain_force"></field>            
+            <field name="groups" eval="[(4, ref('gpsmap_group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+
+
+
 
 
 
