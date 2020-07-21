@@ -25,13 +25,13 @@
         <field name="name">Histoy Map</field>
         <field name="res_model">gpsmap.positions</field>
     </record>
-    <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="=fleet_position_menu" groups="gpsmap_group_user"/>
+    <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap_group_user"/>
 
     <record id='fleet_speed_action' model='ir.actions.act_window'>
         <field name="name">Speed</field>
         <field name="res_model">gpsmap.speed</field>
     </record>
-    <menuitem action="fleet_speed_action" parent="fleet.fleet_vehicles" id="=fleet_speed_menu" groups="gpsmap_group_user"/>
+    <menuitem action="fleet_speed_action" parent="fleet.fleet_vehicles" id="fleet_speed_menu" groups="gpsmap_group_user"/>
     
     
     
@@ -42,7 +42,7 @@
         <field name="name">Geofence</field>
         <field name="res_model">gpsmap.geofence</field>
     </record>
-    <menuitem action="fleet_geofence_action" parent="fleet.fleet_vehicles" id="=fleet_geofence_menu" groups="gpsmap.gpsmap_group_user"/>
+    <menuitem action="fleet_geofence_action" parent="fleet.fleet_vehicles" id="fleet_geofence_menu" groups="gpsmap.gpsmap_group_user"/>
 
     <!-- ############################### -->    
 
@@ -50,7 +50,7 @@
         <field name="name">Alerts</field>
         <field name="res_model">gpsmap.geofence_device</field>
     </record>
-    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_vehicles" id="=fleet_geofence_device_menu" groups="gpsmap.gpsmap_group_user"/>
+    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_vehicles" id="fleet_geofence_device_menu" groups="gpsmap.gpsmap_group_user"/>
     
     
     
