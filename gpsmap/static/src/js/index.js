@@ -78,7 +78,7 @@ odoo.define('gpsmap', function(require){
                         poligono(flightPlanCoordinates,{color:geofence["color"],geofence:"aaaaaaaaaa"});	
                     }    
                 }
-            },500);
+            },1000);
         },
         //////////////////////////////////////////////////////////////
         geofences:function(){
