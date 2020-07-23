@@ -171,7 +171,7 @@
                     <field name="name"/>                            
                     <field name="color"/>
                     <field name="hidden"/>                        
-                    <field name="points" class="points" invisible="0"/>
+                    <field name="points" class="points" invisible="1"/>
                     <!--
                     <field name="company_id">
                     -->
