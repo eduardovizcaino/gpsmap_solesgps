@@ -487,7 +487,7 @@ odoo.define('gpsmap', function(require){
     gpsmaps_obj         =new class_gpsmap();  
 
     
-    var form_widget             = require('web.form_widgets');
+
     /*
     form_widget.WidgetButton.include({
         on_click: function() {
