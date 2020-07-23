@@ -485,7 +485,7 @@ odoo.define('gpsmap', function(require){
         
     gpsmaps_obj         =new class_gpsmap();  
 
-
+    /*
     form_widget.WidgetButton.include({
         on_click: function() {
              if(this.node.attrs.custom === "click"){
@@ -497,11 +497,8 @@ odoo.define('gpsmap', function(require){
              this._super();
         },
     });
-        
-    if (typeof solesgps_geofence == 'object') 
-    {
-        alert("existe");
-    }    
+    */    
+       
 });
 
 	/*
