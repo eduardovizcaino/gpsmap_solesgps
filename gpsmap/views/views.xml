@@ -164,7 +164,7 @@
         <field name="arch" type="xml">
             <form string="Geofence">
                 <header>
-                    <button name="action_addpoint" class="o_call_button_action_addpoint" string=" ADD POINT " type="object"/>                
+                    <button name="action_addpoint" class="o_call_button_action_addpoint" string=" ADD POINT "/>                
                 </header>
 
                 <!--
