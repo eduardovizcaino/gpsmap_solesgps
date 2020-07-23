@@ -163,10 +163,12 @@
         <field name="model">gpsmap.geofence</field>
         <field name="arch" type="xml">
             <form string="Geofence">
-                <header>
-                    <button id="action_addpoint" class="o_call_button_action_addpoint" string="Send by Email" type="object"/>                
-                <header>
                 <!--
+                <header>
+                    <button name="action_addpoint" class="o_call_button_action_addpoint" string="Send by Email" type="object"/>                
+                <header>
+
+
                 <group  col="6">                                    
                     <div id="action_addpoint" class="btn btn-sm btn-default o_call_button_action_addpoint"> ADD POINT</div>
                     <div id="action_endpoint" class="btn btn-sm btn-default o_call_button_action_endpoint"> END POINT</div>
