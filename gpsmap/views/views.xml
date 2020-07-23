@@ -164,12 +164,17 @@
         <field name="arch" type="xml">
             <form string="Geofence">
                 <header>
+                    <div id="action_addpoint" class="btn btn-sm btn-default o_call_button_action_addpoint"> ADD POINT</div>
+                    <div id="action_endpoint" class="btn btn-sm btn-default o_call_button_action_endpoint"> END POINT</div>
+                    <div id="action_clearpoint" class="btn btn-sm btn-default o_call_button_action_clearpoint"> CLEAR POINT</div>                    
+                <header>
+                <!--
                 <group  col="6">                                    
                     <div id="action_addpoint" class="btn btn-sm btn-default o_call_button_action_addpoint"> ADD POINT</div>
                     <div id="action_endpoint" class="btn btn-sm btn-default o_call_button_action_endpoint"> END POINT</div>
                     <div id="action_clearpoint" class="btn btn-sm btn-default o_call_button_action_clearpoint"> CLEAR POINT</div>                    
                 </group>
-                <header>
+                -->
                 <group  col="6">
                     <field name="name"/>                            
                     <field name="color"/>                    
