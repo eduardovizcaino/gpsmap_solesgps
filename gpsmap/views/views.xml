@@ -163,15 +163,16 @@
         <field name="model">gpsmap.geofence</field>
         <field name="arch" type="xml">
             <form string="Geofence">
-                <div id="action_addpoint" class="btn btn-sm btn-default o_call_button_action_addpoint"> ADD POINT</div>
-                <div id="action_endpoint" class="btn btn-sm btn-default o_call_button_action_endpoint"> END POINT</div>
-                <div id="action_clearpoint" class="btn btn-sm btn-default o_call_button_action_clearpoint"> CLEAR POINT</div>
-
+                <group  col="6">
+                    <div id="action_addpoint" class="btn btn-sm btn-default o_call_button_action_addpoint"> ADD POINT</div>
+                    <div id="action_endpoint" class="btn btn-sm btn-default o_call_button_action_endpoint"> END POINT</div>
+                    <div id="action_clearpoint" class="btn btn-sm btn-default o_call_button_action_clearpoint"> CLEAR POINT</div>
+                    <field name="points" class="points" invisible="1"/>
+                </group>
                 <group  col="6">
                     <field name="name"/>                            
                     <field name="color"/>                    
-                    <field name="hidden"/>                                            
-                    <field name="points" class="points" invisible="1"/>
+                    <field name="hidden"/>                                                                
                 </group>
                 <div id="map_tree" style="width:100%; height:400px;"> MAPA</div>
                 <script>
