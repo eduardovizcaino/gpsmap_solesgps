@@ -17,11 +17,11 @@
         <field name="arch" type="xml">
             <xpath expr="//group" position="after">            
                 <group col="4" string="GPS Configuration">
-                    <field name="imei" groups="gpsmap_group_god"/>
-                    <field name="phone" groups="gpsmap_group_god"/>
+                    <field name="imei" />
+                    <field name="phone"/>
                     <field name="economic_number"/>
                     <field name="image_vehicle"/>
-                    <field name="speed" groups="gpsmap_group_god"/>
+                    <field name="speed"/>
                     <field name="temporal_id"/>
                 </group>                
             </xpath>
