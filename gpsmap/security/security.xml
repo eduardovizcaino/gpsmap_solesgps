@@ -21,9 +21,12 @@
             <field name="name">Manager</field>
             <field name="category_id" ref="module_gpsmap_category"/>
             <field name="implied_ids" eval="[(4, ref('gpsmap_group_user'))]"/>
-            <!--
+        </record>
+        <record id="gpsmap_group_god" model="res.groups">
+            <field name="name">God</field>
+            <field name="category_id" ref="module_gpsmap_category"/>
+            <field name="implied_ids" eval="[(4, ref('gpsmap_group_manager'))]"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
-            -->
         </record>
 
 
