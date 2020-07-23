@@ -48,7 +48,7 @@ odoo.define('gpsmap', function(require){
     var Widget                  = require('web.Widget');
     var rpc                     = require('web.rpc');
 //    var form_widget             = require('web.form_widgets');
-    var form_widget             = require('web.form_widgets');
+    
 
     map                         =undefined;    
     local.vehicles              =Array();
@@ -486,6 +486,8 @@ odoo.define('gpsmap', function(require){
         
     gpsmaps_obj         =new class_gpsmap();  
 
+    
+    var form_widget             = require('web.form_widgets');
     /*
     form_widget.WidgetButton.include({
         on_click: function() {
