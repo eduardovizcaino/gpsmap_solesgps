@@ -49,19 +49,6 @@ odoo.define('gpsmap', function(require){
     var rpc                     = require('web.rpc');
     var form_widget             = require('web.form_widgets');
 
-
-    form_widget.WidgetButton.include({
-        on_click: function() {
-             if(this.node.attrs.custom === "click"){
-
-                alert("a");
-
-                return;
-             }
-             this._super();
-        },
-    });
-
     map                         =undefined;    
     local.vehicles              =Array();
     local.geofences             =Array();
@@ -497,6 +484,19 @@ odoo.define('gpsmap', function(require){
     core.action_registry.add('gpsmap.streetonline', local.streetonline);
         
     gpsmaps_obj         =new class_gpsmap();  
+
+
+    form_widget.WidgetButton.include({
+        on_click: function() {
+             if(this.node.attrs.custom === "click"){
+
+                alert("a");
+
+                return;
+             }
+             this._super();
+        },
+    });
         
     if (typeof solesgps_geofence == 'object') 
     {
