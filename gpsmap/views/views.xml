@@ -172,9 +172,6 @@
                     <field name="color"/>
                     <field name="points" class="points" invisible="1"/>
                     <field name="hidden"/>                                            
-                    <!--
-                    <field name="company_id">
-                    -->
                 </group>
                 <div id="map_tree" style="width:100%; height:400px;"> MAPA</div>
                 <script>
