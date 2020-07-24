@@ -39,16 +39,12 @@
     var map;
     var class_gpsmap;
     var actualizaciones         =0;
-
-
         
 odoo.define('gpsmap', function(require){
     "use strict";
     var core                    = require('web.core');
     var Widget                  = require('web.Widget');
     var rpc                     = require('web.rpc');
-//    var form_widget             = require('web.form_widgets');
-    
 
     map                         =undefined;    
     local.vehicles              =Array();
@@ -60,7 +56,6 @@ odoo.define('gpsmap', function(require){
     //////////////////////////////////////////////////////////////
     ////////  CLASS GPSMAP  
     //////////////////////////////////////////////////////////////
-
     class_gpsmap = Widget.extend({
         //////////////////////////////////////////////////////////////
         geofences_paint: function() 
@@ -483,10 +478,30 @@ odoo.define('gpsmap', function(require){
         }
     });
     core.action_registry.add('gpsmap.streetonline', local.streetonline);
+
+
         
     gpsmaps_obj         =new class_gpsmap();  
 
     
+
+
+
+
+
+    var FormController = require('web.FormController');
+
+    var formController = FormController.include({
+        _onButtonClicked: function (event) {
+            if(event.data.attrs.id === "button_click"){
+                alert('Test');
+            }
+            this._super(event);
+        },
+    });
+
+
+
 
     /*
     form_widget.WidgetButton.include({

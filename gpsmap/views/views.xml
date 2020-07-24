@@ -164,7 +164,7 @@
         <field name="arch" type="xml">
             <form string="Geofence">
                 <header>
-                    <button string="Click" custom="click"/>
+                    <button string="Click" id ="button_click" class="o_adel" name="action_prueba" type="object" custom="click"/>
                 </header>
 
                 <!--
