@@ -478,19 +478,11 @@ odoo.define('gpsmap', function(require){
         }
     });
     core.action_registry.add('gpsmap.streetonline', local.streetonline);
-
-
-        
     gpsmaps_obj         =new class_gpsmap();  
 
     
 
-
-
-
-
     var FormController = require('web.FormController');
-
     var formController = FormController.include({
         _onButtonClicked: function (event) {
             if(event.data.attrs.id === "action_addpoint")
@@ -525,23 +517,6 @@ odoo.define('gpsmap', function(require){
         },
     });
 
-
-
-
-    /*
-    form_widget.WidgetButton.include({
-        on_click: function() {
-             if(this.node.attrs.custom === "click"){
-
-                alert("a");
-
-                return;
-             }
-             this._super();
-        },
-    });
-    */    
-       
 });
 
 	/*
