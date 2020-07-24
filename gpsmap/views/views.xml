@@ -164,7 +164,9 @@
         <field name="arch" type="xml">
             <form string="Geofence">
                 <header>
-                    <button string="Click" id ="button_click" class="o_adel" name="action_prueba" custom="click"/>
+                    <button string="ADD POINT" id ="action_addpoint" custom="click"/>
+                    <button string="END POINT" id ="action_endpoint" custom="click"/>
+                    <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>
                 </header>
 
                 <!--
@@ -208,7 +210,7 @@
                             var flightPlanCoordinates=array_points($("span[name='points']").html());                             
                             poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:"aaaaaaaaaa"});	
                         }    
-                        
+                        /*
                         $("div.o_call_button_action_addpoint").click(function()
                         {
                             GeoMarker.push(coordinate);
@@ -236,7 +238,7 @@
 			                limpiar_virtual();
 			                limpiar_real();				         
                         });
-
+                        */
 
                         limpiar_virtual();
                         limpiar_real();	                 
