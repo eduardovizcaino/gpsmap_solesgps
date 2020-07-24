@@ -166,8 +166,7 @@
                 <header>
                     <button string="ADD POINT" id ="action_addpoint" custom="click"/>
                     <button string="END POINT" id ="action_endpoint" custom="click"/>
-                    <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>
-                    <field name="company_id" groups="base.group_multi_company"/>
+                    <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>                    
                 </header>
 
                 <group  col="6">
