@@ -496,7 +496,7 @@ odoo.define('gpsmap', function(require){
             if(event.data.attrs.id === "button_click"){
                 alert('Test');
             }
-            this._super(event);
+            //this._super(event);
         },
     });
 
