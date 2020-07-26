@@ -81,7 +81,7 @@ class positions(models.Model):
     @api.one
     def _get_speed(self):
         vehicle_obj                             =self.env['fleet.vehicle']        
-        vehicle                                 =vehicle_obj.browse(self.deviceid)
+        vehicle                                 =vehicle_obj.browse(self.deviceid.id)
 
         if(vehicle.odometer_unit=="kilometers"):     ts=1.852
         if(vehicle.odometer_unit=="miles"):          ts=1.15
@@ -89,14 +89,7 @@ class positions(models.Model):
             
 
         self.speed_compu=self.speed * ts
-        """
-        try:
-         self.thirdfield = self.first + self.second
-        except:
-             raise "here add your exceptions"
-            
-        thirdfield = fields.Float(compute='_get_total', string="")      
-        """
+
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
         return para_value
