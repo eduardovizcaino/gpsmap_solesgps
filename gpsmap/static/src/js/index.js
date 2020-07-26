@@ -856,10 +856,10 @@ odoo.define('gpsmap', function(require){
 					icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i"+icon+ ".png";		    
 					if(labels[device_id]==undefined)	
 					{
-
+					    //text: 			vehicle["dn"],
 
 						labels[device_id]=new MapLabel({
-							text: 			vehicle["dn"],
+							text: 			"ETIQUETA   asfasf",
 							position: 		posicion,
 							map: 			map,
 							fontSize: 		14,
