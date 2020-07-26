@@ -72,7 +72,7 @@ odoo.define('gpsmap', function(require){
                     if(geofence["hidden"]==false)
                     {                        
                         var flightPlanCoordinates=array_points(geofence["points"]);                             
-                        poligono(flightPlanCoordinates,{color:geofence["color"],geofence:"aaaaaaaaaa"});	
+                        poligono(flightPlanCoordinates,{color:geofence["color"],geofence:geofence["name"]});	
                     }    
                 }
             },1000);
