@@ -856,8 +856,8 @@ odoo.define('gpsmap', function(require){
 					icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i"+icon+ ".png";		    
 					if(labels[device_id]==undefined)	
 					{
-					    alert("label");
-					    /*
+
+
 						labels[device_id]=new MapLabel({
 							text: 			vehicle["dn"],
 							position: 		posicion,
@@ -867,11 +867,10 @@ odoo.define('gpsmap', function(require){
 							align: 			"center",
 							strokeWeight:	5,
 						});
-						*/
 						
 					}
 					//alert("2");
-					//labels[device_id].set('position', posicion);
+					labels[device_id].set('position', posicion);
 			
 					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator" || vehicle["se"]=="historyForm") 
 					{
