@@ -123,7 +123,7 @@ odoo.define('gpsmap', function(require){
 	                        
 	                        if(vehiculo["id"]==device_id)
 	                        {		                        
-                                var vehiculo_name   =vehiculo["name"];
+                                var vehiculo_name   =vehiculo["economic_number"];
                                 var vehiculo_img    =vehiculo["image_vehicle"];
 
                                 var coordinates		={"latitude":positions.latitude,"longitude":positions.longitude};
