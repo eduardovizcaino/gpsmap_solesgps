@@ -163,6 +163,7 @@ odoo.define('gpsmap', function(require){
                                 }
                                 
                                 vehiculo["de"]=device_id;
+                                vehiculo["dn"]=vehiculo_name,
                                 vehiculo["la"]=positions.latitude;
                                 vehiculo["lo"]=positions.longitude;
                                 vehiculo["co"]=positions.course;
@@ -856,10 +857,9 @@ odoo.define('gpsmap', function(require){
 					icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i"+icon+ ".png";		    
 					if(labels[device_id]==undefined)	
 					{
-					    //text: 			vehicle["dn"],
 
 						labels[device_id]=new MapLabel({
-							text: 			"ETIQUETA   asfasf",
+							text: 			vehicle["dn"],
 							position: 		posicion,
 							map: 			map,
 							fontSize: 		14,
