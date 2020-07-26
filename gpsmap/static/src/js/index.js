@@ -145,7 +145,7 @@ odoo.define('gpsmap', function(require){
 	                                lo: positions.longitude, 
 	                                co: positions.course, 
 	                                mi: "milage", 
-	                                sp: positions.speed, 
+	                                sp: positions.speed_compu, 
 	                                ba: "batery", 
 	                                ti: positions.devicetime, 
 	                                ho: "icon_online", 
@@ -166,14 +166,12 @@ odoo.define('gpsmap', function(require){
                                 vehiculo["la"]=positions.latitude;
                                 vehiculo["lo"]=positions.longitude;
                                 vehiculo["co"]=positions.course;
-                                vehiculo["sp"]=positions.speed;
+                                vehiculo["sp"]=positions.speed_compu;
                                 vehiculo["ty"]=positions.status;
                                 vehiculo["ti"]=positions.devicetime;
                                 vehiculo["im"]=vehiculo_img;
                                 
 	                            locationsMap(vehiculo);            
-	                            //locationsMap(v);  
-	                            //if(device_active==device_id) execute_streetMap(v);				
 	                            if(device_active==device_id) execute_streetMap(vehiculo);
                             }    
                         }
@@ -184,7 +182,7 @@ odoo.define('gpsmap', function(require){
         //////////////////////////////////////////////////////////////
         positions_search:function(argument){
             console.log("POSITIONS SEARCH ========");
-            var fields_select   =['deviceid','devicetime','latitude','longitude','speed','attributes','address','event','status'];
+            var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status'];
             var vehiculo_id;
             var vehiculos       =local.vehicles;
             var iresult;
@@ -243,7 +241,7 @@ odoo.define('gpsmap', function(require){
                                 positions.lo                =positions.longitude; 
                                 positions.co                =positions.course; 
                                 positions.mi                ="milage"; 
-                                positions.sp                =positions.speed; 
+                                positions.sp                =positions.speed_compu; 
                                 positions.ba                ="batery"; 
                                 positions.ti                =positions.devicetime; 
 
@@ -710,17 +708,13 @@ odoo.define('gpsmap', function(require){
     		item["ga"]  					=parseInt(gas.substring(0,3));
     	}	
     	else								item["ga"]  =0;
-				    	
-    	if(item["odometer_unit"]=="kilometers")		item["ts"]  =1.852;
-    	else if(item["odometer_unit"]=="miles")	    item["ts"]  =1.15;
-    	else                                        item["ts"]  =1.852;
-    	    	    	
+				    	    	    	    	
 
     	if(item["ba"]>100) item["ba"]=125;    
         var bat=item["ba"]*12/12.5-110;
         $("path.bateria").attr({"transform":"rotate("+ bat +" 250 250)"});            
         
-        var vel=item["sp"]*item["ts"]*12/10-110;  // 
+        var vel=item["sp"]*12/10-110;  // 
         $("path.velocidad").attr({"transform":"rotate("+ vel +" 250 250)"});
         
         var alt=item["ga"]*12/10-38;

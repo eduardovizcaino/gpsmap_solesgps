@@ -84,9 +84,7 @@
             <tree string="Models">
                 <field name="deviceid" />
                 <field name="devicetime"/>
-                <field name="speed"/>
-                <field name="speed_compu"/>
-                
+                <field name="speed_compu"/>                
                 <field name="address" />
                 <field name="event" />
                 <field name="leido" />

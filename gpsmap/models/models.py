@@ -87,7 +87,6 @@ class positions(models.Model):
         if(vehicle.odometer_unit=="miles"):          ts=1.15
         else:                                        ts=1.852
             
-
         self.speed_compu=self.speed * ts
 
     def get_system_para(self):
@@ -110,54 +109,9 @@ class positions(models.Model):
                 if len(positions_data)>0:                            
                     return_positions[vehicle.id]    =positions_data[0]        
         return return_positions
-    def run_scheduler_demo(self):
-        positions_obj                           =self.env['gpsmap.positions']        
-        vehicle_obj                             =self.env['fleet.vehicle']
-        
-        vehicle_args                            =[]
-        vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
-
-        now                                     =datetime.datetime.now()
-
-        if len(vehicle_data)>0:         
-            for vehicle in vehicle_data:
-                positions_arg                   =[('deviceid','=',vehicle.id)]                
-                positions_data                  =positions_obj.search(positions_arg, offset=0, limit=1, order='devicetime DESC')
-                
-                velocidad                       = random.randint(95, 130)
-                curso                           = random.randint(30, 160)
-                
-                incremento_lat                  = random.uniform(-0.004, 0.004)
-                
-                latitude                        =positions_data[0].latitude + incremento_lat
-                longitude                       =positions_data[0].longitude + 0.00345
-
-                data_create={}        
-                data_create['protocol']         ='tk103'
-                data_create['deviceid']         =vehicle.id
-                data_create['servertime']       =fields.Datetime.now()
-                data_create['devicetime']       =fields.Datetime.now()
-                data_create['fixtime']          =fields.Datetime.now()
-                data_create['valid']            =''
-                data_create['latitude']         =latitude
-                data_create['longitude']        =longitude
-                data_create['altitude']         =''
-                data_create['speed']            =velocidad
-                data_create['course']           =curso
-                data_create['address']          =''
-                data_create['attributes']       =''
-                #data_create['other']            =0
-                data_create['leido']            =''
-                data_create['event']            =''
-                
-                positions_obj.create(data_create)    
-        self.run_scheduler_get_position()
-                
-        #run_scheduler_get_position        
     def run_scheduler_get_position(self):
         now                                     = datetime.datetime.now()
-        
-        
+                
         positions_obj                           =self.env['gpsmap.positions']
         vehicle_obj                             =self.env['fleet.vehicle']
         speed_obj                               =self.env['gpsmap.speed']
@@ -183,20 +137,13 @@ class positions(models.Model):
 
                 speed_arg                       =[['deviceid','=',position.deviceid.id],['endtime','=',False]]                
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
-                                
-                
-                
-                if(vehicle.odometer_unit=="kilometers"):     ts=1.852
-                if(vehicle.odometer_unit=="miles"):          ts=1.15
-                else:                                        ts=1.852
-                                                                
-                                
-                if float(vehicle.speed) < float(position.speed) * ts:
+                                                                                
+                if float(vehicle.speed) < float(position.speed_compu):
                     if(len(speed_data)==0):
                         speed                       ={}
                         speed["deviceid"]           =position.deviceid.id
                         speed["starttime"]          =position.devicetime
-                        speed["speed"]              =position.speed
+                        speed["speed"]              =position.speed_compu
                         speed_obj.create(speed)
                         
                         mail                        ={}
@@ -207,8 +154,7 @@ class positions(models.Model):
                         
                         #ail_obj.create(mail)        
                         print('Exceso de velocidad===================')
-                        print(mail)
-                                                
+                        print(mail)                                                
                 else:
                     if(len(speed_data)>0):
                         speed                       ={}
@@ -226,9 +172,6 @@ class positions(models.Model):
                                                         
                 position["leido"]=1                
                 positions_obj.write(position)
-            
-                    
-            
             
                 
 class geofence(models.Model):
