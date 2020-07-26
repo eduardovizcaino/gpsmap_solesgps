@@ -587,8 +587,7 @@ odoo.define('gpsmap', function(require){
 			fillColor: option.color,
 			fillOpacity: 0.35
 		});	
-/*				
-	
+
 		if(option.geofence!=undefined)
 		{
 			var total_lat=0;
@@ -626,7 +625,7 @@ odoo.define('gpsmap', function(require){
 			});
             
 		}			
-*/		
+		
 		Polygon.setMap(map);
 	} 	   
 	function map_info(objeto)  
