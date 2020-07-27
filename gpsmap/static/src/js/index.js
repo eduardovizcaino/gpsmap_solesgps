@@ -494,7 +494,7 @@ odoo.define('gpsmap', function(require){
                     polilinea(GeoMarker1);
                 }
             }
-            if(event.data.attrs.id === "action_endpoint")
+            else if(event.data.attrs.id === "action_endpoint")
             {
                 var point       =GeoMarker1[0];
                 coordinate  =GeoMarker[0];
@@ -506,13 +506,12 @@ odoo.define('gpsmap', function(require){
                     .change();                    
                 limpiar_virtual();				
             }
-            if(event.data.attrs.id === "action_clearpoint")
+            else if(event.data.attrs.id === "action_clearpoint")
             {
                 limpiar_virtual();
                 limpiar_real();				         
             }
-
-            //this._super(event);
+            else this._super(event);
         },
     });
 
