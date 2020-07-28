@@ -8,12 +8,13 @@
         <record id="fleet.fleet_group_user" model="res.groups">
             <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_temporal'))]"/>
         </record>
+<!--
         <record id="gpsmap_group_god" model="res.groups">
             <field name="name">God</field>
             <field name="category_id" ref="fleet.module_fleet_category"/>
             <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_manager'))]"/>
         </record>
-
+-->
 
         <!-- MODULE fleet_vehicle -->
 
