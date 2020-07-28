@@ -7,7 +7,7 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="fleet.fleet_group_user" model="res.groups">
-            <field name="implied_ids" eval="[(4, ref('gpsmap_group_temporal'))]"/>
+            <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_temporal'))]"/>
         </record>
         <record id="gpsmap_group_god" model="res.groups">
             <field name="name">God</field>
@@ -21,7 +21,7 @@
             <field name="name">User can only see his/her temporal vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
             <field name="domain_force">[('temporal_id','=','user.id')]</field>
-            <field name="groups" eval="[(4, ref('gpsmap_group_temporal'))]"/>
+            <field name="groups" eval="[(4, ref('gpsmap.gpsmap_group_temporal'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
             <field name="perm_create" eval="False"/>
