@@ -7,7 +7,7 @@
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
         <record id="fleet.fleet_group_user" model="res.groups">
-            <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_temporal'))]"/>
+            <field name="implied_ids" eval="[(4, ref('gpsmap_group_temporal'))]"/>
         </record>
         <record id="gpsmap_group_god" model="res.groups">
             <field name="name">God</field>
