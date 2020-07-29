@@ -1,5 +1,5 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_gpsmap_geofences_user,access_gpsmap_geofence,model_gpsmap_geofence,fleet.fleet_group_user,1,0,0,0
-access_gpsmap_geofences,access_gpsmap_geofence,model_gpsmap_geofence,fleet.fleet_group_manager,1,1,1,1
-access_gpsmap_speed_user,access_gpsmap_speed,model_gpsmap_speed,fleet.fleet_group_user,1,0,0,0
-access_gpsmap_speed,access_gpsmap_speed,model_gpsmap_speed,fleet.fleet_group_manager,1,1,1,1
+access_gpsmap_geofences_user,access_gpsmap_geofence,model_gpsmap_geofence,fleet_group_user,1,0,0,0
+access_gpsmap_geofences,access_gpsmap_geofence,model_gpsmap_geofence,fleet_group_manager,1,1,1,1
+access_gpsmap_speed_user,access_gpsmap_speed,model_gpsmap_speed,fleet_group_user,1,0,0,0
+access_gpsmap_speed,access_gpsmap_speed,model_gpsmap_speed,fleet_group_manager,1,1,1,1
