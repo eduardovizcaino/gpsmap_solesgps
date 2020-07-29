@@ -22,13 +22,13 @@
                     <field name="image_vehicle"/>
                     <field name="speed"/>
                     <field name="temporal_id"/>
-                    <field name="imei" groups="fleet_group_manager"/>
-                    <field name="phone"  groups="fleet_group_manager"/>
+                    <field name="imei" groups="gpsmap.gpsmap_group_god"/>
+                    <field name="phone"  groups="gpsmap.gpsmap_group_god"/>
                 </group>                
             </xpath>
             <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
                 <button name="toggle_motor" type="object" class="oe_stat_button" icon="fa-key">
-                    <field name="motor" widget="boolean_button" groups="fleet_group_manager"/>                    
+                    <field name="motor" widget="boolean_button" groups="gpsmap.gpsmap_group_manager"/>                    
                 </button>       
             </xpath>                
         </field>
