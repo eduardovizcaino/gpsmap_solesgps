@@ -1,6 +1,12 @@
 <?xml version="1.0" ?>
 <odoo>
 
+        <record id="module_gpsmap_category" model="ir.module.category">
+            <field name="name">SolesGPS</field>
+            <!--
+            <field name="sequence">17</field>
+            -->
+        </record>
 
 
         <record id="gpsmap_group_temporal" model="res.groups">
