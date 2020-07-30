@@ -32,9 +32,8 @@
             <field name="category_id" ref="fleet.module_fleet_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+
         <record id="fleet.fleet_group_user" model="res.groups">
-            <field name="name">User</field>
-            <field name="category_id" ref="module_fleet_category"/>
             <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_temp'))]"/>
         </record>
 
