@@ -30,6 +30,12 @@
 
 
 
+
+        <record id="fleet.fleet_group_manager" model="res.groups">
+            <field name="users" eval=""/>
+        </record>
+        
+        
         <!-- MODULE fleet_vehicle -->
 
 
