@@ -37,7 +37,7 @@
         
         <!-- MODULE gpsmap_positions -->
 
-        <record id="access_gpsmap_positions_temporal" model="ir.rule">
+        <record id="access_gpsmap_positions_user" model="ir.rule">
             <field name="name">User can only see his/her manager vehicle</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
             <field name="domain_force"></field>            
