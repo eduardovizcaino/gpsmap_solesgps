@@ -8,6 +8,10 @@
 
 
 
+
+
+
+
         <record id="module_gpsmap_category" model="ir.module.category">
             <field name="name">SolesGPS</field>
         </record>
@@ -65,6 +69,7 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="False"/>
         </record>
+
         <record id="access_gpsmap_geofence_manager" model="ir.rule">
             <field name="name">User can only see his/her geofence</field>
             <field name="model_id" ref="model_gpsmap_geofence"/>
