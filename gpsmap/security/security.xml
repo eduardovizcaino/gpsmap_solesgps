@@ -26,12 +26,6 @@
             <field name="implied_ids" eval="[(4, ref('gpsmap_group_manager'))]"/>
         </record>
 
-
-
-        <record id="fleet.fleet_group_manager" model="res.groups">
-            <field name="users" eval="[(4, ref('fleet.fleet_group_user'))]"/>
-        </record>
-
         
         <!-- MODULE fleet_vehicle -->
 
