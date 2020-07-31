@@ -5,6 +5,9 @@
         </record>
 
 
+
+
+
         <record id="module_gpsmap_category" model="ir.module.category">
             <field name="name">SolesGPS</field>
         </record>
