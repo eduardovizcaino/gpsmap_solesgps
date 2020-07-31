@@ -1,2 +1,2 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_gpsmap_positions,access_gpsmap_positions,model_gpsmap_positions,base.group_user,1,0,0,0
+access_gpsmap_positions,access_gpsmap_positions,model_gpsmap_positions,fleet.fleet_group_user,1,0,0,0
