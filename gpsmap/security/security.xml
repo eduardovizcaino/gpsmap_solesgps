@@ -1,9 +1,18 @@
 <?xml version="1.0" ?>
 <odoo>
-        <record id="fleet.fleet_group_manager" model="res.groups">
+
+        <record id="gpsmap_group_admin" model="res.groups">
+            <field name="name">Admin</field>
+            <field name="implied_ids" eval="[(4, ref('fleet_group_user'))]"/>
+            <field name="category_id" ref="module_fleet_category"/>
             <field name="users" eval="[(4, ref('fleet.fleet_group_user'))]"/>
         </record>
 
+
+        <record id="fleet.fleet_group_manager" model="res.groups">
+        <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_admin'))]"/>
+            <field name="users" eval="[(4, ref('gpsmap.gpsmap_group_admin'))]"/>
+        </record>
 
 
 
