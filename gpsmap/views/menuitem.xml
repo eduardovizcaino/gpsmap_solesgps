@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <menuitem name="GPS" id="menu_root" groups="gpsmap_group_temporal" web_icon="fleet,static/description/icon.png"/>
+    <menuitem name="GPS" id="menu_root" groups="fleet.fleet_group_user" web_icon="fleet,static/description/icon.png"/>
     
-    <menuitem name="Geolocation" parent="menu_root" id="gpsmap_geolocation" sequence="2" groups="gpsmap_group_temporal"/>
+    <menuitem name="Geolocation" parent="menu_root" id="gpsmap_geolocation" sequence="2" groups="fleet.fleet_group_user"/>
         
     <record id="action_gpsmap_maponline" model="ir.actions.client">
         <field name="name">Map Online</field>
         <field name="tag">gpsmap.maponline</field>
     </record>
-    <menuitem id="menu_gpsmap_maponline" name="Online Map" sequence="1" parent="gpsmap_geolocation" action="action_gpsmap_maponline" groups="gpsmap_group_temporal"/>
+    <menuitem id="menu_gpsmap_maponline" name="Online Map" sequence="1" parent="gpsmap_geolocation" action="action_gpsmap_maponline" groups="fleet.fleet_group_user"/>
 
     <record id="action_gpsmap_street" model="ir.actions.client">
         <field name="name">Street Online</field>
         <field name="tag">gpsmap.streetonline</field>
     </record>
-    <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="gpsmap_group_temporal"/>    
+    <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="fleet.fleet_group_user"/>    
 
 
 
