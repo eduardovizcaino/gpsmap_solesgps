@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+
+
+
+
     <menuitem name="GPS" id="menu_root" groups="fleet.fleet_group_user" web_icon="fleet,static/description/icon.png"/>
     
     <menuitem name="Geolocation" parent="menu_root" id="gpsmap_geolocation" sequence="2" groups="fleet.fleet_group_user"/>
@@ -17,7 +21,8 @@
     <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="fleet.fleet_group_user"/>    
 
 
-
+    <menuitem name="Fleet" id="fleet.menu_root" sequence="115" groups="fleet..fleet_group_user"/>
+    <menuitem name="Vehicles" parent="fleet.menu_root" id="fleet.fleet_vehicles" sequence="2" groups="fleet_group_user"/>    
 
     <record id='action_gpsmap_position' model='ir.actions.act_window'>
         <field name="name">Histoy Map</field>
@@ -32,7 +37,8 @@
     <menuitem action="action_gpsmap_speed" parent="fleet.fleet_vehicles" id="gpsmap_speed_menu" groups="fleet.fleet_group_manager"/>
     
     
-    
+
+
     
     <record id='action_gpsmap_geofence' model='ir.actions.act_window'>
         <field name="name">Geofence</field>
