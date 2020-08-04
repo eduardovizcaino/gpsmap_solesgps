@@ -21,7 +21,6 @@
     <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="fleet.fleet_group_user"/>    
 
 
-    <menuitem name="Fleet" id="fleet.menu_root" sequence="115" groups="fleet..fleet_group_user"/>
     <menuitem name="Vehicles" parent="fleet.menu_root" id="fleet.fleet_vehicles" sequence="2" groups="fleet_group_user"/>    
 
     <record id='action_gpsmap_position' model='ir.actions.act_window'>
