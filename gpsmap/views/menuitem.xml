@@ -19,11 +19,11 @@
 
 
 
-    <record id='gpsmap_position_action' model='ir.actions.act_window'>
+    <record id='action_gpsmap_position' model='ir.actions.act_window'>
         <field name="name">Histoy Map</field>
         <field name="res_model">gpsmap.positions</field>
     </record>
-    <menuitem action="gpsmap_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="fleet.fleet_group_manager"/>
+    <menuitem action="action_gpsmap_position" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="fleet.fleet_group_manager"/>
 
     <record id='gpsmap_speed_action' model='ir.actions.act_window'>
         <field name="name">Speed</field>
@@ -38,7 +38,7 @@
         <field name="name">Geofence</field>
         <field name="res_model">gpsmap.geofence</field>
     </record>
-    <menuitem action="gpsmap_geofence_action" parent="fleet.fleet_vehicles" id="fleet_geofence_menu" groups="fleet.fleet_group_manager"/>
+    <menuitem action="gpsmap_geofence_action" parent="fleet.fleet_configuration" id="fleet_geofence_menu" groups="fleet.fleet_group_manager"/>
 
     <!-- ############################### -->    
 
@@ -46,7 +46,7 @@
         <field name="name">Alerts Geofence</field>
         <field name="res_model">gpsmap.geofence_device</field>
     </record>
-    <menuitem action="gpsmap_geofence_device_action" parent="fleet.fleet_vehicles" id="fleet_geofence_device_menu" groups="fleet.fleet_group_manager"/>
+    <menuitem action="gpsmap_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="fleet.fleet_group_manager"/>
     
     
     
