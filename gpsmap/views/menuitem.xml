@@ -53,8 +53,4 @@
     <menuitem action="action_gpsmap_geofence_device" parent="fleet.fleet_configuration" id="gpsmap_geofence_device_menu" groups="fleet.fleet_group_manager"/>
     
     
-    
-    
-    
-    
 </odoo>
