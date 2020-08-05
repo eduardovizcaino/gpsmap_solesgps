@@ -1,9 +1,10 @@
 <?xml version="1.0" ?>
 <odoo>
+<!--
         <record id="fleet.fleet_group_manager" model="res.groups">
             <field name="users" eval="[(4, ref('fleet.fleet_group_user'))]"/>
         </record>
-
+-->
 
 
 
