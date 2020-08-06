@@ -1,7 +1,4 @@
 id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
-access_gpsmap_geofences_temporal,access_gpsmap_geofence,model_gpsmap_geofence,gpsmap_group_temporal,1,0,0,0
-access_gpsmap_geofences_user,access_gpsmap_geofence,model_gpsmap_geofence,gpsmap_group_user,1,0,0,0
-access_gpsmap_geofences,access_gpsmap_geofence,model_gpsmap_geofence,gpsmap_group_manager,1,1,1,1
 access_gpsmap_speed_user,access_gpsmap_speed,model_gpsmap_speed,gpsmap_group_user,1,0,0,0
 access_gpsmap_speed,access_gpsmap_speed,model_gpsmap_speed,gpsmap_group_manager,1,1,1,1
 access_gpsmap_fuel_user,access_gpsmap_fuel,model_fleet_vehicle_log_fuel,gpsmap_group_user,1,0,0,0
