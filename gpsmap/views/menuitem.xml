@@ -35,6 +35,11 @@
     
     
     
+    <record id='fleet_geofence_device_action' model='ir.actions.act_window'>
+        <field name="name">Alerts Geofence</field>
+        <field name="res_model">gpsmap.geofence_device</field>
+    </record>
+    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="gpsmap_group_user"/>
     
     
     
@@ -46,11 +51,6 @@
 
     <!-- ############################### -->    
 
-    <record id='fleet_geofence_device_action' model='ir.actions.act_window'>
-        <field name="name">Alerts Geofence</field>
-        <field name="res_model">gpsmap.geofence_device</field>
-    </record>
-    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="gpsmap_group_user"/>
     
     
     
