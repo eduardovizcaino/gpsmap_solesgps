@@ -35,7 +35,7 @@
 
 
         <!-- MODULE fleet_vehicle -->
-        
+        <!--
         <record id="access_gpsmap_vehicle_temporal" model="ir.rule">
             <field name="name">User can only see his/her temporal vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
@@ -46,7 +46,7 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>            
         </record>
-        <!--
+        
         <record id="access_gpsmap_vehicle_user" model="ir.rule">
             <field name="name">User can only see his/her user vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
