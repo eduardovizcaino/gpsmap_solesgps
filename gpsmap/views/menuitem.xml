@@ -39,7 +39,7 @@
         <field name="name">Alerts Geofence</field>
         <field name="res_model">gpsmap.geofence_device</field>
     </record>
-    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="gpsmap_group_user"/>
+    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_vehicles" id="fleet_geofence_device_menu" groups="gpsmap_group_user"/>
     
     
     
