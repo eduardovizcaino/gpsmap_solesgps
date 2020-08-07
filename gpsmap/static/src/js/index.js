@@ -173,6 +173,11 @@ odoo.define('gpsmap', function(require){
                                 vehiculo["im"]=vehiculo_img;
                                 
 	                            locationsMap(vehiculo);            
+	                            
+                                if($("li.vehicle[vehicle='"+device_id+"']").length>0)                        
+                                    $("li.vehicle[vehicle='"+device_id+"']").attr(vehiculo);
+
+	                            
 	                            if(device_active==device_id) execute_streetMap(vehiculo);
                             }    
                         }
