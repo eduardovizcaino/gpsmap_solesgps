@@ -3,12 +3,7 @@
 
         <record id="module_gpsmap_category" model="ir.module.category">
             <field name="name">SolesGPS</field>
-            <!--
-            <field name="sequence">17</field>
-            -->
         </record>
-
-
         <record id="gpsmap_group_temporal" model="res.groups">
             <field name="name">Temporal</field>
             <field name="category_id" ref="module_gpsmap_category"/>
@@ -34,7 +29,7 @@
         </record>
 
 
-        <!-- MODULE fleet_vehicle -->
+	        <!-- MODULE fleet_vehicle -->
         <!--
         <record id="access_gpsmap_vehicle_temporal" model="ir.rule">
             <field name="name">User can only see his/her temporal vehicle</field>
