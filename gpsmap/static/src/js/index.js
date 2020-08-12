@@ -413,11 +413,11 @@ odoo.define('gpsmap', function(require){
         },
         ////////////////////////////////////////////////////////////
         positions: function(argument) {
-            var time=50;  	    
+            var time=500;  	    
             if($("div#maponline").length>0) 
             { 
                 console.log("POSITIONS ====== lalo =");
-                time=15000;        
+                time=30000;        
                 del_locations();
                 gpsmaps_obj.positions_search(argument);         
             }
