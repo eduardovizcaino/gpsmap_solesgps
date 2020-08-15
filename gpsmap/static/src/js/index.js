@@ -45,7 +45,7 @@ odoo.define('gpsmap', function(require){
     var core                    = require('web.core');
     var Widget                  = require('web.Widget');
     var rpc                     = require('web.rpc');
-    var session                 = require('web.session');
+    var session = require('web.session');
 
 
     map                         =undefined;    
@@ -207,25 +207,7 @@ odoo.define('gpsmap', function(require){
             
             setTimeout(function(){            
                 if(vehiculos!= null && vehiculos.length>0)
-                {	  
-
-/*
-        session.rpc('/longpolling/poll', data, {shadow : true, timeout: 60000}).then(function(result) {
-            self.on_notification(result);
-            if(!self.stop){
-                self.poll();
-            }
-        }, function(unused, e) {
-            // no error popup if request is interrupted or fails for any reason
-            e.preventDefault();
-            // random delay to avoid massive longpolling
-            setTimeout(_.bind(self.poll, self), bus.ERROR_DELAY + (Math.floor((Math.random()*20)+1)*1000));
-        });
-*/              
-                
-                
-                
-                  
+                {	    
                     rpc.query({
                         model: 'gpsmap.positions',
                         method: method,
@@ -278,8 +260,6 @@ odoo.define('gpsmap', function(require){
                         }
                         gpsmaps_obj.positions_paint(argument);                                                              
                         //setTimeout(function(){            
-                    }, function(unused, e) {
-                        e.preventDefault();
                     });
                 }
             },time);
@@ -438,7 +418,7 @@ odoo.define('gpsmap', function(require){
             if($("div#maponline").length>0) 
             { 
                 console.log("POSITIONS ====== lalo =");
-                time=30000;        
+                time=40000;        
 //                del_locations();
                 gpsmaps_obj.positions_search(argument);         
             }
@@ -457,7 +437,7 @@ odoo.define('gpsmap', function(require){
             local.positions =undefined;    
 
             status_device();
-              
+            gpsmaps_obj.vehicles();  
             gpsmaps_obj.geofences();
             gpsmaps_obj.positions_search();
             gpsmaps_obj.map();            
@@ -477,14 +457,9 @@ odoo.define('gpsmap', function(require){
 
     local.maponline = Widget.extend({
         template: 'gpsmaps_maponline',
-        init: function() {       
-            gpsmaps_obj.vehicles();
-        },
         start: function() {       
             gpsmaps_obj.positions_online("gpsmaps_maponline");
         },
-
-
     });
     core.action_registry.add('gpsmap.maponline',local.maponline);
 
