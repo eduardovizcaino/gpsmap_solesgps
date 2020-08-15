@@ -456,9 +456,9 @@ odoo.define('gpsmap', function(require){
             local.geofences =Array();
             local.positions =undefined;    
 
-            //status_device();
+            status_device();
               
-            
+            gpsmaps_obj.geofences();
             gpsmaps_obj.positions_search();
             gpsmaps_obj.map();            
             
@@ -479,7 +479,6 @@ odoo.define('gpsmap', function(require){
         template: 'gpsmaps_maponline',
         init: function() {       
             gpsmaps_obj.vehicles();
-            gpsmaps_obj.geofences();
         },
         start: function() {       
             gpsmaps_obj.positions_online("gpsmaps_maponline");
