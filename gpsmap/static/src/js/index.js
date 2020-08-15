@@ -494,6 +494,9 @@ odoo.define('gpsmap', function(require){
 
     local.streetonline = Widget.extend({
         template: 'gpsmaps_streetonline',
+        willStart: function(){    
+            gpsmaps_obj.vehicles();
+        },
         start: function() {
             gpsmaps_obj.positions_online("gpsmaps_streetonline");
             var panoramaOptions = {};
