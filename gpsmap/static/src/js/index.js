@@ -457,7 +457,7 @@ odoo.define('gpsmap', function(require){
             local.positions =undefined;    
 
             status_device();
-              
+            gpsmaps_obj.vehicles();  
             gpsmaps_obj.geofences();
             gpsmaps_obj.positions_search();
             gpsmaps_obj.map();            
@@ -477,14 +477,9 @@ odoo.define('gpsmap', function(require){
 
     local.maponline = Widget.extend({
         template: 'gpsmaps_maponline',
-        init: function(){    
-            gpsmaps_obj.vehicles();
-        },
         start: function() {       
             gpsmaps_obj.positions_online("gpsmaps_maponline");
         },
-
-
     });
     core.action_registry.add('gpsmap.maponline',local.maponline);
 
@@ -494,9 +489,6 @@ odoo.define('gpsmap', function(require){
 
     local.streetonline = Widget.extend({
         template: 'gpsmaps_streetonline',
-        init: function(){    
-            gpsmaps_obj.vehicles();
-        },  
         start: function() {
             gpsmaps_obj.positions_online("gpsmaps_streetonline");
             var panoramaOptions = {};
