@@ -433,7 +433,8 @@ odoo.define('gpsmap', function(require){
         },    
         ////////////////////////////////////////////////////////////
         positions_online: function(argument) {
-            local.vehicles  =Array();
+            if(local.vehicles==undefined)     local.vehicles  =Array();
+            
             local.geofences =Array();
             local.positions =undefined;    
 
@@ -458,6 +459,20 @@ odoo.define('gpsmap', function(require){
 
     local.maponline = Widget.extend({
         template: 'gpsmaps_maponline',
+
+        willStart: function () {
+            var self = this;
+            return this._rpc({
+                    model: 'fleet.vehicle',
+                    method: 'search_read',
+                    context: session.user_context,
+            })
+            .then(function(res) 
+            {
+                self.vehicles     =res;                        
+                local.vehicles     =res;                                        
+            });
+        },        
         start: function() {       
             gpsmaps_obj.positions_online("gpsmaps_maponline");
         },
