@@ -81,6 +81,7 @@ odoo.define('gpsmap', function(require){
         },
         //////////////////////////////////////////////////////////////
         geofences:function(){
+            /*
             local.geofences=Array();
             var iresult;
             rpc.query({
@@ -102,6 +103,7 @@ odoo.define('gpsmap', function(require){
                     }
                 }    
             });
+            */
         },
         //////////////////////////////////////////////////////////////
         positions_paint:function(argument)
@@ -464,6 +466,19 @@ odoo.define('gpsmap', function(require){
 
         willStart: function () {
             var self = this;
+            
+            ////
+            this._rpc({
+                    model: 'gpsmap.geofence',
+                    method: 'search_read',
+                    context: session.user_context,
+            })
+            .then(function(res) 
+            {
+                self.geofences      =res;                        
+                local.geofences     =res;                                        
+            });
+            /////
             return this._rpc({
                     model: 'fleet.vehicle',
                     method: 'search_read',
