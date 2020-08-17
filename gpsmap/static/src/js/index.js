@@ -468,6 +468,7 @@ odoo.define('gpsmap', function(require){
             var self = this;
             
             ////
+            
             this._rpc({
                     model: 'gpsmap.geofence',
                     method: 'search_read',
