@@ -102,8 +102,6 @@
             <field name="perm_unlink" eval="False"/>
         </record>
 
-
-
         <!-- MODULE gpsmap_geofence -->
 
         <record id="rule_gpsmap_geofence_temporal" model="ir.rule">
