@@ -319,6 +319,7 @@ odoo.define('gpsmap', function(require){
 
         //////////////////////////////////////////////////////////////
         vehicles:function(){
+        /*
             local.vehicles=Array();
             var iresult;
             rpc.query({
@@ -340,6 +341,7 @@ odoo.define('gpsmap', function(require){
                     }
                 }    
             });
+            */
         },
         //////////////////////////////////////////////////////////////
 		vehicles_menu: function(type)  
