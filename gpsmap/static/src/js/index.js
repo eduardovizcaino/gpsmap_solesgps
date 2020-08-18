@@ -437,14 +437,13 @@ odoo.define('gpsmap', function(require){
         },    
         ////////////////////////////////////////////////////////////
         positions_online: function(argument) {
-            if(local.vehicles==undefined)     local.vehicles  =Array();
-            
-            local.geofences =Array();
+            if(local.vehicles==undefined)     local.vehicles  =Array();            
+            if(local.geofences==undefined)     local.geofences =Array();
             local.positions =undefined;    
 
             status_device();
-            gpsmaps_obj.vehicles();  
-            gpsmaps_obj.geofences();
+            //gpsmaps_obj.vehicles();  
+            //gpsmaps_obj.geofences();
             gpsmaps_obj.positions_search();
             gpsmaps_obj.map();            
             
