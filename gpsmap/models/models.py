@@ -166,6 +166,7 @@ class positions(models.Model):
                                     
                 if len(alerts_data)>0:                     
                     for alerts in alerts_data:
+                    
                         print('===========',alerts.name)
                         print('===========',alerts.device_ids)
                         print('===========',alerts.geofence_ids)                                
@@ -215,7 +216,7 @@ class geofence_device(models.Model):
     name = fields.Char('Name', size=75)
     description = fields.Char('Description', size=150)
     mail_in = fields.Char('Mail In', size=150)
-    mail_out = fields.Char('Mail Out', size=150)
-    
+    mail_out = fields.Char('Mail Out', size=150)    
     geofence_ids = fields.Many2many('gpsmap.geofence', 'alert_geofence', 'geofence_id', 'alert_id', string='Geofence')
     device_ids = fields.Many2many('fleet.vehicle', 'alert_device', 'device_id', 'alert_id', string='Device')            
+    company_id = fields.Many2one('res.company', 'Company', required=True)
