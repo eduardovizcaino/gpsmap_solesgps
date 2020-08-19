@@ -41,18 +41,14 @@
             <field name="perm_unlink" eval="False"/>            
         </record>
 
+        <record id="rule_gpsmap_vehicle_manager" model="ir.rule">
+            <field name="name">Manager has all rights on vehicle</field>
+            <field name="model_id" ref="model_fleet_vehicle"/>
+            <field name="groups" eval="[(4, ref('fleet.fleet_group_manager'))]"/>
+            <field name="domain_force"></field>
+        </record>        
 
         <!--
-        <record id="rule_gpsmap_vehicle_manager" model="ir.rule">
-            <field name="name">User can only see his/her manager vehicle</field>
-            <field name="model_id" ref="model_fleet_vehicle"/>
-            <field name="domain_force"></field>
-            <field name="groups" eval="[(4, ref('gpsmap_group_manager'))]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="False"/>            
-        </record>
 
 
 
