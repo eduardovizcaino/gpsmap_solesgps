@@ -133,6 +133,7 @@ odoo.define('gpsmap', function(require){
                                 var coordinates		={"latitude":positions.latitude,"longitude":positions.longitude};
                                 var posicion 		=LatLng(coordinates);
                                 coordinates["ti"]   =positions.devicetime;
+                                coordinates["sp"]   =positions.speed_compu;
                                 
                                 if($("li.vehicle[vehicle='"+device_id+"']").length>0)                        
                                     $("li.vehicle[vehicle='"+device_id+"']").attr(coordinates);
@@ -1211,6 +1212,7 @@ odoo.define('gpsmap', function(require){
             var latitude                =$(obj).attr("latitude");
             var longitude               =$(obj).attr("longitude");
             var ti                      =$(obj).attr("ti");
+            var sp                      =$(obj).attr("sp");
 
             if(latitude!=undefined)
             {
@@ -1240,8 +1242,7 @@ odoo.define('gpsmap', function(require){
 			    $("#tablero").animate({				
 				    height: 58
 			    }, 1000 );
-			    $("#tablero").html("<h5>Cargando...</h4><img id=\"loader1\" src=\"icon=\"/gpsmap/static/src/img/loader1.gif\" height=\"20\" width=\"20\"/>");
-			    $("#tablero").html(ti);		
+			    $("#tablero").html("<h5>" + ti + " Loading...</h4><img id=\"loader1\" src=\"icon=\"/gpsmap/static/src/img/loader1.gif\" height=\"20\" width=\"20\"/>");
 			    //status_device2();
 			    $("#odometro").show(); 
 			    $("div#map_search").hide();
