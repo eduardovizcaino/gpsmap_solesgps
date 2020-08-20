@@ -25,7 +25,7 @@
         <field name="res_model">stock.quantity.history</field>
         <field name="view_type">form</field>
         <field name="view_mode">form</field>
-        <field name="view_id" ref="stock_account.view_stock_quantity_history"/>
+        <field name="view_id" ref="view_gpsmap_vehicle_form_inherit"/>
         <field name="target">new</field>
 
 
