@@ -90,6 +90,9 @@ div#centro div svg {
     div#odometro  div#gsm {
         display:        none;
     }
+    a.o_sub_menu_logo {
+        display:        none;
+    }
 
 }
 
