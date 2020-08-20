@@ -387,6 +387,7 @@ odoo.define('gpsmap', function(require){
 		                var opcion_vehiculo=opcion_vehiculo+"\
 			                <script>\
 			                    $(\"li.vehicle\").click(function(){\
+			                        alert(\""+ type +"\");\
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
@@ -394,7 +395,7 @@ odoo.define('gpsmap', function(require){
 			                    });\
 			                </script>\
 		                ";	
-		                $("li > a > span:contains('Online'):last").parent().parent().append(opcion_vehiculo);  
+		                $("li > a > span:contains('Map'):last").parent().parent().append(opcion_vehiculo);  
 		            }
 		        }
 		        else 
