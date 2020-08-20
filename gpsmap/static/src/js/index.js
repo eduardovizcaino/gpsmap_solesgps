@@ -389,11 +389,13 @@ odoo.define('gpsmap', function(require){
 			                <script>\
 			                    $(\"li.vehicle\").click(function(){\
 			                        tipo   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
-			                        alert(tipo);\
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
-                                    status_device(this);\
+    			                    if(tipo=\"gpsmap.menu_gpsmap_maphistory\")\
+    			                        alert(tipo);\
+    			                    else\
+                                        status_device(this);\
 			                    });\
 			                </script>\
 		                ";	
@@ -1208,6 +1210,7 @@ odoo.define('gpsmap', function(require){
         {	            
             var latitude                =$(obj).attr("latitude");
             var longitude               =$(obj).attr("longitude");
+            var ti                      =$(obj).attr("ti");
 
             if(latitude!=undefined)
             {
@@ -1237,7 +1240,8 @@ odoo.define('gpsmap', function(require){
 			    $("#tablero").animate({				
 				    height: 58
 			    }, 1000 );
-			    $("#tablero").html("<h5>Cargando...</h4><img id=\"loader1\" src=\"../sitio_web/img/loader1.gif\" height=\"20\" width=\"20\"/>");	
+			    $("#tablero").html("<h5>Cargando...</h4><img id=\"loader1\" src=\"icon=\"/gpsmap/static/src/img/loader1.gif\" height=\"20\" width=\"20\"/>");
+			    $("#tablero").html(ti);		
 			    //status_device2();
 			    $("#odometro").show(); 
 			    $("div#map_search").hide();
