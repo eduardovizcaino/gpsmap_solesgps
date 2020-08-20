@@ -355,6 +355,7 @@ odoo.define('gpsmap', function(require){
 		        var opcion_vehiculo ="";
 		        var ivehiculos;
 		        var icon;
+		        var tipo;
 		        		        
 		        if(vehiculos!= null && vehiculos.length>0)
 		        {
@@ -387,8 +388,8 @@ odoo.define('gpsmap', function(require){
 		                var opcion_vehiculo=opcion_vehiculo+"\
 			                <script>\
 			                    $(\"li.vehicle\").click(function(){\
-			                        var menu   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
-			                        alert(\""+ menu +"\");\
+			                        tipo   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
+			                        alert(tipo);\
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
