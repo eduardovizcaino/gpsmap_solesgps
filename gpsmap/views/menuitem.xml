@@ -16,12 +16,16 @@
     </record>
     <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="gpsmap_group_temporal"/>    
 
+
     <record id="action_gpsmap_history" model="ir.actions.client">
         <field name="name">History Map</field>
         <field name="tag">gpsmap.maphistory</field>
+
+        <field name="view_id" ref="stock_account.view_stock_quantity_history"/>
+        <field name="target">new</field>
+
     </record>
     <menuitem id="menu_gpsmap_maphistory" sequence="2" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_history" groups="gpsmap_group_god"/>    
-
 
 
 
@@ -56,8 +60,18 @@
 
     <!-- ############################### -->    
 
-    
-    
+<!--
+    <record id="action_gpsmap_history" model="ir.actions.act_window">
+        <field name="name">Valuation Report</field>
+        <field name="res_model">stock.quantity.history</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="stock_account.view_stock_quantity_history"/>
+        <field name="target">new</field>
+        <field name="context">{'default_compute_at_date': 0, 'valuation': True}</field>
+    </record>
+    <menuitem id="menu_valuation" name="Inventory Valuation" parent="stock.menu_warehouse_report" sequence="110" action="action_stock_inventory_valuation"/> 
+-->    
     
     
     
