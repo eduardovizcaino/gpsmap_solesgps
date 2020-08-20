@@ -1242,7 +1242,7 @@ odoo.define('gpsmap', function(require){
 			    $("#tablero").animate({				
 				    height: 58
 			    }, 1000 );
-			    $("#tablero").html("<h5>" + ti + " Loading...</h4><img id=\"loader1\" src=\"icon=\"/gpsmap/static/src/img/loader1.gif\" height=\"20\" width=\"20\"/>");
+			    $("#tablero").html("<h4>" + ti + " Loading...</h4><img id=\"loader1\" src=\"icon=\"/gpsmap/static/src/img/loader1.gif\" height=\"20\" width=\"20\"/>");
 			    //status_device2();
 			    $("#odometro").show(); 
 			    $("div#map_search").hide();
