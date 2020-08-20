@@ -395,7 +395,7 @@ odoo.define('gpsmap', function(require){
 			                    });\
 			                </script>\
 		                ";	
-		                $("li > a > span:contains('Map'):last").parent().parent().append(opcion_vehiculo);  
+		                $("li > a > span:contains('History'):last").parent().parent().append(opcion_vehiculo);  
 		            }
 		        }
 		        else 
