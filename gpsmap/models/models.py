@@ -166,9 +166,9 @@ class positions(models.Model):
                                     
                 if len(alerts_data)>0:                     
                     for alerts in alerts_data:
-                    
                         print('===========',alerts.name)
-                        print('===========',alerts.device_ids)
+                        for devices in alerts.device_ids:                                                    
+                            print('===========',devices)
                         print('===========',alerts.geofence_ids)                                
                                                         
                 position["leido"]=1                
