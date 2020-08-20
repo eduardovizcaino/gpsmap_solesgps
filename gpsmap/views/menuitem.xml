@@ -21,8 +21,13 @@
         <field name="name">History Map</field>
         <field name="tag">gpsmap.maphistory</field>
 
+
+        <field name="res_model">stock.quantity.history</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
         <field name="view_id" ref="stock_account.view_stock_quantity_history"/>
         <field name="target">new</field>
+
 
     </record>
     <menuitem id="menu_gpsmap_maphistory" sequence="2" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_history" groups="gpsmap_group_god"/>    
