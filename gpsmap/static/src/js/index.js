@@ -509,6 +509,19 @@ odoo.define('gpsmap', function(require){
         }
     });
     core.action_registry.add('gpsmap.streetonline', local.streetonline);
+
+    //////////////////////////////////////////////////////////////
+    ////////  GPSMAP_STREETONLINE  
+    //////////////////////////////////////////////////////////////
+
+    local.maphistory = Widget.extend({
+        template: 'gpsmaps_maponline',
+        start: function() {
+            gpsmaps_obj.positions_online("gpsmaps_streetonline");
+            var panoramaOptions = {};            
+        }
+    });
+    core.action_registry.add('gpsmap.maphistory', local.maphistory);
     gpsmaps_obj         =new class_gpsmap();  
 
     
