@@ -168,8 +168,8 @@ class positions(models.Model):
                     for alerts in alerts_data:
                         print('===========',alerts.name)
                         for devices in alerts.device_ids:                                                    
-                            print('===========',devices)
-                        print('===========',alerts.geofence_ids)                                
+                            print('=====device id======',devices.id)
+                        #print('===========',alerts.geofence_ids)                                
                                                         
                 position["leido"]=1                
                 positions_obj.write(position)
