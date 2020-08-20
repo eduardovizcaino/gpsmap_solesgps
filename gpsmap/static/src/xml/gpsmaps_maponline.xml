@@ -10,8 +10,8 @@
                 <div id="filtro"  style="float:left;">
                     <table>
                         <tr>
-                            <td><input name="start" type="text" class="o_datepicker_input o_input"/></td>
-                            <td><input name="end" type="text" class="o_datepicker_input o_input"/></td>
+                            <td><input name="start" type="text"/></td>
+                            <td><input name="end" type="text"/></td>
                         </tr>
                     </table>
                 </div>

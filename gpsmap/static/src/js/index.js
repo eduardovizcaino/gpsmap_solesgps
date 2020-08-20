@@ -394,8 +394,10 @@ odoo.define('gpsmap', function(require){
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
     			                    if(tipo==\"gpsmap.menu_gpsmap_maphistory\")\
+    			                        $(\"div#filtro\").css(\"display\", \"auto\");\
     			                        alert(tipo);\
     			                    else\
+    			                        $(\"div#filtro\").css(\"display\", \"none\");\
                                         status_device(this);\
 			                    });\
 			                </script>\
