@@ -16,6 +16,11 @@
     </record>
     <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="gpsmap_group_temporal"/>    
 
+    <record id="action_gpsmap_history" model="ir.actions.client">
+        <field name="name">History Map</field>
+        <field name="tag">gpsmap.maphistory</field>
+    </record>
+    <menuitem id="menu_gpsmap_maphistory" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_history" groups="gpsmap_group_temporal"/>    
 
 
 
