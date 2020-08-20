@@ -387,7 +387,7 @@ odoo.define('gpsmap', function(require){
 		                var opcion_vehiculo=opcion_vehiculo+"\
 			                <script>\
 			                    $(\"li.vehicle\").click(function(){\
-			                        menu   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
+			                        var menu   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
 			                        alert(\""+ menu +"\");\
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
