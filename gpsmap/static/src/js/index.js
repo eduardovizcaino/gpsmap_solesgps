@@ -59,31 +59,6 @@ odoo.define('gpsmap', function(require){
     ////////  CLASS GPSMAP  
     //////////////////////////////////////////////////////////////
     class_gpsmap = Widget.extend({
-        willStart: function () {
-            var self = this;            
-            ////
-            this._rpc({
-                    model: 'gpsmap.geofence',
-                    method: 'search_read',
-                    context: session.user_context,
-            })
-            .then(function(res) 
-            {
-                self.geofences      =res;                        
-                local.geofences     =res;                                        
-            });
-            /////
-            return this._rpc({
-                    model: 'fleet.vehicle',
-                    method: 'search_read',
-                    context: session.user_context,
-            })
-            .then(function(res) 
-            {
-                self.vehicles     =res;                        
-                local.vehicles     =res;                                        
-            });
-        },            
         //////////////////////////////////////////////////////////////
         geofences_paint: function() 
         {
@@ -412,7 +387,6 @@ odoo.define('gpsmap', function(require){
 		                var opcion_vehiculo=opcion_vehiculo+"\
 			                <script>\
 			                    $(\"li.vehicle\").click(function(){\
-			                        alert(\"" + type + "\");\
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
@@ -488,23 +462,37 @@ odoo.define('gpsmap', function(require){
 
     local.maponline = Widget.extend({
         template: 'gpsmaps_maponline',
+
+        willStart: function () {
+            var self = this;            
+            ////            
+            this._rpc({
+                    model: 'gpsmap.geofence',
+                    method: 'search_read',
+                    context: session.user_context,
+            })
+            .then(function(res) 
+            {
+                self.geofences      =res;                        
+                local.geofences     =res;                                        
+            });
+            /////
+            return this._rpc({
+                    model: 'fleet.vehicle',
+                    method: 'search_read',
+                    context: session.user_context,
+            })
+            .then(function(res) 
+            {
+                self.vehicles     =res;                        
+                local.vehicles     =res;                                        
+            });
+        },        
         start: function() {       
             gpsmaps_obj.positions_online("gpsmaps_maponline");
         },
     });
     core.action_registry.add('gpsmap.maponline',local.maponline);
-    //////////////////////////////////////////////////////////////
-    ////////  GPSMAP_MAPONLINE  
-    //////////////////////////////////////////////////////////////
-
-    local.maphistory = Widget.extend({
-        template: 'gpsmaps_maponline',
-        start: function() {       
-            gpsmaps_obj.positions_online("gpsmaps_maphistory");
-        },
-    });
-    core.action_registry.add('gpsmap.maponline',local.maphistory);
-
 
     //////////////////////////////////////////////////////////////
     ////////  GPSMAP_STREETONLINE  
