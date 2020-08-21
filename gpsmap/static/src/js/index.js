@@ -403,9 +403,9 @@ odoo.define('gpsmap', function(require){
 			                    });\
 			                </script>\
 		                ";
-		                if($("li > a > span:contains('History Map'):last").length==0)   		                	
+		                if($("li > a > span:contains('History Map'):last").length>0)   		                	
     		                $("li > a > span:contains('History Map'):last").parent().parent().append(opcion_vehiculo);  
-		                else if($("li > a > span:contains('Online Street'):last").length==0)   		                	
+		                else if($("li > a > span:contains('Online Street'):last").length>0)   		                	
     		                $("li > a > span:contains('Online Street'):last").parent().parent().append(opcion_vehiculo);  
     		                
 		            }
