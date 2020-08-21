@@ -1,34 +1,5 @@
 <?xml version="1.0" ?>
 <odoo>
-        <delete model="res.groups" id="fleet.fleet_group_user"/>
-        <delete model="res.groups" id="fleet.fleet_group_manager"/>
-
-
-        <record id="gpsmap_group_temporal1" model="res.groups">
-            <field name="name">Temporal</field>
-            <field name="category_id" ref="fleet.module_fleet_category"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-        </record>
-        <record id="gpsmap_group_user1" model="res.groups">
-            <field name="name">User</field>
-            <field name="category_id" ref="fleet.module_fleet_category"/>
-            <field name="implied_ids" eval="[(4, ref('gpsmap_group_temporal'))]"/>
-        </record>
-        <record id="gpsmap_group_manager1" model="res.groups">
-            <field name="name">Manager</field>
-            <field name="implied_ids" eval="[(4, ref('gpsmap_group_user'))]"/>
-            <field name="category_id" ref="fleet.module_fleet_category"/>
-        </record>
-        <record id="gpsmap_group_god1" model="res.groups">
-            <field name="name">God</field>
-            <field name="implied_ids" eval="[(4, ref('gpsmap_group_manager'))]"/>
-            <field name="category_id" ref="fleet.module_fleet_category"/>
-            <!--
-            <field name="users" eval="[(4, ref('base.user_root'))]"/>
-            -->
-        </record>
-
-
 
         <record id="module_gpsmap_category" model="ir.module.category">
             <field name="name">SolesGPS</field>
