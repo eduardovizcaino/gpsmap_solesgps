@@ -573,14 +573,14 @@ odoo.define('gpsmap', function(require){
             }
             else if(event.data.attrs.id === "action_stopmotor")
             {
-                alert("stop");
+                command_device("engineStop",22);
             }
             else if(event.data.attrs.id === "action_startmotor")
-            {
-                alert("start");
+            {                
+                command_device("engineResume",22);
             }
-            
             else this._super(event);
+            
         },
     });
 
@@ -1334,9 +1334,12 @@ odoo.define('gpsmap', function(require){
 						
 			$.ajax({
 				type: 'POST',
-				url: 'http://solesgps.com:8082/api/commands',
+				url: 'http://odoo.solesgps.com:8082/api/commands',
 				headers: {
 					"Authorization": "Basic " + btoa("admin:EvG30")
+				},
+				headers: {
+					"Authorization": "Basic " + btoa("admin:admin")
 				},
 				contentType:"application/json",
 				data:JSON.stringify({attributes:{},deviceId:device_id,type:comando}),
