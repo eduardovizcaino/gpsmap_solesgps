@@ -571,6 +571,14 @@ odoo.define('gpsmap', function(require){
                 limpiar_virtual();
                 limpiar_real();				         
             }
+            else if(event.data.attrs.id === "action_stopmotor")
+            {
+                alert("stop");
+            }
+            else if(event.data.attrs.id === "action_startmotor")
+            {
+                alert("start");
+            }            
             else this._super(event);
         },
     });
