@@ -49,11 +49,11 @@ class vehicle(models.Model):
         api_URL                             ="http://odoo.solesgps.com:8082/api/commands"
         usrPass                             ="userid:password"
         usrPass                             ="admin:admin"
-        b64Val                              =base64.b64encode(usrPass)
-        data                                =[attributes:[],deviceId:22,type:"engineResume"]
         
     
         """
+        b64Val                              =base64.b64encode(usrPass)
+        data                                =[attributes:[],deviceId:22,type:"engineResume"]
         payload                             =json.dump(data)
         r=requests.post(api_URL, 
                     headers={"Authorization": "Basic %s" % b64Val},
