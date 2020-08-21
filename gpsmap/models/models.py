@@ -46,8 +46,6 @@ class vehicle(models.Model):
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     
     def toggle_motor(self):
-    
-    
         api_URL                             ="http://odoo.solesgps.com:8082/api/commands"
         usrPass                             ="userid:password"
         usrPass                             ="admin:admin"
@@ -55,11 +53,18 @@ class vehicle(models.Model):
         data                                =[attributes:[],deviceId:22,type:"engineResume"]
         payload                             =json.dump(data)
         
+    
+        """
         r=requests.post(api_URL, 
                     headers={"Authorization": "Basic %s" % b64Val},
                     data=payload)    
-    
-        """
+
+
+
+
+
+
+
 		if(comando=="Bloquear motor") 	comando="engineStop";
 		if(comando=="Activar motor")	comando="engineResume";
 
