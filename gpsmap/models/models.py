@@ -165,14 +165,14 @@ class positions(models.Model):
                     #if len(speed_data)>0:
                                     
                 if len(alerts_data)>0:                     
-                    for alerts in alerts_data:
-                        print('===========',alerts.name)
+                    for alerts in alerts_data:                        
                         for devices in alerts.device_ids:                 
                             if(position.deviceid.id==devices.id):
-                                print('=====position device id======',position.deviceid.id)                                   
-                                print('=====alert device id======',devices.id)
+                                print('==',alerts.name)
+                                print('===========position device id======',position.deviceid.id)                                   
+                                print('===========alert device id======',devices.id)
                                 for geofences in alerts.geofence_ids:                 
-                                    print('===========',geofences)                                
+                                    print('===============',geofences)                                
                                                         
                 position["leido"]=1                
                 positions_obj.write(position)
