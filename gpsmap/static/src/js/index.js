@@ -578,7 +578,8 @@ odoo.define('gpsmap', function(require){
             else if(event.data.attrs.id === "action_startmotor")
             {
                 alert("start");
-            }            
+            }
+            
             else this._super(event);
         },
     });
