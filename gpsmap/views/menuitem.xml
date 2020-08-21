@@ -16,11 +16,6 @@
     </record>
     <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="gpsmap_group_temporal"/>    
 
-    <record id="action_gpsmap_history" model="ir.actions.client">
-        <field name="name">History Map</field>
-        <field name="tag">gpsmap.maphistory</field>
-    </record>
-    <menuitem id="menu_gpsmap_maphistory" sequence="2" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_history" groups="gpsmap_group_god"/>    
 
 
 
@@ -30,7 +25,7 @@
         <field name="name">Histoy Map</field>
         <field name="res_model">gpsmap.positions</field>
     </record>
-    <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap_group_god"/>
+    <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap_group_user"/>
 
     <record id='fleet_speed_action' model='ir.actions.act_window'>
         <field name="name">Speed</field>
@@ -44,7 +39,7 @@
         <field name="name">Alerts Geofence</field>
         <field name="res_model">gpsmap.geofence_device</field>
     </record>
-    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="gpsmap_group_user"/>
+    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_vehicles" id="fleet_geofence_device_menu" groups="gpsmap_group_user"/>
     
     
     
