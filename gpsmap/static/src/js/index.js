@@ -1345,6 +1345,7 @@ odoo.define('gpsmap', function(require){
 				data:JSON.stringify({attributes:{},deviceId:device_id,type:comando}),
 				success: function (response) 
 				{
+				    alert(response);
 					console.log(response);
 				}
 			});
