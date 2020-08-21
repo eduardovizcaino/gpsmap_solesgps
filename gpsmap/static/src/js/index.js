@@ -402,8 +402,12 @@ odoo.define('gpsmap', function(require){
                                     }\
 			                    });\
 			                </script>\
-		                ";	
-		                $("li > a > span:contains('History Map'):last").parent().parent().append(opcion_vehiculo);  
+		                ";
+		                if($("li > a > span:contains('History Map'):last").length==0)   		                	
+    		                $("li > a > span:contains('History Map'):last").parent().parent().append(opcion_vehiculo);  
+		                else if($("li > a > span:contains('Online Map'):last").length==0)   		                	
+    		                $("li > a > span:contains('Online Map'):last").parent().parent().append(opcion_vehiculo);  
+    		                
 		            }
 		        }
 		        else 
@@ -759,19 +763,16 @@ odoo.define('gpsmap', function(require){
 		var gas;
     	if(item["at"]["io3"]!=undefined)				
     	{
-    	    alert("io3");
     		gas								=item["at"]["io3"];
     		item["ga"]  					=parseInt(gas.substring(0,3));
     	}	
     	else if(item["at"]["fuel"]!=undefined)
         {
-            alert("fuel");
     		gas								=item["at"]["fuel"];
     		item["ga"]  					=parseInt(gas.substring(0,3));    	
     	}
     	else if(item["at"]["fuel1"]!=undefined)
         {
-            alert("fuel1");
     		gas								=item["at"]["fuel1"];
     		item["ga"]  					=parseInt(gas.substring(0,3));    	
     	}
