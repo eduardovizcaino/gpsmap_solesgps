@@ -176,6 +176,7 @@ odoo.define('gpsmap', function(require){
                                 vehiculo["ty"]=positions.status;
                                 vehiculo["ti"]=positions.devicetime;
                                 vehiculo["im"]=vehiculo_img;
+                                vehiculo["at"]=positions.attributes;
                                 
 	                            locationsMap(vehiculo);            
 	                            if(device_active==device_id) execute_streetMap(vehiculo);
