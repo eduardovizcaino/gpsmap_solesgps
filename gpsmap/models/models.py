@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import datetime
-import requests
+import requests, base64
 import random
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models, _
@@ -44,7 +44,37 @@ class vehicle(models.Model):
     speed                                       = fields.Char('Exceso de Velocidad', default=100, size=3)   
     positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
+    
     def toggle_motor(self):
+    
+    
+        api_URL                             ="http://odoo.solesgps.com:8082/api/commands"
+        usrPass                             ="userid:password"
+        usrPass                             ="admin:admin"
+        b64Val                              =base64.b64encode(usrPass)
+        data                                =[attributes:[],deviceId:22,type:"engineResume"]
+        payload                             =json.dump(data)
+        
+        r=requests.post(api_URL, 
+                    headers={"Authorization": "Basic %s" % b64Val},
+                    data=payload)    
+    
+        """
+		if(comando=="Bloquear motor") 	comando="engineStop";
+		if(comando=="Activar motor")	comando="engineResume";
+
+
+data:           JSON.stringify({attributes:{},deviceId:device_id,type:comando}),        
+               
+import requests, base64
+
+usrPass = "userid:password"
+b64Val = base64.b64encode(usrPass)
+r=requests.post(api_URL, 
+                headers={"Authorization": "Basic %s" % b64Val},
+                data=payload)    
+    
+        """
         print('TOOGLE--------------- MOTOR')          
             
 class speed(models.Model):
