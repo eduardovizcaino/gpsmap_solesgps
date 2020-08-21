@@ -50,36 +50,6 @@ class vehicle(models.Model):
         usrPass                             ="userid:password"
         usrPass                             ="admin:admin"
         
-    
-        """
-        b64Val                              =base64.b64encode(usrPass)
-        data                                =[attributes:[],deviceId:22,type:"engineResume"]
-        payload                             =json.dump(data)
-        r=requests.post(api_URL, 
-                    headers={"Authorization": "Basic %s" % b64Val},
-                    data=payload)    
-
-
-
-
-
-
-
-		if(comando=="Bloquear motor") 	comando="engineStop";
-		if(comando=="Activar motor")	comando="engineResume";
-
-
-data:           JSON.stringify({attributes:{},deviceId:device_id,type:comando}),        
-               
-import requests, base64
-
-usrPass = "userid:password"
-b64Val = base64.b64encode(usrPass)
-r=requests.post(api_URL, 
-                headers={"Authorization": "Basic %s" % b64Val},
-                data=payload)    
-    
-        """
         print('TOOGLE--------------- MOTOR')          
             
 class speed(models.Model):
