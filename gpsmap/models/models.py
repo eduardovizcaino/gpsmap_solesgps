@@ -51,10 +51,10 @@ class vehicle(models.Model):
         usrPass                             ="admin:admin"
         b64Val                              =base64.b64encode(usrPass)
         data                                =[attributes:[],deviceId:22,type:"engineResume"]
-        payload                             =json.dump(data)
         
     
         """
+        payload                             =json.dump(data)
         r=requests.post(api_URL, 
                     headers={"Authorization": "Basic %s" % b64Val},
                     data=payload)    
