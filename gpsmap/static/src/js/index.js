@@ -449,19 +449,21 @@ odoo.define('gpsmap', function(require){
             if(local.geofences==undefined)     local.geofences =Array();
             local.positions =undefined;    
 
-            status_device();
-            //gpsmaps_obj.vehicles();  
-            //gpsmaps_obj.geofences();
-            gpsmaps_obj.positions_search();
-            gpsmaps_obj.map();            
-            
             gpsmaps_obj.vehicles_menu(argument);               
-            var obj=$("li.vehicle_active")
-            status_device(obj);
-            gpsmaps_obj.geofences_paint();
-            gpsmaps_obj.position();
-        },    
+            gpsmaps_obj.map();            
 
+            if(argument!="maphistory")
+            {
+                status_device();
+                gpsmaps_obj.positions_search();
+
+                var obj=$("li.vehicle_active")
+                status_device(obj);
+                gpsmaps_obj.geofences_paint();
+                gpsmaps_obj.position();
+
+            }                
+        },    
     });
     
     //////////////////////////////////////////////////////////////
@@ -525,7 +527,7 @@ odoo.define('gpsmap', function(require){
     local.maphistory = Widget.extend({
         template: 'gpsmaps_maponline',
         start: function() {
-            gpsmaps_obj.positions_online("gpsmaps_streetonline");
+            gpsmaps_obj.positions_online("maphistory");
             var panoramaOptions = {};            
         }
     });
