@@ -759,16 +759,19 @@ odoo.define('gpsmap', function(require){
 		var gas;
     	if(item["at"]["io3"]!=undefined)				
     	{
+    	    alert("io3");
     		gas								=item["at"]["io3"];
     		item["ga"]  					=parseInt(gas.substring(0,3));
     	}	
     	else if(item["at"]["fuel"]!=undefined)
         {
+            alert("fuel");
     		gas								=item["at"]["fuel"];
     		item["ga"]  					=parseInt(gas.substring(0,3));    	
     	}
     	else if(item["at"]["fuel1"]!=undefined)
         {
+            alert("fuel1");
     		gas								=item["at"]["fuel1"];
     		item["ga"]  					=parseInt(gas.substring(0,3));    	
     	}
