@@ -45,17 +45,6 @@ class vehicle(models.Model):
     positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     def toggle_motor(self):
-    
-        """    
-import requests, base64
-
-usrPass = "userid:password"
-b64Val = base64.b64encode(usrPass)
-r=requests.post(api_URL, 
-                headers={"Authorization": "Basic %s" % b64Val},
-                data=payload)    
-    
-        """
         print('TOOGLE--------------- MOTOR')          
             
 class speed(models.Model):
