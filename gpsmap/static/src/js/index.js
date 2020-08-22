@@ -578,6 +578,9 @@ odoo.define('gpsmap', function(require){
             else if(event.data.attrs.id === "action_startmotor")
             {                
                 command_device("engineResume",22);
+                
+                //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}
+                
             }
             else this._super(event);
             
@@ -1326,6 +1329,7 @@ odoo.define('gpsmap', function(require){
 
 	function command_device(comando,device_id)
 	{
+	    // //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}
 		var r = confirm(comando);
 		if (r == true) 
 		{
@@ -1342,7 +1346,8 @@ odoo.define('gpsmap', function(require){
 					"Authorization": "Basic " + btoa("admin:admin")
 				},
 				contentType:"application/json",
-				data:JSON.stringify({attributes:{},deviceId:device_id,type:comando}),
+				data:JSON.stringify({"id":0,"description":"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}),
+				
 				success: function (response) 
 				{
 				    alert(response);
