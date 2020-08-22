@@ -31,7 +31,7 @@
                     <field name="motor" widget="boolean_button" groups="gpsmap.gpsmap_group_manager"/>                    
                 </button>       
                 <button string="STOP"  icon="fa-key" id="action_stopmotor" custom="click"/>                 
-                <button string="START" id ="action_startmotor" custom="click"/>
+                <button string="START" icon="fa-key" id="action_startmotor" custom="click"/>
 
             </xpath>                
         </field>
