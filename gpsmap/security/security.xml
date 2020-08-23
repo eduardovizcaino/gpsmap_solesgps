@@ -45,7 +45,7 @@
         -->
         <!-- MODULE fleet_vehicle -->
 
-        <record id="rule_fleet_vehicle_temporal" model="ir.rule">
+        <record id="rule_fleet_vehicle_template" model="ir.rule">
             <field name="name">User can only see his/her temporal vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
             <field name="domain_force">[('temporal_id','=','user.id')]</field>
@@ -56,7 +56,6 @@
             <field name="perm_unlink" eval="False"/>            
         </record>
 
-        <!--
         <record id="rule_fleet_vehicle_manager" model="ir.rule">
             <field name="name">Manager has all rights on vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
@@ -67,7 +66,6 @@
             <field name="perm_create" eval="True"/>
             <field name="perm_unlink" eval="True"/>            
         </record>        
-        -->
         <!--
 
 
