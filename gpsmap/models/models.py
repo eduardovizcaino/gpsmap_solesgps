@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import datetime
-import requests
+import requests, json
 import random
+import base64
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models, _
 class fuel(models.Model):
@@ -45,7 +46,57 @@ class vehicle(models.Model):
     positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     def toggle_motor(self):
-        print('TOOGLE--------------- MOTOR')          
+        #x ={"id":0,"description":e"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}
+        #print("DATA=============",self.motor)        
+
+        if(self.motor==True):
+            comando="engineStop"
+        else:
+            comando="engineResume"
+
+        url = "http://odoo.solesgps.com:8082/api/commands"
+        #encoded = base64.b64encode("admin:EvG30")
+
+        #payload = {"id":0,"description":"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}
+        payload = {
+            "id":0,
+            "description":"Nuevo...",
+            "deviceId":22,
+            "type":comando,
+            "textChannel":"false",
+            "attributes":{}
+        }                        
+        ##headers = {	"Authorization": "Basic " + encoded		}
+        headers                 = {	"Authorization": "Basic YWRtaW46YWRtaW4=","content-type": "application/json"}        
+        req                     = requests.get(url, data=json.dumps(payload), headers=headers)
+        ##req                     = requests.post(url, data=json.dumps(payload))
+        ##req                     = requests.post(url)
+        print("REQ=====",req)        
+        req.raise_for_status()        
+        json_traccar            = req.json()
+
+
+        ##y = json.loads(r.content)
+        
+        
+        
+        ##if(y["id"]>0):
+        if(self.motor==True):
+            self.motor=False
+        else:
+            self.motor=True
+                    
+        #print("RESPUESTA=",json_traccar)
+        print("#####################################################")                
+
+        ##url                                     = "http://solesgps.com/"
+        ##req                                     = requests.get(url)
+        ##print(req)
+        ##print(req.raise_for_status())
+        ##json_positions                          = req.json()
+
+        ##print("RESPUESTA=",json_traccar)
+
             
 class speed(models.Model):
     _name = "gpsmap.speed"

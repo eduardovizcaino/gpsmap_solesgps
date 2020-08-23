@@ -582,6 +582,8 @@ odoo.define('gpsmap', function(require){
                 //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}
                 
             }
+            
+            
             else this._super(event);
             
         },
@@ -612,8 +614,8 @@ odoo.define('gpsmap', function(require){
 			}
 			else
 			{
-			    alert("  "+i + " = "+ datos[i]);
-			    //console.log("  "+i + " = "+ datos[i]);             
+			    //alert("  "+i + " = "+ datos[i]);
+			    console.log("  "+i + " = "+ datos[i]);             
 			}	
 		}		
 	}
@@ -1346,12 +1348,11 @@ odoo.define('gpsmap', function(require){
 					"Authorization": "Basic " + btoa("admin:admin")
 				},
 				contentType:"application/json",
-				data:JSON.stringify({"id":0,"description":"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}),
-				
+				data:JSON.stringify({"id":0,"description":"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}),				
 				success: function (response) 
 				{
-				    alert(response);
-					console.log(response);
+				    foreach(response);
+
 				}
 			});
 		} 				

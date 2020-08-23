@@ -27,12 +27,27 @@
                 </group>                
             </xpath>
             <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
-                <button name="toggle_motor" type="object" class="oe_stat_button" icon="fa-key">
-                    <field name="motor" widget="boolean_button" groups="gpsmap.gpsmap_group_manager"/>                    
-                </button>       
-                <button string="STOP"  icon="fa-key" id="action_stopmotor" custom="click"/>                 
-                <button string="START" icon="fa-key" id="action_startmotor" custom="click"/>
+                <button string="STOP"  icon="fa-key" id="action_stopmotor" groups="gpsmap.gpsmap_group_god" custom="click"/>                 
+                <button string="START" icon="fa-key" id="action_startmotor" groups="gpsmap.gpsmap_group_god" custom="click"/>
 
+                
+                <!--
+                <button name="toggle_motor" id="motor" type="object" class="oe_stat_button" icon="fa-key">
+                    <field name="motor" widget="boolean_button"  groups="gpsmap.gpsmap_group_manager"/>                    
+                </button>       
+
+
+
+
+
+
+
+
+                <button name="toggle_motor" icon="fa-key" id="motor" custom="click">
+                    <field name="motor" widget="boolean_button"  groups="gpsmap.gpsmap_group_manager"/>                    
+                </button>       
+
+                -->
             </xpath>                
         </field>
     </record>        
