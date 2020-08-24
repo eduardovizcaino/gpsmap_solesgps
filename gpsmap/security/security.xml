@@ -67,7 +67,7 @@
         <record id="rule_fleet_vehicle_user" model="ir.rule">
             <field name="name">Temporal can only see his/her user vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
-            <field name="domain_force"></field>
+            <field name="domain_force">[('driver_id','=',user.partner_id.id)]</field>
             <field name="groups" eval="[(4, ref('fleet.fleet_group_user'))]"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="False"/>
