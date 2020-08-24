@@ -1,6 +1,14 @@
 <?xml version="1.0" ?>
 <odoo>
+    <!--
         <delete model="ir.rule" id="fleet.fleet_rule_vehicle_visibility_manager"/>
+    -->    
+        <record id="fleet.fleet_rule_vehicle_visibility_manager" model="ir.rule">
+            <field name="active" eval="False"/>
+        </record>
+
+
+
 
         <record id="gpsmap_group_template" model="res.groups">
             <field name="name">Temporal</field>
