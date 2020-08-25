@@ -778,21 +778,24 @@ odoo.define('gpsmap', function(require){
     	if(item["at"]["io3"]!=undefined)				
     	{
     		gas								=item["at"]["io3"];
-    		item["ga"]  					=parseInt(gas.substring(0,3));
+    		//item["ga"]  					=parseInt(gas.substring(0,3));
+    		item["ga"]  					=gas;    	    	
     	}	
     	else if(item["at"]["fuel"]!=undefined)
         {
     		gas								=item["at"]["fuel"];
-    		item["ga"]  					=parseInt(gas.substring(0,3));    	
+    		//item["ga"]  					=parseInt(gas.substring(0,3));    	
+    		item["ga"]  					=gas;    	    	
     	}
     	else if(item["at"]["fuel1"]!=undefined)
         {
     		gas								=item["at"]["fuel1"];
-    		item["ga"]  					=parseInt(gas.substring(0,3));    	
+    		//item["ga"]  					=parseInt(gas.substring(0,3));
+    		item["ga"]  					=gas;    	    	
     	}
     	else								item["ga"]  =0;
     	
-    	alert(item["at"]);
+    	alert(item["at"]["fuel1"]);
     	if(item["ba"]>100) item["ba"]=125;    
         var bat=item["ba"]*12/12.5-110;
         $("path.bateria").attr({"transform":"rotate("+ bat +" 250 250)"});            
