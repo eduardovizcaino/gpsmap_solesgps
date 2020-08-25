@@ -51,9 +51,9 @@ class vehicle(models.Model):
             print('=======SQL======== DEVICE MOTOR ',sql)
             
             self.env.cr.execute(sql)
-            devices                   =self.env.cr.dictfetchall()
+            devices                   =self.env.cr.dictfetchall()[0]["id"]
             
-            print('=============== DEVICE MOTOR ',devices[0]["id"])
+            print('=============== DEVICE MOTOR ',devices)
             #print('=============== DEVICE MOTOR ',len(devices),' ')                                                                
 
             if(self.motor==True):
