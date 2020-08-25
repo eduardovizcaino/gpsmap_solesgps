@@ -50,7 +50,8 @@ class vehicle(models.Model):
             self.env.cr.execute("SELECT id FROM tc_devices td WHERE td.imei=",self.imei)
             devices                   =self.env.cr.dictfetchall()
             
-            print('=============== DEVICE MOTOR',len(devices))                                
+            print('=============== DEVICE MOTOR ',devices)
+            #print('=============== DEVICE MOTOR ',len(devices),' ')                                                                
 
             if(self.motor==True):
                 comando="engineStop"
