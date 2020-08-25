@@ -84,7 +84,7 @@ class vehicle(models.Model):
                         
 
         except Exception:
-            time.sleep(3)
+            time.sleep(10)
             self.toggle_motor()
             print("#####################################################")                
             print("Error al conectar con traccar")                
