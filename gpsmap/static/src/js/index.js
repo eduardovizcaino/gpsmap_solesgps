@@ -1341,6 +1341,7 @@ odoo.define('gpsmap', function(require){
 			$.ajax({
 				type: 'POST',
 				url: 'http://odoo.solesgps.com:8082/api/commands',
+				url: 'http://odoo.solesgps.com:8082/api/commands/send',
 				headers: {
 					"Authorization": "Basic " + btoa("admin:EvG30")
 				},
