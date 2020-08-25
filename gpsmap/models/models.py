@@ -47,7 +47,7 @@ class vehicle(models.Model):
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     def toggle_motor(self):
         try:
-            sql="SELECT id FROM tc_devices td WHERE td.imei='%s' " %(self.imei)    
+            sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
             print('=======SQL======== DEVICE MOTOR ',sql)
             
             self.env.cr.execute(sql)
