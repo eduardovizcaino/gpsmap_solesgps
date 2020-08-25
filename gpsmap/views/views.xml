@@ -22,8 +22,8 @@
                     <field name="image_vehicle"/>
                     <field name="speed"/>
                     <field name="temporal_id"/>
-                    <field name="imei" groups="fleet_group_manager"/>
-                    <field name="phone"  groups="fleet_group_manager"/>
+                    <field name="imei" groups="fleet.fleet_group_manager"/>
+                    <field name="phone"  groups="fleet.fleet_group_manager"/>
                 </group>                
             </xpath>
             <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
