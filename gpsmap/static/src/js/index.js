@@ -767,6 +767,7 @@ odoo.define('gpsmap', function(require){
     function odometro(item)	 
     {    	
         if(item["at"]==undefined)           item["at"]=new Array();
+        else      item["at"]                = JSON.parse(item["at"]);
     
     	if(item["at"]["battery"])			item["ba"]  =item["at"]["battery"];
     	else								item["ba"]  =0;
@@ -795,6 +796,7 @@ odoo.define('gpsmap', function(require){
     	}
     	else								item["ga"]  =0;
     	
+    	alert(item["at"]);
     	alert(item["at"]["fuel1"]);
     	if(item["ba"]>100) item["ba"]=125;    
         var bat=item["ba"]*12/12.5-110;
