@@ -26,11 +26,13 @@
                     <field name="phone"  groups="fleet.fleet_group_manager"/>
                 </group>                
             </xpath>
+            <!--
             <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
                 <button name="toggle_motor" type="object" class="oe_stat_button" icon="fa-key">
                     <field name="motor" widget="boolean_button" options='{"terminology": "active"}' groups="gpsmap.gpsmap_group_admin" />                    
-                </button>  
-                
+                </button>                  
+            </xpath>       
+            -->
                 <!--
                 <field name="motor" widget="boolean_button" options='{"terminology": {"string_true": "Swith On"}}'/>                    
                 
@@ -41,7 +43,8 @@
                 <button string="STOP"  icon="fa-key" id="action_stopmotor"  custom="click"/>                 
                 <button string="START" icon="fa-key" id="action_startmotor"  custom="click"/>
                 -->
-            </xpath>                
+            
+                     
         </field>
     </record>        
 
