@@ -68,7 +68,7 @@ class vehicle(models.Model):
         }                        
         ##headers = {	"Authorization": "Basic " + encoded		}
         headers                 = {	"Authorization": "Basic YWRtaW46YWRtaW4=","content-type": "application/json"}        
-        req                     = requests.get(url, data=json.dumps(payload), headers=headers)
+        req                     = requests.post(url, data=json.dumps(payload), headers=headers)
         ##req                     = requests.post(url, data=json.dumps(payload))
         ##req                     = requests.post(url)
         print("REQ=====",req)        
