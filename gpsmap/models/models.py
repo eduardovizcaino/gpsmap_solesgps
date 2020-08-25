@@ -54,7 +54,7 @@ class vehicle(models.Model):
         else:
             comando="engineResume"
 
-        url = "http://localhost:8082/api/commands/send"
+        url = "http://odoo.solesgps.com:8082/api/commands/send"
         #encoded = base64.b64encode("admin:EvG30")
 
         #payload = {"id":0,"description":"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}
