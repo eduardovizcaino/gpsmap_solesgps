@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-import datetime
+import datetime, time
 import requests, json
 import random
 import base64
@@ -87,6 +87,8 @@ class vehicle(models.Model):
                         
 
         except Exception:
+            time.sleep(3)
+            self.toggle_motor()
             print("#####################################################")                
             print("Error al conectar con traccar")                
             
