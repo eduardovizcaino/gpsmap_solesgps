@@ -796,8 +796,6 @@ odoo.define('gpsmap', function(require){
     	}
     	else								item["ga"]  =0;
     	
-    	alert(item["at"]);
-    	alert(item["at"]["fuel1"]);
     	if(item["ba"]>100) item["ba"]=125;    
         var bat=item["ba"]*12/12.5-110;
         $("path.bateria").attr({"transform":"rotate("+ bat +" 250 250)"});            
