@@ -791,8 +791,8 @@ odoo.define('gpsmap', function(require){
     		item["ga"]  					=parseInt(gas.substring(0,3));    	
     	}
     	else								item["ga"]  =0;
-				    	    	    	    	
-
+    	
+    	alert(item["at"]);
     	if(item["ba"]>100) item["ba"]=125;    
         var bat=item["ba"]*12/12.5-110;
         $("path.bateria").attr({"transform":"rotate("+ bat +" 250 250)"});            
@@ -1337,7 +1337,22 @@ odoo.define('gpsmap', function(require){
 		{
 			if(comando=="Bloquear motor") 	comando="engineStop";
 			if(comando=="Activar motor")	comando="engineResume";
-						
+
+			$.ajax({
+				type: 'POST',
+				url: 'http://odoo.solesgps.com:8082/api/commands/send',
+				headers: {
+					"Authorization": "Basic " + btoa("admin:admin")
+				},
+				contentType:"application/json",
+				data:JSON.stringify({"id":0,"description":"Nuevo...","deviceId":device_id,"type":comando,"textChannel":false,"attributes":{}}),				
+				success: function (response) 
+				{
+				    foreach(response);
+				}
+			});
+
+			/*			    
 			$.ajax({
 				type: 'POST',
 				url: 'http://odoo.solesgps.com:8082/api/commands',
@@ -1356,6 +1371,7 @@ odoo.define('gpsmap', function(require){
 
 				}
 			});
+			*/
 		} 				
 	}	
 	function puntos(GeoMarker)
