@@ -48,14 +48,9 @@ class vehicle(models.Model):
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
-            print('=======SQL======== DEVICE MOTOR ',sql)
-            
             self.env.cr.execute(sql)
-            devices                   =self.env.cr.dictfetchall()[0]["id"]
+            devices_id                   =self.env.cr.dictfetchall()[0]["id"]
             
-            print('=============== DEVICE MOTOR ',devices)
-            #print('=============== DEVICE MOTOR ',len(devices),' ')                                                                
-
             if(self.motor==True):
                 comando="engineStop"
             else:
@@ -65,11 +60,13 @@ class vehicle(models.Model):
             payload = {
                 "id"            :0,
                 "description"   :"Nuevo...",
-                "deviceId"      :22,
+                "deviceId"      :devices_id,
                 "type"          :comando,
                 "textChannel"   :"false",
                 "attributes"    :{}
             }                        
+            print('=======DATA======== DEVICE MOTOR ',payload)
+
             ##headers = {	"Authorization": "Basic " + encoded		}
             headers                 = {	"Authorization": "Basic YWRtaW46YWRtaW4=","content-type": "application/json"}        
             """
