@@ -22,16 +22,14 @@
                     <field name="image_vehicle"/>
                     <field name="speed"/>
                     <field name="temporal_id"/>
-                    <field name="imei" groups="gpsmap.gpsmap_group_god"/>
-                    <field name="phone"  groups="gpsmap.gpsmap_group_god"/>
+                    <field name="imei" groups="fleet_group_manager"/>
+                    <field name="phone"  groups="fleet_group_manager"/>
                 </group>                
             </xpath>
             <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
                 <button name="toggle_motor" type="object" class="oe_stat_button" icon="fa-key">
-                    <field name="motor" widget="boolean_button" options='{"terminology": "active"}' groups="gpsmap.gpsmap_group_manager" />                    
+                    <field name="motor" widget="boolean_button" options='{"terminology": "active"}' groups="gpsmap.gpsmap_group_admin" />                    
                 </button>  
-                
-                    
                 
                 <!--
                 <field name="motor" widget="boolean_button" options='{"terminology": {"string_true": "Swith On"}}'/>                    
@@ -39,7 +37,6 @@
                 <button name="toggle_motor" type="object" class="oe_stat_button" icon="fa-key">
                     <field name="motor" widget="boolean_button" groups="gpsmap.gpsmap_group_manager" options='{"terminology": "archive"}'/>                    
                 </button>  
-
 
                 <button string="STOP"  icon="fa-key" id="action_stopmotor"  custom="click"/>                 
                 <button string="START" icon="fa-key" id="action_startmotor"  custom="click"/>
