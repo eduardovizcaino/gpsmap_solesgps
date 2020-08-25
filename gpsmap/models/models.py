@@ -47,6 +47,11 @@ class vehicle(models.Model):
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     def toggle_motor(self):
         try:
+            self.env.cr.execute("SELECT id FROM tc_devices td WHERE td.imei=",self.imei)
+            devices                   =self.env.cr.dictfetchall()
+            
+            print('=============== DEVICE MOTOR',len(devices))                                
+
             if(self.motor==True):
                 comando="engineStop"
             else:
@@ -63,6 +68,7 @@ class vehicle(models.Model):
             }                        
             ##headers = {	"Authorization": "Basic " + encoded		}
             headers                 = {	"Authorization": "Basic YWRtaW46YWRtaW4=","content-type": "application/json"}        
+            """
             req                     = requests.post(url, data=json.dumps(payload), headers=headers)
             print("REQ=====",req)        
             req.raise_for_status()        
@@ -73,9 +79,8 @@ class vehicle(models.Model):
                 self.motor=False
             else:
                 self.motor=True
+            """
                         
-            print("RESPUESTA=",json_traccar)
-            print("#####################################################")                
 
         except Exception:
             print("#####################################################")                
