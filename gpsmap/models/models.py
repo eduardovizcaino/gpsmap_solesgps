@@ -48,6 +48,8 @@ class vehicle(models.Model):
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.imei='%s' " %(self.imei)    
+            print('=======SQL======== DEVICE MOTOR ',sql)
+            
             self.env.cr.execute(sql)
             devices                   =self.env.cr.dictfetchall()
             
