@@ -125,11 +125,13 @@ class positions(models.Model):
         self.speed_compu=self.speed * ts
         
     def _get_gas(self):        
+        print("==========",self.attributes)
         attributes = json.loads(self.attributes)
+        print("==========",attributes)
     
         if("io3" in attributes):                    gas=attributes["io3"]        
-        elif("fuel" in attributes):              gas=attributes["fuel"]        
-        elif("fuel1" in attributes):             gas=attributes["fuel1"]        
+        elif("fuel" in attributes):                 gas=attributes["fuel"]        
+        elif("fuel1" in attributes):                gas=attributes["fuel1"]        
         else:                                       gas=0
     
         self.gas_compu=gas
