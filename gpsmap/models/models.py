@@ -75,12 +75,9 @@ class vehicle(models.Model):
             if(self.motor==True):
                 self.motor=False
             else:
-                self.motor=True
-                        
+                self.motor=True                        
 
         except Exception:
-            time.sleep(10)
-            self.toggle_motor()
             print("#####################################################")                
             print("Error al conectar con traccar")                
             
