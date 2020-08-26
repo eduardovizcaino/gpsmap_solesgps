@@ -114,8 +114,7 @@ class positions(models.Model):
     leido                                       = fields.Integer('Leido',default=0)
     event                                       = fields.Char('Evento', size=70)
     @api.one
-    def _get_speed(self):
-    
+    def _get_speed(self):    
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle                                 =vehicle_obj.browse(self.deviceid.id)
 
@@ -123,13 +122,12 @@ class positions(models.Model):
         if(vehicle.odometer_unit=="miles"):          ts=1.15
         else:                                        ts=1.852
             
-        self.speed_compu=self.speed * ts
-        
+        self.speed_compu=self.speed * ts        
     def _get_gas(self):        
-        print("==========",self.attributes)
-        """
+        print("==========",self.attributes)        
         attributes = json.loads(self.attributes)
         print("==========",attributes)
+    
     
         if("io3" in attributes):                    gas=attributes["io3"]        
         elif("fuel" in attributes):                 gas=attributes["fuel"]        
@@ -137,7 +135,6 @@ class positions(models.Model):
         else:                                       gas=0
     
         self.gas_compu=gas
-        """
         
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
@@ -159,6 +156,10 @@ class positions(models.Model):
                 if len(positions_data)>0:                            
                     return_positions[vehicle.id]    =positions_data[0]        
         return return_positions
+    def run_scheduler_del_position(self):
+        positions_arg                           =[('leido','=',0)]                
+        positions_data                          =self.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
+
     def run_scheduler_get_position(self):
         now                                     = datetime.datetime.now()
                 
