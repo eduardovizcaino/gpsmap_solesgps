@@ -115,6 +115,7 @@ class positions(models.Model):
     event                                       = fields.Char('Evento', size=70)
     @api.one
     def _get_speed(self):
+    
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle                                 =vehicle_obj.browse(self.deviceid.id)
 
@@ -123,9 +124,10 @@ class positions(models.Model):
         else:                                        ts=1.852
             
         self.speed_compu=self.speed * ts
-        """
+        
     def _get_gas(self):        
         print("==========",self.attributes)
+        """
         attributes = json.loads(self.attributes)
         print("==========",attributes)
     
@@ -136,6 +138,7 @@ class positions(models.Model):
     
         self.gas_compu=gas
         """
+        
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
         return para_value
