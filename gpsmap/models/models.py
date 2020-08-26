@@ -106,6 +106,7 @@ class positions(models.Model):
     altitude                                    = fields.Float('Altura',digits=(6,2))
     speed                                       = fields.Float('Velocidad',digits=(3,2))
     speed_compu                                 = fields.Float('Velocidad', compute='_get_speed', digits=(3,2))
+    gas_compu                                   = fields.Float('Gas', compute='_get_gas', digits=(5,2))
     course                                      = fields.Float('Curso',digits=(3,2))
     address                                     = fields.Char('Calle', size=150)
     attributes                                  = fields.Char('Atributos', size=5000)
@@ -122,6 +123,25 @@ class positions(models.Model):
         else:                                        ts=1.852
             
         self.speed_compu=self.speed * ts
+    def _get_gas(self):        
+        attributes = json.loads(self.attributes)
+    
+        if("io3" in attributes):
+        {
+            gas=attributes["io3"]        
+        }
+        else if("fuel" in attributes):
+        {
+            gas=attributes["fuel"]        
+        }
+        else if("fuel1" in attributes):
+        {
+            gas=attributes["fuel1"]        
+        }
+        else:
+            gas=0
+    
+        self.gas_compu=gas
 
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
