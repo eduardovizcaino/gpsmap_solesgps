@@ -65,22 +65,17 @@ class vehicle(models.Model):
                 "textChannel"   :"false",
                 "attributes"    :{}
             }                        
-            print('=======DATA======== DEVICE MOTOR ',payload)
-
             ##headers = {	"Authorization": "Basic " + encoded		}
             headers                 = {	"Authorization": "Basic YWRtaW46YWRtaW4=","content-type": "application/json"}        
-            """
+
             req                     = requests.post(url, data=json.dumps(payload), headers=headers)
-            print("REQ=====",req)        
             req.raise_for_status()        
             json_traccar            = req.json()
             
-            ##if(y["id"]>0):
             if(self.motor==True):
                 self.motor=False
             else:
                 self.motor=True
-            """
                         
 
         except Exception:
