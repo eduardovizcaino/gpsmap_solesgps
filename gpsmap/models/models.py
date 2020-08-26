@@ -123,6 +123,7 @@ class positions(models.Model):
         else:                                        ts=1.852
             
         self.speed_compu=self.speed * ts
+        """
     def _get_gas(self):        
         attributes = json.loads(self.attributes)
     
@@ -132,7 +133,7 @@ class positions(models.Model):
         else:                                       gas=0
     
         self.gas_compu=gas
-
+        """
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
         return para_value
