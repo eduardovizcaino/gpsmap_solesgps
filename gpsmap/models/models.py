@@ -126,20 +126,10 @@ class positions(models.Model):
     def _get_gas(self):        
         attributes = json.loads(self.attributes)
     
-        if("io3" in attributes):
-        {
-            gas=attributes["io3"]        
-        }
-        else if("fuel" in attributes):
-        {
-            gas=attributes["fuel"]        
-        }
-        else if("fuel1" in attributes):
-        {
-            gas=attributes["fuel1"]        
-        }
-        else:
-            gas=0
+        if("io3" in attributes):                    gas=attributes["io3"]        
+        else if("fuel" in attributes):              gas=attributes["fuel"]        
+        else if("fuel1" in attributes):             gas=attributes["fuel1"]        
+        else:                                       gas=0
     
         self.gas_compu=gas
 
