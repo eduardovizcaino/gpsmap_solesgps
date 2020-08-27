@@ -217,7 +217,7 @@ class positions(models.Model):
                 position["leido"]=1                
                 
 
-                attributes = json.loads(self.attributes)
+                attributes = json.loads(position.attributes)
                 
                 if("io3" in attributes):                    gas=attributes["io3"]        
                 elif("fuel" in attributes):                 gas=attributes["fuel"]        
