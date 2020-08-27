@@ -30,6 +30,20 @@
     <record id='fleet_position_action' model='ir.actions.act_window'>
         <field name="name">Histoy Map</field>
         <field name="res_model">gpsmap.positions</field>
+        <field name="view_type">tree</field>
+        <field name="view_mode">tree,graph</field>
+        <field name="help" type="html">
+          <p class="oe_view_nocontent_create">
+            Click to create a new vehicle.
+          </p><p>
+            You will be able to manage your fleet by keeping track of the
+            contracts, services, fixed and recurring costs, odometers and
+            fuel logs associated to each vehicle.
+        </p><p>
+            Odoo will warn you when services or contract have to be
+            renewed.
+          </p>
+        </field>
     </record>
     <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap.gpsmap_group_admin"/>
 
