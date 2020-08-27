@@ -94,6 +94,7 @@
                 <field name="deviceid" />
                 <field name="devicetime"/>
                 <field name="speed_compu"/>                    
+                <field name="gas"/>
                 <field name="address" />
                 <field name="event" />
                 <field name="leido" />
