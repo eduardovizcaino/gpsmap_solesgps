@@ -105,10 +105,10 @@
         <field name="name">gpsmap.positions.graph</field>
         <field name="model">gpsmap.positions</field>
         <field name="arch" type="xml">
-            <graph string="Models">
-                <field name="deviceid"/>
-                <field name="devicetime"/>
-                <field name="gas"/>
+            <graph string="Sales Order Lines" orientation="vertical" type="bar">               
+                <field name="devicetime" type="col"/>
+                <field name="deviceid" />
+                <field name="gas"  type="col"/>
             </graph>
         </field>
     </record>

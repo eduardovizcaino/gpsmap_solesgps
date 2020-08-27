@@ -35,8 +35,9 @@
           <field name="latitude">19.10276</field>
           <field name="longitude">-104.32722</field>
           <field name="altitude ">0</field>
-          <field name="speed">47.293</field>
+          <field name="speed">40</field>
           <field name="course">80</field>
+          <field name="gas">80.8</field>
           <field name="address">0</field>
           <field name="attributes">{"ignition":false,"door":false,"fuel":80.8,"distance":0.0,"totalDistance":1.246451185E7,"motion":false}</field>
           <field name="other">0</field>
@@ -54,8 +55,9 @@
           <field name="latitude">19.1135</field>
           <field name="longitude">-104.34222429957507</field>
           <field name="altitude ">0</field>
-          <field name="speed">47.293</field>
+          <field name="speed">67</field>
           <field name="course">80</field>
+          <field name="gas">15.2</field>
           <field name="address">0</field>
           <field name="attributes">{"ignition":false,"door":false,"fuel1":15.2,"distance":15.39,"totalDistance":2684288.21,"motion":false}</field>
           <field name="other">0</field>
@@ -72,7 +74,7 @@
           <field name="latitude">19.11114</field>
           <field name="longitude">-104.31674</field>
           <field name="altitude ">0</field>
-          <field name="speed">47.293</field>
+          <field name="speed">20</field>
           <field name="course">280</field>
           <field name="address">0</field>
           <field name="attributes">{"status":68,"ignition":false,"charge":true,"blocked":false,"battery":6,"rssi":4,"distance":0.0,"totalDistance":1.125956205E7,"motion":true}</field>
@@ -90,7 +92,7 @@
           <field name="latitude">19.08645</field>
           <field name="longitude">-104.2968</field>
           <field name="altitude ">0</field>
-          <field name="speed">47.293</field>
+          <field name="speed">80</field>
           <field name="course">320</field>
           <field name="address">0</field>
           <field name="attributes">{"status":68,"ignition":false,"charge":true,"blocked":false,"battery":6,"rssi":4,"distance":0.0,"totalDistance":1.126141508E7,"motion":true}</field>
