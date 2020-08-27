@@ -31,7 +31,7 @@
         <field name="name">Histoy Map</field>
         <field name="res_model">gpsmap.positions</field>
         <field name="view_type">tree</field>
-        <field name="view_mode">tree,graph</field>
+        <field name="view_mode">graph,tree</field>
     </record>
     <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap.gpsmap_group_admin"/>
 
