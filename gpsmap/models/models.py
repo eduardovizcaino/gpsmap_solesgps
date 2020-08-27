@@ -106,7 +106,7 @@ class positions(models.Model):
     altitude                                    = fields.Float('Altura',digits=(6,2))
     speed                                       = fields.Float('Velocidad',digits=(3,2))
     speed_compu                                 = fields.Float('Velocidad', compute='_get_speed', digits=(3,2))
-    #gas_compu                                   = fields.Float('Gas', compute='_get_gas', digits=(5,2))
+    gas_compu                                   = fields.Float('Gas', compute='_get_gas', digits=(5,2))
     course                                      = fields.Float('Curso',digits=(3,2))
     address                                     = fields.Char('Calle', size=150)
     attributes                                  = fields.Char('Atributos', size=5000)
@@ -123,10 +123,9 @@ class positions(models.Model):
         else:                                        ts=1.852
             
         self.speed_compu=self.speed * ts        
+    @api.one    
     def _get_gas(self):        
-        print("==========",self.attributes)        
         attributes = json.loads(self.attributes)
-        print("==========",attributes)
     
     
         if("io3" in attributes):                    gas=attributes["io3"]        
