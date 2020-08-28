@@ -106,7 +106,7 @@
         <field name="model">gpsmap.positions</field>
         <field name="arch" type="xml">
             <graph string="Sales Order Lines" orientation="vertical" type="bar">               
-                <field name="devicetime" interval="hour" type="col"/>
+                <field name="devicetime" interval="day" type="col"/>
                 <field name="deviceid" />
                 <field name="gas"  type="col"/>
             </graph>
