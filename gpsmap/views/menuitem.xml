@@ -32,6 +32,7 @@
         <field name="res_model">gpsmap.positions</field>
         <field name="view_type">tree</field>
         <field name="view_mode">graph,tree</field>
+        <field name="context">{"search_default_groupby_day" : True}</field>
     </record>
     <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap.gpsmap_group_admin"/>
 

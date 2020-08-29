@@ -123,10 +123,10 @@
                 <group expand="1" string="Group By">
                     <filter name="groupby_devieid" separator="1" context="{'group_by' : 'deviceid'}" string="Vehicle"/>
                     <separator/>
-                    <filter name="groupby_day" context="{'group_by': 'devicetime:hour'}" string="Hour"/>    
+                    <filter name="groupby_Hour" context="{'group_by': 'devicetime:hour'}" string="Hour"/>    
                     <filter name="groupby_day" context="{'group_by': 'devicetime:day'}" string="Day"/>
-                    <filter name="groupby_day" context="{'group_by': 'devicetime:week'}" string="Week"/>
-                    <filter name="groupby_day" context="{'group_by': 'devicetime:month'}" string="Month"/>
+                    <filter name="groupby_week" context="{'group_by': 'devicetime:week'}" string="Week"/>
+                    <filter name="groupby_month" context="{'group_by': 'devicetime:month'}" string="Month"/>
                 </group>
             </search>
         </field>
