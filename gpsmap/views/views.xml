@@ -47,7 +47,6 @@
         <field name="model">gpsmap.positions</field>
         <field name="arch" type="xml">
             <form string="Vehicle">
-                <button string="PRUEBA" type="object" id ="_get_gas"/>
                 <div class="oe_title">
                     <h1>
                     <field name="deviceid" placeholder="e.g. Model S"/>
@@ -122,8 +121,7 @@
                 <filter name="filter_stop" domain="[('speed','=',0)]" string="Stop"/>
                 <group expand="1" string="Group By">
                     <filter name="groupby_devieid" separator="1" context="{'group_by' : 'deviceid'}" string="Vehicle"/>
-                    <separator/>
-                    
+                    <separator/>                    
                     <filter name="groupby_day" context="{'group_by': 'devicetime:day'}" string="Day"/>
                     <filter name="groupby_week" context="{'group_by': 'devicetime:week'}" string="Week"/>
                     <filter name="groupby_month" context="{'group_by': 'devicetime:month'}" string="Month"/>
