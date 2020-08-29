@@ -101,6 +101,7 @@
             </tree>
         </field>
     </record>
+    <!--
     <record id='gpsmap_positions_view_graph' model='ir.ui.view'>
         <field name="name">gpsmap.positions.graph</field>
         <field name="model">gpsmap.positions</field>
@@ -112,7 +113,7 @@
             </graph>
         </field>
     </record>
-
+    -->
     <record id='gpsmap_positions_view_search' model='ir.ui.view'>
         <field name="name">gpsmap.positions.search</field>
         <field name="model">gpsmap.positions</field>
