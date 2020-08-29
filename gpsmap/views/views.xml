@@ -42,7 +42,6 @@
     </record>        
 
     <!-- POSITIONS -->
-    <!--
     <record id='gpsmap_positions_view_form' model='ir.ui.view'>
         <field name="name">gpsmap.positions.form</field>
         <field name="model">gpsmap.positions</field>
@@ -85,7 +84,6 @@
             </form>
         </field>
     </record>
-    -->
 
     <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
         <field name="name">gpsmap.positions.tree</field>
@@ -126,7 +124,6 @@
                     <filter name="groupby_devieid" separator="1" context="{'group_by' : 'deviceid'}" string="Vehicle"/>
                     <separator/>
                     
-                    <filter name="groupby_Hour" context="{'group_by': 'devicetime:hour'}" string="Hour"/>    
                     <filter name="groupby_day" context="{'group_by': 'devicetime:day'}" string="Day"/>
                     <filter name="groupby_week" context="{'group_by': 'devicetime:week'}" string="Week"/>
                     <filter name="groupby_month" context="{'group_by': 'devicetime:month'}" string="Month"/>
