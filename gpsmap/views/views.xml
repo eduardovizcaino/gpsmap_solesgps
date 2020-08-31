@@ -96,6 +96,7 @@
                 <field name="gas"/>
                 <field name="address"/>
                 <field name="event"/>
+                <field name="status"/>
                 <field name="attributes"/>
                 <field name="leido"/>
                 
