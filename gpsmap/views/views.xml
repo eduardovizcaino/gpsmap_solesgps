@@ -122,6 +122,8 @@
         <field name="model">gpsmap.positions</field>
         <field name="arch" type="xml">
             <search string="Vehicles costs" >
+                    
+                <filter name="filter_day" domain="[('devicetime', '>=', (context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" string="Now"/>
                 <filter name="filter_in_motion" domain="[('speed','>',5)]" string="In Motion"/>
                 <filter name="filter_stop" domain="[('speed','=',0)]" string="Stop"/>
                 <group expand="1" string="Group By">
