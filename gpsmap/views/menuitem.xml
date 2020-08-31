@@ -26,7 +26,7 @@
 
 
     <record id='fleet_position_action' model='ir.actions.act_window'>
-        <field name="name">Histoy Map</field>
+        <field name="name">Histoy Events</field>
         <field name="res_model">gpsmap.positions</field>
         <field name="context">{
             "search_default_filter_day" : True, 
