@@ -246,7 +246,8 @@ class geofence(models.Model):
         ('yellow', 'Yellow'),
         ], 'Color', default='green', help='Color of geofence', required=True)
     hidden = fields.Boolean('Hidden')
-    company_id = fields.Many2one('res.company', 'Company', required=True)
+    company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id, required=True)
+                 
     
     def geofences(self):
         alerts_obj      =self.env['gpsmap.geofence_device']
@@ -272,4 +273,4 @@ class geofence_device(models.Model):
     mail_out = fields.Char('Mail Out', size=150)    
     geofence_ids = fields.Many2many('gpsmap.geofence', 'alert_geofence', 'geofence_id', 'alert_id', string='Geofence')
     device_ids = fields.Many2many('fleet.vehicle', 'alert_device', 'device_id', 'alert_id', string='Device')            
-    company_id = fields.Many2one('res.company', 'Company', required=True)
+    company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id, required=True)
