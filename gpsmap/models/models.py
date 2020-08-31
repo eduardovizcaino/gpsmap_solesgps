@@ -149,7 +149,7 @@ class positions(models.Model):
         positions_arg                           =[('leido','=',0)]                
         positions_data                          =self.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
 
-    def run_scheduler_get_position(self):
+    def run_scheduler_get_position(self):    
         now                                     = datetime.datetime.now()
                 
         positions_obj                           =self.env['gpsmap.positions']
@@ -162,11 +162,10 @@ class positions(models.Model):
         
         positions_arg                           =[('leido','=',0)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
-        
-        print('=============== READ POSITION ===================', len(positions_data))                        
-        
+                
         if len(positions_data)>0:         
             for position in positions_data:
+                position["event"]               =position.status
                 
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
@@ -179,6 +178,8 @@ class positions(models.Model):
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                                                                 
                 if float(vehicle.speed) < float(position.speed_compu):
+                    position["status"]  ="alarm"
+                    position["event"]   ="speeding"
                     if(len(speed_data)==0):
                         speed                       ={}
                         speed["deviceid"]           =position.deviceid.id
@@ -214,18 +215,18 @@ class positions(models.Model):
                                 for geofences in alerts.geofence_ids:                 
                                     print('===========',geofences)                                
                                                         
-                position["leido"]=1                
-                
-
                 attributes = json.loads(position.attributes)
                 
                 if("io3" in attributes):                    gas=attributes["io3"]        
                 elif("fuel" in attributes):                 gas=attributes["fuel"]        
                 elif("fuel1" in attributes):                gas=attributes["fuel1"]        
                 else:                                       gas=0
+                
+                if("alarm" in attributes):                  position["event"]            =attributes["alarm"]
             
                 position["gas"]                             =gas
-
+                position["leido"]                           =1                
+                
                 positions_obj.write(position)
             
 class geofence(models.Model):
