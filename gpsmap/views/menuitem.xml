@@ -24,9 +24,8 @@
 
 
 
-
     <record id='fleet_position_action' model='ir.actions.act_window'>
-        <field name="name">Histoy Events</field>
+        <field name="name">History Events</field>
         <field name="res_model">gpsmap.positions</field>
         <field name="context">{
             "search_default_filter_day" : True, 
@@ -44,13 +43,11 @@
     <menuitem action="fleet_speed_action" parent="fleet.fleet_vehicles" id="fleet_speed_menu" groups="gpsmap.gpsmap_group_admin"/>
     
     
-    
     <record id='fleet_geofence_device_action' model='ir.actions.act_window'>
         <field name="name">Alerts Geofence</field>
         <field name="res_model">gpsmap.geofence_device</field>
     </record>
     <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="fleet.fleet_group_user"/>
-    
     
     
     <record id='fleet_geofence_action' model='ir.actions.act_window'>
@@ -61,6 +58,4 @@
 
     <!-- ############################### -->    
 
-    
-    
 </odoo>
