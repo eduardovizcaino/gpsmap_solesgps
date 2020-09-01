@@ -39,7 +39,7 @@
     </record>        
 
     <!-- POSITIONS -->
-
+    <!--
     <record id='gpsmap_positions_view_form' model='ir.ui.view'>
         <field name="name">gpsmap.positions.form</field>
         <field name="model">gpsmap.positions</field>
@@ -81,7 +81,7 @@
             </form>
         </field>
     </record>
-
+-->
     <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
         <field name="name">gpsmap.positions.tree</field>
         <field name="model">gpsmap.positions</field>
