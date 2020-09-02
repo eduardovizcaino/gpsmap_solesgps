@@ -45,6 +45,7 @@ class vehicle(models.Model):
     speed                                       = fields.Char('Exceso de Velocidad', default=100, size=3)   
     positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
+    devicetime                                  = fields.Datetime('Device Time')
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
