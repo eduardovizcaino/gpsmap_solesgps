@@ -20,22 +20,11 @@
 
         <record id="fleet.fleet_group_manager" model="res.groups">
             <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_admin'))]"/>
+            <field name="users" eval="[]"/>
         </record>
 
         <!-- MODULE fleet_vehicle -->
 
-<!--
-        <record id="rule_fleet_vehicle_template" model="ir.rule">
-            <field name="name">Temporal can only see his/her temporal vehicle</field>
-            <field name="model_id" ref="model_fleet_vehicle"/>
-            <field name="domain_force">[('temporal_id','=','user.id')]</field>
-            <field name="groups" eval="[(4, ref('gpsmap_group_template'))]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_unlink" eval="False"/>            
-        </record>
--->
         <record id="rule_fleet_vehicle_template" model="ir.rule">
             <field name="name">Temporal can only see his/her temporal vehicle</field>
             <field name="model_id" ref="model_fleet_vehicle"/>
