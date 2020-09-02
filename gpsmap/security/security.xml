@@ -17,10 +17,9 @@
             <field name="category_id" ref="fleet.module_fleet_category"/>
             <field name="implied_ids" eval="[(4, ref('fleet.fleet_group_user'))]"/>
         </record>
+
         <record id="fleet.fleet_group_manager" model="res.groups">
             <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_admin'))]"/>
-            <field name="users" eval="[]"/>
-            <field name="domain_force">[('company_id.id','=',user.company_id.id)]</field>
         </record>
 
         <!-- MODULE fleet_vehicle -->
