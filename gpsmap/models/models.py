@@ -127,7 +127,7 @@ class positions(models.Model):
         else:                                        ts=1.852
             
         self.speed_compu=self.speed * ts        
-
+    @api.one
     def _get_date(self):            
         tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
         self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
