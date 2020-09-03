@@ -167,6 +167,7 @@ odoo.define('gpsmap', function(require){
                                     v.se="historyForm";
                                 }
                                 
+                                
                                 vehiculo["de"]=device_id;
                                 vehiculo["dn"]=vehiculo_name,
                                 vehiculo["la"]=positions.latitude;
@@ -855,6 +856,17 @@ odoo.define('gpsmap', function(require){
 				</table>\
 			";	
 		}	
+
+			var tablero="\
+				<table id=\"data_tablero\">\
+					<tr><td width=\"40\"  style=\"color:#fff;\"><a class=\"fas fa-phone-square-alt\" href=\"tel:" + item["phone"] +"\"></a></td>\
+					<td style=\"color:#fff;\">" + tablero1 + "</td></tr>\
+					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
+					<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
+				</table>\
+			";	
+
+
         $("#tablero").html(tablero);
     }
 
