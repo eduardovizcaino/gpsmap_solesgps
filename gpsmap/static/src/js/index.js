@@ -859,8 +859,8 @@ odoo.define('gpsmap', function(require){
 
 			var tablero="\
 				<table id=\"data_tablero\">\
-					<tr><td width=\"40\"  style=\"color:#fff;\"><a class=\"fas fa-phone-square-alt\" href=\"tel:" + item["phone"] +"\"></a></td>\
-					<td style=\"color:#fff;\">" + tablero1 + "</td></tr>\
+					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
+					<td style=\"color:#fff;\"><a href=\"tel:" + item["phone"] +"\">" + tablero1 + "</a></td></tr>\
 					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
 					<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
 				</table>\
