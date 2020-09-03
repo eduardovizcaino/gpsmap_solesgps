@@ -6,6 +6,7 @@ import random
 import base64
 from dateutil.relativedelta import relativedelta
 from odoo import api, fields, models, _
+import pytz
 class fuel(models.Model):
     _inherit = "fleet.vehicle.log.fuel"
 class services(models.Model):
