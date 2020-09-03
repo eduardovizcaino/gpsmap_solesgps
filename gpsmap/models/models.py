@@ -100,6 +100,7 @@ class positions(models.Model):
     deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
     servertime                                  = fields.Datetime('Server Time')
     devicetime                                  = fields.Datetime('Device Time')
+    devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     fixtime                                     = fields.Datetime('Error Time')
     valid                                       = fields.Integer('Valido')
     latitude                                    = fields.Float('Latitud',digits=(5,10))
@@ -126,6 +127,10 @@ class positions(models.Model):
             
         self.speed_compu=self.speed * ts        
 
+    def _get_date(self):            
+        tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+        self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
+        
     def get_system_para(self):
         para_value                              =self.env['ir.config_parameter'].get_param('gpsmap_key','')
         return para_value
