@@ -89,7 +89,7 @@
         <field name="arch" type="xml">
             <tree string="Models">
                 <field name="deviceid" />
-                <field name="devicetime"/>
+                <field name="devicetime_compu"/>
                 <field name="speed_compu"/>                    
                 <field name="gas"/>
                 <field name="address"/>
