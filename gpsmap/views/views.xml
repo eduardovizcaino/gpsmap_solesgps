@@ -21,7 +21,7 @@
                     <field name="image_vehicle"/>
                     <field name="speed"/>
                     <field name="temporal_id"/>
-                    <field name="devicetime"/>
+                    <field name="devicetime_compu"/>
                     <field name="imei" groups="fleet.fleet_group_manager"/>
                     <field name="phone"  groups="fleet.fleet_group_manager"/>
                 </group>                
