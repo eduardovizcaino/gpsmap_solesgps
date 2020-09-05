@@ -50,7 +50,7 @@ class vehicle(models.Model):
     devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     @api.one
     def _get_date(self):        
-        print("###########",self.economic_number)
+        print("###########",self.economic_number, " ## ", self.env.user.tz)
         tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
         self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
     def toggle_motor(self):
