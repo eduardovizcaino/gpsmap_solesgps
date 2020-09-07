@@ -126,7 +126,7 @@
                 <filter name="filter_stop" domain="[('speed','=',0)]" string="Stop"/>
                 <group expand="1" string="Group By">
                     <filter name="groupby_devieid" separator="1" context="{'group_by' : 'deviceid'}" string="Vehicle"/>
-                    <filter name="groupby_type" separator="1" context="{'group_by' : 'status'}" string="Status"/>
+                    <filter name="groupby_event" separator="1" context="{'group_by' : 'event'}" string="Event"/>
                     <separator/>                    
                     <filter name="groupby_day" context="{'group_by': 'devicetime:day'}" string="Day"/>
                     <filter name="groupby_week" context="{'group_by': 'devicetime:week'}" string="Week"/>
