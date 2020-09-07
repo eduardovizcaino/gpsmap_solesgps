@@ -175,6 +175,7 @@ odoo.define('gpsmap', function(require){
                                 vehiculo["co"]=positions.course;
                                 vehiculo["sp"]=positions.speed_compu;
                                 vehiculo["ty"]=positions.status;
+                                vehiculo["ev"]=positions.event;
                                 vehiculo["ti"]=positions.devicetime;
                                 vehiculo["im"]=vehiculo_img;
                                 vehiculo["at"]=positions.attributes;
@@ -857,14 +858,14 @@ odoo.define('gpsmap', function(require){
 			";	
 		}	
 
-			var tablero="\
-				<table id=\"data_tablero\">\
-					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
-					<td style=\"color:#fff;\"><a href=\"tel:" + item["phone"] +"\">" + tablero1 + "</a></td></tr>\
-					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
-					<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
-				</table>\
-			";	
+		var tablero="\
+			<table id=\"data_tablero\">\
+				<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
+				<td style=\"color:#fff;\"><a href=\"tel:" + item["phone"] +"\">" + tablero1 + "</a></td></tr>\
+				<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
+				<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
+			</table>\
+		";	
 
 
         $("#tablero").html(tablero);
