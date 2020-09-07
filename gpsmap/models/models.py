@@ -49,10 +49,13 @@ class vehicle(models.Model):
     devicetime                                  = fields.Datetime('Device Time')
     devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     @api.one
-    def _get_date(self):        
-        #print("###########",self.economic_number, " ## ", self.env.user.tz)
-        tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-        self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
+    def _get_date(self):      
+        if(self.devicetime is not null):          
+            #print("###########",self.economic_number, " ## ", self.env.user.tz)
+            tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+            self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
+        else:    
+            self.devicetime_compu is Null
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
