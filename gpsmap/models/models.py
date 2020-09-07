@@ -50,7 +50,7 @@ class vehicle(models.Model):
     devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     @api.one
     def _get_date(self):        
-        print("###########",self.economic_number, " ## ", self.env.user.tz)
+        #print("###########",self.economic_number, " ## ", self.env.user.tz)
         tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
         self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
     def toggle_motor(self):
@@ -123,6 +123,7 @@ class positions(models.Model):
     status                                      = fields.Char('Type', size=5000)
     leido                                       = fields.Integer('Leido',default=0)
     event                                       = fields.Char('Evento', size=70)
+    online                                      = fields.Boolean('Online', default=True)
     @api.one
     def _get_speed(self):    
         vehicle_obj                             =self.env['fleet.vehicle']        
@@ -178,7 +179,7 @@ class positions(models.Model):
                 
         if len(positions_data)>0:         
             for position in positions_data:
-                position["event"]               =position.status
+                #position["event"]               =position.status
                 
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
