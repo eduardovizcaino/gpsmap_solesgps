@@ -50,7 +50,7 @@ class vehicle(models.Model):
     devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     @api.one
     def _get_date(self):      
-        if(self.devicetime !=''):          
+        if(self.devicetime != False):          
             print("###########",self.economic_number, " ## ", self.devicetime)
             tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
             self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
