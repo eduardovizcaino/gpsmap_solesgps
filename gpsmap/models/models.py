@@ -195,8 +195,8 @@ class positions(models.Model):
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                                                                 
                 if float(vehicle.speed) < float(position.speed_compu):
-                    position["status"]  ="speeding"
-                    position["event"]   ="alarm"
+                    position["event"]    ="speeding"
+                    position["status"]   ="alarm"
                     if(len(speed_data)==0):
                         speed                       ={}
                         speed["deviceid"]           =position.deviceid.id
@@ -240,8 +240,8 @@ class positions(models.Model):
                 else:                                       gas     =0
                 
                 if("alarm" in attributes):                  
-                    position["status"]                      =attributes["alarm"]
-                    position["event"]                       ="alarm"
+                    position["event"]                       =attributes["alarm"]
+                    position["status"]                      ="alarm"
             
                 position["gas"]                             =gas
                 position["leido"]                           =1                
