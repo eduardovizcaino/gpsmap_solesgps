@@ -195,8 +195,8 @@ class positions(models.Model):
                 speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
                                                                                 
                 if float(vehicle.speed) < float(position.speed_compu):
-                    position["status"]  ="alarm"
-                    position["event"]   ="speeding"
+                    position["status"]  ="speeding"
+                    position["event"]   ="alarm"
                     if(len(speed_data)==0):
                         speed                       ={}
                         speed["deviceid"]           =position.deviceid.id
@@ -234,12 +234,14 @@ class positions(models.Model):
                                                         
                 attributes = json.loads(position.attributes)
                 
-                if("io3" in attributes):                    gas=attributes["io3"]        
-                elif("fuel" in attributes):                 gas=attributes["fuel"]        
-                elif("fuel1" in attributes):                gas=attributes["fuel1"]        
-                else:                                       gas=0
+                if("io3" in attributes):                    gas     =attributes["io3"]        
+                elif("fuel" in attributes):                 gas     =attributes["fuel"]        
+                elif("fuel1" in attributes):                gas     =attributes["fuel1"]        
+                else:                                       gas     =0
                 
-                if("alarm" in attributes):                  position["event"]            =attributes["alarm"]
+                if("alarm" in attributes):                  
+                    position["status"]                      =attributes["alarm"]
+                    position["event"]                       ="alarm"
             
                 position["gas"]                             =gas
                 position["leido"]                           =1                
