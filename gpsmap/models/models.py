@@ -55,7 +55,7 @@ class vehicle(models.Model):
             tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
             self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
         else:    
-            self.devicetime_compu is Null
+            self.devicetime_compu=self.devicetime
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
