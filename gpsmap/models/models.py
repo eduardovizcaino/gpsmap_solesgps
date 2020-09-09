@@ -155,7 +155,7 @@ class positions(models.Model):
         vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
         
 
-        
+        """
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:    
 
@@ -168,8 +168,10 @@ class positions(models.Model):
         
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
-                return_positions[vehicle.id]    =vehicle.positionid      
-        """
+                position                         =vehicle.positionid
+                
+                return_positions[vehicle.id]    =position[0]
+        
 
         return return_positions
     def run_scheduler_del_position(self):
