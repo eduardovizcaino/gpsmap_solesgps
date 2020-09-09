@@ -156,7 +156,7 @@ class positions(models.Model):
         
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
-                print("VEHICULO JS POSITION=== ", vehicle.positionid.servertime)
+                print("VEHICULO JS POSITION=== ", vehicle.positionid)
                 positions_arg                   =[('deviceid','=',vehicle.id)]                
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
                 if len(positions_data)>0:                            
