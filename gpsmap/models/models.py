@@ -182,8 +182,9 @@ class positions(models.Model):
                 
         if len(positions_data)>0:         
             for position in positions_data:
-                print("POSITION ID CRON====",position.id)
+                print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid)
                 #position["event"]               =position.status
+                #if(vehicle.positionid)
                 
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
