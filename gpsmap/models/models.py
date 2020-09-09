@@ -182,10 +182,6 @@ class positions(models.Model):
                 
         if len(positions_data)>0:         
             for position in positions_data:
-                
-                #position["event"]               =position.status
-                
-                
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
@@ -256,7 +252,7 @@ class positions(models.Model):
                 position["leido"]                           =1                
                 
                 positions_obj.write(position)
-            
+                vehicle_obj.write(vehicle)
 class geofence(models.Model):
     _name = "gpsmap.geofence"
     _description = 'GPS Geofence'
