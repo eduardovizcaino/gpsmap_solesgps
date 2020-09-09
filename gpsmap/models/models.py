@@ -177,7 +177,8 @@ class positions(models.Model):
                 position["latitude"]          =vehicle.positionid.latitude
                 
                 
-                return_positions[vehicle.id]    =position
+                
+                return_positions[vehicle.id]    =vehicle.positionid
         
 
         return return_positions
