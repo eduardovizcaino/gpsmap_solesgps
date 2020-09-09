@@ -184,12 +184,16 @@ class positions(models.Model):
             for position in positions_data:
                 
                 #position["event"]               =position.status
-                #if(vehicle.positionid)
+                
                 
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
                 print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid.id)
+                if(vehicle.positionid.id==False):
+                    vehicle.positionid.id=position.id
+                elif(vehicle.positionid.devicetime < position.devicetime):
+                    vehicle.positionid.id=position.id
                 
                 if vehicle.speed=='':
                     vehicle.speed               =100
