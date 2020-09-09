@@ -154,13 +154,22 @@ class positions(models.Model):
         return_positions                        ={}
         vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
         
+
+        """
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
+
                 print("VEHICULO JS POSITION=== ", vehicle.positionid)
                 positions_arg                   =[('deviceid','=',vehicle.id)]                
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
                 if len(positions_data)>0:                            
                     return_positions[vehicle.id]    =positions_data[0]        
+        """            
+        if len(vehicle_data)>0:         
+            for vehicle in vehicle_data:
+                return_positions[vehicle.id]    =vehicle.positionid      
+
+
         return return_positions
     def run_scheduler_del_position(self):
         positions_arg                           =[('leido','=',0)]                
