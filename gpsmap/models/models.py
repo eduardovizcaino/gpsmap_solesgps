@@ -191,9 +191,9 @@ class positions(models.Model):
                 
                 print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid.id)
                 if(vehicle.positionid.id==False):
-                    vehicle.positionid.id=position.id
+                    vehicle["positionid"]=position.id
                 elif(vehicle.positionid.devicetime < position.devicetime):
-                    vehicle.positionid.id=position.id
+                    vehicle["positionid"]=position.id
                 
                 if vehicle.speed=='':
                     vehicle.speed               =100
