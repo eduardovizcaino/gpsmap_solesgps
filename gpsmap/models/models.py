@@ -171,13 +171,17 @@ class positions(models.Model):
                 position                        ={}
                 position["attributes"]          =vehicle.positionid.attributes
                 position["speed_compu"]          =vehicle.positionid.speed_compu
+                position["speed"]          =vehicle.positionid.speed
+                position["gas"]          =vehicle.positionid.gas
                 position["altitude"]          =vehicle.positionid.altitude
                 position["devicetime_compu"]          =vehicle.positionid.devicetime_compu
                 position["longitude"]          =vehicle.positionid.longitude
                 position["latitude"]          =vehicle.positionid.latitude
-                position["speed_compu"]          =vehicle.positionid.speed_compu
-                position["status"]          =vehicle.positionid.status
                 position["course"]          =vehicle.positionid.course
+                position["address"]          =vehicle.positionid.address
+                
+                
+                position["status"]          =vehicle.positionid.status                
                 position["event"]          =vehicle.positionid.event
                 position["deviceid"]          ={vehicle.id}
                 
