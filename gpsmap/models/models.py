@@ -189,7 +189,7 @@ class positions(models.Model):
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
-                print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid)
+                print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid.id)
                 
                 if vehicle.speed=='':
                     vehicle.speed               =100
