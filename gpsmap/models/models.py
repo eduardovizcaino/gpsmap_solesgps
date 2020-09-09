@@ -176,6 +176,9 @@ class positions(models.Model):
                 position["longitude"]          =vehicle.positionid.longitude
                 position["latitude"]          =vehicle.positionid.latitude
                 position["speed_compu"]          =vehicle.positionid.speed_compu
+                position["status"]          =vehicle.positionid.status
+                position["course"]          =vehicle.positionid.course
+                position["event"]          =vehicle.positionid.event
                 position["deviceid"]          ={vehicle.id}
                 
                 
