@@ -168,9 +168,16 @@ class positions(models.Model):
         
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
-                position                         =vehicle.positionid
+                position                        ={}
+                position["attributes"]          =vehicle.positionid.attributes
+                position["speed_compu"]          =vehicle.positionid.speed_compu
+                position["altitude"]          =vehicle.positionid.altitude
+                position["devicetime_compu"]          =vehicle.positionid.devicetime_compu
+                position["longitude"]          =vehicle.positionid.longitude
+                position["latitude"]          =vehicle.positionid.latitude
                 
-                return_positions[vehicle.id]    =position[0]
+                
+                return_positions[vehicle.id]    =position
         
 
         return return_positions
