@@ -182,6 +182,7 @@ class positions(models.Model):
                 
         if len(positions_data)>0:         
             for position in positions_data:
+                print("POSITION ID CRON====",position.id)
                 #position["event"]               =position.status
                 
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
