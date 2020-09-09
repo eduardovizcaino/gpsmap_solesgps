@@ -48,6 +48,7 @@ class vehicle(models.Model):
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     devicetime                                  = fields.Datetime('Device Time')
     devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
+    company_id                                  = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id, required=True)
     @api.one
     def _get_date(self):      
         if(self.devicetime != False):          

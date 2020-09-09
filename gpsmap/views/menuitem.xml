@@ -29,8 +29,7 @@
         <field name="res_model">gpsmap.positions</field>
         <field name="context">{
             "search_default_filter_day" : True, 
-            "search_default_groupby_devieid" : True,
-            "search_default_groupby_event" : True,
+            "search_default_groupby_devieid" : True
         }</field>
     </record>
     <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap.gpsmap_group_admin"/>
