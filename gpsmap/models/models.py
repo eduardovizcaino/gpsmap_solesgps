@@ -175,6 +175,7 @@ class positions(models.Model):
                 position["gas"]          =vehicle.positionid.gas
                 position["altitude"]          =vehicle.positionid.altitude
                 position["devicetime_compu"]          =vehicle.positionid.devicetime_compu
+                position["devicetime"]          =vehicle.positionid.devicetime
                 position["longitude"]          =vehicle.positionid.longitude
                 position["latitude"]          =vehicle.positionid.latitude
                 position["course"]          =vehicle.positionid.course
