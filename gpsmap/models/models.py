@@ -118,7 +118,7 @@ class vehicle(models.Model):
                                                             
                 return_positions[vehicle.id]    =position
                 
-                print("DATA POSITION===", position)
+                #print("DATA POSITION===", position)
                 
         return return_positions    
 class speed(models.Model):
@@ -179,7 +179,6 @@ class positions(models.Model):
         
     @api.model    
     def js_positions(self):
-        print("SELF===", self)
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -187,7 +186,7 @@ class positions(models.Model):
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:    
 
-                print("VEHICULO JS POSITION=== ", vehicle.positionid)
+                print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
                 positions_arg                   =[('deviceid','=',vehicle.id)]                
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
                 if len(positions_data)>0:                            
