@@ -117,7 +117,7 @@ class vehicle(models.Model):
                 position["gas"]                 =vehicle.positionid.gas
                                 
                             
-                return_positions[vehicle.id]    =position
+                return_positions[vehicle.id]    =vehicle.positionid
                 
         print("DATAS POSITIONS===", return_positions)
         return return_positions    
