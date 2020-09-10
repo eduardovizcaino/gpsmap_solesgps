@@ -155,7 +155,7 @@ class positions(models.Model):
         vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
         
 
-        
+        """
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:    
 
@@ -169,27 +169,38 @@ class positions(models.Model):
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
                 position                        ={}
+                position["event"]               =vehicle.positionid.event                
+                position["longitude"]           =vehicle.positionid.longitude
+                position["altitude"]            =vehicle.positionid.altitude
+                position["latitude"]            =vehicle.positionid.latitude                
+                position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
+                position["status"]              =vehicle.positionid.status                
+                position["deviceid"]            ={vehicle.id}
+                position["speed_compu"]         =vehicle.positionid.speed_compu
                 position["attributes"]          =vehicle.positionid.attributes
-                position["speed_compu"]          =vehicle.positionid.speed_compu
-                position["speed"]          =vehicle.positionid.speed
-                position["gas"]          =vehicle.positionid.gas
-                position["altitude"]          =vehicle.positionid.altitude
-                position["devicetime_compu"]          =vehicle.positionid.devicetime_compu
                 position["devicetime"]          =vehicle.positionid.devicetime
-                position["longitude"]          =vehicle.positionid.longitude
-                position["latitude"]          =vehicle.positionid.latitude
-                position["course"]          =vehicle.positionid.course
-                position["address"]          =vehicle.positionid.address
+                position["id"]                  =vehicle.positionid.id                                               
+                position["speed"]               =vehicle.positionid.speed
+                position["address"]             =vehicle.positionid.address
+                position["course"]              =vehicle.positionid.course                
+                position["gas"]                 =vehicle.positionid.gas
                 
                 
-                position["status"]          =vehicle.positionid.status                
-                position["event"]          =vehicle.positionid.event
-                position["deviceid"]          ={vehicle.id}
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 
                 
                 return_positions[vehicle.id]    =position
-        """    
+            
 
         return return_positions
     def run_scheduler_del_position(self):
