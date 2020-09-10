@@ -111,7 +111,7 @@ odoo.define('gpsmap', function(require){
             var ipositions;
             if(local.positions.length>0)
             {   
-                console.log("POSITIONS PAINT ========");
+                //console.log("POSITIONS PAINT ========");
                 var vehiculo_id;
                 var vehiculos       =local.vehicles;
                 var ivehiculos;
@@ -191,7 +191,7 @@ odoo.define('gpsmap', function(require){
         },
         //////////////////////////////////////////////////////////////
         positions_search:function(argument){
-            console.log("POSITIONS SEARCH ========");
+            //console.log("POSITIONS SEARCH ========");
             var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status'];
             var vehiculo_id;
             var vehiculos       =local.vehicles;
@@ -238,21 +238,10 @@ odoo.define('gpsmap', function(require){
                      	            
                             for(iresult in result)
                             {
-                                console.log("============================");
-                                console.log("POSITION VEHICLE ===========");
-                                console.log("============================");
-                                
-                                var positions               =result[iresult];
-                                            
-                                //foreach(positions);                                                                
-                                //console.log("POSITION===", positions);
-                                
+                                var positions               =result[iresult];                                
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
 
-                                
-                                console.log("ID DEV===", device_id);
-                                
                             	if(method=="read")          
                             	{
                             	    positions.se            ="historyForm";    
