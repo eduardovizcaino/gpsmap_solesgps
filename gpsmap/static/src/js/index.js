@@ -261,22 +261,22 @@ odoo.define('gpsmap', function(require){
                                 positions.st                =1;
                                 positions.te                ="d_telefono";
                                 ////positions.dn                =vehiculo_name;
-                                positions.ty                =positions.status;
+                                positions.ty                =positions["status"];
                                 positions.na                ="name";
                                 positions.de                =device_id;
-                                positions.la                =positions.latitude;
-                                positions.lo                =positions.longitude; 
-                                positions.co                =positions.course; 
+                                positions.la                =positions["latitude"];
+                                positions.lo                =positions["longitude"]; 
+                                positions.co                =positions["course"]; 
                                 positions.mi                ="milage"; 
-                                positions.sp                =positions.speed_compu; 
+                                positions.sp                =positions["speed_compu"]; 
                                 positions.ba                ="batery"; 
-                                positions.ti                =positions.devicetime; 
+                                positions.ti                =positions["devicetime"]; 
 
                                 positions.ho                ="icon_online"; 
-                                positions.ad                =positions.address; 
-                                positions.at                =positions.attributes; 
+                                positions.ad                =positions["address"]; 
+                                positions.at                =positions["attributes"]; 
                                 ////positions.im                =vehiculos[device_id].image_vehicle; 
-                                positions.ev                =positions.event; 
+                                positions.ev                =positions["event"]; 
                                 positions.ge                ="geofence"; 
                                 positions.ni                ="nivel";
                                 
