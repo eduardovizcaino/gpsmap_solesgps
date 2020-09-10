@@ -115,11 +115,11 @@ class vehicle(models.Model):
                 position["address"]             =vehicle.positionid.address
                 position["course"]              =vehicle.positionid.course                
                 position["gas"]                 =vehicle.positionid.gas
-                                
-                            
-                return_positions[vehicle.id]    =vehicle.positionid
+                                                            
+                return_positions[vehicle.id]    =position
                 
-        print("DATAS POSITIONS===", return_positions)
+                print("DATA POSITION===", position)
+                
         return return_positions    
 class speed(models.Model):
     _name = "gpsmap.speed"
