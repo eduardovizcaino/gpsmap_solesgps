@@ -118,7 +118,8 @@ odoo.define('gpsmap', function(require){
                 for(ipositions in local.positions)
                 {	
                     var positions       =local.positions[ipositions];
-                    var device_id       =positions.deviceid[0];                        
+                    var device_id       =positions.deviceid[0];
+                    var device_id       =positions.de;                                                
 	                if(vehiculos!= null && vehiculos.length>0)
 	                {	                    
 	                    for(ivehiculos in vehiculos)
@@ -243,8 +244,8 @@ odoo.define('gpsmap', function(require){
                                 
                                 var positions               =result[iresult];
                                             
-                                foreach(positions);                                                                
-                                console.log("POSITION===", positions);
+                                //foreach(positions);                                                                
+                                //console.log("POSITION===", positions);
                                 
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
