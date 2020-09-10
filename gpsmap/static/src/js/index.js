@@ -198,6 +198,7 @@ odoo.define('gpsmap', function(require){
             var method;
             var time;
             var ivehiculos;
+            var model;
             
             if(typeof argument=="number")
             {
@@ -206,21 +207,27 @@ odoo.define('gpsmap', function(require){
                 time            =1000;
             }
             else
-            {
-                method          ="js_positions";
-                time            =1;
+            {                
+                model={   
+                    model: 'gpsmap.positions',
+                    method: "js_positions",
+                    fields: fields_select,
+                    order: 'devicetime DESC',
+                };                
+                
+                
+                model={   
+                    model:  "fleet.vehicle",
+                    method: "js_vehicles",
+                    fields: fields_select
+                };                
             }
             
             setTimeout(function(){            
                 if(vehiculos!= null && vehiculos.length>0)
                 {	  
                   
-                    rpc.query({
-                        model: 'gpsmap.positions',
-                        method: method,
-                        fields: fields_select,
-                        order: 'devicetime DESC',
-                    })
+                    rpc.query(model)
                     .then(function (result) 
                     {
                         del_locations();

@@ -90,6 +90,35 @@ class vehicle(models.Model):
         except Exception:
             print("#####################################################")                
             print("Error al conectar con traccar")                
+    @api.model    
+    def js_vehicles(self):
+        print("SELF===", self)
+        vehicle_args                            =[]        
+        return_positions                        ={}
+        vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
+        print("DATA VEHICLE===", vehicle_data)
+                
+        if len(vehicle_data)>0:         
+            for vehicle in vehicle_data:
+                position                        ={}
+                position["event"]               =vehicle.positionid.event                
+                position["longitude"]           =vehicle.positionid.longitude
+                position["altitude"]            =vehicle.positionid.altitude
+                position["latitude"]            =vehicle.positionid.latitude                
+                position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
+                position["status"]              =vehicle.positionid.status                
+                position["deviceid"]            ={vehicle.id}
+                position["speed_compu"]         =vehicle.positionid.speed_compu
+                position["attributes"]          =vehicle.positionid.attributes
+                position["devicetime"]          =vehicle.positionid.devicetime
+                position["id"]                  =vehicle.positionid.id                                               
+                position["speed"]               =vehicle.positionid.speed
+                position["address"]             =vehicle.positionid.address
+                position["course"]              =vehicle.positionid.course                
+                position["gas"]                 =vehicle.positionid.gas
+                                
+                            
+                return_positions[vehicle.id]    =position
             
 class speed(models.Model):
     _name = "gpsmap.speed"
@@ -149,13 +178,11 @@ class positions(models.Model):
         
     @api.model    
     def js_positions(self):
+        print("SELF===", self)
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
         vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
-        
-
-        """
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:    
 
@@ -164,42 +191,6 @@ class positions(models.Model):
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
                 if len(positions_data)>0:                            
                     return_positions[vehicle.id]    =positions_data[0]        
-        """            
-        
-        if len(vehicle_data)>0:         
-            for vehicle in vehicle_data:
-                position                        ={}
-                position["event"]               =vehicle.positionid.event                
-                position["longitude"]           =vehicle.positionid.longitude
-                position["altitude"]            =vehicle.positionid.altitude
-                position["latitude"]            =vehicle.positionid.latitude                
-                position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
-                position["status"]              =vehicle.positionid.status                
-                position["deviceid"]            ={vehicle.id}
-                position["speed_compu"]         =vehicle.positionid.speed_compu
-                position["attributes"]          =vehicle.positionid.attributes
-                position["devicetime"]          =vehicle.positionid.devicetime
-                position["id"]                  =vehicle.positionid.id                                               
-                position["speed"]               =vehicle.positionid.speed
-                position["address"]             =vehicle.positionid.address
-                position["course"]              =vehicle.positionid.course                
-                position["gas"]                 =vehicle.positionid.gas
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                return_positions[vehicle.id]    =position
             
 
         return return_positions
