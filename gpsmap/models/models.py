@@ -106,7 +106,7 @@ class vehicle(models.Model):
                 position["latitude"]            =vehicle.positionid.latitude                
                 position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
                 position["status"]              =vehicle.positionid.status                
-                position["deviceid"]            ={vehicle.id}
+                position["deviceid"]            =vehicle.id
                 position["speed_compu"]         =vehicle.positionid.speed_compu
                 position["attributes"]          =vehicle.positionid.attributes
                 position["devicetime"]          =vehicle.positionid.devicetime

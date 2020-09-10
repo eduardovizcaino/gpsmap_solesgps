@@ -247,8 +247,8 @@ odoo.define('gpsmap', function(require){
                                 console.log("POSITION===", positions);
                                 
                                 var device                  =positions.deviceid;		                
-                                var device                  =positions["deviceid"];
-                                var device_id               =device[0];
+                                var device_id               =positions["deviceid"];
+
                                 
                                 console.log("ID DEV===", device_id);
                                 
