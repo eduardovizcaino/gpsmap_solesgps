@@ -92,17 +92,14 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
-        print("SELF===", self)
         vehicle_args                            =[]        
         return_positions                        ={}
         vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
-        print("DATAS VEHICLE===", vehicle_data)
-                
+                        
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
-                print("DATAS POSITION VEHICLE===", vehicle.positionid.longitude)
-                
                 position                        ={}
+
                 position["event"]               =vehicle.positionid.event                
                 position["longitude"]           =vehicle.positionid.longitude
                 position["altitude"]            =vehicle.positionid.altitude
@@ -121,7 +118,9 @@ class vehicle(models.Model):
                                 
                             
                 return_positions[vehicle.id]    =position
-            
+                
+        print("DATAS POSITIONS===", return_positions)
+        return return_positions    
 class speed(models.Model):
     _name = "gpsmap.speed"
     _description = 'Positions Speed'
