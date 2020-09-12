@@ -60,12 +60,13 @@ odoo.define('gpsmap', function(require){
     //////////////////////////////////////////////////////////////
     class_gpsmap = Widget.extend({
         //////////////////////////////////////////////////////////////
+        /*
         willStart: function () {
             var self = this;            
             return this._rpc({
-                    model: 'fleet.vehicle',
-                    method: 'search_read',
-                    context: session.user_context,
+                model: 'fleet.vehicle',
+                method: 'search_read',
+                context: session.user_context,
             })
             .then(function(res) 
             {
@@ -73,7 +74,7 @@ odoo.define('gpsmap', function(require){
                 local.vehicles     =res;                                        
             });
         },        
-
+*/
         geofences_paint: function() 
         {
             setTimeout(function()
@@ -208,65 +209,60 @@ odoo.define('gpsmap', function(require){
                     method: "js_vehicles",
                     fields: fields_select
                 };                
-            }
-            
-            setTimeout(function(){            
-                //if(vehiculos!= null && vehiculos.length>0)
-                {	                    
-                    rpc.query(model)
-                    .then(function (result) 
-                    {
-                        del_locations();
-                        local.positions=Array();                          
-                        //if(result!= null && result.length>0)
-                        {                            	            
-                            for(iresult in result)
-                            {
-                                var positions               =result[iresult];                                
-                                console.log("positions==", positions["deviceid"]);
-                                
-                                var device                  =positions.deviceid;		                
-                                var device_id               =positions["deviceid"];
-                                
-                                if(typeof device_id!="number")
-                                    var device_id           =positions["deviceid"][0];
-                            	if(method=="read")          
-                            	{
-                            	    positions.se            ="historyForm";    
-                            	    device_active           =device_id;
-                            	}                   
-                                positions.mo                ="";
-                                positions.st                =1;
-                                positions.te                ="d_telefono";
-                                ////positions.dn                =vehiculo_name;
-                                positions.ty                =positions["status"];
-                                positions.na                ="name";
-                                positions.de                =device_id;
-                                positions.la                =positions["latitude"];
-                                positions.lo                =positions["longitude"]; 
-                                positions.co                =positions["course"]; 
-                                positions.mi                ="milage"; 
-                                positions.sp                =positions["speed_compu"]; 
-                                positions.ba                ="batery"; 
-                                positions.ti                =positions["devicetime"]; 
+            }            
+            setTimeout(function()
+            {
+                rpc.query(model)
+                .then(function (result) 
+                {
+                    del_locations();
+                    local.positions=Array();                          
+                    //if(result!= null && result.length>0)
+                    {                            	            
+                        for(iresult in result)
+                        {
+                            var positions               =result[iresult];                                
+                            console.log("positions==", positions["deviceid"]);
+                            
+                            var device                  =positions.deviceid;		                
+                            var device_id               =positions["deviceid"];
+                            
+                            if(typeof device_id!="number")
+                                var device_id           =positions["deviceid"][0];
+                        	if(method=="read")          
+                        	{
+                        	    positions.se            ="historyForm";    
+                        	    device_active           =device_id;
+                        	}                   
+                            positions.mo                ="";
+                            positions.st                =1;
+                            positions.te                ="d_telefono";
+                            ////positions.dn                =vehiculo_name;
+                            positions.ty                =positions["status"];
+                            positions.na                ="name";
+                            positions.de                =device_id;
+                            positions.la                =positions["latitude"];
+                            positions.lo                =positions["longitude"]; 
+                            positions.co                =positions["course"]; 
+                            positions.mi                ="milage"; 
+                            positions.sp                =positions["speed_compu"]; 
+                            positions.ba                ="batery"; 
+                            positions.ti                =positions["devicetime"]; 
 
-                                positions.ho                ="icon_online"; 
-                                positions.ad                =positions["address"]; 
-                                positions.at                =positions["attributes"]; 
-                                ////positions.im                =vehiculos[device_id].image_vehicle; 
-                                positions.ev                =positions["event"]; 
-                                positions.ge                ="geofence"; 
-                                positions.ni                ="nivel";
-                                
-                                local.positions[device_id]  =positions;
-                            }                                    
-                        }
-                        gpsmaps_obj.positions_paint(argument);                                                              
-                        //setTimeout(function(){            
-                    });
-                }
-            },time);
-                
+                            positions.ho                ="icon_online"; 
+                            positions.ad                =positions["address"]; 
+                            positions.at                =positions["attributes"]; 
+                            ////positions.im                =vehiculos[device_id].image_vehicle; 
+                            positions.ev                =positions["event"]; 
+                            positions.ge                ="geofence"; 
+                            positions.ni                ="nivel";
+                            
+                            local.positions[device_id]  =positions;
+                        }                                    
+                    }
+                    gpsmaps_obj.positions_paint(argument);                                                              
+                });
+            },time);                
         },
 
         //////////////////////////////////////////////////////////////

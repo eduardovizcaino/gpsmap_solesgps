@@ -47,6 +47,7 @@
         <field name="arch" type="xml">
             <form string="Vehicle">
                 <div id="cargar_mapa"></div>
+                <!--
                 <script>
                     if($("div#vehiculos.menu_soles").length>0)
                         $("div#vehiculos.menu_soles").html("");                        
@@ -65,6 +66,7 @@
                             },700);
                     }    
                 </script>
+                -->
             </form>
         </field>
     </record>
