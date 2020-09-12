@@ -62,7 +62,7 @@
                             setTimeout(function()
                             {       
                                 gpsmaps_obj.positions_search(parseInt(variables["id"]));            
-                            },500);
+                            },700);
                     }    
                 </script>
             </form>
