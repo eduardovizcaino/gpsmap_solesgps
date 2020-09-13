@@ -74,7 +74,7 @@
 
 -->
 
-<!--
+
     <record id='gpsmap_positions_view_map' model='ir.ui.view'>
         <field name="name">gpsmap.positions.map</field>
         <field name="model">gpsmap.positions</field>
@@ -107,7 +107,7 @@
             </map>
         </field>
     </record>
--->
+
     <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
         <field name="name">gpsmap.positions.tree</field>
         <field name="model">gpsmap.positions</field>
@@ -147,6 +147,7 @@
             <search string="Vehicles costs" >
                     
                 <filter name="filter_day" domain="[('devicetime', '>=', (context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" string="Now"/>
+                <filter name="filter_week" domain="[('devicetime', '>=', (context_today()-datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]" string="Week"/>
                 <filter name="filter_in_motion" domain="[('speed','>',5)]" string="In Motion"/>
                 <filter name="filter_stop" domain="[('speed','=',0)]" string="Stop"/>
                 <group expand="1" string="Group By">

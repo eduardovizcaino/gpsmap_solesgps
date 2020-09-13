@@ -27,12 +27,12 @@
     <record id='fleet_position_action' model='ir.actions.act_window'>
         <field name="name">History Events</field>
         <field name="res_model">gpsmap.positions</field>
-<!--
         <field name="view_type">form</field>
         <field name="view_mode">tree,form,map</field>
--->
+
         <field name="context">{
-            "search_default_filter_day" : True, 
+            "search_default_filter_day" : True,
+            "search_default_filter_week" : True,  
             "search_default_groupby_devieid" : True
         }</field>
     </record>
