@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
+<!--
     <template id="assets_backend" name="gpsmap_assets" inherit_id="web.assets_backend">
         <xpath expr="." position="inside">
             <link rel="stylesheet" href="/gpsmap/static/src/css/index.css"/>
-            <t t-set="gpsmap_key" t-value="request.env['ir.config_parameter'].sudo().get_param('gpsmap_key')"/>
-            <script t-attf-src="https://maps.googleapis.com/maps/api/js?key={{gpsmap_key}}"></script>                        
+            <t t-set="gpsmap_key" t-value="request.env['ir.config_parameter'].sudo().get_param('gpsmap_key')"/>            
+            <script t-attf-src="https://maps.googleapis.com/maps/api/js?key={{gpsmap_key}}"></script>                                    
             <script type="text/javascript" src="/gpsmap/static/src/js/maplabel.js"/>            
             <script type="text/javascript" src="/gpsmap/static/src/js/index.js"/>
         </xpath>
     </template>
+-->
     <!-- FLEET -->
+    
     <record id="view_gpsmap_vehicle_form_inherit" model="ir.ui.view">
         <field name="name">gpsmap.vehicle.form</field>
         <field name="model">fleet.vehicle</field>
@@ -40,14 +43,13 @@
     </record>        
 
     <!-- POSITIONS -->
-
+<!--
     <record id='gpsmap_positions_view_form' model='ir.ui.view'>
         <field name="name">gpsmap.positions.form</field>
         <field name="model">gpsmap.positions</field>
         <field name="arch" type="xml">
             <form string="Vehicle">
                 <div id="cargar_mapa"></div>
-                <!--
                 <script>
                     if($("div#vehiculos.menu_soles").length>0)
                         $("div#vehiculos.menu_soles").html("");                        
@@ -66,8 +68,43 @@
                             },700);
                     }    
                 </script>
-                -->
             </form>
+        </field>
+    </record>
+
+-->
+
+
+    <record id='gpsmap_positions_view_map' model='ir.ui.view'>
+        <field name="name">gpsmap.positions.map</field>
+        <field name="model">gpsmap.positions</field>
+        <field name="arch" type="xml">
+            <map class="o_res_partner_map" library="geometry" string="Map" lat="latitude" lng="longitude">
+                <field name="id" />
+                <field name="deviceid" />
+                <field name="devicetime_compu"/>
+                <field name="speed_compu"/>                    
+                <field name="gas"/>
+                <field name="address"/>
+                <field name="event"/>
+                <field name="status"/>
+                <field name="attributes"/>
+                <field name="leido"/>
+                <field name="longitude"/>
+                <field name="latitude"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="deviceid" />
+                                    <field name="attributes"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </map>
         </field>
     </record>
 
