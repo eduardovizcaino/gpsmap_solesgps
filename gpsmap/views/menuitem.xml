@@ -22,6 +22,11 @@
     </record>
     <menuitem id="menu_gpsmap_streetonline" sequence="2" name="Online Street"  parent="gpsmap_geolocation" action="action_gpsmap_street" groups="gpsmap_group_template"/>    
 
+    <record id="action_gpsmap_maphistory" model="ir.actions.client">
+        <field name="name">History Map</field>
+        <field name="tag">gpsmap.maphistory</field>
+    </record>
+    <menuitem id="menu_gpsmap_maphistory" name="History Map" sequence="3" parent="gpsmap_geolocation" action="action_gpsmap_maphistory" groups="gpsmap_group_template"/>
 
 
     <record id='fleet_position_action' model='ir.actions.act_window'>

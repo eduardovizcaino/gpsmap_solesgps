@@ -1,3 +1,12 @@
+/* #################### */
+/* ##### EJEMPLOS ##### */
+    div#maponline.map90{        
+        height: -o-calc(100% - 65px); /* opera */
+        height: -webkit-calc(100% - 65px); /* google, safari */
+        height: -moz-calc(100% - 65px); /* firefox */    
+    }      
+/* #################### */
+
 .fields1 {
     float:left;
 	height: 60px;
@@ -34,6 +43,32 @@ div#centro div svg {
     width:          360px; 
     height:         305px;
 }
+div#filtro{    
+    z-index:        1000; 
+    text-align:     left; 
+    position:       absolute; 
+    bottom:         0px; 
+    left:           0px;  
+    height:         100%; 
+    color:          #aaa; 
+    padding:        8px;
+    width:          100%;     
+}
+
+
+
+div#maponline{        
+    z-index:        100; 
+    position:       absolute; 
+    bottom:         0px; 
+    left:           0px;   
+    width:          100%;     
+    height:         100%;
+}      
+.filtro{        
+    float:          left;    
+    width:          140px;     
+}      
 
 
 /* ####################################### */
@@ -44,8 +79,7 @@ div#centro div svg {
     div#odometro div#centro {
         bottom:         0px; 
         left:           100px; 
-    }
-
+    }    
 }
 
 
@@ -58,6 +92,14 @@ div#centro div svg {
         bottom:         0px; 
         left:           100px; 
     }
+    div#maponline.map100{        
+        height:         100%;
+    }
+    div#maponline.map90{        
+        height: -o-calc(100% - 65px); /* opera */
+        height: -webkit-calc(100% - 65px); /* google, safari */
+        height: -moz-calc(100% - 65px); /* firefox */    
+    }      
 
 }
 
