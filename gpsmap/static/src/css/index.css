@@ -70,9 +70,6 @@ div#maponline{
     width:          100%;     
     height:         100%;
 }      
-.filtro{            
-    width:          140px;     
-}      
 
 
 /* ####################################### */
@@ -84,6 +81,10 @@ div#maponline{
         bottom:         0px; 
         left:           100px; 
     }    
+    .filtro{            
+        width:          140px;     
+    }      
+
 }
 
 
@@ -96,15 +97,9 @@ div#maponline{
         bottom:         0px; 
         left:           100px; 
     }
-    div#maponline.map100{        
-        height:         100%;
-    }
-    div#maponline.map90{        
-        height: -o-calc(100% - 65px); /* opera */
-        height: -webkit-calc(100% - 65px); /* google, safari */
-        height: -moz-calc(100% - 65px); /* firefox */    
-    }      
-
+    .filtro{            
+        width:          140px;     
+    }          
 }
 
 
@@ -124,6 +119,9 @@ div#maponline{
     a.o_sub_menu_logo {
         display:        none;
     }
+    .filtro{            
+        width:          80px;     
+    }      
 
 }
 
@@ -143,6 +141,9 @@ div#maponline{
     a.o_sub_menu_logo {
         display:        none;
     }
+    .filtro{            
+        width:          80px;     
+    }      
 
 }
 
