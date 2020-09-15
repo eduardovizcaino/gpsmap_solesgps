@@ -53,11 +53,6 @@ div#filtro{
     color:          #aaa; 
     padding:        5px;
     background-color:#eee;
-
-    width: -o-calc(100% - 290px); /* opera */
-    width: -webkit-calc(100% - 290px); /* google, safari */
-    width: -moz-calc(100% - 290px); /* firefox */    
-
 }
 
 
@@ -84,6 +79,11 @@ div#maponline{
     .filtro{            
         width:          140px;     
     }      
+    div#filtro{    
+        width: -o-calc(100% - 290px); /* opera */
+        width: -webkit-calc(100% - 290px); /* google, safari */
+        width: -moz-calc(100% - 290px); /* firefox */    
+    }
 
 }
 
@@ -100,6 +100,12 @@ div#maponline{
     .filtro{            
         width:          140px;     
     }          
+    div#filtro{    
+        width: -o-calc(100% - 290px); /* opera */
+        width: -webkit-calc(100% - 290px); /* google, safari */
+        width: -moz-calc(100% - 290px); /* firefox */    
+    }
+
 }
 
 
@@ -122,6 +128,11 @@ div#maponline{
     .filtro{            
         width:          80px;     
     }      
+    div#filtro{    
+        width: -o-calc(100% - 350px); /* opera */
+        width: -webkit-calc(100% - 350px); /* google, safari */
+        width: -moz-calc(100% - 350px); /* firefox */    
+    }
 
 }
 
@@ -144,6 +155,11 @@ div#maponline{
     .filtro{            
         width:          80px;     
     }      
+    div#filtro{    
+        width: -o-calc(100% - 350px); /* opera */
+        width: -webkit-calc(100% - 350px); /* google, safari */
+        width: -moz-calc(100% - 350px); /* firefox */    
+    }
 
 }
 

@@ -497,10 +497,18 @@ odoo.define('gpsmap', function(require){
                 status_device(obj);
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
+			    
+                setTimeout(function()
+                {   
+                    $("div#filtro").hide();         
+                },100);
             }                
             else
             {
-            
+                setTimeout(function()
+                {            
+                    $("div#filtro").show();
+                },100);           
             }
         },    
     });
