@@ -1,4 +1,4 @@
-    var section;
+
     var geocoder;
     var gMEvent					=undefined;
     
@@ -35,8 +35,8 @@
 	var row						={};
     var local                   ={};
     var gpsmaps_obj;
-    //var streetonline_obj;
-    //var maponline_obj;
+    var streetonline_obj;
+    var maponline_obj;
     var map;
     var class_gpsmap;
     var actualizaciones         =0;
@@ -60,8 +60,10 @@ odoo.define('gpsmap', function(require){
     ////////  CLASS GPSMAP  
     //////////////////////////////////////////////////////////////
     class_gpsmap = Widget.extend({
+        //////////////////////////////////////////////////////////////
         willStart: function () {
             var self = this;            
+            ////            
             this._rpc({
                     model: 'gpsmap.geofence',
                     method: 'search_read',
@@ -84,6 +86,7 @@ odoo.define('gpsmap', function(require){
                 local.vehicles     =res;                                        
             });
         },        
+
         //////////////////////////////////////////////////////////////
         geofences_paint: function() 
         {
@@ -105,21 +108,46 @@ odoo.define('gpsmap', function(require){
             },1000);
         },
         //////////////////////////////////////////////////////////////
+        geofences:function(){
+            /*
+            local.geofences=Array();
+            var iresult;
+            rpc.query({
+                 model: "gpsmap.geofence", 
+                 method: "search_read",
+                 args:[[],[]],
+            })
+            .then(function (result) 
+            {   
+		        if(result!= null && result.length>0)
+		        {
+		            console.log("llena variable geocerca");
+		            for(iresult in result)
+		            {		                
+		                var geofence                        =result[iresult];		                
+                        var geofence_id                     =geofence["id"];                        
+                        if(geofence["name"]!="")
+                            local.geofences[geofence_id]    =geofence;                        
+                    }
+                }    
+            });
+            */
+        },
+        //////////////////////////////////////////////////////////////
         positions_paint:function(argument)
         {               
             var ipositions;
             if(local.positions.length>0)
-            {                   
+            {   
+                console.log("POSITIONS PAINT ========");
                 var vehiculo_id;
                 var vehiculos       =local.vehicles;
                 var ivehiculos;
                 for(ipositions in local.positions)
                 {	
                     var positions       =local.positions[ipositions];
-                    
-                    var device_id       =positions.deviceid[0];
-                    var device_id       =positions.de;                                                
-	                //if(vehiculos!= null && vehiculos.length>0)
+                    var device_id       =positions.de; 
+	                if(vehiculos!= null && vehiculos.length>0)
 	                {	                    
 	                    for(ivehiculos in vehiculos)
 	                    {		                
@@ -165,8 +193,7 @@ odoo.define('gpsmap', function(require){
                                 if(typeof argument=="number")
                                 {
                                     v.se="historyForm";
-                                }
-                                
+                                }                                
                                 
                                 vehiculo["de"]=device_id;
                                 vehiculo["dn"]=vehiculo_name,
@@ -175,7 +202,6 @@ odoo.define('gpsmap', function(require){
                                 vehiculo["co"]=positions.course;
                                 vehiculo["sp"]=positions.speed_compu;
                                 vehiculo["ty"]=positions.status;
-                                vehiculo["ev"]=positions.event;
                                 vehiculo["ti"]=positions.devicetime;
                                 vehiculo["im"]=vehiculo_img;
                                 vehiculo["at"]=positions.attributes;
@@ -217,59 +243,63 @@ odoo.define('gpsmap', function(require){
                     method: "js_vehicles",
                     fields: fields_select
                 };                
-            }            
+            }
+            
             setTimeout(function()
             {
-                rpc.query(model)
-                .then(function (result) 
-                {
-                    del_locations();
-                    local.positions=Array();                          
-                    //if(result!= null && result.length>0)
-                    {                            	            
-                        for(iresult in result)
-                        {
-                            var positions               =result[iresult];                                
-                            
-                            var device                  =positions.deviceid;		                
-                            var device_id               =positions["deviceid"];
-                            
-                            if(typeof device_id!="number")
-                                var device_id           =positions["deviceid"][0];
-                        	if(method=="read")          
-                        	{
-                        	    positions.se            ="historyForm";    
-                        	    device_active           =device_id;
-                        	}                   
-                            positions.mo                ="";
-                            positions.st                =1;
-                            positions.te                ="d_telefono";
-                            ////positions.dn                =vehiculo_name;
-                            positions.ty                =positions["status"];
-                            positions.na                ="name";
-                            positions.de                =device_id;
-                            positions.la                =positions["latitude"];
-                            positions.lo                =positions["longitude"]; 
-                            positions.co                =positions["course"]; 
-                            positions.mi                ="milage"; 
-                            positions.sp                =positions["speed_compu"]; 
-                            positions.ba                ="batery"; 
-                            positions.ti                =positions["devicetime"]; 
+                if(vehiculos!= null && vehiculos.length>0)
+                {	                    
+                    rpc.query(model)
+                    .then(function (result) 
+                    {
+                        del_locations();
+                        local.positions=Array();                          
+                        {                            	            
+                            for(iresult in result)
+                            {
+                                var positions               =result[iresult];                                
+                                console.log("positions==", positions["deviceid"]);
+                                
+                                var device                  =positions.deviceid;		                
+                                var device_id               =positions["deviceid"];
+                                
+                                if(typeof device_id!="number")
+                                    var device_id           =positions["deviceid"][0];
+                            	if(method=="read")          
+                            	{
+                            	    positions.se            ="historyForm";    
+                            	    device_active           =device_id;
+                            	}                   
+                                positions.mo                ="";
+                                positions.st                =1;
+                                positions.te                ="d_telefono";
+                                ////positions.dn                =vehiculo_name;
+                                positions.ty                =positions["status"];
+                                positions.na                ="name";
+                                positions.de                =device_id;
+                                positions.la                =positions["latitude"];
+                                positions.lo                =positions["longitude"]; 
+                                positions.co                =positions["course"]; 
+                                positions.mi                ="milage"; 
+                                positions.sp                =positions["speed_compu"]; 
+                                positions.ba                ="batery"; 
+                                positions.ti                =positions["devicetime"]; 
 
-                            positions.ho                ="icon_online"; 
-                            positions.ad                =positions["address"]; 
-                            positions.at                =positions["attributes"]; 
-                            ////positions.im                =vehiculos[device_id].image_vehicle; 
-                            positions.ev                =positions["event"]; 
-                            positions.ge                ="geofence"; 
-                            positions.ni                ="nivel";
-                            
-                            local.positions[device_id]  =positions;
-                        }                                    
-                    }
-                    gpsmaps_obj.positions_paint(argument);                                                              
-                });
-            },time);                
+                                positions.ho                ="icon_online"; 
+                                positions.ad                =positions["address"]; 
+                                positions.at                =positions["attributes"]; 
+                                ////positions.im                =vehiculos[device_id].image_vehicle; 
+                                positions.ev                =positions["event"]; 
+                                positions.ge                ="geofence"; 
+                                positions.ni                ="nivel";
+                                
+                                local.positions[device_id]  =positions;
+                            }                                    
+                        }
+                        gpsmaps_obj.positions_paint(argument);                                                              
+                    });
+                }
+            },50);
         },
 
         //////////////////////////////////////////////////////////////
@@ -278,7 +308,7 @@ odoo.define('gpsmap', function(require){
 	        setTimeout(function()
 	        {  
 	            if(google!=null)
-	            {   
+	            {                
 	                console.log("Crear mapa");  
 			        if(iMap=="ROADMAP")	            	var tMap = google.maps.MapTypeId.ROADMAP;
 			        if(iMap=="HYBRID")	            	var tMap = google.maps.MapTypeId.HYBRID;								
@@ -321,27 +351,33 @@ odoo.define('gpsmap', function(require){
 	        var coordinates         ={latitude:19.057522756727606,longitude:-104.29785901920393};
             gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);                                   
         },
-        html_map: function(object) {
-            if($(".o_content").length)
-            {
-                if($("#html_mapa").length==0)
-                {
-                    var html_mapa="\
-                        <div id=\"html_mapa\" style=\"position:relative; width:100%; height:100%;\">\
-                            <div id=\"map_tree\" style=\"width:100%; height:100%;\"> MAPA</div>\
-                            <div style=\"z-index:100; text-align:left; position:absolute; bottom:0px; left:0px; width:100%; height:70px; background-color:#222; color:#aaa; padding:10px;\">\
-                                <div id=\"tablero2\"  style=\"float:left;\"></div>\
-                                <div id=\"tablero\"  style=\"float:left;\"></div>\
-                            </div>\
-                        </div>\
-                    ";
-                    $(".o_content").append(html_mapa);                            
-                }
-            }            
+
+        //////////////////////////////////////////////////////////////
+        vehicles:function(){
+        /*
+            local.vehicles=Array();
+            var iresult;
+            rpc.query({
+                 model: "fleet.vehicle", 
+                 method: "search_read",
+                 args:[[],[]],
+            })
+            .then(function (result) 
+            {   
+		        if(result!= null && result.length>0)
+		        {
+		            console.log("llena variable vehiculo");
+		            for(iresult in result)
+		            {		                
+		                var vehiculo                    =result[iresult];		                
+                        var vehiculo_id                 =vehiculo["id"];                        
+                        if(vehiculo["name"]!="")
+                            local.vehicles[vehiculo_id]     =vehiculo;                        
+                    }
+                }    
+            });
+            */
         },
-        
-
-
         //////////////////////////////////////////////////////////////
 		vehicles_menu: function(type)  
 		{
@@ -374,14 +410,7 @@ odoo.define('gpsmap', function(require){
 			                image=vehiculo["image_vehicle"];
 			            }			
 			            icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i135.png";
-		                opcion_vehiculo =opcion_vehiculo+"\
-		                    <li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\">\
-		                        <table width=\"100%\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
-		                        <tr><td height=\"17\" width=\"50\" align=\"center\"><img height=\"17\" src=\"" +icon+ "\"></td>\
-		                        <td>" + vehiculo_name + "</td><td  width=\"50\" align=\"center\" class=\"event_device\"> -</td></tr>\
-		                        </table>\
-	                        </li>\
-                        ";
+		                opcion_vehiculo =opcion_vehiculo+"<li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\"><table width=\"100%\" class=\"select_devices\" device_id=\""+vehiculo_id+"\"><tr><td height=\"17\" width=\"50\" align=\"center\"><img height=\"17\" src=\"" +icon+ "\"></td><td>" + vehiculo_name + "</td><td  width=\"50\" align=\"center\" class=\"event_device\"> -</td></tr></table></li>";
 		            }
                 
 		            if(!$("ul#menu_vehicles").length)	      
@@ -396,6 +425,12 @@ odoo.define('gpsmap', function(require){
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
+    			                    if(tipo==\"gpsmap.menu_gpsmap_maphistory\"){\
+    			                        $(\"div#filtro\").css(\"display\", \"contents\");\
+    			                    }else{\
+    			                        $(\"div#filtro\").css(\"display\", \"none\");\
+                                        status_device(this);\
+                                    }\
 			                    });\
 			                </script>\
 		                ";
@@ -414,6 +449,8 @@ odoo.define('gpsmap', function(require){
 		},
         //////////////////////////////////////////////////////////////
         position: function(argument) {
+            console.log("POSITION ========");
+            //gpsmaps_obj.positions_search(argument);     
             setTimeout(function()
             {  
                 if(argument==undefined)                 gpsmaps_obj.positions(argument);
@@ -429,7 +466,8 @@ odoo.define('gpsmap', function(require){
             var time=1000;  	    
             if($("div#maponline").length>0) 
             { 
-                time=15000;        
+                console.log("POSITIONS ====== lalo =");
+                time=35000;        
 //                del_locations();
                 gpsmaps_obj.positions_search(argument);         
             }
@@ -441,19 +479,16 @@ odoo.define('gpsmap', function(require){
                 },time);
             }
         },    
-        
         ////////////////////////////////////////////////////////////
-        positions_online: function() {
-            
-        
+        positions_online: function(argument) {
             if(local.vehicles==undefined)     local.vehicles  =Array();            
             if(local.geofences==undefined)     local.geofences =Array();
             local.positions =undefined;    
 
-            gpsmaps_obj.vehicles_menu(section);               
+            gpsmaps_obj.vehicles_menu(argument);               
             gpsmaps_obj.map();            
-                    
-            if(section!="gpsmaps_maphistory")
+
+            if(argument!="maphistory")
             {
                 status_device();
                 gpsmaps_obj.positions_search();
@@ -462,25 +497,20 @@ odoo.define('gpsmap', function(require){
                 status_device(obj);
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
-   
-                setTimeout(function()    {          $("div#filtro").hide();       },100);
+
             }                
-            else     
-            {
-                setTimeout(function()    {          $("div#filtro").show();       },100);
-            }
         },    
     });
     
     //////////////////////////////////////////////////////////////
     ////////  GPSMAP_MAPONLINE  
     //////////////////////////////////////////////////////////////
-    
+
     local.maponline = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
-        start: function() {    
-            section="gpsmaps_maponline";   
-            gpsmaps_obj.positions_online();
+
+        start: function() {       
+            gpsmaps_obj.positions_online("gpsmaps_maponline");
         },
     });
     core.action_registry.add('gpsmap.maponline',local.maponline);
@@ -492,8 +522,7 @@ odoo.define('gpsmap', function(require){
     local.streetonline = class_gpsmap.extend({
         template: 'gpsmaps_streetonline',
         start: function() {
-            section="gpsmaps_streetonline";   
-            gpsmaps_obj.positions_online();
+            gpsmaps_obj.positions_online("gpsmaps_streetonline");
             var panoramaOptions = {};
             
             var panorama = new google.maps.StreetViewPanorama(document.getElementById('street'), panoramaOptions);
@@ -501,22 +530,22 @@ odoo.define('gpsmap', function(require){
         }
     });
     core.action_registry.add('gpsmap.streetonline', local.streetonline);
+
     //////////////////////////////////////////////////////////////
-    ////////  GPSMAP_MAPHISTORY  
+    ////////  GPSMAP_STREETONLINE  
     //////////////////////////////////////////////////////////////
 
     local.maphistory = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
         start: function() {
-            section="gpsmaps_maphistory";   
-            gpsmaps_obj.positions_online();
+            gpsmaps_obj.positions_online("maphistory");
+            var panoramaOptions = {};            
         }
     });
     core.action_registry.add('gpsmap.maphistory', local.maphistory);
     gpsmaps_obj         =new class_gpsmap();  
 
     
-
     var FormController = require('web.FormController');
     var formController = FormController.include({
         _onButtonClicked: function (event) {
@@ -547,30 +576,25 @@ odoo.define('gpsmap', function(require){
                 limpiar_virtual();
                 limpiar_real();				         
             }
-            else if(event.data.attrs.id === "action_search")
+            else if(event.data.attrs.id === "action_stopmotor")
             {
-                alert("action_search");
-                //command_device("engineStop",22);
+                command_device("engineStop",22);
             }
             else if(event.data.attrs.id === "action_startmotor")
             {                
                 command_device("engineResume",22);
                 
-                //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}                
+                //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}
+                
             }
             
-            else 
-            {
-
-                this._super(event);
-
-
-            }    
+            
+            else this._super(event);
+            
         },
     });
 
 });
-
 
 	/*
 	##################################################################
@@ -837,14 +861,14 @@ odoo.define('gpsmap', function(require){
 			";	
 		}	
 
-		var tablero="\
-			<table id=\"data_tablero\">\
-				<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
-				<td style=\"color:#fff;\"><a href=\"tel:" + item["phone"] +"\">" + tablero1 + "</a></td></tr>\
-				<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
-				<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
-			</table>\
-		";	
+			var tablero="\
+				<table id=\"data_tablero\">\
+					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
+					<td style=\"color:#fff;\"><a href=\"tel:" + item["phone"] +"\">" + tablero1 + "</a></td></tr>\
+					<tr><td width=\"40\"  style=\"color:#fff;\"></td>\
+					<td style=\"color:#fff;\">" +tablero2 + "</td></tr>\
+				</table>\
+			";	
 
 
         $("#tablero").html(tablero);
@@ -859,6 +883,8 @@ odoo.define('gpsmap', function(require){
 		if(vehicle["st"]=="")			vehicle["st"]="1"; 
 		if(vehicle["mo"]=="map")		vehicle["st"]="1";
 		
+		//alert(vehicle["mo"]);
+	    //alert(vehicle["st"]);		
 		if(vehicle["st"]=="1" || vehicle["st"]=="-1")
 		{
 			var device_id=vehicle["de"];
@@ -874,6 +900,7 @@ odoo.define('gpsmap', function(require){
 			}									
 			if(vehicle["se"]=="historyMap" || vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
 			{
+			    //alert("1");
 				//if(vehicle["ti"] > localizacion_anterior[device_id]["ti"] && vehicle["se"]!="simulator")
 				//	hablar(vehicle);
 				localizacion_anterior[device_id]=vehicle;
@@ -886,10 +913,10 @@ odoo.define('gpsmap', function(require){
 					
 				icon_status="";	
 				if(vehicle["ty"]=="alarm")				                icon_status="sirena.png";
-				if(vehicle["ty"]=="Stopped")    		                icon_status="stop.png";
+				if(vehicle["ty"]=="deviceStopped")		                icon_status="stop.png";
 				if(vehicle["ty"]=="deviceMoving")		                icon_status="car_signal1.png";
-    			if(vehicle["ty"]=="Online")		                        icon_status="car_signal1.png";
-				if(vehicle["ty"]=="Offline")		
+				if(vehicle["ty"]=="deviceOnline")		                icon_status="car_signal1.png";
+				if(vehicle["ty"]=="deviceOffline")		
 				{
 					icon_status="car_signal0.png";
 					if(vehicle["ho"]==1)	                            icon_status="car_signal1.png";
@@ -897,8 +924,8 @@ odoo.define('gpsmap', function(require){
 				if(vehicle["ty"]=="ignitionOn")			                icon_status="swich_on.png";
 				if(vehicle["ty"]=="ignitionOff")		                icon_status="swich_off.png";
 				
-				if(vehicle["sp"]<5 && vehicle["ty"]=="Online")	icon_status="stop.png";
-				if(vehicle["sp"]>5 && vehicle["ty"]=="Online")	icon_status="car_signal1.png";
+				if(vehicle["sp"]<5 && vehicle["ty"]=="deviceOnline")	icon_status="stop.png";
+				if(vehicle["sp"]>5 && vehicle["ty"]=="deviceOnline")	icon_status="car_signal1.png";
 				
 				if(icon_status!="")
 				{				    
@@ -943,6 +970,7 @@ odoo.define('gpsmap', function(require){
 						});
 						
 					}
+					//alert("2");
 					labels[device_id].set('position', posicion);
 			
 					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator" || vehicle["se"]=="historyForm") 
@@ -1072,8 +1100,7 @@ odoo.define('gpsmap', function(require){
 			else							status_device();
 		});							
 	}
-	//function paint_history(iposiciones, section)
-	function paint_history(iposiciones)
+	function paint_history(iposiciones, section)
 	{			    
         if(vehicle_data[device_active].length>isimulacion)                
         {        	
@@ -1107,7 +1134,7 @@ odoo.define('gpsmap', function(require){
 	            	del_locations();
             	isimulacion=isimulacion+1;
             	if(simulation_action=="play")		
-            		paint_history(isimulacion);
+            		paint_history(isimulacion, section);
             },simulation_time);
         }
 	}
@@ -1129,7 +1156,6 @@ odoo.define('gpsmap', function(require){
 			monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
 			monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
 		});
-
 		$('#fFinal').datetimepicker({
 			dateFormat: "yy-mm-dd",
 			timeFormat: 'HH:mm:ss',
@@ -1173,7 +1199,7 @@ odoo.define('gpsmap', function(require){
 				    simulation_action="play";
 				    del_locations();
 				    $("div#odometro").show();
-					paint_history(isimulacion);
+					paint_history(isimulacion, historyMap);
 				}    					
 			}
 		);
@@ -1360,7 +1386,6 @@ odoo.define('gpsmap', function(require){
 				success: function (response) 
 				{
 				    foreach(response);
-
 				}
 			});
 			*/

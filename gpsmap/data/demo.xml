@@ -28,8 +28,8 @@
       <record id="position_1_1" model="gpsmap.positions">
           <field name="protocol">tk103</field>             
           <field name="deviceid" ref="fleet.vehicle_1" />          
-          <field name="servertime">2019-11-26 00:43:11</field>
-          <field name="devicetime">2019-11-26 00:42:04</field>
+          <field name="servertime">2019-11-26 00:40:11</field>
+          <field name="devicetime">2019-11-26 00:40:04</field>
           <field name="fixtime">2019-11-26 00:42:04</field>
           <field name="valid">1</field>          
           <field name="latitude">19.10276</field>
@@ -48,8 +48,8 @@
       <record id="position_2_1" model="gpsmap.positions">
           <field name="protocol">tk103</field>             
           <field name="deviceid" ref="fleet.vehicle_2" />          
-          <field name="servertime">2019-11-26 00:43:11</field>
-          <field name="devicetime">2019-11-26 00:42:04</field>
+          <field name="servertime">2019-11-26 00:41:11</field>
+          <field name="devicetime">2019-11-26 00:41:04</field>
           <field name="fixtime">2019-11-26 00:42:04</field>
           <field name="valid">1</field>                    
           <field name="latitude">19.1135</field>
@@ -67,7 +67,7 @@
       <record id="position_3_1" model="gpsmap.positions">
           <field name="protocol">tk103</field>             
           <field name="deviceid" ref="fleet.vehicle_3" />          
-          <field name="servertime">2019-11-26 00:43:11</field>
+          <field name="servertime">2019-11-26 00:42:11</field>
           <field name="devicetime">2019-11-26 00:42:04</field>
           <field name="fixtime">2019-11-26 00:42:04</field>
           <field name="valid">1</field>     
@@ -86,7 +86,7 @@
           <field name="protocol">tk103</field>             
           <field name="deviceid" ref="fleet.vehicle_4" />          
           <field name="servertime">2019-11-26 00:43:11</field>
-          <field name="devicetime">2019-11-26 00:42:04</field>
+          <field name="devicetime">2019-11-26 00:43:04</field>
           <field name="fixtime">2019-11-26 00:42:04</field>
           <field name="valid">1</field>
           <field name="latitude">19.08645</field>
@@ -102,8 +102,8 @@
       <record id="position_5_1" model="gpsmap.positions">
           <field name="protocol">tk103</field>             
           <field name="deviceid" ref="fleet.vehicle_5" />          
-          <field name="servertime">2019-11-26 00:43:11</field>
-          <field name="devicetime">2019-11-26 00:42:04</field>
+          <field name="servertime">2019-11-26 00:44:11</field>
+          <field name="devicetime">2019-11-26 00:44:04</field>
           <field name="fixtime">2019-11-26 00:42:04</field>
           <field name="valid">1</field>
           <field name="latitude">19.5</field>
