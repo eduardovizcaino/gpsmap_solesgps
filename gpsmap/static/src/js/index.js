@@ -488,7 +488,7 @@ odoo.define('gpsmap', function(require){
             gpsmaps_obj.vehicles_menu(argument);               
             gpsmaps_obj.map();            
 
-            if(argument!="maphistory")
+            if(argument!="gpsmaps_maphistory")
             {
                 status_device();
                 gpsmaps_obj.positions_search();
@@ -497,8 +497,11 @@ odoo.define('gpsmap', function(require){
                 status_device(obj);
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
-
             }                
+            else
+            {
+            
+            }
         },    
     });
     
@@ -538,7 +541,7 @@ odoo.define('gpsmap', function(require){
     local.maphistory = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
         start: function() {
-            gpsmaps_obj.positions_online("maphistory");
+            gpsmaps_obj.positions_online("gpsmaps_maphistory");
             var panoramaOptions = {};            
         }
     });

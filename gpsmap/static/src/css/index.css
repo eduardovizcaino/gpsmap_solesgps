@@ -47,12 +47,17 @@ div#filtro{
     z-index:        1000; 
     text-align:     left; 
     position:       absolute; 
-    bottom:         0px; 
-    left:           0px;  
-    height:         100%; 
+    top:            10px; 
+    left:           245px;  
+    height:         41px; 
     color:          #aaa; 
-    padding:        8px;
-    width:          100%;     
+    padding:        5px;
+    background-color:#eee;
+
+    width: -o-calc(100% - 290px); /* opera */
+    width: -webkit-calc(100% - 290px); /* google, safari */
+    width: -moz-calc(100% - 290px); /* firefox */    
+
 }
 
 

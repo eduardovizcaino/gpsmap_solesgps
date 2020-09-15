@@ -24,7 +24,7 @@
 
     <record id="action_gpsmap_maphistory" model="ir.actions.client">
         <field name="name">History Map</field>
-        <field name="tag">gpsmap.maponline</field>
+        <field name="tag">gpsmap.maphistory</field>
     </record>
     <menuitem id="menu_gpsmap_maphistory" sequence="3" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_maphistory" groups="gpsmap_group_template"/>    
 
