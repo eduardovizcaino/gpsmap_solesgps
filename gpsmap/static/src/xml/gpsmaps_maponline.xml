@@ -26,7 +26,7 @@
                         <td class="filtro"><input name="start" type="text" placeholder="0000-00-00 00:00:00"/></td>
                         <td class="filtro"><input name="end" type="text" placeholder="0000-00-00 00:00:00"/></td>
                         <td>
-                            <button id="action_search" custom="click" aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <button id="action_search" custom="click"  string="ADD pruea" aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
                                 <span class="fa fa-search"></span>
                             </button>                        
                         </td>    

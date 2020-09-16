@@ -594,10 +594,14 @@ odoo.define('gpsmap', function(require){
                 //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}
                 
             }
-            
-            
+            else if(event.data.attrs.id === "action_search")
+            {                
+                alert("buscando");
+                
+                //{"id":0,"description":"Nuevo...","deviceId":22,"type":"engineResume","textChannel":false,"attributes":{}}
+                
+            }
             else this._super(event);
-            
         },
     });
 
