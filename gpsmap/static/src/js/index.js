@@ -202,6 +202,7 @@ odoo.define('gpsmap', function(require){
                                 vehiculo["co"]=positions.course;
                                 vehiculo["sp"]=positions.speed_compu;
                                 vehiculo["ty"]=positions.status;
+                                vehiculo["ev"]=positions.event;
                                 vehiculo["ti"]=positions.devicetime;
                                 vehiculo["im"]=vehiculo_img;
                                 vehiculo["at"]=positions.attributes;
@@ -919,10 +920,10 @@ odoo.define('gpsmap', function(require){
 					
 				icon_status="";	
 				if(vehicle["ty"]=="alarm")				                icon_status="sirena.png";
-				if(vehicle["ty"]=="deviceStopped")		                icon_status="stop.png";
-				if(vehicle["ty"]=="deviceMoving")		                icon_status="car_signal1.png";
-				if(vehicle["ty"]=="deviceOnline")		                icon_status="car_signal1.png";
-				if(vehicle["ty"]=="deviceOffline")		
+				if(vehicle["ty"]=="Stopped")		                    icon_status="stop.png";
+				if(vehicle["ty"]=="Moving")		                        icon_status="car_signal1.png";
+				if(vehicle["ty"]=="Online")		                        icon_status="car_signal1.png";
+				if(vehicle["ty"]=="Offline")		
 				{
 					icon_status="car_signal0.png";
 					if(vehicle["ho"]==1)	                            icon_status="car_signal1.png";
@@ -930,12 +931,12 @@ odoo.define('gpsmap', function(require){
 				if(vehicle["ty"]=="ignitionOn")			                icon_status="swich_on.png";
 				if(vehicle["ty"]=="ignitionOff")		                icon_status="swich_off.png";
 				
-				if(vehicle["sp"]<5 && vehicle["ty"]=="deviceOnline")	icon_status="stop.png";
-				if(vehicle["sp"]>5 && vehicle["ty"]=="deviceOnline")	icon_status="car_signal1.png";
+				if(vehicle["sp"]<5 && vehicle["ty"]=="Online")	        icon_status="stop.png";
+				if(vehicle["sp"]>5 && vehicle["ty"]=="Online")	        icon_status="car_signal1.png";
 				
 				if(icon_status!="")
 				{				    
-					img_icon="<img width=\"20\" title=\""+ vehicle["ty"] +"\" src=\"/gpsmap/static/src/img/"+ icon_status +"\" >";
+					img_icon="<img width=\"20\" title=\""+ vehicle["ev"] +"\" src=\"/gpsmap/static/src/img/"+ icon_status +"\" >";
 					$("table.select_devices[device_id="+ vehicle["de"] +"] tr td.event_device").html(img_icon);
 				}	
 							
