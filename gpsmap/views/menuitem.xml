@@ -26,7 +26,7 @@
         <field name="name">History Map</field>
         <field name="tag">gpsmap.maphistory</field>
     </record>
-    <menuitem id="menu_gpsmap_maphistory" sequence="3" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_maphistory" groups="gpsmap_group_template"/>    
+    <menuitem id="menu_gpsmap_maphistory" sequence="3" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_maphistory" groups="fleet.fleet_group_manager"/>    
 
 
     <record id='fleet_position_action' model='ir.actions.act_window'>
