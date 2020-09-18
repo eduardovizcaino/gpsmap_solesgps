@@ -394,7 +394,7 @@ odoo.define('gpsmap', function(require){
 		        var tipo;
 		        		        
 		        if(vehiculos!= null && vehiculos.length>0)
-		        {
+		        {		            
 		            console.log("Crea menu de vehiculos con la variable");
 		            for(ivehiculos in vehiculos)
 		            {		                
@@ -404,7 +404,7 @@ odoo.define('gpsmap', function(require){
                         
                         if(!(vehiculo["economic_number"]==undefined || vehiculo["economic_number"]==false))
                         {
-                            var vehiculo_name   =vehiculo["economic_number"];
+                            vehiculo_name   ="[" + vehiculo["license_plate"] + "]" + vehiculo["economic_number"];
                         }                        
                                                                         
 			            var image="01";
@@ -413,7 +413,17 @@ odoo.define('gpsmap', function(require){
 			                image=vehiculo["image_vehicle"];
 			            }			
 			            icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i135.png";
-		                opcion_vehiculo =opcion_vehiculo+"<li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\"><table width=\"100%\" class=\"select_devices\" device_id=\""+vehiculo_id+"\"><tr><td height=\"17\" width=\"50\" align=\"center\"><img height=\"17\" src=\"" +icon+ "\"></td><td>" + vehiculo_name + "</td><td  width=\"50\" align=\"center\" class=\"event_device\"> -</td></tr></table></li>";
+		                opcion_vehiculo =opcion_vehiculo+"\
+		                    <li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\">\
+		                    <table width=\"100%\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
+		                        <tr>\
+		                            <td height=\"17\" width=\"50\" align=\"center\"><img height=\"17\" src=\"" +icon+ "\"></td>\
+		                            <td>" + vehiculo_name + "</td>\
+		                            <td width=\"50\" align=\"center\" class=\"event_device\"> -</td>\
+	                            </tr>\
+	                            </table>\
+                            </li>\
+                        ";
 		            }
                 
 		            if(!$("ul#menu_vehicles").length)	      
