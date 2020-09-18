@@ -40,6 +40,7 @@
     var map;
     var class_gpsmap;
     var actualizaciones         =0;
+    var gpsmap_section          ="";
         
 odoo.define('gpsmap', function(require){
     "use strict";
@@ -259,7 +260,7 @@ odoo.define('gpsmap', function(require){
                             for(iresult in result)
                             {
                                 var positions               =result[iresult];                                
-                                console.log("positions==", positions["deviceid"]);
+                                //console.log("positions==", positions["deviceid"]);
                                 
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
@@ -426,7 +427,14 @@ odoo.define('gpsmap', function(require){
     			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
     			                    $(this).addClass(\"vehicle_active\");\
     			                    device_active               =$(this).attr(\"vehicle\");\
-                                    status_device(this);\
+    			                    if(gpsmap_section!=\"gpsmaps_maphistory\")\
+    			                    {\
+                                        status_device(this);\
+                                    }\
+                                    else\
+    			                    {\
+    			                        \
+                                    }\
 			                    });\
 			                </script>\
 		                ";
@@ -446,7 +454,6 @@ odoo.define('gpsmap', function(require){
         //////////////////////////////////////////////////////////////
         position: function(argument) {
             console.log("POSITION ========");
-            //gpsmaps_obj.positions_search(argument);     
             setTimeout(function()
             {  
                 if(argument==undefined)                 gpsmaps_obj.positions(argument);
@@ -460,11 +467,11 @@ odoo.define('gpsmap', function(require){
         ////////////////////////////////////////////////////////////
         positions: function(argument) {
             var time=1000;  	    
-            if($("div#maponline").length>0) 
+
+            if(gpsmap_section!="gpsmaps_maphistory" && $("div#maponline").length>0)
             { 
                 console.log("POSITIONS ====== lalo =");
-                time=35000;        
-//                del_locations();
+                time=15000;        
                 gpsmaps_obj.positions_search(argument);         
             }
             if(typeof argument!="number")
@@ -476,36 +483,27 @@ odoo.define('gpsmap', function(require){
             }
         },    
         ////////////////////////////////////////////////////////////
-        positions_online: function(argument) {
-            if(local.vehicles==undefined)     local.vehicles  =Array();            
-            if(local.geofences==undefined)     local.geofences =Array();
+        positions_online: function() {
+            if(local.vehicles==undefined)       local.vehicles  =Array();            
+            if(local.geofences==undefined)      local.geofences =Array();
             local.positions =undefined;    
 
-            gpsmaps_obj.vehicles_menu(argument);               
+            gpsmaps_obj.vehicles_menu(gpsmap_section);               
             gpsmaps_obj.map();            
 
-            if(argument!="gpsmaps_maphistory")
+            if(gpsmap_section!="gpsmaps_maphistory")
             {
                 status_device();
                 gpsmaps_obj.positions_search();
 
-                var obj=$("li.vehicle_active")
-                status_device(obj);
+                //var obj=$("li.vehicle_active")
+                status_device($("li.vehicle_active"));
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
 			    
-                setTimeout(function()
-                {   
-                    $("div#filtro").hide();         
-                },100);
+                setTimeout(function()    {   $("div#filtro").hide();    },100);
             }                
-            else
-            {
-                setTimeout(function()
-                {            
-                    $("div#filtro").show();
-                },100);           
-            }
+            else  setTimeout(function()    {   $("div#filtro").show();    },100);           
         },    
     });
     
@@ -516,8 +514,9 @@ odoo.define('gpsmap', function(require){
     local.maponline = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
 
-        start: function() {       
-            gpsmaps_obj.positions_online("gpsmaps_maponline");
+        start: function() {                  
+            gpsmap_section="gpsmaps_maponline"; 
+            gpsmaps_obj.positions_online();
         },
     });
     core.action_registry.add('gpsmap.maponline',local.maponline);
@@ -529,7 +528,8 @@ odoo.define('gpsmap', function(require){
     local.streetonline = class_gpsmap.extend({
         template: 'gpsmaps_streetonline',
         start: function() {
-            gpsmaps_obj.positions_online("gpsmaps_streetonline");
+            gpsmap_section="gpsmaps_streetonline";
+            gpsmaps_obj.positions_online();
             var panoramaOptions = {};
             
             var panorama = new google.maps.StreetViewPanorama(document.getElementById('street'), panoramaOptions);
@@ -545,7 +545,8 @@ odoo.define('gpsmap', function(require){
     local.maphistory = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
         start: function() {
-            gpsmaps_obj.positions_online("gpsmaps_maphistory");
+            gpsmap_section="gpsmaps_maphistory";
+            gpsmaps_obj.positions_online();
             var panoramaOptions = {};            
         }
     });
@@ -556,6 +557,7 @@ odoo.define('gpsmap', function(require){
     var FormController = require('web.FormController');
     var formController = FormController.include({
         _onButtonClicked: function (event) {
+            alert("buscando");
             if(event.data.attrs.id === "action_addpoint")
             {
                 GeoMarker.push(coordinate);
