@@ -400,11 +400,11 @@ odoo.define('gpsmap', function(require){
 		            {		                
 		                var vehiculo        =vehiculos[ivehiculos];		                
                         var vehiculo_id     =vehiculo["id"];
-                        var vehiculo_name   =vehiculo["license_plate"];
+                        var vehiculo_name   ="[" + vehiculo["license_plate"] + "] ";
                         
                         if(!(vehiculo["economic_number"]==undefined || vehiculo["economic_number"]==false))
                         {
-                            vehiculo_name   ="[" + vehiculo["license_plate"] + "] " + vehiculo["economic_number"];
+                            vehiculo_name   = vehiculo_name + vehiculo["economic_number"];
                         }                        
                                                                             
 			            var image="01";
