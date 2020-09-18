@@ -84,6 +84,7 @@ odoo.define('gpsmap', function(require){
             return this._rpc(data)
             .then(function(res) 
             {
+                console.log(res);
                 self.vehicles     =res;                        
                 local.vehicles     =res;                                        
             });
@@ -400,11 +401,11 @@ odoo.define('gpsmap', function(require){
 		            {		                
 		                var vehiculo        =vehiculos[ivehiculos];		                
                         var vehiculo_id     =vehiculo["id"];
-                        var vehiculo_name   =vehiculo["license_plate"];
+                        var vehiculo_name   =vehiculo["name"];
                         
                         if(!(vehiculo["economic_number"]==undefined || vehiculo["economic_number"]==false))
                         {
-                            //vehiculo_name   = vehiculo_name + vehiculo["economic_number"];
+                            vehiculo_name   = vehiculo["economic_number"];
                         }                        
                                                                             
 			            var image="01";
@@ -421,7 +422,7 @@ odoo.define('gpsmap', function(require){
 		                                <img height=\"15\" src=\"" +icon+ "\"><br>\
 		                                <b>"+ vehiculo["license_plate"] +"</b>\
 	                                </td>\
-		                            <td>" + vehiculo["economic_number"] + "</td>\
+		                            <td>" + vehiculo_name + "</td>\
 		                            <td width=\"30\" align=\"rigth\" class=\"event_device\"> -</td>\
 	                            </tr>\
 	                            </table>\
