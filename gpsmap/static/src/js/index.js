@@ -1151,42 +1151,7 @@ odoo.define('gpsmap', function(require){
             },simulation_time);
         }
 	}
-/*
-	function dateTimes()
-	{
-		$('#fInicio').datetimepicker({
-			dateFormat: "yy-mm-dd",
-			timeFormat: 'HH:mm:ss',
-			changeMonth: false,
-			changeYear: false,
-			currentText: "Ahora",
-			closeText: "Listo",
-			showSecond: false,			
-			showMillisec:false,
-			showMicrosec:false,
-			showTimezone:false,
-			dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-			monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-			monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-		});
-		$('#fFinal').datetimepicker({
-			dateFormat: "yy-mm-dd",
-			timeFormat: 'HH:mm:ss',
-			changeMonth: false,
-			changeYear: false,
-			currentText: "Ahora",
-			closeText: "Listo",
-			showSecond: false,			
-			showMillisec:false,
-			showMicrosec:false,
-			showTimezone:false,
-			dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-			monthNames: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-			monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]
-		});	
-		
-	}
-*/
+
 	function butons_simulation()
 	{
 		var butons_html=" \

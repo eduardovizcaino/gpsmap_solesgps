@@ -153,9 +153,20 @@ class positions(models.Model):
     address                                     = fields.Char('Calle', size=150)
     attributes                                  = fields.Char('Atributos', size=5000)
     status                                      = fields.Char('Type', size=5000)
+    status_compu                                = fields.Char('Type', compute='_get_status', size=5000)
     leido                                       = fields.Integer('Leido',default=0)
     event                                       = fields.Char('Evento', size=70)
     online                                      = fields.Boolean('Online', default=True)
+    @api.one
+    def _get_status(self):    
+        tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+        hoy=tz.localize(fields.Datetime.from_string(datetime.now())).astimezone(pytz.utc)
+
+        ahora = datetime.datetime.utcnow()
+        ayer = ahora - datetime.timedelta(days=1)
+
+        print("Hoy=",hoy, "  ahora=", ahora,"   ayer=",ayer)
+
     @api.one
     def _get_speed(self):    
         vehicle_obj                             =self.env['fleet.vehicle']        
