@@ -404,9 +404,9 @@ odoo.define('gpsmap', function(require){
                         
                         if(!(vehiculo["economic_number"]==undefined || vehiculo["economic_number"]==false))
                         {
-                            vehiculo_name   ="[" + vehiculo["license_plate"] + "]" + vehiculo["economic_number"];
+                            vehiculo_name   ="[" + vehiculo["license_plate"] + "] " + vehiculo["economic_number"];
                         }                        
-                                                                        
+                                                                            
 			            var image="01";
 			            if(!(vehiculo["image_vehicle"]==undefined || vehiculo["image_vehicle"]==false))
 			            {
