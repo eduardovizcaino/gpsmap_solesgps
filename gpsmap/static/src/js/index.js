@@ -63,24 +63,25 @@ odoo.define('gpsmap', function(require){
     class_gpsmap = Widget.extend({
         //////////////////////////////////////////////////////////////
         willStart: function () {
+            console.log(odoo.session_info.user_companies.allowed_companies);
             var self = this;            
-            ////            
-            this._rpc({
+            ////      
+            var data={
                     model: 'gpsmap.geofence',
                     method: 'search_read',
                     context: session.user_context,
-            })
+            }
+            
+                                          
+            this._rpc(data)
             .then(function(res) 
             {
                 self.geofences      =res;                        
                 local.geofences     =res;                                        
             });
             /////
-            return this._rpc({
-                    model: 'fleet.vehicle',
-                    method: 'search_read',
-                    context: session.user_context,
-            })
+            data["model"]="fleet.vehicle";            
+            return this._rpc(data)
             .then(function(res) 
             {
                 self.vehicles     =res;                        
