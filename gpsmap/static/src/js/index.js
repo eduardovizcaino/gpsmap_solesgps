@@ -421,7 +421,7 @@ odoo.define('gpsmap', function(require){
 		                                <img height=\"20\" src=\"" +icon+ "\"><br>\
 		                                <font size=\"0\">"+vehiculo_name+"</font>\
 	                                </td>\
-		                            <td>" + vehiculo_name + "</td>\
+		                            <td>" + vehiculo["economic_number"] + "</td>\
 		                            <td width=\"50\" align=\"center\" class=\"event_device\"> -</td>\
 	                            </tr>\
 	                            </table>\
