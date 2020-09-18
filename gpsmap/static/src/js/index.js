@@ -400,7 +400,7 @@ odoo.define('gpsmap', function(require){
 		            {		                
 		                var vehiculo        =vehiculos[ivehiculos];		                
                         var vehiculo_id     =vehiculo["id"];
-                        var vehiculo_name   ="[" + vehiculo["license_plate"] + "]";
+                        var vehiculo_name   =vehiculo["license_plate"];
                         
                         if(!(vehiculo["economic_number"]==undefined || vehiculo["economic_number"]==false))
                         {
@@ -417,9 +417,9 @@ odoo.define('gpsmap', function(require){
 		                    <li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\">\
 		                    <table width=\"100%\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
 		                        <tr>\
-		                            <td height=\"17\" width=\"50\" align=\"center\">\
-		                                <img height=\"17\" src=\"" +icon+ "\">\
-		                                <font size=\"5\">"+vehiculo_name+"</font>\
+		                            <td height=\"17\" width=\"80\" align=\"center\">\
+		                                <img height=\"17\" src=\"" +icon+ "\"><br>\
+		                                <font size=\"0\">"+vehiculo_name+"</font>\
 	                                </td>\
 		                            <td>" + vehiculo_name + "</td>\
 		                            <td width=\"50\" align=\"center\" class=\"event_device\"> -</td>\
