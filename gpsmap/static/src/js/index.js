@@ -415,14 +415,14 @@ odoo.define('gpsmap', function(require){
 			            icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i135.png";
 		                opcion_vehiculo =opcion_vehiculo+"\
 		                    <li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\">\
-		                    <table width=\"100%\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
+		                    <table width=\"100%\" border=\"0\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
 		                        <tr>\
-		                            <td height=\"17\" width=\"80\" align=\"center\">\
-		                                <img height=\"20\" src=\"" +icon+ "\"><br>\
-		                                <font size=\"0\">"+vehiculo_name+"</font>\
+		                            <td height=\"17\" style=\"font-size:8px;\" width=\"80\" align=\"center\">\
+		                                <img height=\"15\" src=\"" +icon+ "\"><br>\
+		                                "+ vehiculo["license_plate"] +"\
 	                                </td>\
 		                            <td>" + vehiculo["economic_number"] + "</td>\
-		                            <td width=\"50\" align=\"rigth\" class=\"event_device\"> -</td>\
+		                            <td width=\"30\" align=\"rigth\" class=\"event_device\"> -</td>\
 	                            </tr>\
 	                            </table>\
                             </li>\
