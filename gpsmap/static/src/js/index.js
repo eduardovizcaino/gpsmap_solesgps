@@ -419,11 +419,11 @@ odoo.define('gpsmap', function(require){
 		                    <li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\">\
 		                    <table width=\"100%\" border=\"0\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
 		                        <tr>\
-		                            <td height=\"17\" style=\"font-size:8px;\" width=\"60\" align=\"center\">\
-		                                <img height=\"15\" src=\"" +icon+ "\"><br>\
-		                                <b>"+ vehiculo["license_plate"] +"</b>\
+		                            <td height=\"17\" width=\"60\" align=\"center\">\
+		                                <img height=\"18\" src=\"" +icon+ "\">\
 	                                </td>\
-		                            <td style=\"font-size:11px;\">" + vehiculo_name + "</td>\
+		                            <td><font style=\"font-size:12px;\">" + vehiculo_name + "</font><br>\
+		                            <font style=\"font-size:8px;\"><b>"+ vehiculo["license_plate"] +"</b></font></td>\
 		                            <td width=\"30\" align=\"rigth\" class=\"event_device\"> -</td>\
 	                            </tr>\
 	                            </table>\
