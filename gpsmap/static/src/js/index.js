@@ -401,7 +401,8 @@ odoo.define('gpsmap', function(require){
 		            {		                
 		                var vehiculo        =vehiculos[ivehiculos];		                
                         var vehiculo_id     =vehiculo["id"];
-                        var vehiculo_name   =vehiculo["name"];
+                        var vehiculo_name   =vehiculo["name"].split("/");;
+                        vehiculo_name       =vehiculo_name[0]
                         
                         if(!(vehiculo["economic_number"]==undefined || vehiculo["economic_number"]==false))
                         {
