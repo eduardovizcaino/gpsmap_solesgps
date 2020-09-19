@@ -751,6 +751,8 @@ odoo.define('gpsmap', function(require){
 	}
 	function hablar(item)
 	{
+        //alert(item);
+	
 		var evento;
 		if(!(item["ev"]==undefined || item["ev"]==false || item["ev"]=="false"))
         {        	
@@ -780,7 +782,7 @@ odoo.define('gpsmap', function(require){
 		    if(!(item["ad"]==undefined || item["ad"]==false || item["ad"]=="false"))       
 				voz=voz + ", " + item["ad"];
 				
-				
+				/*
 		    	$("#message").html(voz)
 		    	.dialog({
 					show: {
@@ -794,7 +796,8 @@ odoo.define('gpsmap', function(require){
 				{
 					$("#message").dialog("close")
 				}, 2500 );
-
+				*/
+			alert(voz);	
         	responsiveVoice.speak(voz,"Spanish Latin American Female");            	
         }		
 	}
@@ -932,7 +935,7 @@ odoo.define('gpsmap', function(require){
 			{
 			    //alert("1");
 				//if(vehicle["ti"] > localizacion_anterior[device_id]["ti"] && vehicle["se"]!="simulator")
-				//	hablar(vehicle);
+				//hablar(vehicle);
 				localizacion_anterior[device_id]=vehicle;
 			
 				var coordinates			={latitude:vehicle["la"],longitude:vehicle["lo"]};

@@ -1,0 +1,79 @@
+positions_online: function(argument) {
+    gpsmaps_obj.vehicles_menu(argument);
+    gpsmaps_obj.map();
+    status_device();
+    gpsmaps_obj.positions_search();
+    status_device(obj);
+    gpsmaps_obj.geofences_paint();
+    gpsmaps_obj.position();
+    
+    vehicles_menu: function(type)  
+    
+    map: function(object) {
+        gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);
+        
+        CreateMap:function(iZoom,iMap,coordinates,object) 
+        
+            var position		            	=LatLng(coordinates);
+            
+            function LatLng(co)  
+        
+    function status_device(obj)
+        var position                = LatLng(coordinates);
+    
+    positions_search:function(argument){
+        del_locations();
+        gpsmaps_obj.positions_paint(argument);
+        
+        function del_locations(borrar)
+        
+        positions_paint:function(argument)
+            var posicion 		=LatLng(coordinates);
+            locationsMap(vehiculo);            
+            if(device_active==device_id) execute_streetMap(vehiculo);
+            
+            function locationsMap(vehicle, type)
+                var posicion 		    = LatLng(coordinates);
+			    centerMap(posicion);			
+			    odometro(vehicle);
+			    var marcador 		    = markerMap(posicion, icon);		
+                fn_localizaciones(marcador, vehicle);
+            
+                function centerMap(marcador)
+                
+                function odometro(item)	 
+                
+                function markerMap(position, icon, markerOptions) 
+            
+                function fn_localizaciones(position, vehiculo)
+                
+            function execute_streetMap(vehicle)
+                var posicion					=LatLng(coordinates);
+                centerMap(posicion);    
+    function status_device(obj)
+        var position                = LatLng(coordinates);
+    
+    geofences_paint: function() 
+        poligono(flightPlanCoordinates,{color:geofence["color"],geofence:geofence["name"]});	
+        
+        function poligono(LocationsLine,option) 
+    
+    position: function(argument) {
+        if(argument==undefined)                 gpsmaps_obj.positions(argument);
+        gpsmaps_obj.position(argument);         
+    
+        positions: function(argument) {
+            gpsmaps_obj.positions_search(argument);         
+            gpsmaps_obj.positions(argument);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
