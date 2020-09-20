@@ -109,7 +109,7 @@ class vehicle(models.Model):
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
                 tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                hoy=tz.localize(fields.Datetime.from_string(ahora)).astimezone(pytz.utc)
+                hoy=tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc)
 
 
 
