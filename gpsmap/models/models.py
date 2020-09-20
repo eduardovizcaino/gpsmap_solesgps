@@ -92,11 +92,13 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
+        
+        hoy="%s" %(datetime.datetime.now())
+        hoy=hoy[0:18]
     
-    
-        #tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+        tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
         #hoy=tz.localize(fields.Datetime.from_string(datetime.datetime.now())).astimezone(pytz.utc)
-        hoy = datetime.datetime.now()
+        #hoy = datetime.datetime.now()
         ahora = datetime.datetime.utcnow()
         ayer = ahora - datetime.timedelta(days=1)
 
