@@ -92,13 +92,27 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
+    
+    
+        #tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+        #hoy=tz.localize(fields.Datetime.from_string(datetime.datetime.now())).astimezone(pytz.utc)
+        hoy = datetime.datetime.now()
+        ahora = datetime.datetime.utcnow()
+        ayer = ahora - datetime.timedelta(days=1)
+
         vehicle_args                            =[]        
         return_positions                        ={}
         vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
                         
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
+           
+                print("Hoy=",hoy, "  ahora=", vehicle.positionid.devicetime,"   ayer=",ayer)
+                #print("  ahora=", ahora,"   ayer=",ayer)
+                #print("  ahora=", ahora)
+            
                 position                        ={}
+                
 
                 position["event"]               =vehicle.positionid.event                
                 position["longitude"]           =vehicle.positionid.longitude
