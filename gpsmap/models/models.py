@@ -100,7 +100,8 @@ class vehicle(models.Model):
         #hoy=tz.localize(fields.Datetime.from_string(hoy)).astimezone(pytz.utc)
         #hoy = datetime.datetime.now()
         #ahora = datetime.datetime.utcnow()
-        hoy_antes = datetime.datetime.now() - datetime.timedelta(minutes=10)        
+        hoy_antes ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=10))        
+        hoy_antes =hoy_antes[0:19]
 
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -112,8 +113,9 @@ class vehicle(models.Model):
                 
                 if(vehicle.positionid.devicetime!=False):
                     tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                    ahora   =tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc)
-                    
+                    ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
+                    ahora   =ahora[0:19]
+                                        
                     if(ahora<hoy_antes):
                         print("================== RETRAZADO ======================= ")
                     
