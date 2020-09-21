@@ -128,8 +128,9 @@ class vehicle(models.Model):
                     ahora   =ahora[0:19]
                                         
                     if(ahora<hoy_antes):
-                        position["status"]       ="Offline"
-                    
+                        position["status"]      ="Offline"
+                else:    
+                    position["status"]          ="Offline"
                 return_positions[vehicle.id]    =position
         return return_positions    
 class speed(models.Model):
