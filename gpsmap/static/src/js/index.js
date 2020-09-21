@@ -111,32 +111,6 @@ odoo.define('gpsmap', function(require){
             },1000);
         },
         //////////////////////////////////////////////////////////////
-        geofences:function(){
-            /*
-            local.geofences=Array();
-            var iresult;
-            rpc.query({
-                 model: "gpsmap.geofence", 
-                 method: "search_read",
-                 args:[[],[]],
-            })
-            .then(function (result) 
-            {   
-		        if(result!= null && result.length>0)
-		        {
-		            console.log("llena variable geocerca");
-		            for(iresult in result)
-		            {		                
-		                var geofence                        =result[iresult];		                
-                        var geofence_id                     =geofence["id"];                        
-                        if(geofence["name"]!="")
-                            local.geofences[geofence_id]    =geofence;                        
-                    }
-                }    
-            });
-            */
-        },
-        //////////////////////////////////////////////////////////////
         positions_paint:function(argument)
         {               
             var ipositions;
@@ -355,33 +329,6 @@ odoo.define('gpsmap', function(require){
 	        var coordinates         ={latitude:19.057522756727606,longitude:-104.29785901920393};
             gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);                                   
         },
-
-        //////////////////////////////////////////////////////////////
-        vehicles:function(){
-        /*
-            local.vehicles=Array();
-            var iresult;
-            rpc.query({
-                 model: "fleet.vehicle", 
-                 method: "search_read",
-                 args:[[],[]],
-            })
-            .then(function (result) 
-            {   
-		        if(result!= null && result.length>0)
-		        {
-		            console.log("llena variable vehiculo");
-		            for(iresult in result)
-		            {		                
-		                var vehiculo                    =result[iresult];		                
-                        var vehiculo_id                 =vehiculo["id"];                        
-                        if(vehiculo["name"]!="")
-                            local.vehicles[vehiculo_id]     =vehiculo;                        
-                    }
-                }    
-            });
-            */
-        },
         //////////////////////////////////////////////////////////////
 		vehicles_menu: function(type)  
 		{
@@ -425,7 +372,7 @@ odoo.define('gpsmap', function(require){
 		                            <td><div style=\"position:relative; width:100%; height:100%;\">\
 		                            <div style=\"position:absolute; top:-5px; left:0px; font-size:15px;\">" + vehiculo_name + "</div><br>\
 		                            <div style=\"position:absolute; top:7px; left:0px; font-size:9px;\"><b>"+ vehiculo["license_plate"] +"</b></font></div></td>\
-		                            <td width=\"30\" align=\"center\" class=\"event_device\"> -</td>\
+		                            <td width=\"30\" align=\"center\" class=\"event_device\"> </td>\
 	                            </tr>\
 	                            </table>\
                             </li>\
@@ -520,7 +467,13 @@ odoo.define('gpsmap', function(require){
 			    
                 setTimeout(function()    {   $("div#filtro").hide();    },100);
             }                
-            else  setTimeout(function()    {   $("div#filtro").show();    },100);           
+            else  
+            {                
+                setTimeout(function()    {   
+                    $("div#filtro").show();    
+                    $(".event_device").html("");
+                },100);           
+            }
         },    
     });
     
