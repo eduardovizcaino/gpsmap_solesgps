@@ -99,8 +99,8 @@ class vehicle(models.Model):
         #tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
         #hoy=tz.localize(fields.Datetime.from_string(hoy)).astimezone(pytz.utc)
         #hoy = datetime.datetime.now()
-        ahora = datetime.datetime.utcnow()
-        ayer = ahora - datetime.timedelta(days=1)
+        #ahora = datetime.datetime.utcnow()
+        #ayer = ahora - datetime.timedelta(days=1)
 
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -108,16 +108,12 @@ class vehicle(models.Model):
                         
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
-                #tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                #hoy=tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc)
-
-
-
-
+                #tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+                #ahora   =tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc)
            
                 #print("Hoy=",hoy, "  ahora=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
-                #print("  ahora=", ahora,"   ayer=",ayer)
-                #print("  ahora=", ahora)
+                #print("Hoy=",hoy, "  ahora=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
+                print("Hoy=",hoy, "    vehiculo=",vehicle.positionid.devicetime)
             
                 position                        ={}
                 
