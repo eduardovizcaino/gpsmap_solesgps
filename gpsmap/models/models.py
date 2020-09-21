@@ -93,15 +93,11 @@ class vehicle(models.Model):
     @api.model    
     def js_vehicles(self):
         
-        hoy_fecha="%s" %(datetime.datetime.now())
-        hoy=hoy_fecha[0:19]
+        hoy_fecha                               ="%s" %(datetime.datetime.now())
+        hoy                                     =hoy_fecha[0:19]
     
-        #tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-        #hoy=tz.localize(fields.Datetime.from_string(hoy)).astimezone(pytz.utc)
-        #hoy = datetime.datetime.now()
-        #ahora = datetime.datetime.utcnow()
-        hoy_antes ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=10))        
-        hoy_antes =hoy_antes[0:19]
+        hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=10))        
+        hoy_antes                               =hoy_antes[0:19]
 
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -109,25 +105,7 @@ class vehicle(models.Model):
                         
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:
-                print("vehiculo=============",vehicle.positionid.devicetime)
-                
-                if(vehicle.positionid.devicetime!=False):
-                    tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                    ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
-                    ahora   =ahora[0:19]
-                                        
-                    if(ahora<hoy_antes):
-                        print("================== RETRAZADO ======================= ")
-                    
-                    print("Hoy=",hoy, "   hoy_antes=",  hoy_antes, "   ahora_vehiculo=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
-                    #print("Hoy=",hoy, "  ahora=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
-                    #print("tz=", tz,"    Hoy=",hoy, "    vehiculo=",vehicle.positionid.devicetime)
-            
-            
-            
-            
                 position                        ={}
-                
                 position["event"]               =vehicle.positionid.event                
                 position["longitude"]           =vehicle.positionid.longitude
                 position["altitude"]            =vehicle.positionid.altitude
@@ -143,11 +121,16 @@ class vehicle(models.Model):
                 position["address"]             =vehicle.positionid.address
                 position["course"]              =vehicle.positionid.course                
                 position["gas"]                 =vehicle.positionid.gas
-                                                            
+                                        
+                if(vehicle.positionid.devicetime!=False):
+                    tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+                    ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
+                    ahora   =ahora[0:19]
+                                        
+                    if(ahora<hoy_antes):
+                        position["status"]       ="Offline"
+                    
                 return_positions[vehicle.id]    =position
-                
-                #print("DATA POSITION===", position)
-                
         return return_positions    
 class speed(models.Model):
     _name = "gpsmap.speed"
