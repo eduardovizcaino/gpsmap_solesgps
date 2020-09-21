@@ -96,7 +96,7 @@ class vehicle(models.Model):
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
     
-        hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=10))        
+        hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=7))        
         hoy_antes                               =hoy_antes[0:19]
 
         vehicle_args                            =[]        
