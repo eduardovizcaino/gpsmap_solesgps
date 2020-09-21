@@ -93,14 +93,14 @@ class vehicle(models.Model):
     @api.model    
     def js_vehicles(self):
         
-        hoy="%s" %(datetime.datetime.now())
-        hoy=hoy[0:19]
+        hoy_fecha="%s" %(datetime.datetime.now())
+        hoy=hoy_fecha[0:19]
     
         #tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
         #hoy=tz.localize(fields.Datetime.from_string(hoy)).astimezone(pytz.utc)
         #hoy = datetime.datetime.now()
         #ahora = datetime.datetime.utcnow()
-        #ayer = ahora - datetime.timedelta(days=1)
+        hoy_antes = datetime.datetime.now() - datetime.timedelta(minutes=10)        
 
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -114,13 +114,15 @@ class vehicle(models.Model):
                     tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                     ahora   =tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc)
 
-                    print("Hoy=",hoy, "  ahora=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
+                    print("Hoy=",hoy, "   hoy_antes=",  hoy_antes, "   ahora_vehiculo=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
                     #print("Hoy=",hoy, "  ahora=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
                     #print("tz=", tz,"    Hoy=",hoy, "    vehiculo=",vehicle.positionid.devicetime)
             
+            
+            
+            
                 position                        ={}
                 
-
                 position["event"]               =vehicle.positionid.event                
                 position["longitude"]           =vehicle.positionid.longitude
                 position["altitude"]            =vehicle.positionid.altitude
