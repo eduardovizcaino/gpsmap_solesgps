@@ -113,7 +113,10 @@ class vehicle(models.Model):
                 if(vehicle.positionid.devicetime!=False):
                     tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                     ahora   =tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc)
-
+                    
+                    if(ahora<hoy_antes):
+                        print("================== RETRAZADO ======================= ")
+                    
                     print("Hoy=",hoy, "   hoy_antes=",  hoy_antes, "   ahora_vehiculo=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
                     #print("Hoy=",hoy, "  ahora=", ahora, "   vehiculo=",vehicle.positionid.devicetime)
                     #print("tz=", tz,"    Hoy=",hoy, "    vehiculo=",vehicle.positionid.devicetime)
