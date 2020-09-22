@@ -216,7 +216,7 @@ odoo.define('gpsmap', function(require){
             //if(gpsmap_section!="gpsmaps_maphistory")
         
             console.log("POSITIONS SEARCH ========");
-            var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status'];
+            var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status','course'];
             var vehiculo_id;
             var vehiculos       =local.vehicles;
             var iresult;
@@ -231,10 +231,12 @@ odoo.define('gpsmap', function(require){
                     model:  "gpsmap.positions",
                     method: "search_read",
                     fields: fields_select,
-                    domain:   [["deviceid.id","=",device_active]],
+                    order:  "devicetime DESC",       
                     limit:  100,                    
-                };  
-                //order:  "devicetime DESC",            
+                };                  
+                if(device_active!=0)
+                    model["domain"]=[["deviceid.id","=",device_active]];
+                //     
                 //domain:   [["deviceid.id","in",device_active]]  
             }
             else
