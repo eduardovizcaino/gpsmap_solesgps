@@ -186,6 +186,7 @@ odoo.define('gpsmap', function(require){
                                     
                                     vehiculo["de"]=device_id;
                                     vehiculo["dn"]=vehiculo_name,
+                                    vehiculo["te"]=vehiculo["phone"],
                                     vehiculo["la"]=position.latitude;
                                     vehiculo["lo"]=position.longitude;
                                     vehiculo["co"]=position.course;
@@ -510,8 +511,12 @@ odoo.define('gpsmap', function(require){
                 status_device($("li.vehicle_active"));
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
+
+                
 			    
-                setTimeout(function()    {   $("div#filtro").hide();    },100);
+                setTimeout(function()    {   
+                    $("div#filtro").hide();    
+                },100);
             }                
             else  
             {                
@@ -563,14 +568,24 @@ odoo.define('gpsmap', function(require){
         start: function() {
             gpsmap_section="gpsmaps_maphistory";
             gpsmaps_obj.positions_online();
-            var panoramaOptions = {};            
         },
         events: {
             'click button#action_search': function (e) {
                 gpsmaps_obj.positions_search();
             
                 //e.stopPropagation();
+            },
+            'init input#start': function (e) {
+                    var d = Date();     
+                    var a = d.toString()  
+
+
+                    $("input#start").val(a);
+                    $("input#end").val("aaaa");
+            
+                //e.stopPropagation();
             }
+
         },                
     });
     core.action_registry.add('gpsmap.maphistory', local.maphistory);
@@ -949,6 +964,7 @@ odoo.define('gpsmap', function(require){
 				if(vehicle["ty"]=="Online")		                        icon_status="car_signal1.png";
 				if(vehicle["ty"]=="Offline")		
 				{
+				    
 					icon_status="car_signal0.png";
 					if(vehicle["ho"]==1)	                            icon_status="car_signal1.png";
 				}	
@@ -960,7 +976,16 @@ odoo.define('gpsmap', function(require){
 				
 				if(icon_status!="")
 				{				    
+
+
 					img_icon="<img width=\"20\" title=\""+ vehicle["ev"] +"\" src=\"/gpsmap/static/src/img/"+ icon_status +"\" >";
+					
+				    if(vehicle["ty"]=="Offline")		
+				    {
+				        img_icon="<a href=\"tel:" + vehicle["phone"] +"\">"+img_icon +"</a>";				        
+				    }	
+					
+					
 					$("table.select_devices[device_id="+ vehicle["de"] +"] tr td.event_device").html(img_icon);
 				}	
 							
