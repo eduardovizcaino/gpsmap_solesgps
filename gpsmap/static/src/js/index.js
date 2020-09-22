@@ -114,8 +114,11 @@ odoo.define('gpsmap', function(require){
         positions_paint:function(argument)
         {               
             var ipositions;
+            var iposition;
             if(local.positions.length>0)
             {   
+            
+            
                 console.log("POSITIONS PAINT ========");
                 var vehiculo_id;
                 var vehiculos       =local.vehicles;
@@ -123,72 +126,86 @@ odoo.define('gpsmap', function(require){
                 for(ipositions in local.positions)
                 {	
                     var positions       =local.positions[ipositions];
-                    var device_id       =positions.de; 
-	                if(vehiculos!= null && vehiculos.length>0)
-	                {	                    
-	                    for(ivehiculos in vehiculos)
-	                    {		                
-	                        var vehiculo        =vehiculos[ivehiculos];		                
-	                        
-	                        if(vehiculo["id"]==device_id)
-	                        {		                        
-                                var vehiculo_name   =vehiculo["economic_number"];
-                                var vehiculo_img    =vehiculo["image_vehicle"];
+                    for(iposition in positions)
+                    {	
+                        var position       =positions[iposition];
+                    
 
-                                var coordinates		={"latitude":positions.latitude,"longitude":positions.longitude};
-                                var posicion 		=LatLng(coordinates);
-                                coordinates["ti"]   =positions.devicetime;
-                                coordinates["sp"]   =positions.speed_compu;
-                                
-                                if($("li.vehicle[vehicle='"+device_id+"']").length>0)                        
-                                    $("li.vehicle[vehicle='"+device_id+"']").attr(coordinates);
-             
-	                            var v 	={
-	                                mo: "", 
-	                                st: "1", 
-	                                te: "d_telefono",   
-	                                dn: vehiculo_name,
-	                                ty: positions.status,
-	                                na: "name",
-	                                de: device_id,
-	                                la: positions.latitude,
-	                                lo: positions.longitude, 
-	                                co: positions.course, 
-	                                mi: "milage", 
-	                                sp: positions.speed_compu, 
-	                                ba: "batery", 
-	                                ti: positions.devicetime, 
-	                                ho: "icon_online", 
-	                                ad: positions.address, 
-	                                //ot: positions.other, 
-	                                im: vehiculo_img, 
-	                                ev: positions.event, 
-	                                ge: "geofence", 
-	                                ni: "nivel"
-                                };                                
-                                
-                                if(typeof argument=="number")
-                                {
-                                    v.se="historyForm";
-                                }                                
-                                
-                                vehiculo["de"]=device_id;
-                                vehiculo["dn"]=vehiculo_name,
-                                vehiculo["la"]=positions.latitude;
-                                vehiculo["lo"]=positions.longitude;
-                                vehiculo["co"]=positions.course;
-                                vehiculo["sp"]=positions.speed_compu;
-                                vehiculo["ty"]=positions.status;
-                                vehiculo["ev"]=positions.event;
-                                vehiculo["ti"]=positions.devicetime;
-                                vehiculo["im"]=vehiculo_img;
-                                vehiculo["at"]=positions.attributes;
-                                
-	                            locationsMap(vehiculo);            
-	                            if(device_active==device_id) execute_streetMap(vehiculo);
-                            }    
+
+
+
+
+                        var device_id       =position.de; 
+	                    if(vehiculos!= null && vehiculos.length>0)
+	                    {	                    
+	                        for(ivehiculos in vehiculos)
+	                        {		                
+	                            var vehiculo        =vehiculos[ivehiculos];		                
+	                            
+	                            if(vehiculo["id"]==device_id)
+	                            {		                        
+                                    var vehiculo_name   =vehiculo["economic_number"];
+                                    var vehiculo_img    =vehiculo["image_vehicle"];
+
+                                    var coordinates		={"latitude":position.latitude,"longitude":position.longitude};
+                                    var posicion 		=LatLng(coordinates);
+                                    coordinates["ti"]   =position.devicetime;
+                                    coordinates["sp"]   =position.speed_compu;
+                                    
+                                    if($("li.vehicle[vehicle='"+device_id+"']").length>0)                        
+                                        $("li.vehicle[vehicle='"+device_id+"']").attr(coordinates);
+                 
+	                                var v 	={
+	                                    mo: "", 
+	                                    st: "1", 
+	                                    te: "d_telefono",   
+	                                    dn: vehiculo_name,
+	                                    ty: position.status,
+	                                    na: "name",
+	                                    de: device_id,
+	                                    la: position.latitude,
+	                                    lo: position.longitude, 
+	                                    co: position.course, 
+	                                    mi: "milage", 
+	                                    sp: position.speed_compu, 
+	                                    ba: "batery", 
+	                                    ti: position.devicetime, 
+	                                    ho: "icon_online", 
+	                                    ad: position.address, 
+	                                    //ot: position.other, 
+	                                    im: vehiculo_img, 
+	                                    ev: position.event, 
+	                                    ge: "geofence", 
+	                                    ni: "nivel"
+                                    };                                
+                                    
+                                    if(typeof argument=="number")
+                                    {
+                                        v.se="historyForm";
+                                    }                                
+                                    
+                                    vehiculo["de"]=device_id;
+                                    vehiculo["dn"]=vehiculo_name,
+                                    vehiculo["la"]=position.latitude;
+                                    vehiculo["lo"]=position.longitude;
+                                    vehiculo["co"]=position.course;
+                                    vehiculo["sp"]=position.speed_compu;
+                                    vehiculo["ty"]=position.status;
+                                    vehiculo["ev"]=position.event;
+                                    vehiculo["ti"]=position.devicetime;
+                                    vehiculo["im"]=vehiculo_img;
+                                    vehiculo["at"]=position.attributes;
+                                    
+	                                locationsMap(vehiculo);            
+	                                if(device_active==device_id) execute_streetMap(vehiculo);
+                                }    
+                            }
                         }
-                    }            
+
+
+
+                    
+                    }                    
                 }
             }
         },
@@ -240,13 +257,13 @@ odoo.define('gpsmap', function(require){
                         local.positions=Array();                          
                         {                            	            
                             for(iresult in result)
-                            {
+                            {                            
                                 var positions               =result[iresult];                                
-                                //console.log("positions==", positions["deviceid"]);
-                                
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
+            
                                 
+
                                 if(typeof device_id!="number")
                                     var device_id           =positions["deviceid"][0];
                             	if(method=="read")          
@@ -254,6 +271,17 @@ odoo.define('gpsmap', function(require){
                             	    positions.se            ="historyForm";    
                             	    device_active           =device_id;
                             	}                   
+
+
+
+                                if(local.positions[device_id]==undefined)
+                                {
+                                    local.positions[device_id]=Array();
+                                }                                
+
+
+
+
                                 positions.mo                ="";
                                 positions.st                =1;
                                 positions.te                ="d_telefono";
@@ -276,8 +304,18 @@ odoo.define('gpsmap', function(require){
                                 positions.ev                =positions["event"]; 
                                 positions.ge                ="geofence"; 
                                 positions.ni                ="nivel";
+                
                                 
-                                local.positions[device_id]  =positions;
+                                
+                                if(gpsmap_section=="gpsmaps_maphistory")
+                                {
+                                    local.positions[device_id].push(positions);
+                                }
+                                else
+                                {   
+                                    local.positions[device_id][0]=positions;
+                                }
+                                
                             }                                    
                         }
                         gpsmaps_obj.positions_paint(argument);                                                              
