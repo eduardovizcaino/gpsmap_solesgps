@@ -244,7 +244,7 @@ odoo.define('gpsmap', function(require){
 
                 
                 model["domain"].push(["devicetime",">",start_time]);
-                model["domain"].push(["devicetime","<",end_time]);
+                //model["domain"].push(["devicetime","<",end_time]);
                 //     
                 //domain:   [["deviceid.id","in",device_active]]  
             }
