@@ -236,8 +236,7 @@ odoo.define('gpsmap', function(require){
                     model:  "gpsmap.positions",
                     method: "search_read",
                     fields: fields_select,
-                    order:  "devicetime DESC",       
-                    limit:  500,    
+                    order:  "devicetime DESC",           
                     domain: Array()                
                 };  
                 
