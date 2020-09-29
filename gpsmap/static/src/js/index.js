@@ -228,8 +228,9 @@ odoo.define('gpsmap', function(require){
             
             if(gpsmap_section=="gpsmaps_maphistory")
             {
-                var start_time  =this.$("input#start").val();
-                var end_time    =this.$("input#end").val();
+                var start_time  =$("input#start").val();
+                var end_time    =$("input#end").val();
+                
                 
                 model={   
                     model:  "gpsmap.positions",
@@ -239,14 +240,18 @@ odoo.define('gpsmap', function(require){
                     limit:  100,    
                     domain: Array()                
                 };  
+                
+                
                 if(device_active!=0)                
                     model["domain"].push(["deviceid.id","=",device_active]);
 
                 
-                //model["domain"].push(["devicetime",">",start_time]);
+                model["domain"].push(["devicetime",">",start_time]);
                 //model["domain"].push(["devicetime","<",end_time]);
                 //     
                 //domain:   [["deviceid.id","in",device_active]]  
+                
+                console.log(model["domain"]); 
             }
             else
             {   
