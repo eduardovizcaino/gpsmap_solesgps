@@ -228,15 +228,23 @@ odoo.define('gpsmap', function(require){
             
             if(gpsmap_section=="gpsmaps_maphistory")
             {
+                var start_time  =this.$("input#start").val();
+                var end_time    =this.$("input#end").val();
+                
                 model={   
                     model:  "gpsmap.positions",
                     method: "search_read",
                     fields: fields_select,
                     order:  "devicetime DESC",       
-                    limit:  100,                    
-                };                  
-                if(device_active!=0)
-                    model["domain"]=[["deviceid.id","=",device_active]];
+                    limit:  100,    
+                    domain: Array()                
+                };  
+                if(device_active!=0)                
+                    model["domain"].push(["deviceid.id","=",device_active]);
+
+                
+                model["domain"].push(["devicetime",">",start_time]);
+                model["domain"].push(["devicetime","<",end_time]);
                 //     
                 //domain:   [["deviceid.id","in",device_active]]  
             }
@@ -513,17 +521,12 @@ odoo.define('gpsmap', function(require){
                 gpsmaps_obj.position();
 
                 
-			    
-                setTimeout(function()    {   
-                    $("div#filtro").hide();    
-                },100);
+                this.$("div#filtro").hide();    
             }                
             else  
             {                
-                setTimeout(function()    {   
-                    $("div#filtro").show();    
-                    $(".event_device").html("");
-                },100);           
+                this.$("div#filtro").show();    
+                this.$(".event_device").html("");
             }
         },    
     });
@@ -565,23 +568,25 @@ odoo.define('gpsmap', function(require){
 
     local.maphistory = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
+
         start: function() {
+            this.startTime();
+            
             gpsmap_section="gpsmaps_maphistory";
             gpsmaps_obj.positions_online();
         },
+        startTime: function() {
+            var start_time= new Date().toISOString().slice(0,10) + " 07:00:00";            
+            var end_time= new Date().toISOString().slice(0,10) + " 23:59:59";
+
+            this.$("input#start").val(start_time);
+            this.$("input#end").val(end_time);
+        },
         events: {
             'click button#action_search': function (e) {
-                gpsmaps_obj.positions_search();
-            
-                //e.stopPropagation();
+                gpsmaps_obj.positions_search();            
             },
             'init input#start': function (e) {
-                    var d = Date();     
-                    var a = d.toString()  
-
-
-                    $("input#start").val(a);
-                    $("input#end").val("aaaa");
             
                 //e.stopPropagation();
             }
