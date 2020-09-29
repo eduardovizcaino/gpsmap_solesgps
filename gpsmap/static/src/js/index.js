@@ -243,7 +243,7 @@ odoo.define('gpsmap', function(require){
                     model["domain"].push(["deviceid.id","=",device_active]);
 
                 
-                model["domain"].push(["devicetime",">",start_time]);
+                //model["domain"].push(["devicetime",">",start_time]);
                 //model["domain"].push(["devicetime","<",end_time]);
                 //     
                 //domain:   [["deviceid.id","in",device_active]]  
@@ -520,13 +520,16 @@ odoo.define('gpsmap', function(require){
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
 
-                
-                this.$("div#filtro").hide();    
+                setTimeout(function()    {
+                this.$("div#filtro").hide();
+                },100);    
             }                
             else  
             {                
+                setTimeout(function()    {
                 this.$("div#filtro").show();    
                 this.$(".event_device").html("");
+                },100);
             }
         },    
     });
