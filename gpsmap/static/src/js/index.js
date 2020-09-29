@@ -237,20 +237,18 @@ odoo.define('gpsmap', function(require){
                     method: "search_read",
                     fields: fields_select,
                     order:  "devicetime DESC",       
-                    limit:  100,    
+                    limit:  500,    
                     domain: Array()                
                 };  
                 
                 
                 if(device_active!=0)                
                     model["domain"].push(["deviceid.id","=",device_active]);
-
                 
                 model["domain"].push(["devicetime",">",start_time]);
-                //model["domain"].push(["devicetime","<",end_time]);
+                model["domain"].push(["devicetime","<",end_time]);
                 //     
-                //domain:   [["deviceid.id","in",device_active]]  
-                
+                //domain:   [["deviceid.id","in",device_active]]                  
                 console.log(model["domain"]); 
             }
             else
