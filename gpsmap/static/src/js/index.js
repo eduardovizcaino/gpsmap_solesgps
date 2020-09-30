@@ -117,8 +117,6 @@ odoo.define('gpsmap', function(require){
             var iposition;
             if(local.positions.length>0)
             {   
-            
-            
                 console.log("POSITIONS PAINT ========");
                 var vehiculo_id;
                 var vehiculos       =local.vehicles;
@@ -128,13 +126,7 @@ odoo.define('gpsmap', function(require){
                     var positions       =local.positions[ipositions];
                     for(iposition in positions)
                     {	
-                        var position       =positions[iposition];
-                    
-
-
-
-
-
+                        var position       =positions[iposition];                    
                         var device_id       =position.de; 
 	                    if(vehiculos!= null && vehiculos.length>0)
 	                    {	                    
@@ -158,23 +150,12 @@ odoo.define('gpsmap', function(require){
 	                                var v 	={
 	                                    mo: "", 
 	                                    st: "1", 
-	                                    te: "d_telefono",   
-	                                    dn: vehiculo_name,
-	                                    ty: position.status,
 	                                    na: "name",
-	                                    de: device_id,
-	                                    la: position.latitude,
-	                                    lo: position.longitude, 
-	                                    co: position.course, 
 	                                    mi: "milage", 
-	                                    sp: position.speed_compu, 
 	                                    ba: "batery", 
-	                                    ti: position.devicetime, 
 	                                    ho: "icon_online", 
 	                                    ad: position.address, 
 	                                    //ot: position.other, 
-	                                    im: vehiculo_img, 
-	                                    ev: position.event, 
 	                                    ge: "geofence", 
 	                                    ni: "nivel"
                                     };                                
@@ -202,10 +183,6 @@ odoo.define('gpsmap', function(require){
                                 }    
                             }
                         }
-
-
-
-                    
                     }                    
                 }
             }
@@ -228,17 +205,25 @@ odoo.define('gpsmap', function(require){
             
             if(gpsmap_section=="gpsmaps_maphistory")
             {
+                var start_time  =$("input#start").val();
+                var end_time    =$("input#end").val();
+                                
                 model={   
                     model:  "gpsmap.positions",
                     method: "search_read",
                     fields: fields_select,
-                    order:  "devicetime DESC",       
-                    limit:  100,                    
+                    order:  "devicetime DESC",           
+                    domain: Array()                
                 };                  
-                if(device_active!=0)
-                    model["domain"]=[["deviceid.id","=",device_active]];
+                
+                if(device_active!=0)                
+                    model["domain"].push(["deviceid.id","=",device_active]);
+                
+                model["domain"].push(["devicetime",">",start_time]);
+                model["domain"].push(["devicetime","<",end_time]);
                 //     
-                //domain:   [["deviceid.id","in",device_active]]  
+                //domain:   [["deviceid.id","in",device_active]]                  
+                //console.log(model["domain"]); 
             }
             else
             {   
@@ -265,8 +250,6 @@ odoo.define('gpsmap', function(require){
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
             
-                                
-
                                 if(typeof device_id!="number")
                                     var device_id           =positions["deviceid"][0];
                             	if(method=="read")          
@@ -275,15 +258,10 @@ odoo.define('gpsmap', function(require){
                             	    device_active           =device_id;
                             	}                   
 
-
-
                                 if(local.positions[device_id]==undefined)
                                 {
                                     local.positions[device_id]=Array();
                                 }                                
-
-
-
 
                                 positions.mo                ="";
                                 positions.st                =1;
@@ -308,7 +286,6 @@ odoo.define('gpsmap', function(require){
                                 positions.ge                ="geofence"; 
                                 positions.ni                ="nivel";
                 
-                                
                                 
                                 if(gpsmap_section=="gpsmaps_maphistory")
                                 {
@@ -512,18 +489,16 @@ odoo.define('gpsmap', function(require){
                 gpsmaps_obj.geofences_paint();
                 gpsmaps_obj.position();
 
-                
-			    
-                setTimeout(function()    {   
-                    $("div#filtro").hide();    
-                },100);
+                setTimeout(function()    {
+                this.$("div#filtro").hide();
+                },100);    
             }                
             else  
             {                
-                setTimeout(function()    {   
-                    $("div#filtro").show();    
-                    $(".event_device").html("");
-                },100);           
+                setTimeout(function()    {
+                this.$("div#filtro").show();    
+                this.$(".event_device").html("");
+                },100);
             }
         },    
     });
@@ -565,23 +540,25 @@ odoo.define('gpsmap', function(require){
 
     local.maphistory = class_gpsmap.extend({
         template: 'gpsmaps_maponline',
+
         start: function() {
+            this.startTime();
+            
             gpsmap_section="gpsmaps_maphistory";
             gpsmaps_obj.positions_online();
         },
+        startTime: function() {
+            var start_time= new Date().toISOString().slice(0,10) + " 07:00:00";            
+            var end_time= new Date().toISOString().slice(0,10) + " 23:59:59";
+
+            this.$("input#start").val(start_time);
+            this.$("input#end").val(end_time);
+        },
         events: {
             'click button#action_search': function (e) {
-                gpsmaps_obj.positions_search();
-            
-                //e.stopPropagation();
+                gpsmaps_obj.positions_search();            
             },
             'init input#start': function (e) {
-                    var d = Date();     
-                    var a = d.toString()  
-
-
-                    $("input#start").val(a);
-                    $("input#end").val("aaaa");
             
                 //e.stopPropagation();
             }
