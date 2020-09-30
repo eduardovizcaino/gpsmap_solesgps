@@ -241,7 +241,7 @@ class positions(models.Model):
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
-                #print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid.id)
+                print("POSITION ID CRON=",position.id, " VEHICLE.positionid=",vehicle.positionid.id)
                 if(vehicle.positionid.id==False):
                     vehicle["positionid"]=position.id
                 elif(vehicle.positionid.devicetime < position.devicetime):
