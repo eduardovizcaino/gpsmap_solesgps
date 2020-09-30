@@ -247,7 +247,7 @@ class positions(models.Model):
                 elif(vehicle.positionid.devicetime < position.devicetime):
                     vehicle["positionid"]=position.id
                 
-                print("POSITION ID=",position.id)
+                
                 if vehicle.speed=='':
                     vehicle.speed               =100
                 if vehicle.speed==0:
@@ -309,6 +309,7 @@ class positions(models.Model):
                 position["leido"]                           =1                
                 
                 positions_obj.write(position)
+                print("VEHICLE=",vehicle)
                 vehicle_obj.write(vehicle)
 class geofence(models.Model):
     _name = "gpsmap.geofence"
