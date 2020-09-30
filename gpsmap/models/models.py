@@ -242,80 +242,83 @@ class positions(models.Model):
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
-                print("====================================================================")
-                if(vehicle.positionid.id==False):
-                    error_detectado=1
-                    print("AQUI TRUENA position.id")
-                    #vehicle["positionid"]=position.id
+                if len(vehicle)>0:         
+                
+                    print("====================================================================")
+                    if(vehicle.positionid.id==False):
+                        error_detectado=1
+                        print("AQUI TRUENA position.id")
+                        #vehicle["positionid"]=position.id
+                        
+                    elif(vehicle.positionid.devicetime < position.devicetime):
+                        vehicle["positionid"]=position.id
                     
-                elif(vehicle.positionid.devicetime < position.devicetime):
-                    vehicle["positionid"]=position.id
-                
-                
-                if vehicle.speed=='':
-                    vehicle.speed               =100
-                if vehicle.speed==0:
-                    vehicle.speed               =100    
+        
+                    
+                    if vehicle.speed=='':
+                        vehicle.speed               =100
+                    if vehicle.speed==0:
+                        vehicle.speed               =100    
 
-                speed_arg                       =[['deviceid','=',position.deviceid.id],['endtime','=',False]]                
-                speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
-                                                                                
-                if float(vehicle.speed) < float(position.speed_compu):
-                    position["event"]    ="speeding"
-                    position["status"]   ="alarm"
-                    if(len(speed_data)==0):
-                        speed                       ={}
-                        speed["deviceid"]           =position.deviceid.id
-                        speed["starttime"]          =position.devicetime
-                        speed["speed"]              =position.speed_compu
-                        speed_obj.create(speed)
-                        
-                        mail                        ={}
-                        mail["model"]               ="gpsmap.positions"        
-                        mail["res_id"]              =position.id                        
-                        mail["message_type"]        ="comment"                        
-                        mail["body"]                ="Contenido del mensaje %s" %(vehicle.name) 
-                        
-                        #ail_obj.create(mail)        
-                        print('Exceso de velocidad===================')
-                        print(mail)                                                
-                else:
-                    if(len(speed_data)>0):
-                        speed                       ={}
-                        for speed in speed_data:
-                            speed["endtime"]        =position.devicetime
-                            speed_obj.write(speed)                        
-                            #print('Saliendo del exceso de velocidad')
-                    #if len(speed_data)>0:
-                                    
-                if len(alerts_data)>0:                     
-                    for alerts in alerts_data:                        
-                        for devices in alerts.device_ids:                 
-                            if(position.deviceid.id==devices.id):
-                                print('==',alerts.name)
-                                print('===========position device id======',position.deviceid.id)                                   
-                                print('===========alert device id======',devices.id)
-                                for geofences in alerts.geofence_ids:                 
-                                    print('===========',geofences)                                
-                                                        
-                attributes = json.loads(position.attributes)
+                    speed_arg                       =[['deviceid','=',position.deviceid.id],['endtime','=',False]]                
+                    speed_data                      =speed_obj.search(speed_arg, offset=0, limit=50000)        
+                                                                                    
+                    if float(vehicle.speed) < float(position.speed_compu):
+                        position["event"]    ="speeding"
+                        position["status"]   ="alarm"
+                        if(len(speed_data)==0):
+                            speed                       ={}
+                            speed["deviceid"]           =position.deviceid.id
+                            speed["starttime"]          =position.devicetime
+                            speed["speed"]              =position.speed_compu
+                            speed_obj.create(speed)
+                            
+                            mail                        ={}
+                            mail["model"]               ="gpsmap.positions"        
+                            mail["res_id"]              =position.id                        
+                            mail["message_type"]        ="comment"                        
+                            mail["body"]                ="Contenido del mensaje %s" %(vehicle.name) 
+                            
+                            #ail_obj.create(mail)        
+                            print('Exceso de velocidad===================')
+                            print(mail)                                                
+                    else:
+                        if(len(speed_data)>0):
+                            speed                       ={}
+                            for speed in speed_data:
+                                speed["endtime"]        =position.devicetime
+                                speed_obj.write(speed)                        
+                                #print('Saliendo del exceso de velocidad')
+                        #if len(speed_data)>0:
+                                        
+                    if len(alerts_data)>0:                     
+                        for alerts in alerts_data:                        
+                            for devices in alerts.device_ids:                 
+                                if(position.deviceid.id==devices.id):
+                                    print('==',alerts.name)
+                                    print('===========position device id======',position.deviceid.id)                                   
+                                    print('===========alert device id======',devices.id)
+                                    for geofences in alerts.geofence_ids:                 
+                                        print('===========',geofences)                                
+                                                            
+                    attributes = json.loads(position.attributes)
+                    
+                    if("io3" in attributes):                    gas     =attributes["io3"]        
+                    elif("fuel" in attributes):                 gas     =attributes["fuel"]        
+                    elif("fuel1" in attributes):                gas     =attributes["fuel1"]        
+                    else:                                       gas     =0
+                    
+                    if("alarm" in attributes):                  
+                        position["event"]                       =attributes["alarm"]
+                        position["status"]                      ="alarm"
                 
-                if("io3" in attributes):                    gas     =attributes["io3"]        
-                elif("fuel" in attributes):                 gas     =attributes["fuel"]        
-                elif("fuel1" in attributes):                gas     =attributes["fuel1"]        
-                else:                                       gas     =0
-                
-                if("alarm" in attributes):                  
-                    position["event"]                       =attributes["alarm"]
-                    position["status"]                      ="alarm"
-            
-                position["gas"]                             =gas
-                position["leido"]                           =1                
-                
-                positions_obj.write(position)
-                if(error-detectado==0):
-                    print("VEHICLE=",vehicle)
-                    vehicle_obj.write(vehicle)
+                    position["gas"]                             =gas
+                    position["leido"]                           =1                
+                    
+                    positions_obj.write(position)
+                    if(error-detectado==0):
+                        print("VEHICLE=",vehicle)
+                        vehicle_obj.write(vehicle)
 class geofence(models.Model):
     _name = "gpsmap.geofence"
     _description = 'GPS Geofence'
