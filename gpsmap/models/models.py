@@ -238,11 +238,13 @@ class positions(models.Model):
                 
         if len(positions_data)>0:         
             for position in positions_data:
+                error_detectado=0
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
                 print("====================================================================")
                 if(vehicle.positionid.id==False):
+                    error_detectado=1
                     print("AQUI TRUENA position.id")
                     #vehicle["positionid"]=position.id
                     
@@ -311,8 +313,9 @@ class positions(models.Model):
                 position["leido"]                           =1                
                 
                 positions_obj.write(position)
-                print("VEHICLE=",vehicle)
-                vehicle_obj.write(vehicle)
+                if(error-detectado==0):
+                    print("VEHICLE=",vehicle)
+                    vehicle_obj.write(vehicle)
 class geofence(models.Model):
     _name = "gpsmap.geofence"
     _description = 'GPS Geofence'
