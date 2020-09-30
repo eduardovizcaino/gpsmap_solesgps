@@ -316,7 +316,7 @@ class positions(models.Model):
                     position["leido"]                           =1                
                     
                     positions_obj.write(position)
-                    if(error-detectado==0):
+                    if(error_detectado==0):
                         print("VEHICLE=",vehicle)
                         vehicle_obj.write(vehicle)
 class geofence(models.Model):
