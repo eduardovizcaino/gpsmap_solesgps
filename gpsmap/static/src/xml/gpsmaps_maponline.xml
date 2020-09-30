@@ -14,12 +14,11 @@
                                 <button aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
                                     <span class="fa fa-bars"></span>
                                 </button>                            
-                                <ul class="dropdown-menu o_group_by_menu" role="menu">
-                                    <li data-index="0" class="selected"><a href="#">Vehicle</a></li>
-                                    <li data-index="1"><a href="#">Event</a></li>
-                                    <li data-index="0"><a href="#">Day</a></li>
-                                    <li data-index="1"><a href="#">Week</a></li>
-                                    <li data-index="2"><a href="#">Month</a></li>
+                                <ul class="dropdown-menu o_filters_menu" role="menu">
+                                    <li data-index="0" class="selected"><a href="#">Moving</a></li>
+                                    <li data-index="0"><a href="#">Stop</a></li>
+                                    <li data-index="1"><a href="#">Speeding</a></li>
+                                    <li data-index="2"><a href="#">Offline</a></li>
                                 </ul>                                                    
                             </div>
                         </td>
