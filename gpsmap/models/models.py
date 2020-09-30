@@ -243,7 +243,7 @@ class positions(models.Model):
                 
                 print("====================================================================")
                 if(vehicle.positionid.id==False):
-                    print("AQUI TRUENA position.id",position.id)
+                    print("AQUI TRUENA position.id")
                     #vehicle["positionid"]=position.id
                     
                 elif(vehicle.positionid.devicetime < position.devicetime):
