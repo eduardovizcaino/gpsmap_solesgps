@@ -308,7 +308,6 @@ class positions(models.Model):
                 position["leido"]                           =1                
                 
                 positions_obj.write(position)
-                print('===========',vehicle)
                 vehicle_obj.write(vehicle)
 class geofence(models.Model):
     _name = "gpsmap.geofence"
