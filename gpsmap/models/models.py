@@ -241,10 +241,7 @@ class positions(models.Model):
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
                 
-                if len(vehicle)>0:        
-                    print('==vehicle ', vehicle)
-                    print('==vehicle.positionid ', vehicle.positionid)
-                    print('==vehicle.positionid.id ', vehicle.positionid.id)                                                                
+                if len(vehicle)>0:                                                                     
                     if(vehicle.positionid.id==False):
                         vehicle["positionid"]=position.id
                     elif(vehicle.positionid.devicetime < position.devicetime):
