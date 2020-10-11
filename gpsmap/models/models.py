@@ -233,9 +233,10 @@ class positions(models.Model):
                 
         alerts_data                             =geofence_obj.geofences()
         
-        positions_arg                           =[('leido','=',0)]                
+        positions_arg                           =[('leido','!=',1)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
-                
+        
+        print("len(positions_data)", len(positions_data))        
         if len(positions_data)>0:         
             for position in positions_data:
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
@@ -305,10 +306,9 @@ class positions(models.Model):
                         position["status"]                      ="alarm"
                 
                     position["gas"]                             =gas
-                    position["leido"]                           =1                
-                    
-                    positions_obj.write(position)
-                    vehicle_obj.write(vehicle)
+                position["leido"]                           =1                                
+                positions_obj.write(position)
+                vehicle_obj.write(vehicle)
 class geofence(models.Model):
     _name = "gpsmap.geofence"
     _description = 'GPS Geofence'
