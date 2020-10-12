@@ -228,7 +228,7 @@ class positions(models.Model):
         positions_obj                           =self.env['gpsmap.positions']
         vehicle_obj                             =self.env['fleet.vehicle']
         speed_obj                               =self.env['gpsmap.speed']
-        mail_obj                                =self.env['mail.message']
+        #mail_obj                                =self.env['mail.message']
         geofence_obj                            =self.env['gpsmap.geofence']
                 
         alerts_data                             =geofence_obj.geofences()
