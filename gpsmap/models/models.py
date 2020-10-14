@@ -236,7 +236,7 @@ class positions(models.Model):
         positions_arg                           =[('leido','!=',1)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
         
-        print("CRON READ len(positions_data) ################# ", len(positions_data))        
+        print('=============== READ POSITIONS ===================',len(positions_data))  
         if len(positions_data)>0:         
             for position in positions_data:
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
