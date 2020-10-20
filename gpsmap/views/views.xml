@@ -288,6 +288,7 @@
 
 
     <!-- ############################### -->    
+<!--
     <record id='gpsmap_route_view_form' model='ir.ui.view'>
         <field name="name">gpsmap.route.form</field>
         <field name="model">gpsmap.route</field>
@@ -354,7 +355,7 @@
             </tree>
         </field>
     </record>
-
+-->
     <!-- ############################### -->    
 
 
