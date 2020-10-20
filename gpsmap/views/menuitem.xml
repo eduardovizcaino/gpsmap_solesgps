@@ -51,6 +51,13 @@
     </record>
     <menuitem action="fleet_speed_action" parent="fleet.fleet_vehicles" id="fleet_speed_menu" groups="gpsmap.gpsmap_group_admin"/>
     
+
+    <record id='gpsmap_route_action' model='ir.actions.act_window'>
+        <field name="name">Route</field>
+        <field name="res_model">gpsmap.route</field>
+    </record>
+    <menuitem action="gpsmap_route_action" parent="fleet.fleet_configuration" id="gpsmap_route_menu" groups="gpsmap.gpsmap_group_admin"/>
+
     
     <record id='fleet_geofence_device_action' model='ir.actions.act_window'>
         <field name="name">Alerts Geofence</field>
