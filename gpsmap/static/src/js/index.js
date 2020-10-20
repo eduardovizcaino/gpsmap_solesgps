@@ -596,15 +596,36 @@ odoo.define('gpsmap', function(require){
             }
             else if(event.data.attrs.id === "action_endpoint_route")
             {
-                var point       =GeoMarker1[0];
-                coordinate  =GeoMarker[0];
-                GeoMarker.push(coordinate);
-                GeoMarker1.push(point);		                
-                polilinea(GeoMarker1);                			
-                $("textarea[name='points']")
-                    .focus()
-                    .change();                    
-                limpiar_virtual();				
+				if(GeoMarker1.length>1)
+				{
+					var tot			=GeoMarker1.length -1;
+					var igeo;
+					for(igeo in GeoMarker1)
+					{
+						if(igeo==0)
+						{
+							var origen		=GeoMarker1[igeo];
+							var origen1		=String(origen);						
+						}
+						else if(igeo==tot)
+						{
+							var destino		=GeoMarker1[igeo];
+							var destino1	=String(destino);						
+						}
+						else
+						{
+							waypts.push({
+								location: GeoMarker1[igeo],
+								stopover: true
+							});
+						}	
+					}
+					tracert(origen,destino,waypts);
+					//distance(origen,destino,waypts);
+									
+					limpiar_virtual();
+					limpiar_real();										
+				}					
             }
 
             else if(event.data.attrs.id === "action_clearpoint")
@@ -1431,3 +1452,60 @@ odoo.define('gpsmap', function(require){
 		GeoMarker	=Array();
 		GeoMarker1	=Array();
 	}
+	function tracert(origen, destino,puntos)
+	{			
+		var directionsDisplay;
+		var directionsService;
+		var distanceMatrixService;
+	
+		directionsService=new google.maps.DirectionsService();
+		directionsDisplay=new google.maps.DirectionsRenderer();
+		//distanceMatrixService 	= new google.maps.DistanceMatrixService;
+			
+		var request = {
+			origin: 		origen,
+			destination: 	destino,
+			travelMode: 	google.maps.DirectionsTravelMode["DRIVING"],
+			unitSystem: 	google.maps.DirectionsUnitSystem["METRIC"],
+		};		
+		if(puntos!=undefined)		
+		{		
+			if(puntos.length>0)		
+				request["waypoints"]=puntos;
+		}			
+		//for(d in directionsService)
+		{
+			directionsService.route(request, function(response, status) 
+			{
+				if (status == google.maps.DirectionsStatus.OK) 
+				{
+					
+						directionsDisplay.setMap(map);
+						//directionsDisplay.setPanel($("div#text").get(0));
+						directionsDisplay.setDirections(response);
+						
+						//foreach_anidado2(directionsDisplay["directions"]["routes"][0]["legs"]);
+						var instrucciones=ruta_pasos(directionsDisplay["directions"]["routes"][0]["legs"]);
+						
+						if($("#inegi1").length>0) 
+						{
+							$("#inegi1").val(linea_inegi({make:"IL",punto:origen}));
+							$("#inegi2").val(linea_inegi({make:"IL",punto:destino}));														
+							//var inegi	=linea_inegi({make:"CR",p1:lineaO,p2:lineaD});
+						}	
+												
+						if($("div#text.instrucciones").length>0) 
+						{										
+							setTimeout(function()
+							{  				
+								$("div#text.instrucciones").html(instrucciones);
+								$("input#description").val($("div#text.instrucciones").html());																
+								
+							},200);	
+						}	
+				} 
+				else 	alert("No existen rutas entre ambos puntos");
+			});
+		}	
+	}	
+	
