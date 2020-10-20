@@ -182,7 +182,7 @@
             <form string="Geofence">
                 <header>
                     <button string="ADD POINT" id ="action_addpoint" custom="click"/>
-                    <button string="END POINT" id ="action_endpoint" custom="click"/>
+                    <button string="END POINT" id ="action_endpoint_geofence" custom="click"/>
                     <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>                    
                 </header>
 
@@ -296,7 +296,7 @@
             <form string="route">
                 <header>
                     <button string="ADD POINT" id ="action_addpoint" custom="click"/>
-                    <button string="END POINT" id ="action_endpoint" custom="click"/>
+                    <button string="END POINT" id ="action_endpoint_route" custom="click"/>
                     <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>                    
                 </header>
 

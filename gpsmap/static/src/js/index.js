@@ -558,29 +558,6 @@ odoo.define('gpsmap', function(require){
             'click button#action_search': function (e) {
                 gpsmaps_obj.positions_search();            
             },
-            'click button#action_addpoint': function (e) {
-                GeoMarker.push(coordinate);
-                GeoMarker1.push(elocation);
-                if(GeoMarker1.length>1)			
-                {
-                    puntos(GeoMarker);
-                    polilinea(GeoMarker1);
-                }
-            },
-            'click button#action_endpoint': function (e) {
-                var point       =GeoMarker1[0];
-                coordinate  =GeoMarker[0];
-                GeoMarker.push(coordinate);
-                GeoMarker1.push(point);		                
-                polilinea(GeoMarker1);                			
-                $("textarea[name='points']")
-                    .focus()
-                    .change();                    
-                limpiar_virtual();				
-
-            },
-
-
             'init input#start': function (e) {
             
                 //e.stopPropagation();
@@ -595,8 +572,6 @@ odoo.define('gpsmap', function(require){
     var FormController = require('web.FormController');
     var formController = FormController.include({
         _onButtonClicked: function (event) {
-        
-            /*
             if(event.data.attrs.id === "action_addpoint")
             {
                 GeoMarker.push(coordinate);
@@ -607,9 +582,7 @@ odoo.define('gpsmap', function(require){
                     polilinea(GeoMarker1);
                 }
             }
-            else 
-            
-            if(event.data.attrs.id === "action_endpoint")
+            else if(event.data.attrs.id === "action_endpoint_geofence")
             {
                 var point       =GeoMarker1[0];
                 coordinate  =GeoMarker[0];
@@ -621,9 +594,20 @@ odoo.define('gpsmap', function(require){
                     .change();                    
                 limpiar_virtual();				
             }
-            else 
-            */
-            if(event.data.attrs.id === "action_clearpoint")
+            else if(event.data.attrs.id === "action_endpoint_route")
+            {
+                var point       =GeoMarker1[0];
+                coordinate  =GeoMarker[0];
+                GeoMarker.push(coordinate);
+                GeoMarker1.push(point);		                
+                polilinea(GeoMarker1);                			
+                $("textarea[name='points']")
+                    .focus()
+                    .change();                    
+                limpiar_virtual();				
+            }
+
+            else if(event.data.attrs.id === "action_clearpoint")
             {
                 limpiar_virtual();
                 limpiar_real();				         
