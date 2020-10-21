@@ -1458,9 +1458,9 @@ odoo.define('gpsmap', function(require){
 		var directionsService;
 		var distanceMatrixService;
 	
-		directionsService=new google.maps.DirectionsService();
-		directionsDisplay=new google.maps.DirectionsRenderer();
-		//distanceMatrixService 	= new google.maps.DistanceMatrixService;
+		directionsService       =new google.maps.DirectionsService();
+		directionsDisplay       =new google.maps.DirectionsRenderer();
+		distanceMatrixService 	= new google.maps.DistanceMatrixService;
 			
 		var request = {
 			origin: 		origen,
@@ -1478,31 +1478,10 @@ odoo.define('gpsmap', function(require){
 			directionsService.route(request, function(response, status) 
 			{
 				if (status == google.maps.DirectionsStatus.OK) 
-				{
-					
-						directionsDisplay.setMap(map);
-						//directionsDisplay.setPanel($("div#text").get(0));
-						directionsDisplay.setDirections(response);
-						
-						//foreach_anidado2(directionsDisplay["directions"]["routes"][0]["legs"]);
-						var instrucciones=ruta_pasos(directionsDisplay["directions"]["routes"][0]["legs"]);
-						
-						if($("#inegi1").length>0) 
-						{
-							$("#inegi1").val(linea_inegi({make:"IL",punto:origen}));
-							$("#inegi2").val(linea_inegi({make:"IL",punto:destino}));														
-							//var inegi	=linea_inegi({make:"CR",p1:lineaO,p2:lineaD});
-						}	
-												
-						if($("div#text.instrucciones").length>0) 
-						{										
-							setTimeout(function()
-							{  				
-								$("div#text.instrucciones").html(instrucciones);
-								$("input#description").val($("div#text.instrucciones").html());																
-								
-							},200);	
-						}	
+				{				
+					directionsDisplay.setMap(map);
+					//directionsDisplay.setPanel($("div#text").get(0));
+					directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
 			});
