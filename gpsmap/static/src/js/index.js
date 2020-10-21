@@ -602,6 +602,7 @@ odoo.define('gpsmap', function(require){
 					var igeo;
 					for(igeo in GeoMarker1)
 					{
+					    alert(igeo + " > " +GeoMarker1[igeo]);
 						if(igeo==0)
 						{
 							var origen		=GeoMarker1[igeo];
