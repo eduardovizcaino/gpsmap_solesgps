@@ -1472,17 +1472,19 @@ odoo.define('gpsmap', function(require){
 			unitSystem: 	google.maps.DirectionsUnitSystem["METRIC"],
 		};		
 		
-	    /*	
+	    	
 		if(puntos!=undefined)		
 		{		
 			if(puntos.length>0)		
 				request["waypoints"]=puntos;
 		}			
 		//for(d in directionsService)
+		
 		{
 			directionsService.route(request, function(response, status) 
 			{
 			    alert("route");
+		        /*
 				if (status == google.maps.DirectionsStatus.OK) 
 				{				
 				    alert(map);
@@ -1491,8 +1493,9 @@ odoo.define('gpsmap', function(require){
 					directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
+				*/
 			});
 		}
-		*/	
+			
 	}	
 	
