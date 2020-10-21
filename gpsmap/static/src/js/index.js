@@ -620,6 +620,7 @@ odoo.define('gpsmap', function(require){
 							});
 						}	
 					}
+					alert("antes");
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
 									
@@ -1454,6 +1455,7 @@ odoo.define('gpsmap', function(require){
 	}
 	function tracert(origen, destino,puntos)
 	{			
+	    alert("durante");
 		var directionsDisplay;
 		var directionsService;
 		var distanceMatrixService;
