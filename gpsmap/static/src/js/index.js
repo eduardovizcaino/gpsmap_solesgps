@@ -596,27 +596,27 @@ odoo.define('gpsmap', function(require){
             }
             else if(event.data.attrs.id === "action_endpoint_route")
             {
-				if(GeoMarker1.length>1)
+				if(GeoMarker.length>1)
 				{
-					var tot			=GeoMarker1.length -1;
+					var tot			=GeoMarker.length -1;
 					var igeo;
-					for(igeo in GeoMarker1)
+					for(igeo in GeoMarker)
 					{
-					    alert(igeo + " > " +GeoMarker1[igeo]);
+					    alert(igeo + " > " +GeoMarker[igeo]);
 						if(igeo==0)
 						{
-							var origen		=GeoMarker1[igeo];
+							var origen		=GeoMarker[igeo];
 							var origen1		=String(origen);						
 						}
 						else if(igeo==tot)
 						{
-							var destino		=GeoMarker1[igeo];
+							var destino		=GeoMarker[igeo];
 							var destino1	=String(destino);						
 						}
 						else
 						{
 							waypts.push({
-								location: GeoMarker1[igeo],
+								location: GeoMarker[igeo],
 								stopover: true
 							});
 						}	
