@@ -50,7 +50,7 @@ odoo.define('gpsmap', function(require){
     var session                 = require('web.session');
 
 
-    map                         =undefined;    
+    //map                         =undefined;    
     local.vehicles              =Array();
     local.geofences             =Array();
     local.positions             =undefined;    
