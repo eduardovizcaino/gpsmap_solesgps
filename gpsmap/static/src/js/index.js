@@ -351,7 +351,7 @@ odoo.define('gpsmap', function(require){
 	        var iZoom               =5;
 	        var iMap                ="ROADMAP";
 	        var coordinates         ={latitude:19.057522756727606,longitude:-104.29785901920393};
-            gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);                                   
+            return gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);                                   
         },
         //////////////////////////////////////////////////////////////
 		vehicles_menu: function(type)  
@@ -602,7 +602,7 @@ odoo.define('gpsmap', function(require){
 					var igeo;
 					for(igeo in GeoMarker)
 					{
-					    //alert(igeo + " > " +GeoMarker[igeo]);
+					    //  alert(igeo + " > " +GeoMarker[igeo]);
 						if(igeo==0)
 						{
 							var origen		=GeoMarker[igeo];
