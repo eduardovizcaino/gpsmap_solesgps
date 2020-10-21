@@ -605,12 +605,12 @@ odoo.define('gpsmap', function(require){
 						if(igeo==0)
 						{
 							var origen		=GeoMarker[igeo];
-							var origen1		=String(origen);						
+							//var origen1		=String(origen);						
 						}
 						else if(igeo==tot)
 						{
 							var destino		=GeoMarker[igeo];
-							var destino1	=String(destino);						
+							//var destino1	=String(destino);						
 						}
 						else
 						{
