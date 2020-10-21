@@ -623,8 +623,8 @@ odoo.define('gpsmap', function(require){
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
 									
-					limpiar_virtual();
-					limpiar_real();										
+					//limpiar_virtual();
+					//limpiar_real();										
 				}					
             }
 
@@ -1479,6 +1479,7 @@ odoo.define('gpsmap', function(require){
 			{
 				if (status == google.maps.DirectionsStatus.OK) 
 				{				
+				    alert(map);
 					directionsDisplay.setMap(map);
 					//directionsDisplay.setPanel($("div#text").get(0));
 					directionsDisplay.setDirections(response);
