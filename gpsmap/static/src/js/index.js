@@ -339,7 +339,6 @@ odoo.define('gpsmap', function(require){
 			        if($("div#odometro").length>0)
     			        $("div#odometro").hide();
 
-                    return map;	        	
 		        }
 		        else return gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);	   
 	        },50);
@@ -351,7 +350,7 @@ odoo.define('gpsmap', function(require){
 	        var iZoom               =5;
 	        var iMap                ="ROADMAP";
 	        var coordinates         ={latitude:19.057522756727606,longitude:-104.29785901920393};
-            return gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);                                   
+            gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);                                   
         },
         //////////////////////////////////////////////////////////////
 		vehicles_menu: function(type)  

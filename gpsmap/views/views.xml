@@ -309,7 +309,7 @@
                 <script>
                     local.vehicles      =Array();
                     local.positions     =undefined;    
-                    map=gpsmaps_obj.map("map_tree");
+                    gpsmaps_obj.map("map_tree");
                     setTimeout(function()
                     {                
                         limpiar_virtual();
