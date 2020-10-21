@@ -620,7 +620,7 @@ odoo.define('gpsmap', function(require){
 							});
 						}	
 					}
-					alert("antes");
+					//("antes");
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
 									
@@ -1455,7 +1455,6 @@ odoo.define('gpsmap', function(require){
 	}
 	function tracert(origen, destino,puntos)
 	{			
-	    alert("durante");
 		var directionsDisplay;
 		var directionsService;
 		var distanceMatrixService;
@@ -1484,7 +1483,7 @@ odoo.define('gpsmap', function(require){
 			directionsService.route(request, function(response, status) 
 			{
 			    alert("route");
-		        /*
+		        
 				if (status == google.maps.DirectionsStatus.OK) 
 				{				
 				    alert(map);
@@ -1493,7 +1492,7 @@ odoo.define('gpsmap', function(require){
 					directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
-				*/
+				
 			});
 		}
 			
