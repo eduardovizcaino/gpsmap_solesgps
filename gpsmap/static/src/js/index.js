@@ -1477,6 +1477,7 @@ odoo.define('gpsmap', function(require){
 		{
 			directionsService.route(request, function(response, status) 
 			{
+			    alert("route");
 				if (status == google.maps.DirectionsStatus.OK) 
 				{				
 				    alert(map);
