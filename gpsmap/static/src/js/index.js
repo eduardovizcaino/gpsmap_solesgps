@@ -1153,7 +1153,61 @@ odoo.define('gpsmap', function(require){
         }        
        return array_points;
 	}
+	function array_route(points) 
+	{
+	    var array_points=new Array();
+        var vec_points  =points.split("|");
+        var tot			=vec_points.length -1;
+        var i_vec_points;
 
+        for(i_vec_points in vec_points)
+        {                   
+            var point       =vec_points[i_vec_points];
+            if(point!="")
+            {                
+                var vec_point   =point.split(",");	                   
+                var obj_point=LatLng({latitude:parseFloat(vec_point[1]),longitude:parseFloat(vec_point[0])});
+                
+				if(i_vec_points==0)				var origen		=obj_point;
+				else if(i_vec_points==tot)		var destino		=obj_point;						
+				else
+				{
+					waypts.push({
+						location: obj_point,
+						stopover: true
+					});
+				}	
+            }
+       }        
+       tracert(origen,destino,waypts);                     
+	}
+
+
+/*
+
+	function array_points(points) 
+	{
+	    var array_points=new Array();
+        var vec_points  =points.split("|");        
+        var tot			=vec_points.length -1;
+        for(i_vec_points in vec_points)
+        {                   
+            var point       =vec_points[i_vec_points];
+            if(point!="")
+            {                
+                var vec_point   =point.split(",");	                   
+                var obj_point={lat:parseFloat(vec_point[1]),lng:parseFloat(vec_point[0])};
+                
+                
+			}			
+       }    
+       tracert(origen,destino,waypts);                     
+       return array_points;
+	}
+
+
+
+*/
 	function messageMaps(marcador, vehicle, infowindow) 
 	{
 		gMEvent.addListener(marcador, 'click', function() 
