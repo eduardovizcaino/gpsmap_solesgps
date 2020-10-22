@@ -1481,6 +1481,28 @@ odoo.define('gpsmap', function(require){
 		}			
 		//for(d in directionsService)
 		
+		
+		
+        directionsService.route(
+            {
+              origin: { lat: 37.77, lng: -122.447 },
+              destination: { lat: 37.768, lng: -122.511 },
+              travelMode: 	google.maps.DirectionsTravelMode["DRIVING"],
+            },
+            (response, status) => {
+              if (status == "OK") {
+                //directionsRenderer.setDirections(response);
+                directionsDisplay.setMap(map);
+                
+              } else {
+                window.alert("Directions request failed due to " + status);
+              }
+            }
+          );
+		
+		
+		
+	/*	
 		{
 			directionsService.route(request, function(response, status) 
 			{
@@ -1491,12 +1513,12 @@ odoo.define('gpsmap', function(require){
 				    alert("mapa");
 					directionsDisplay.setMap(map);
 					//directionsDisplay.setPanel($("div#text").get(0));
-					directionsDisplay.setDirections(response);
+					//directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
 				
 			});
 		}
-			
+	*/		
 	}	
 	
