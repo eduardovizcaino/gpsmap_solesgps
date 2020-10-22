@@ -218,10 +218,8 @@
                         {
                             array_route($("span[name='points']").html());                                                         
                         }    
-
                         limpiar_virtual();
-                        limpiar_real();	                 
-                        
+                        limpiar_real();	                                         
                     },1000);
                     
                 </script>
