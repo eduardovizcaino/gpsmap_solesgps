@@ -603,26 +603,22 @@ odoo.define('gpsmap', function(require){
 					{
 						if(igeo==0)
 						{
-							var origen		=GeoMarker[igeo];
+							var origen		=GeoMarker1[igeo];
 							//var origen1		=String(origen);													
 						}
 						else if(igeo==tot)
 						{
-							var destino		=GeoMarker[igeo];
+							var destino		=GeoMarker1[igeo];
 							//var destino1	=String(destino);						
 						}
 						else
 						{
 							waypts.push({
-								location: GeoMarker[igeo],
+								location: GeoMarker1[igeo],
 								stopover: true
 							});
 						}	
 					}
-					alert("antes prueba");
-                    //origen= { lat: 19.05, lng: -104.29 },
-                    //destino= { lat: 20.30, lng: -104.5 },
-
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
 									
@@ -1491,7 +1487,7 @@ odoo.define('gpsmap', function(require){
 				    alert("mapa");
 					directionsDisplay.setMap(map);
 					//directionsDisplay.setPanel($("div#text").get(0));
-					//directionsDisplay.setDirections(response);
+					directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
 				
