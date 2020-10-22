@@ -621,8 +621,8 @@ odoo.define('gpsmap', function(require){
 						}	
 					}
 					alert("antes");
-                    origen= { lat: 19.05, lng: -104.29 },
-                    destino= { lat: 20.30, lng: -104.5 },
+                    //origen= { lat: 19.05, lng: -104.29 },
+                    //destino= { lat: 20.30, lng: -104.5 },
 
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
