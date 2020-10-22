@@ -216,10 +216,13 @@
                         }
                         else
                         {
-                            array_route($("span[name='points']").html());                                                         
+                            var flightPlanCoordinates=array_points($("span[name='points']").html());                             
+                            poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:"aaaaaaaaaa"});	
                         }    
+
                         limpiar_virtual();
-                        limpiar_real();	                                         
+                        limpiar_real();	                 
+                        
                     },1000);
                     
                 </script>
@@ -329,8 +332,7 @@
                         }
                         else
                         {
-                            var flightPlanCoordinates=array_points($("span[name='points']").html());                             
-                            poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:"aaaaaaaaaa"});	
+                            array_route($("span[name='points']").html());                        
                         }    
 
                         limpiar_virtual();
