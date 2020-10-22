@@ -216,8 +216,7 @@
                         }
                         else
                         {
-                            var flightPlanCoordinates=array_points($("span[name='points']").html());                             
-                            poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:"aaaaaaaaaa"});	
+                            array_route($("span[name='points']").html());                                                         
                         }    
 
                         limpiar_virtual();
