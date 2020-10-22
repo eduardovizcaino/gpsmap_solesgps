@@ -604,8 +604,7 @@ odoo.define('gpsmap', function(require){
 						if(igeo==0)
 						{
 							var origen		=GeoMarker[igeo];
-							//var origen1		=String(origen);						
-							
+							//var origen1		=String(origen);													
 						}
 						else if(igeo==tot)
 						{
@@ -627,8 +626,8 @@ odoo.define('gpsmap', function(require){
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
 									
-					//limpiar_virtual();
-					//limpiar_real();										
+					limpiar_virtual();
+					limpiar_real();										
 				}					
             }
 
@@ -1460,11 +1459,11 @@ odoo.define('gpsmap', function(require){
 	{			
 		var directionsDisplay;
 		var directionsService;
-		var distanceMatrixService;
+		//var distanceMatrixService;
 	
 		directionsService       =new google.maps.DirectionsService();
 		directionsDisplay       =new google.maps.DirectionsRenderer();
-		distanceMatrixService 	= new google.maps.DistanceMatrixService;
+		//distanceMatrixService 	= new google.maps.DistanceMatrixService;
 		
 					
 		var request = {
@@ -1489,7 +1488,7 @@ odoo.define('gpsmap', function(require){
 		        
 				if (status == google.maps.DirectionsStatus.OK) 
 				{				
-				    alert(map);
+				    alert("mapa");
 					directionsDisplay.setMap(map);
 					//directionsDisplay.setPanel($("div#text").get(0));
 					directionsDisplay.setDirections(response);
