@@ -621,6 +621,11 @@ odoo.define('gpsmap', function(require){
 					}
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
+
+                    $("textarea[name='points']")
+                        .focus()
+                        .change();                    
+
 									
 					limpiar_virtual();
 					limpiar_real();										
