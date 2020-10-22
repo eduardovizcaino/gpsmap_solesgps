@@ -1160,6 +1160,7 @@ odoo.define('gpsmap', function(require){
         var tot			=vec_points.length -1;
         var i_vec_points;
 
+        alert("ARRAY ROUTE" + tot);
         for(i_vec_points in vec_points)
         {                   
             var point       =vec_points[i_vec_points];
