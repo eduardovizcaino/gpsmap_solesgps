@@ -111,7 +111,7 @@ odoo.define('gpsmap', function(require){
                 var routes   =local.route;
                 for(iroute in routes)
                 {		                
-                    var route                    =routes[igroute];		                
+                    var route                    =routes[iroute];		                
                     if(route["hidden"]==false)
                     {                        
                         array_route(route["points"]);                             
