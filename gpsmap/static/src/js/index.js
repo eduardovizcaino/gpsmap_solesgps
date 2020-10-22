@@ -603,24 +603,24 @@ odoo.define('gpsmap', function(require){
 					{
 						if(igeo==0)
 						{
-							var origen		=GeoMarker1[igeo];
+							var origen		=GeoMarker[igeo];
 							//var origen1		=String(origen);						
 							
 						}
 						else if(igeo==tot)
 						{
-							var destino		=GeoMarker1[igeo];
+							var destino		=GeoMarker[igeo];
 							//var destino1	=String(destino);						
 						}
 						else
 						{
 							waypts.push({
-								location: GeoMarker1[igeo],
+								location: GeoMarker[igeo],
 								stopover: true
 							});
 						}	
 					}
-					alert("antes");
+					alert("antes prueba");
                     //origen= { lat: 19.05, lng: -104.29 },
                     //destino= { lat: 20.30, lng: -104.5 },
 
