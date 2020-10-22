@@ -79,6 +79,7 @@ odoo.define('gpsmap', function(require){
                 local.geofences     =res;                                        
             });
             /////
+            var data={
                 model: 'gpsmap.route',
                 method: 'search_read',
                 context: session.user_context,
@@ -101,7 +102,7 @@ odoo.define('gpsmap', function(require){
             });
         },        
         //////////////////////////////////////////////////////////////
-        reoute_paint: function() 
+        route_paint: function() 
         {
             setTimeout(function()
             {       
@@ -515,6 +516,7 @@ odoo.define('gpsmap', function(require){
                 //var obj=$("li.vehicle_active")
                 status_device($("li.vehicle_active"));
                 gpsmaps_obj.geofences_paint();
+                gpsmaps_obj.route_paint();
                 gpsmaps_obj.position();
 
                 setTimeout(function()    {
