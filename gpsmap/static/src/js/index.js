@@ -1480,7 +1480,7 @@ odoo.define('gpsmap', function(require){
 				{				
 					directionsDisplay.setMap(map);
 					//directionsDisplay.setPanel($("div#text").get(0));
-					directionsDisplay.setDirections(response);
+					//directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
 				
