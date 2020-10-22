@@ -601,7 +601,6 @@ odoo.define('gpsmap', function(require){
 					var igeo;
 					for(igeo in GeoMarker1)
 					{
-					    //  alert(igeo + " > " +GeoMarker[igeo]);
 						if(igeo==0)
 						{
 							var origen		=GeoMarker1[igeo];
@@ -622,8 +621,8 @@ odoo.define('gpsmap', function(require){
 						}	
 					}
 					//("antes");
-					      origen= { lat: 37.77, lng: -122.447 },
-      destino= { lat: 37.768, lng: -122.511 },
+                    origen= { lat: 19.05, lng: -104.29 },
+                    destino= { lat: 19.30, lng: -104.5 },
 
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
