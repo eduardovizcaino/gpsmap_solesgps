@@ -1460,6 +1460,7 @@ odoo.define('gpsmap', function(require){
 		directionsService       =new google.maps.DirectionsService();
 		directionsDisplay       =new google.maps.DirectionsRenderer();
 		//distanceMatrixService 	= new google.maps.DistanceMatrixService;
+		
 					
 		var request = {
 			origin: 		origen,
@@ -1467,12 +1468,15 @@ odoo.define('gpsmap', function(require){
 			travelMode: 	google.maps.DirectionsTravelMode["DRIVING"],
 			unitSystem: 	google.maps.DirectionsUnitSystem["METRIC"],
 		};		
-			    	
+		
+	    	
 		if(puntos!=undefined)		
 		{		
 			if(puntos.length>0)		
 				request["waypoints"]=puntos;
 		}			
+		//for(d in directionsService)
+		
 		{
 			directionsService.route(request, function(response, status) 
 			{		        
@@ -1480,7 +1484,7 @@ odoo.define('gpsmap', function(require){
 				{				
 					directionsDisplay.setMap(map);
 					//directionsDisplay.setPanel($("div#text").get(0));
-					//directionsDisplay.setDirections(response);
+					directionsDisplay.setDirections(response);
 				} 
 				else 	alert("No existen rutas entre ambos puntos");
 				
