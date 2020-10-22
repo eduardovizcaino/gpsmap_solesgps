@@ -53,6 +53,7 @@ odoo.define('gpsmap', function(require){
     //map                         =undefined;    
     local.vehicles              =Array();
     local.geofences             =Array();
+    local.route             =Array();
     local.positions             =undefined;    
     local.gpsmap                =undefined;
     local.actualizaciones       =0;        
@@ -71,8 +72,6 @@ odoo.define('gpsmap', function(require){
                 method: 'search_read',
                 context: session.user_context,
             }
-            
-                                          
             this._rpc(data)
             .then(function(res) 
             {
@@ -80,6 +79,18 @@ odoo.define('gpsmap', function(require){
                 local.geofences     =res;                                        
             });
             /////
+                model: 'gpsmap.route',
+                method: 'search_read',
+                context: session.user_context,
+            }
+            this._rpc(data)
+            .then(function(res) 
+            {
+                self.route      =res;                        
+                local.route     =res;                                        
+            });
+            /////
+
             data["model"]="fleet.vehicle";            
             return this._rpc(data)
             .then(function(res) 
@@ -89,6 +100,24 @@ odoo.define('gpsmap', function(require){
                 local.vehicles     =res;                                        
             });
         },        
+        //////////////////////////////////////////////////////////////
+        reoute_paint: function() 
+        {
+            setTimeout(function()
+            {       
+                console.log("Pinta las geocercas");
+                var iroute;
+                var routes   =local.route;
+                for(iroute in routes)
+                {		                
+                    var route                    =routes[igroute];		                
+                    if(route["hidden"]==false)
+                    {                        
+                        array_route(route["points"]);                             
+                    }    
+                }
+            },1000);
+        },
 
         //////////////////////////////////////////////////////////////
         geofences_paint: function() 
@@ -1160,7 +1189,6 @@ odoo.define('gpsmap', function(require){
         var tot			=vec_points.length -2;
         var i_vec_points;
 
-        alert("ARRAY ROUTE" + tot);
         for(i_vec_points in vec_points)
         {                   
             var point       =vec_points[i_vec_points];
@@ -1183,32 +1211,6 @@ odoo.define('gpsmap', function(require){
        tracert(origen,destino,waypts);                     
 	}
 
-
-/*
-
-	function array_points(points) 
-	{
-	    var array_points=new Array();
-        var vec_points  =points.split("|");        
-        var tot			=vec_points.length -1;
-        for(i_vec_points in vec_points)
-        {                   
-            var point       =vec_points[i_vec_points];
-            if(point!="")
-            {                
-                var vec_point   =point.split(",");	                   
-                var obj_point={lat:parseFloat(vec_point[1]),lng:parseFloat(vec_point[0])};
-                
-                
-			}			
-       }    
-       tracert(origen,destino,waypts);                     
-       return array_points;
-	}
-
-
-
-*/
 	function messageMaps(marcador, vehicle, infowindow) 
 	{
 		gMEvent.addListener(marcador, 'click', function() 
