@@ -342,7 +342,7 @@ class geofence(models.Model):
         ], 'Color', default='green', help='Color of geofence', required=True)
     hidden = fields.Boolean('Hidden')
     company_id = fields.Many2one('res.company', string='Company', default=lambda self: self.env.user.company_id, required=True)    
-    company_ids = fields.Many2many('res.company', 'res_company_users_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
+    company_ids = fields.Many2many('res.company', 'geofence_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
                  
     
     def geofences(self):
