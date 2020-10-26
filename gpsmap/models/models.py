@@ -236,8 +236,9 @@ class positions(models.Model):
         positions_arg                           =[('leido','!=',1)]                
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
         
-        print('=============== READ POSITIONS ===================',len(positions_data))  
+        
         if len(positions_data)>0:     
+            print('=============== READ POSITIONS ===================',len(positions_data))  
             for position in positions_data:
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
                 vehicle                         =vehicle_obj.search(vehicle_arg)        
