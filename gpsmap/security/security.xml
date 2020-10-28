@@ -22,6 +22,19 @@
             <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_admin'))]"/>
         </record>
 
+
+        
+        <record id="gpsmap_rule_cost_visibility_admin" model="ir.rule">
+            <field name="name">User can only see his/her costs</field>
+            <field name="model_id" ref="model_fleet_vehicle_cost"/>
+            <field name="groups" eval="[(4, ref('gpsmap_group_admin'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+
         <!-- MODULE fleet_vehicle -->
 
         <record id="rule_fleet_vehicle_template" model="ir.rule">
