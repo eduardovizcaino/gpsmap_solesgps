@@ -47,6 +47,12 @@
     <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap.gpsmap_group_admin"/>
 
 
+    <record id='fleet_tc_devices_action' model='ir.actions.act_window'>
+        <field name="name">GPS</field>
+        <field name="res_model">tc_devices</field>
+    </record>
+    <menuitem action="fleet_tc_devices_action" parent="fleet.fleet_vehicles" id="fleet_tc_devices_menu" groups="gpsmap.gpsmap_group_admin"/>
+
 
     <record id='fleet_speed_action' model='ir.actions.act_window'>
         <field name="name">Speed</field>

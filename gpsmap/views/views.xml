@@ -41,37 +41,25 @@
         </field>
     </record>        
 
-    <!-- POSITIONS -->
-<!--
-    <record id='gpsmap_positions_view_form' model='ir.ui.view'>
-        <field name="name">gpsmap.positions.form</field>
-        <field name="model">gpsmap.positions</field>
+
+
+    <record id='tc_devices_view_form' model='ir.ui.view'>
+        <field name="name">tc_devices.form</field>
+        <field name="model">tc_devices</field>
         <field name="arch" type="xml">
-            <form string="Vehicle">
-                <div id="cargar_mapa"></div>
-                <script>
-                    if($("div#vehiculos.menu_soles").length>0)
-                        $("div#vehiculos.menu_soles").html("");                        
-                    if($("ol.breadcrumb li.active:contains('gpsmap.positions,')").length)
-                    {
-                            var variables       =serializar_url(location.hash.substring(1));                            
-                            if($("#html_mapa").length==0)
-                            {
-                                gpsmaps_obj.html_map();    
-                                gpsmaps_obj.map("map_tree");    
-                            }                            
-                            console.log("Positions ######### " + variables["id"]);                                         
-                            setTimeout(function()
-                            {       
-                                gpsmaps_obj.positions_search(parseInt(variables["id"]));            
-                            },700);
-                    }    
-                </script>
+            <form string="GPS">
+                <field name="name" />
+                <field name="uniqueid"/>
+                <field name="lastupdate"/>                    
+                <field name="positionid"/>
+                <field name="deviceid"/>
             </form>
         </field>
     </record>
 
--->
+
+    <!-- POSITIONS -->
+
 
     <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
         <field name="name">gpsmap.positions.tree</field>

@@ -23,6 +23,44 @@ class vehicle_model_brand(models.Model):
     _inherit = "fleet.vehicle.model.brand"
 
 
+class tc_devices(models.Model):
+    _name = "tc_devices"
+    _description = 'traccar devices'
+    _order = "name DESC"
+    _pointOnVertex=""
+        
+    name                                        = fields.Char('Protocolo', size=128)
+    uniqueid                                    = fields.Char('Protocolo', size=128)
+    lastupdate                                  = fields.Datetime('lastupdate')
+    positionid                                  = fields.Many2one('tc_positions',ondelete='set null', string="Position", index=True)
+    deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
+    
+
+class tc_positions(models.Model):
+    _name = "tc_positions"
+    _description = 'traccar Positions'
+    _order = "devicetime DESC"
+    _pointOnVertex=""
+    protocol                                    = fields.Char('Protocolo', size=15)
+    deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
+    servertime                                  = fields.Datetime('Server Time')
+    devicetime                                  = fields.Datetime('Device Time')
+    fixtime                                     = fields.Datetime('Error Time')
+    valid                                       = fields.Integer('Valido')
+    latitude                                    = fields.Float('Latitud',digits=(5,10))
+    longitude                                   = fields.Float('Longitud',digits=(5,10))
+    altitude                                    = fields.Float('Altura',digits=(6,2))
+    speed                                       = fields.Float('Velocidad',digits=(3,2))
+    course                                      = fields.Float('Curso',digits=(3,2))
+    address                                     = fields.Char('Calle', size=150)
+    attributes                                  = fields.Char('Atributos', size=5000)
+    accuracy                                    = fields.Float('Curso',digits=(3,2))
+    network                                     = fields.Char('Type', size=4000)
+    read                                        = fields.Integer('Leido',default=0)
+
+
+
+
 class vehicle(models.Model):
     _inherit = "fleet.vehicle"
     image_vehicle = fields.Selection([
