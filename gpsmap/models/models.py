@@ -237,7 +237,8 @@ class positions(models.Model):
         positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
         
         
-        if type(positions_data) is list and len(positions_data)>0:     
+        #if type(positions_data) is list and len(positions_data)>0:     
+        if len(positions_data)>0:
             print('=============== READ POSITIONS ===================',len(positions_data))  
             for position in positions_data:
                 vehicle_arg                     =[('id','=',position.deviceid.id)]                
