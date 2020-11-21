@@ -234,7 +234,7 @@ class positions(models.Model):
         alerts_data                             =geofence_obj.geofences()
         
         positions_arg                           =[('leido','!=',1)]                
-        positions_data                          =positions_obj.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
+        positions_data                          =positions_obj.search(positions_arg, offset=0, limit=200, order='devicetime DESC')        
         
         
         #if type(positions_data) is list and len(positions_data)>0:     
