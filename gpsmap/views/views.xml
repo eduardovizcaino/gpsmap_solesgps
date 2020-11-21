@@ -48,11 +48,13 @@
         <field name="model">tc_devices</field>
         <field name="arch" type="xml">
             <form string="GPS">
-                <field name="name" />
-                <field name="uniqueid"/>
-                <field name="lastupdate"/>                    
-                <field name="positionid"/>
-                <field name="deviceid"/>
+                <group col="4" string="GPS Configuration">
+                    <field name="name" />
+                    <field name="uniqueid"/>
+                    <field name="lastupdate"/>                    
+                    <field name="positionid"/>
+                    <field name="deviceid"/>
+                </group>                
             </form>
         </field>
     </record>
