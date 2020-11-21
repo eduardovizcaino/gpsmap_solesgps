@@ -323,7 +323,7 @@ class positions(models.Model):
                                 speed_obj.write(speed)                        
                                 #print('Saliendo del exceso de velocidad')
                         #if len(speed_data)>0:
-                                        
+                    """                    
                     if len(alerts_data)>0:                     
                         for alerts in alerts_data:                        
                             for devices in alerts.device_ids:                 
@@ -333,7 +333,7 @@ class positions(models.Model):
                                     print('===========alert device id======',devices.id)
                                     for geofences in alerts.geofence_ids:                 
                                         print('===========',geofences)                                
-                                                            
+                    """                                        
                     attributes = json.loads(position.attributes)
                     
                     if("io3" in attributes):                    gas     =attributes["io3"]        
