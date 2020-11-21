@@ -89,7 +89,7 @@ class vehicle(models.Model):
     
     
     
-    gps1id                                      = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
+    gps1_id                                      = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
     
     
     @api.one

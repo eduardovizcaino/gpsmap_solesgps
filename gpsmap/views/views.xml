@@ -19,7 +19,7 @@
         <field name="arch" type="xml">
             <xpath expr="//group" position="after">            
                 <group col="4" string="GPS Configuration">                    
-                    <field name="gps1id"/>
+                    <field name="gps1_id"/>
                     <field name="economic_number"/>
                     <field name="image_vehicle"/>
                     <field name="speed"/>
