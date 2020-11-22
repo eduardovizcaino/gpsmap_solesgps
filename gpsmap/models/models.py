@@ -163,8 +163,8 @@ class vehicle(models.Model):
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
                     positions_data                  =positions_obj.search_read([('id','=',vehicle.gps1_id.positionid.id)])        
-                    if len(positions_data)>0:                            
-                        print("==== DATA ID=== ", positions_data)
+                    #if len(positions_data)>0:                            
+                    #    print("==== DATA ID=== ", positions_data)
 
 
 
