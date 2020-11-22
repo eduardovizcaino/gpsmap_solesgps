@@ -210,17 +210,17 @@ class vehicle(models.Model):
                 position["course"]              =vehicle.positionid.course                
                 position["gas"]                 =vehicle.positionid.gas
 
-            if(vehicle.positionid.devicetime!=False):
-                tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
-                ahora   =ahora[0:19]
-                                    
-                if(ahora<hoy_antes):
-                    position["status"]      ="Offline"
-            else:    
-                position["status"]          ="Offline"
+                if(vehicle.positionid.devicetime!=False):
+                    tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+                    ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
+                    ahora   =ahora[0:19]
+                                        
+                    if(ahora<hoy_antes):
+                        position["status"]      ="Offline"
+                else:    
+                    position["status"]          ="Offline"
             
-            return_positions[vehicle.id]    =position
+                return_positions[vehicle.id]    =position
             
         return return_positions    
 class speed(models.Model):
