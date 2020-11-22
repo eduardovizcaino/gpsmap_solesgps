@@ -164,7 +164,7 @@ class vehicle(models.Model):
                 position["address"]             =vehicle.gps1_id.positionid.address
                 position["course"]              =vehicle.gps1_id.positionid.course                
                 
-                print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id)
+                print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
                 
                 """
                 position["event"]               =vehicle.positionid.event                
