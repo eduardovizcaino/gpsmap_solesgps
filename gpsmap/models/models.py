@@ -147,7 +147,43 @@ class vehicle(models.Model):
         return_positions                        ={}
         vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
                         
-        if len(vehicle_data)>0:         
+        if len(vehicle_data)>0:        
+
+            for vehicle in vehicle_data:
+                position                        ={}
+                
+                position["deviceid"]            =vehicle.id
+                
+                position["longitude"]           =vehicle.gps1_id.positionid.longitude
+                position["altitude"]            =vehicle.gps1_id.positionid.altitude
+                position["latitude"]            =vehicle.gps1_id.positionid.latitude                
+                position["attributes"]          =vehicle.gps1_id.positionid.attributes
+                position["speed"]               =vehicle.gps1_id.positionid.speed
+                position["devicetime"]          =vehicle.gps1_id.positionid.devicetime
+                position["address"]             =vehicle.gps1_id.positionid.address
+                position["course"]              =vehicle.gps1_id.positionid.course                
+                
+                """
+                position["event"]               =vehicle.positionid.event                
+
+                position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
+                position["status"]              =vehicle.positionid.status                
+                
+                position["speed_compu"]         =vehicle.positionid.speed_compu
+                
+                position["id"]                  =vehicle.positionid.id                                               
+                
+                position["gas"]                 =vehicle.positionid.gas
+                """
+
+    name                                        = fields.Char('Name', size=128)
+    uniqueid                                    = fields.Char('IMEI', size=128)
+    lastupdate                                  = fields.Datetime('Lastupdate')
+    positionid                                  = fields.Many2one('tc_positions',ondelete='set null', string="Position", index=True)
+    deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
+
+        
+            """ 
             for vehicle in vehicle_data:
                 position                        ={}
                 position["event"]               =vehicle.positionid.event                
@@ -176,6 +212,7 @@ class vehicle(models.Model):
                 else:    
                     position["status"]          ="Offline"
                 return_positions[vehicle.id]    =position
+            """
         return return_positions    
 class speed(models.Model):
     _name = "gpsmap.speed"
