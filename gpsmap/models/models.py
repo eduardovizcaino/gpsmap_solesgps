@@ -163,6 +163,7 @@ class vehicle(models.Model):
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
                     print("==== DATA ID=== ", vehicle.gps1_id.positionid)
                     
+                    positions_data                  =positions_obj.browse([vehicle.gps1_id.positionid])
                     
                     
 
