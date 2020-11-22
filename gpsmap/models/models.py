@@ -168,13 +168,15 @@ class vehicle(models.Model):
                     print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data)
                     position["longitude"]           =positions_data.longitude
                     position["altitude"]            =positions_data.altitude
+                
+                """
                     position["latitude"]            =positions_data.latitude                
                     position["attributes"]          =positions_data.attributes
                     position["speed"]               =positions_data.speed
                     position["devicetime"]          =positions_data.devicetime
                     position["address"]             =positions_data.address
                     position["course"]              =positions_data.course                
-                    
+                """    
                 
                 """
                 position["event"]               =vehicle.positionid.event                
