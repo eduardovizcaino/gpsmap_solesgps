@@ -162,11 +162,13 @@ class vehicle(models.Model):
                 if len(vehicle.gps1_id.positionid)>0:                 
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
+                    positions_data                  =positions_obj.search_read([('id','=',vehicle.gps1_id.positionid.id)])        
+                    if len(positions_data)>0:                            
+                        print("==== DATA ID=== ", position_data)
 
-                    positions_datas                               =positions_obj.browse([vehicle.gps1_id.positionid.id])
-                    
-                    for position_data in positions_datas:
-                        print("==== DATA ID=== ", position_data["latitude"])
+
+
+
                     """
                     positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)[]
 
