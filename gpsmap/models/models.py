@@ -159,11 +159,13 @@ class vehicle(models.Model):
                 if(vehicle.gps1_id.positionid!=False):
                     print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid.id)
 
+
+
                     positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)
 
 
                     
-                    print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data.longitude)
+                    print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data)
                     position["longitude"]           =positions_data.longitude
                     position["altitude"]            =positions_data.altitude
                     position["latitude"]            =positions_data.latitude                
@@ -208,6 +210,8 @@ class vehicle(models.Model):
                     position["course"]              =vehicle.positionid.course                
                     position["gas"]                 =vehicle.positionid.gas
                 """                            
+                
+                """
                 if(vehicle.positionid.devicetime!=False):
                     tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                     ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
@@ -217,6 +221,8 @@ class vehicle(models.Model):
                         position["status"]      ="Offline"
                 else:    
                     position["status"]          ="Offline"
+                """
+                
                 return_positions[vehicle.id]    =position
             
         return return_positions    
