@@ -165,7 +165,7 @@ class vehicle(models.Model):
                     
                     positions_data                  =positions_obj.browse([vehicle.gps1_id.positionid])
                     
-                    
+                    print("==== DATA ID=== ", positions_data)
 
                     #positions_data                  =positions_obj.search([('id','=',vehicle.gps1_id.positionid.id)])        
                     #positions_data                  =positions_obj.browse(vehicle.gps1_id.positionid.id)
