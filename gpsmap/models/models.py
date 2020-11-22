@@ -154,17 +154,17 @@ class vehicle(models.Model):
                 position["deviceid"]            =vehicle.id
                 
                 
-                
-                position["longitude"]           =vehicle.gps1_id.positionid.longitude
-                position["altitude"]            =vehicle.gps1_id.positionid.altitude
-                position["latitude"]            =vehicle.gps1_id.positionid.latitude                
-                position["attributes"]          =vehicle.gps1_id.positionid.attributes
-                position["speed"]               =vehicle.gps1_id.positionid.speed
-                position["devicetime"]          =vehicle.gps1_id.positionid.devicetime
-                position["address"]             =vehicle.gps1_id.positionid.address
-                position["course"]              =vehicle.gps1_id.positionid.course                
-                
-                print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
+                if(vehicle.gps1_id.positionid.id>0)
+                    position["longitude"]           =vehicle.gps1_id.positionid.longitude
+                    position["altitude"]            =vehicle.gps1_id.positionid.altitude
+                    position["latitude"]            =vehicle.gps1_id.positionid.latitude                
+                    position["attributes"]          =vehicle.gps1_id.positionid.attributes
+                    position["speed"]               =vehicle.gps1_id.positionid.speed
+                    position["devicetime"]          =vehicle.gps1_id.positionid.devicetime
+                    position["address"]             =vehicle.gps1_id.positionid.address
+                    position["course"]              =vehicle.gps1_id.positionid.course                
+                    
+                    print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
                 
                 """
                 position["event"]               =vehicle.positionid.event                
