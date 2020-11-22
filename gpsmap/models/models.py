@@ -163,9 +163,10 @@ class vehicle(models.Model):
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
 
-                    positions_data                               =positions_obj.browse([vehicle.gps1_id.positionid.id])
+                    positions_datas                               =positions_obj.browse([vehicle.gps1_id.positionid.id])
                     
-                    print("==== DATA ID=== ", positions_data)
+                    for position_data in positions_datas:
+                        print("==== DATA ID=== ", position_data)
                     """
                     positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)[]
 
