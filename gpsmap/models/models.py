@@ -33,7 +33,7 @@ class tc_devices(models.Model):
     uniqueid                                    = fields.Char('IMEI', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
     positionid                                  = fields.Many2one('tc_positions',ondelete='set null', string="Position", index=True)
-    deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
+    #deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
     
 
 class tc_positions(models.Model):
@@ -159,8 +159,7 @@ class vehicle(models.Model):
                 
                 #if(vehicle.gps1_id.positionid!= False and vehicle.gps1_id.positionid > 0):
                 #if vehicle.gps1_id.positionid &gt; 0: 
-                if len(vehicle.gps1_id.positionid)>0: 
-                
+                if len(vehicle.gps1_id.positionid)>0:                 
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
 
