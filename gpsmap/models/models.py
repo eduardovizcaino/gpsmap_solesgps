@@ -156,8 +156,8 @@ class vehicle(models.Model):
                 position["deviceid"]            =vehicle.id
                 
                 print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
-                if(vehicle.gps1_id.positionid!=False):
-                    print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid.id)
+                if(vehicle.gps1_id.positionid not is False):
+                    print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
 
 
