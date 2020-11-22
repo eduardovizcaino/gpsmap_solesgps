@@ -88,8 +88,7 @@ class vehicle(models.Model):
     devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     
     
-    
-    gps1_id                                      = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
+    gps1_id                                     = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
     
     
     @api.one
@@ -154,6 +153,8 @@ class vehicle(models.Model):
                 
                 position["deviceid"]            =vehicle.id
                 
+                
+                
                 position["longitude"]           =vehicle.gps1_id.positionid.longitude
                 position["altitude"]            =vehicle.gps1_id.positionid.altitude
                 position["latitude"]            =vehicle.gps1_id.positionid.latitude                
@@ -162,6 +163,8 @@ class vehicle(models.Model):
                 position["devicetime"]          =vehicle.gps1_id.positionid.devicetime
                 position["address"]             =vehicle.gps1_id.positionid.address
                 position["course"]              =vehicle.gps1_id.positionid.course                
+                
+                print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id)
                 
                 """
                 position["event"]               =vehicle.positionid.event                
