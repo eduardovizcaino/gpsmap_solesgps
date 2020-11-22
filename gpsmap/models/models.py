@@ -156,6 +156,7 @@ class vehicle(models.Model):
                 
                 if(vehicle.gps1_id.positionid!=False):
                     print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid.id)
+                    print("====VEHICULO vehicle.gps1_id.longitude=== ", vehicle.gps1_id.positionid.longitude)
                     position["longitude"]           =vehicle.gps1_id.positionid.longitude
                     position["altitude"]            =vehicle.gps1_id.positionid.altitude
                     position["latitude"]            =vehicle.gps1_id.positionid.latitude                
