@@ -154,7 +154,7 @@ class vehicle(models.Model):
                 position["deviceid"]            =vehicle.id
                 
                 
-                if(vehicle.gps1_id.positionid.id>0)
+                if(vehicle.gps1_id.positionid.id>0):
                     position["longitude"]           =vehicle.gps1_id.positionid.longitude
                     position["altitude"]            =vehicle.gps1_id.positionid.altitude
                     position["latitude"]            =vehicle.gps1_id.positionid.latitude                
