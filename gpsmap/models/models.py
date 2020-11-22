@@ -135,6 +135,8 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
+        positions_obj                                 =self.env['tc_positions']        
+        
         
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
@@ -156,15 +158,20 @@ class vehicle(models.Model):
                 
                 if(vehicle.gps1_id.positionid!=False):
                     print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid.id)
-                    print("====VEHICULO vehicle.gps1_id.longitude=== ", vehicle.gps1_id.positionid.longitude)
-                    position["longitude"]           =vehicle.gps1_id.positionid.longitude
-                    position["altitude"]            =vehicle.gps1_id.positionid.altitude
-                    position["latitude"]            =vehicle.gps1_id.positionid.latitude                
-                    position["attributes"]          =vehicle.gps1_id.positionid.attributes
-                    position["speed"]               =vehicle.gps1_id.positionid.speed
-                    position["devicetime"]          =vehicle.gps1_id.positionid.devicetime
-                    position["address"]             =vehicle.gps1_id.positionid.address
-                    position["course"]              =vehicle.gps1_id.positionid.course                
+
+                    positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)
+
+
+                    
+                    print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data.longitude)
+                    position["longitude"]           =positions_data.longitude
+                    position["altitude"]            =positions_data.altitude
+                    position["latitude"]            =positions_data.latitude                
+                    position["attributes"]          =positions_data.attributes
+                    position["speed"]               =positions_data.speed
+                    position["devicetime"]          =positions_data.devicetime
+                    position["address"]             =positions_data.address
+                    position["course"]              =positions_data.course                
                     
                 
                 """
