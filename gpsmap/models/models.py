@@ -191,39 +191,36 @@ class vehicle(models.Model):
                     """
 
                 
-                    """ 
-                        for vehicle in vehicle_data:
-                            position                        ={}
-                            position["event"]               =vehicle.positionid.event                
-                            position["longitude"]           =vehicle.positionid.longitude
-                            position["altitude"]            =vehicle.positionid.altitude
-                            position["latitude"]            =vehicle.positionid.latitude                
-                            position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
-                            position["status"]              =vehicle.positionid.status                
-                            position["deviceid"]            =vehicle.id
-                            position["speed_compu"]         =vehicle.positionid.speed_compu
-                            position["attributes"]          =vehicle.positionid.attributes
-                            position["devicetime"]          =vehicle.positionid.devicetime
-                            position["id"]                  =vehicle.positionid.id                                               
-                            position["speed"]               =vehicle.positionid.speed
-                            position["address"]             =vehicle.positionid.address
-                            position["course"]              =vehicle.positionid.course                
-                            position["gas"]                 =vehicle.positionid.gas
-                    """                            
-                        
-                    """
-                        if(vehicle.positionid.devicetime!=False):
-                            tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                            ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
-                            ahora   =ahora[0:19]
-                                                
-                            if(ahora<hoy_antes):
-                                position["status"]      ="Offline"
-                        else:    
-                            position["status"]          ="Offline"
-                    """
-                        
-                    return_positions[vehicle.id]    =position
+                     
+            for vehicle in vehicle_data:
+                position                        ={}
+                position["event"]               =vehicle.positionid.event                
+                position["longitude"]           =vehicle.positionid.longitude
+                position["altitude"]            =vehicle.positionid.altitude
+                position["latitude"]            =vehicle.positionid.latitude                
+                position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
+                position["status"]              =vehicle.positionid.status                
+                position["deviceid"]            =vehicle.id
+                position["speed_compu"]         =vehicle.positionid.speed_compu
+                position["attributes"]          =vehicle.positionid.attributes
+                position["devicetime"]          =vehicle.positionid.devicetime
+                position["id"]                  =vehicle.positionid.id                                               
+                position["speed"]               =vehicle.positionid.speed
+                position["address"]             =vehicle.positionid.address
+                position["course"]              =vehicle.positionid.course                
+                position["gas"]                 =vehicle.positionid.gas
+
+            if(vehicle.positionid.devicetime!=False):
+                tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+                ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
+                ahora   =ahora[0:19]
+                                    
+                if(ahora<hoy_antes):
+                    position["status"]      ="Offline"
+            else:    
+                position["status"]          ="Offline"
+            
+            return_positions[vehicle.id]    =position
             
         return return_positions    
 class speed(models.Model):
