@@ -163,7 +163,7 @@ class vehicle(models.Model):
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
 
-
+                    """
                     positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)
 
                     if len(positions_data)>0:                 
@@ -188,10 +188,10 @@ class vehicle(models.Model):
                         position["speed_compu"]         =0                        
                         position["id"]                  =positions_data.id                                                                       
                         position["gas"]                 =0
-
+                    """
 
                 
-                        """ 
+                    """ 
                         for vehicle in vehicle_data:
                             position                        ={}
                             position["event"]               =vehicle.positionid.event                
@@ -221,9 +221,9 @@ class vehicle(models.Model):
                                 position["status"]      ="Offline"
                         else:    
                             position["status"]          ="Offline"
-                        """
+                    """
                         
-                        return_positions[vehicle.id]    =position
+                    return_positions[vehicle.id]    =position
             
         return return_positions    
 class speed(models.Model):
