@@ -153,8 +153,8 @@ class vehicle(models.Model):
                 
                 position["deviceid"]            =vehicle.id
                 
-                
-                if(vehicle.gps1_id.positionid.id>0):
+                print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid.id)
+                if(vehicle.gps1_id.positionid>0):
                     position["longitude"]           =vehicle.gps1_id.positionid.longitude
                     position["altitude"]            =vehicle.gps1_id.positionid.altitude
                     position["latitude"]            =vehicle.gps1_id.positionid.latitude                
@@ -164,7 +164,6 @@ class vehicle(models.Model):
                     position["address"]             =vehicle.gps1_id.positionid.address
                     position["course"]              =vehicle.gps1_id.positionid.course                
                     
-                    print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
                 
                 """
                 position["event"]               =vehicle.positionid.event                
