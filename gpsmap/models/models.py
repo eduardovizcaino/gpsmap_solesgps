@@ -158,7 +158,8 @@ class vehicle(models.Model):
                 print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
                 
                 #if(vehicle.gps1_id.positionid!= False and vehicle.gps1_id.positionid > 0):
-                if vehicle.gps1_id.positionid &gt; 0: 
+                #if vehicle.gps1_id.positionid &gt; 0: 
+                if len(vehicle.gps1_id.positionid)>0: 
                 
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
 
