@@ -209,9 +209,9 @@ class vehicle(models.Model):
                             position["address"]             =vehicle.positionid.address
                             position["course"]              =vehicle.positionid.course                
                             position["gas"]                 =vehicle.positionid.gas
-                        """                            
+                    """                            
                         
-                        """
+                    """
                         if(vehicle.positionid.devicetime!=False):
                             tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                             ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
