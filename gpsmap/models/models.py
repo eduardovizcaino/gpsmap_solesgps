@@ -161,13 +161,13 @@ class vehicle(models.Model):
 
 
 
-                    positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)
+                    #positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)
 
 
                     
-                    print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data)
-                    position["longitude"]           =positions_data.longitude
-                    position["altitude"]            =positions_data.altitude
+                    #print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data)
+                    #position["longitude"]           =positions_data.longitude
+                    #position["altitude"]            =positions_data.altitude
                 
                 """
                     position["latitude"]            =positions_data.latitude                
