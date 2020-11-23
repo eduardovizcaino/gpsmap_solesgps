@@ -162,7 +162,7 @@ class vehicle(models.Model):
                     print("====VEHICULO GPS DATA=== ", device_data.name)
                     
 
-                    print("====VEHICULO POSITION ID=== ", device_data.gps1_id)
+                    #print("====VEHICULO POSITION ID=== ", device_data.gps1_id)
                     #positions_data                 =positions_obj.browse(device_data.gps1_id.id)
                     
                     #print("====VEHICULO POSITION ID=== ", positions_data.longitude)
