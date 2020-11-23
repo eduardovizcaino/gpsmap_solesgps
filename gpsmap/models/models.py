@@ -135,7 +135,8 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
-        positions_obj                           =self.env['tc_positions']                
+        devices_obj                             =self.env['tc_devices']                
+        positions_obj                           =self.env['tc_positions']
         
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
@@ -149,17 +150,26 @@ class vehicle(models.Model):
                         
         if len(vehicle_data)>0:        
             for vehicle in vehicle_data:
-                position                        ={}
-                
+                position                        ={}                
                 position["deviceid"]            =vehicle.id
                 
-                print("====VEHICULO vehicle.gps1_id=== ", vehicle.gps1_id.positionid)
+                print("====VEHICULO GPS ID=== ", vehicle.gps1_id.id)
+                
+                device_data                     =devices_obj.browse(vehicle.gps1_id.id)
+                
+                
+                #vehicle.gps1_id
+                #devices_obj.read()
+                
+                
+                
                 
                 #if(vehicle.gps1_id.positionid!= False and vehicle.gps1_id.positionid > 0):
                 #if vehicle.gps1_id.positionid &gt; 0: 
-                if len(vehicle.gps1_id.positionid)>0:                 
-                    print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
-                    print("==== gps1_ LONGITUDE=== ", vehicle.gps1_id.positionid.read(["longitude"])[0])
+                if len(device_data)>0:                 
+                    print("====VEHICULO GPS DATA=== ", device_data)
+                    #print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
+                    #print("==== gps1_ LONGITUDE=== ", vehicle.gps1_id.positionid.read(["longitude"])[0])
                     
                     
                     #print("==== DATA ID=== ", vehicle.gps1_id.positionid)
