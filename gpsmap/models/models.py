@@ -164,10 +164,10 @@ class vehicle(models.Model):
                     if len(device_data.positionid)>0:                
                         print("====VEHICULO GPS POSITION ID=== ", device_data.positionid)
                     
-                    #positions_data                 =positions_obj.browse(device_data.positionid)
+                        positions_data                 =positions_obj.browse(device_data.positionid)
                     
-                    #if len(positions_data)>0:                 
-                    #    print("====VEHICULO POSITION ID=== ", positions_data.longitude)
+                        if len(positions_data)>0:                 
+                            print("====VEHICULO POSITION ID=== ", positions_data.longitude)
                     #print("==== gps1_ LONGITUDE=== ", vehicle.gps1_id.positionid.read(["longitude"])[0])
                     
                     
