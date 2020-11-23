@@ -1,3 +1,5 @@
+
+
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import datetime, time
@@ -22,6 +24,11 @@ class vehicle_model(models.Model):
 class vehicle_model_brand(models.Model):
     _inherit = "fleet.vehicle.model.brand"
 
+# CLONAR BD
+# CREATE DATABASE traccar_developer WITH TEMPLATE traccar; 
+# GRANT CONNECT ON DATABASE solesgps TO odoo;
+# GRANT CONNECT ON DATABASE solesgps TO admin_evigra;
+
 
 class tc_devices(models.Model):
     _name = "tc_devices"
@@ -32,10 +39,10 @@ class tc_devices(models.Model):
     name                                        = fields.Char('Name', size=128)
     uniqueid                                    = fields.Char('IMEI', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
-    positionid                                  = fields.Many2one('tc_positions',ondelete='set null', string="Position", index=True)
+    #positionid                                  = fields.Many2one('tc_positions',ondelete='set null', string="Position", index=True)
     #deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
     
-
+    """
 class tc_positions(models.Model):
     _name = "tc_positions"
     _description = 'traccar Positions'
@@ -58,7 +65,7 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
 
-
+    """
 
 
 class vehicle(models.Model):
@@ -135,6 +142,41 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
+        self.env.cr.execute("""
+            SELECT *             
+            FROM  fleet_vehicle fv
+                join tc_devices td on fv.gps1_id=td.id
+                join tc_positions tp on td.positionid=tp.id
+        """)
+
+        positions                   =self.env.cr.dictfetchall()
+        for position in positions:                                       
+            position["latitude"]            =positions_data.latitude                
+            position["attributes"]          =positions_data.attributes
+            position["speed"]               =positions_data.speed
+            position["devicetime"]          =positions_data.devicetime
+            position["address"]             =positions_data.address
+            position["course"]              =positions_data.course                
+        
+        
+
+            position["event"]               =""
+            position["devicetime_compu"]    =""
+            position["status"]              =""                        
+            position["speed_compu"]         =0                        
+            position["id"]                  =positions_data.id                                                                       
+            position["gas"]                 =0
+
+            
+
+
+
+            #self.create(position)
+            #vehicle_data                =vehicle_obj.browse(position["deviceid"])                       
+            #if len(vehicle_data)>0:                                     
+            #    vehicle_data.devicetime     =position["devicetime"]
+            #    vehicle_obj.write(vehicle_data)
+            
         devices_obj                             =self.env['tc_devices']                
         positions_obj                           =self.env['tc_positions']
         
@@ -148,7 +190,8 @@ class vehicle(models.Model):
         return_positions                        ={}
         vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
                         
-        if len(vehicle_data)>0:        
+        if len(vehicle_data)>0:
+            """        
             for vehicle in vehicle_data:
                 position                        ={}                
                 position["deviceid"]            =vehicle.id
@@ -184,8 +227,8 @@ class vehicle(models.Model):
 
 
 
+                    ##################
 
-                    """
                     positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)[]
 
                     if len(positions_data)>0:                 
@@ -210,10 +253,10 @@ class vehicle(models.Model):
                         position["speed_compu"]         =0                        
                         position["id"]                  =positions_data.id                                                                       
                         position["gas"]                 =0
-                    """
+            """
 
                 
-            """         
+                     
             for vehicle in vehicle_data:
                 position                        ={}
                 position["event"]               =vehicle.positionid.event                
@@ -243,7 +286,7 @@ class vehicle(models.Model):
                     position["status"]          ="Offline"
             
                 return_positions[vehicle.id]    =position
-            """
+            
         return return_positions    
 class speed(models.Model):
     _name = "gpsmap.speed"
