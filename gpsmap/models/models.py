@@ -34,13 +34,12 @@ class tc_devices(models.Model):
     _name = "tc_devices"
     _description = 'traccar devices'
     _order = "name DESC"
-    _pointOnVertex=""
         
     name                                        = fields.Char('Name', size=128)
     uniqueid                                    = fields.Char('IMEI', size=128)
+    phone                                       = fields.Char('Phone', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
-    #positionid                                  = fields.Many2one('tc_positions',ondelete='set null', string="Position", index=True)
-    #deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
+    disabled                                    = fields.Boolean('Disable', default=False)
     
     """
 class tc_positions(models.Model):
