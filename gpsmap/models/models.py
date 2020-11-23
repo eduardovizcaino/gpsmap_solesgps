@@ -135,7 +135,7 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
-        positions_obj                                 =self.env['tc_positions']                
+        positions_obj                           =self.env['tc_positions']                
         
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
@@ -160,6 +160,9 @@ class vehicle(models.Model):
                 #if vehicle.gps1_id.positionid &gt; 0: 
                 if len(vehicle.gps1_id.positionid)>0:                 
                     print("==== gps1_ ID=== ", vehicle.gps1_id.positionid.id)
+                    print("==== gps1_ LONGITUDE=== ", vehicle.gps1_id.positionid["longitude"])
+                    
+                    
                     #print("==== DATA ID=== ", vehicle.gps1_id.positionid)
                     
                     #positions_data                  =vehicle.gps1_id.positionid.read(["longitude","latitude"])[0]
