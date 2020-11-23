@@ -148,7 +148,6 @@ class vehicle(models.Model):
         vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
                         
         if len(vehicle_data)>0:        
-
             for vehicle in vehicle_data:
                 position                        ={}
                 
@@ -208,7 +207,7 @@ class vehicle(models.Model):
                     """
 
                 
-                     
+            """         
             for vehicle in vehicle_data:
                 position                        ={}
                 position["event"]               =vehicle.positionid.event                
@@ -238,7 +237,7 @@ class vehicle(models.Model):
                     position["status"]          ="Offline"
             
                 return_positions[vehicle.id]    =position
-            
+            """
         return return_positions    
 class speed(models.Model):
     _name = "gpsmap.speed"
