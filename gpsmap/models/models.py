@@ -178,7 +178,7 @@ class vehicle(models.Model):
             #    vehicle_obj.write(vehicle_data)
             
         devices_obj                             =self.env['tc_devices']                
-        positions_obj                           =self.env['tc_positions']
+        #positions_obj                           =self.env['tc_positions']
         
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
