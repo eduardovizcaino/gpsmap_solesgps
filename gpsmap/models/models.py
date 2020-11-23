@@ -161,9 +161,8 @@ class vehicle(models.Model):
                     print("====VEHICULO GPS ID=== ", device_data.id)
                     print("====VEHICULO GPS NAME=== ", device_data.name)
                     
-                    
-                    
-                    print("====VEHICULO GPS POSITION ID=== ", device_data.positionid)
+                    if len(device_data.positionid)>0:                
+                        print("====VEHICULO GPS POSITION ID=== ", device_data.positionid)
                     
                     #positions_data                 =positions_obj.browse(device_data.positionid)
                     
