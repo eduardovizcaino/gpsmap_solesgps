@@ -149,7 +149,9 @@ class vehicle(models.Model):
         """)
 
         positions                   =self.env.cr.dictfetchall()
-        for position in positions:                                       
+        for position in positions:
+            print("====POSITION=== ", position) 
+                                               
             position["latitude"]            =positions_data.latitude                
             position["attributes"]          =positions_data.attributes
             position["speed"]               =positions_data.speed
