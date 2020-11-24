@@ -152,7 +152,7 @@ class vehicle(models.Model):
         for position in positions:
             position["de"]            =position["tp_deviceid"]                
             
-            print("====POSITION=== ", position) 
+            #print("====POSITION=== ", position) 
             """                                   
             position["latitude"]            =position["latitude"]                
             position["attributes"]          =position["attributes"]
