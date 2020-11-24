@@ -304,7 +304,8 @@ odoo.define('gpsmap', function(require){
                                 positions.lo                =positions["longitude"]; 
                                 positions.co                =positions["course"]; 
                                 positions.mi                ="milage"; 
-                                positions.sp                =positions["speed_compu"]; 
+                                positions.sp                =positions["speed_compu"];
+                                positions.sp                =positions["speed"];  
                                 positions.ba                ="batery"; 
                                 positions.ti                =positions["devicetime"]; 
 
