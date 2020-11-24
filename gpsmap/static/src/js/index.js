@@ -400,8 +400,8 @@ odoo.define('gpsmap', function(require){
 		            for(ivehiculos in vehiculos)
 		            {		                
 		                var vehiculo        =vehiculos[ivehiculos];		                
-                        var vehiculo_id     =vehiculo["gps1_id"].split("1");
-                        var vehiculo_id     =vehiculo_id[0];
+                        var vehiculo_id     =vehiculo["gps1_id"][0];
+                        
                         var vehiculo_name   =vehiculo["name"].split("/");
                         vehiculo_name       =vehiculo_name[0];
                         
