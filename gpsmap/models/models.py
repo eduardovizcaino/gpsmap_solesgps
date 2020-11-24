@@ -153,11 +153,11 @@ class vehicle(models.Model):
             print("====POSITION=== ", position) 
                                                
             position["latitude"]            =position["latitude"]                
-            position["attributes"]          =position.["attributes"]
-            position["speed"]               =position.["speed"]
-            position["devicetime"]          =position.["devicetime"]
-            position["address"]             =position.["address"]
-            position["course"]              =position.["course"]                
+            position["attributes"]          =position["attributes"]
+            position["speed"]               =position["speed"]
+            position["devicetime"]          =position["devicetime"]
+            position["address"]             =position["address"]
+            position["course"]              =position["course"]                
         
         
 
