@@ -142,7 +142,7 @@ class vehicle(models.Model):
     @api.model    
     def js_vehicles(self):
         self.env.cr.execute("""
-            SELECT *             
+            SELECT tp.*, td.id as td_deviceid             
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
@@ -151,7 +151,7 @@ class vehicle(models.Model):
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
             print("====POSITION=== ", position) 
-                                               
+            """                                   
             position["latitude"]            =position["latitude"]                
             position["attributes"]          =position["attributes"]
             position["speed"]               =position["speed"]
@@ -168,7 +168,7 @@ class vehicle(models.Model):
             #position["id"]                  =positions_data.id                                                                       
             position["gas"]                 =0
 
-            """
+            
             if(vehicle.positionid.devicetime!=False):
                 tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                 ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
@@ -180,7 +180,8 @@ class vehicle(models.Model):
                 position["status"]          ="Offline"
         
             """     
-            return_positions[vehicle.id]    =position
+            td_deviceid                     =position["td_deviceid"]
+            return_positions[td_deviceid]    =position
             
         return return_positions    
 class speed(models.Model):
