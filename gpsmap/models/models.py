@@ -142,7 +142,7 @@ class vehicle(models.Model):
     @api.model    
     def js_vehicles(self):
         self.env.cr.execute("""
-            SELECT tp.*, td.id as td_deviceid             
+            SELECT tp.*, fv.id as td_deviceid             
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
