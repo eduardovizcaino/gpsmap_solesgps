@@ -152,12 +152,12 @@ class vehicle(models.Model):
         for position in positions:
             print("====POSITION=== ", position) 
                                                
-            position["latitude"]            =positions_data.latitude                
-            position["attributes"]          =positions_data.attributes
-            position["speed"]               =positions_data.speed
-            position["devicetime"]          =positions_data.devicetime
-            position["address"]             =positions_data.address
-            position["course"]              =positions_data.course                
+            position["latitude"]            =position.latitude                
+            position["attributes"]          =position.attributes
+            position["speed"]               =position.speed
+            position["devicetime"]          =position.devicetime
+            position["address"]             =position.address
+            position["course"]              =position.course                
         
         
 
@@ -168,125 +168,19 @@ class vehicle(models.Model):
             position["id"]                  =positions_data.id                                                                       
             position["gas"]                 =0
 
-            
-
-
-
-            #self.create(position)
-            #vehicle_data                =vehicle_obj.browse(position["deviceid"])                       
-            #if len(vehicle_data)>0:                                     
-            #    vehicle_data.devicetime     =position["devicetime"]
-            #    vehicle_obj.write(vehicle_data)
-            
-        devices_obj                             =self.env['tc_devices']                
-        #positions_obj                           =self.env['tc_positions']
-        
-        hoy_fecha                               ="%s" %(datetime.datetime.now())
-        hoy                                     =hoy_fecha[0:19]
-    
-        hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=5))        
-        hoy_antes                               =hoy_antes[0:19]
-
-        vehicle_args                            =[]        
-        return_positions                        ={}
-        vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
-                        
-        if len(vehicle_data)>0:
-            """        
-            for vehicle in vehicle_data:
-                position                        ={}                
-                position["deviceid"]            =vehicle.id
-                
-                #print("====VEHICULO GPS ID=== ", vehicle.gps1_id.id)                
-                device_data                     =devices_obj.browse(vehicle.gps1_id.id)
-                
-                if len(device_data)>0:                 
-                    #print("====VEHICULO GPS ID=== ", device_data.id)
-                    #print("====VEHICULO GPS NAME=== ", device_data.name)                    
-                    if len(device_data.positionid)>0:                
-                        print("====VEHICULO GPS POSITION ID=== ", device_data.positionid.id)
-                    
-                        positions_data                 =positions_obj.browse(device_data.positionid.id)                    
-                        if len(positions_data)>0:                 
-                            print("====VEHICULO POSITION Lat=== ", positions_data.latitude)
-                    #print("==== gps1_ LONGITUDE=== ", vehicle.gps1_id.positionid.read(["longitude"])[0])
-                    
-                    
-                    #print("==== DATA ID=== ", vehicle.gps1_id.positionid)
-                    
-                    #positions_data                  =vehicle.gps1_id.positionid.read(["longitude","latitude"])[0]
-                    
-                    
-                    #positions_data                  =positions_obj.browse([vehicle.gps1_id.positionid.id])
-                    
-                    #print("==== DATA ID=== ", positions_data)
-
-                    #positions_data                  =positions_obj.search([('id','=',vehicle.gps1_id.positionid.id)])        
-                    #positions_data                  =positions_obj.browse(vehicle.gps1_id.positionid.id)
-                    #if len(positions_data)>0:                            
-                    #    print("==== DATA ID=== ", positions_data)
-
-
-
-                    ##################
-
-                    positions_data                               =positions_obj.browse(vehicle.gps1_id.positionid.id)[]
-
-                    if len(positions_data)>0:                 
-                    
-                    #print("====VEHICULO vehicle.gps1_id.longitude=== ", positions_data)
-                    #position["longitude"]           =positions_data.longitude
-                    #position["altitude"]            =positions_data.altitude
-                
-                    
-                        position["latitude"]            =positions_data.latitude                
-                        position["attributes"]          =positions_data.attributes
-                        position["speed"]               =positions_data.speed
-                        position["devicetime"]          =positions_data.devicetime
-                        position["address"]             =positions_data.address
-                        position["course"]              =positions_data.course                
-                    
-                    
-
-                        position["event"]               =""
-                        position["devicetime_compu"]    =""
-                        position["status"]              =""                        
-                        position["speed_compu"]         =0                        
-                        position["id"]                  =positions_data.id                                                                       
-                        position["gas"]                 =0
             """
-
-                
-                     
-            for vehicle in vehicle_data:
-                position                        ={}
-                position["event"]               =vehicle.positionid.event                
-                position["longitude"]           =vehicle.positionid.longitude
-                position["altitude"]            =vehicle.positionid.altitude
-                position["latitude"]            =vehicle.positionid.latitude                
-                position["devicetime_compu"]    =vehicle.positionid.devicetime_compu
-                position["status"]              =vehicle.positionid.status                
-                position["deviceid"]            =vehicle.id
-                position["speed_compu"]         =vehicle.positionid.speed_compu
-                position["attributes"]          =vehicle.positionid.attributes
-                position["devicetime"]          =vehicle.positionid.devicetime
-                position["id"]                  =vehicle.positionid.id                                               
-                position["speed"]               =vehicle.positionid.speed
-                position["address"]             =vehicle.positionid.address
-                position["course"]              =vehicle.positionid.course                
-                position["gas"]                 =vehicle.positionid.gas
-
-                if(vehicle.positionid.devicetime!=False):
-                    tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                    ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
-                    ahora   =ahora[0:19]
-                                        
-                    if(ahora<hoy_antes):
-                        position["status"]      ="Offline"
-                else:    
-                    position["status"]          ="Offline"
-            
-                return_positions[vehicle.id]    =position
+            if(vehicle.positionid.devicetime!=False):
+                tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
+                ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
+                ahora   =ahora[0:19]
+                                    
+                if(ahora<hoy_antes):
+                    position["status"]      ="Offline"
+            else:    
+                position["status"]          ="Offline"
+        
+            """     
+            return_positions[vehicle.id]    =position
             
         return return_positions    
 class speed(models.Model):
