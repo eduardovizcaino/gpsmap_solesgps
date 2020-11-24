@@ -142,7 +142,7 @@ class vehicle(models.Model):
     @api.model    
     def js_vehicles(self):
         self.env.cr.execute("""
-            SELECT tp.*, fv.id as td_deviceid             
+            SELECT tp.*, tp.deviceid as tp_deviceid             
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
@@ -150,7 +150,7 @@ class vehicle(models.Model):
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
-            position["de"]            =position["td_deviceid"]                
+            position["de"]            =position["tp_deviceid"]                
             
             print("====POSITION=== ", position) 
             """                                   
@@ -182,8 +182,8 @@ class vehicle(models.Model):
                 position["status"]          ="Offline"
         
             """     
-            td_deviceid                     =position["td_deviceid"]
-            return_positions[td_deviceid]    =position
+            tp_deviceid                     =position["tp_deviceid"]
+            return_positions[tp_deviceid]    =position
             
         return return_positions    
 class speed(models.Model):
