@@ -164,7 +164,7 @@ odoo.define('gpsmap', function(require){
 	                        {		                
 	                            var vehiculo        =vehiculos[ivehiculos];		                
 	                            
-	                            if(vehiculo["id"]==device_id)
+	                            if(vehiculo["gps1_id"][0]==device_id)
 	                            {		                        
                                     var vehiculo_name   =vehiculo["economic_number"];
                                     var vehiculo_img    =vehiculo["image_vehicle"];
