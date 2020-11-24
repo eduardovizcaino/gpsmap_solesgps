@@ -150,6 +150,8 @@ class vehicle(models.Model):
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
+            position["de"]            =position["td_deviceid"]                
+            
             print("====POSITION=== ", position) 
             """                                   
             position["latitude"]            =position["latitude"]                
