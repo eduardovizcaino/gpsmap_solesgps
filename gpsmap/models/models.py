@@ -147,8 +147,8 @@ class vehicle(models.Model):
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
         """)
-
-        positions                   =self.env.cr.dictfetchall()
+        return_positions                    ={}
+        positions                           =self.env.cr.dictfetchall()
         for position in positions:
             print("====POSITION=== ", position) 
                                                
