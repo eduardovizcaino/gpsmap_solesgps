@@ -147,8 +147,13 @@ class vehicle(models.Model):
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
                     WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
                     ELSE 1.852 * tp.speed                    
-                END	AS speed_compu            
-            
+                END	AS speed_compu,     
+                CASE 				            
+                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
+                    WHEN tp.devicetime + INTERVAL '15' MINUTE > tp.servertime AND tp.devicetime - INTERVAL '15' MINUTE < tp.servertime THEN 'Online'
+                    ELSE 'Offline'
+                END  as status,
+
                          
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
