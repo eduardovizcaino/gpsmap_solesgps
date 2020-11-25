@@ -147,7 +147,13 @@ class vehicle(models.Model):
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
                     WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
                     ELSE 1.852 * tp.speed                    
-                END	AS speed_compu,     
+                END	AS speed_compu,
+                CASE 				            
+	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
+	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
+	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
+	                ELSE 'Stopped'
+                END	as event,                                 
                 CASE 				            
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
                     WHEN tp.devicetime + INTERVAL '15' MINUTE > tp.servertime AND tp.devicetime - INTERVAL '15' MINUTE < tp.servertime THEN 'Online'
