@@ -152,7 +152,7 @@ class vehicle(models.Model):
             SELECT tp.*, tp.deviceid as tp_deviceid,
                 tp.devicetime + INTERVAL '15' MINUTE as tiempo_despues,
                 tp.devicetime - INTERVAL '15' MINUTE as tiempo_antes,
-                left(now(),19)  as tiempo_servidor,
+                now() as tiempo_servidor,
                 CASE 		                
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
                     WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
@@ -166,7 +166,7 @@ class vehicle(models.Model):
                 END	as event,                                 
                 CASE 				            
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
-                    WHEN tp.devicetime + INTERVAL '15' MINUTE > tp.servertime AND tp.devicetime - INTERVAL '15' MINUTE < tp.servertime THEN 'Online'
+                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTETHEN 'Online'
                     ELSE 'Offline'
                 END  as status
 
