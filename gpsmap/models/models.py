@@ -141,6 +141,13 @@ class vehicle(models.Model):
             print("Error al conectar con traccar")                
     @api.model    
     def js_vehicles(self):
+        hoy_fecha                               ="%s" %(datetime.datetime.now())
+        hoy                                     =hoy_fecha[0:19]
+    
+        hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=5))        
+        hoy_antes                               =hoy_antes[0:19]
+
+
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid,
                 CASE 		                
@@ -170,36 +177,16 @@ class vehicle(models.Model):
         for position in positions:
             position["de"]            =position["tp_deviceid"]                
             
-            #print("====POSITION=== ", position) 
-            """                                   
-            position["latitude"]            =position["latitude"]                
-            position["attributes"]          =position["attributes"]
-            position["speed"]               =position["speed"]
-            position["devicetime"]          =position["devicetime"]
-            position["address"]             =position["address"]
-            position["course"]              =position["course"]                
-        
-        
-
-            position["event"]               =""
-            position["devicetime_compu"]    =""
-            position["status"]              =""                        
-            position["speed_compu"]         =0                        
-            #position["id"]                  =positions_data.id                                                                       
-            position["gas"]                 =0
-
-            
-            if(vehicle.positionid.devicetime!=False):
+            if(position["devicetime"]!=False):
                 tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-                ahora   ="%s" %(tz.localize(fields.Datetime.from_string(vehicle.positionid.devicetime)).astimezone(pytz.utc))                    
+                ahora   ="%s" %(tz.localize(fields.Datetime.from_string(position["devicetime"])).astimezone(pytz.utc))                    
                 ahora   =ahora[0:19]
                                     
                 if(ahora<hoy_antes):
                     position["status"]      ="Offline"
             else:    
                 position["status"]          ="Offline"
-        
-            """     
+
 
             tp_deviceid                     =position["tp_deviceid"]
             return_positions[tp_deviceid]    =position
