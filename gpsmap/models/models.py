@@ -152,7 +152,7 @@ class vehicle(models.Model):
             SELECT tp.*, tp.deviceid as tp_deviceid,
                 tp.devicetime + INTERVAL '15' MINUTE as tiempo_despues,
                 tp.devicetime - INTERVAL '15' MINUTE as tiempo_antes,
-                now() as tiempo_servidor,
+                left(now(),19)  as tiempo_servidor,
                 CASE 		                
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
                     WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
