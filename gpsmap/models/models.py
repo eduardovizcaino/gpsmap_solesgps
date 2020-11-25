@@ -144,8 +144,8 @@ class vehicle(models.Model):
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid,
                 CASE 		                
-                    WHEN fv.odometer_unit=='kilometers' THEN 1.852 * tp.speed
-                    WHEN fv.odometer_unit=='miles' THEN 1.15 * tp.speed
+                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
+                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
                     ELSE 1.852 * tp.speed                    
                 END	AS speed_compu            
             
