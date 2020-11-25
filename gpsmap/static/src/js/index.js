@@ -176,7 +176,8 @@ odoo.define('gpsmap', function(require){
                                     
                                     if($("li.vehicle[vehicle='"+device_id+"']").length>0)                        
                                         $("li.vehicle[vehicle='"+device_id+"']").attr(coordinates);
-                 
+                                        
+                                    /*
 	                                var v 	={
 	                                    mo: "", 
 	                                    st: "1", 
@@ -189,6 +190,7 @@ odoo.define('gpsmap', function(require){
 	                                    ge: "geofence", 
 	                                    ni: "nivel"
                                     };                                
+                                    */
                                     
                                     if(typeof argument=="number")
                                     {
