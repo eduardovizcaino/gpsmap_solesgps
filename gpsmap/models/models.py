@@ -170,7 +170,7 @@ class vehicle(models.Model):
         for position in positions:
             position["de"]            =position["tp_deviceid"]                
             
-            print("====POSITION=== ", position) 
+            #print("====POSITION=== ", position) 
             """                                   
             position["latitude"]            =position["latitude"]                
             position["attributes"]          =position["attributes"]
@@ -200,6 +200,7 @@ class vehicle(models.Model):
                 position["status"]          ="Offline"
         
             """     
+
             tp_deviceid                     =position["tp_deviceid"]
             return_positions[tp_deviceid]    =position
             
