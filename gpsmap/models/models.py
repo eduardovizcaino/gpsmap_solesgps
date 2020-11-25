@@ -150,8 +150,9 @@ class vehicle(models.Model):
 
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid,
-                tp.devicetime + INTERVAL '15' MINUTE as tiempo_antes,
-                tp.devicetime - INTERVAL '15' MINUTE as tiempo_despues,
+                tp.devicetime + INTERVAL '15' MINUTE as tiempo_despues,
+                tp.devicetime - INTERVAL '15' MINUTE as tiempo_antes,
+                current_date as tiempo_servidor,
                 CASE 		                
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
                     WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
@@ -179,7 +180,7 @@ class vehicle(models.Model):
         for position in positions:
             position["de"]            =position["tp_deviceid"]                
             
-            print("########## POSITION = ",position["tiempo_antes"]," <> ",position["tiempo_despues"])
+            print("########## POSITION =",position["tiempo_servidor"]," ",position["tiempo_antes"]," <> ",position["tiempo_despues"])
 
             """            
             if(position["devicetime"]!=False):                
