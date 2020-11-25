@@ -177,11 +177,14 @@ class vehicle(models.Model):
         for position in positions:
             position["de"]            =position["tp_deviceid"]                
             
-            if(position["devicetime"]!=False):
+            print("########## POSITION = ",position["devicetime"])
+            
+            if(position["devicetime"]!=False):                
                 tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                 ahora   ="%s" %(tz.localize(fields.Datetime.from_string(position["devicetime"])).astimezone(pytz.utc))                    
                 ahora   =ahora[0:19]
                                     
+                print("########## AHORA = ",ahora, "       ANTES= ", hoy_antes)
                 if(ahora<hoy_antes):
                     position["status"]      ="Offline"
             else:    
