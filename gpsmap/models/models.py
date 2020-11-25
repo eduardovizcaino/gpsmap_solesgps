@@ -178,7 +178,8 @@ class vehicle(models.Model):
             position["de"]            =position["tp_deviceid"]                
             
             print("########## POSITION = ",position["devicetime"])
-            
+
+            """            
             if(position["devicetime"]!=False):                
                 tz      = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
                 ahora   ="%s" %(tz.localize(fields.Datetime.from_string(position["devicetime"])).astimezone(pytz.utc))                    
@@ -190,7 +191,7 @@ class vehicle(models.Model):
             else:    
                 position["status"]          ="Offline"
 
-
+            """
             tp_deviceid                     =position["tp_deviceid"]
             return_positions[tp_deviceid]    =position
             
