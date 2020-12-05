@@ -24,11 +24,6 @@
                     <field name="image_vehicle"/>
                     <field name="speed"/>
                     <field name="temporal_id"/>
-                    <!--
-                    <field name="devicetime_compu"/>
-                    <field name="imei" groups="fleet.fleet_group_manager"/>
-                    <field name="phone"  groups="fleet.fleet_group_manager"/>
-                    -->
                 </group>                
             </xpath>
             <xpath expr="//sheet/div/button[@name='toggle_active']" position="after">            
@@ -56,6 +51,10 @@
                     <field name="uniqueid"/>
                     <field name="lastupdate"/>                    
                     <field name="phone"/>
+                    <field name="disabled"/>
+                    <field name="telcel"/>
+                    <field name="signal"/>
+                    
 
                 </group>                
             </form>
@@ -66,10 +65,13 @@
         <field name="model">tc_devices</field>
         <field name="arch" type="xml">
             <tree string="Models">
-                <field name="name" />
-                <field name="uniqueid"/>
-                <field name="lastupdate"/>
-                <field name="phone"/>                    
+                    <field name="name" />
+                    <field name="uniqueid"/>
+                    <field name="lastupdate"/>                    
+                    <field name="phone"/>
+                    <field name="disabled"/>
+                    <field name="telcel"/>
+                    <field name="signal"/>
             </tree>
         </field>
     </record>
