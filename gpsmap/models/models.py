@@ -40,6 +40,8 @@ class tc_devices(models.Model):
     phone                                       = fields.Char('Phone', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
     disabled                                    = fields.Boolean('Disable', default=False)
+    telcel                                      = fields.Boolean('Telcel', default=True)
+    signal                                      = fields.Boolean('Good signal', default=True)
     
     """
 class tc_positions(models.Model):
@@ -84,14 +86,14 @@ class vehicle(models.Model):
         ('93', 'Red  Phone')
         ], 'Img GPS', default='01', help='Image of GPS Vehicle', required=True)
     temporal_id                                 = fields.Many2one('res.partner', 'temporal')
-    phone                                       = fields.Char('Phone', size=50)    
+    #phone                                       = fields.Char('Phone', size=50)    
     economic_number                             = fields.Char('Economic Number', size=50)
-    imei                                        = fields.Char('Imei', size=50)
+    #imei                                        = fields.Char('Imei', size=50)
     speed                                       = fields.Char('Exceso de Velocidad', default=100, size=3)   
     positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)    
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
-    devicetime                                  = fields.Datetime('Device Time')
-    devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
+    #devicetime                                  = fields.Datetime('Device Time')
+    #devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     
     
     gps1_id                                     = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
