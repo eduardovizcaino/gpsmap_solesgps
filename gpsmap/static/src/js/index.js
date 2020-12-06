@@ -1030,7 +1030,7 @@ odoo.define('gpsmap', function(require){
 					img_icon="<img width=\"20\" title=\""+ vehicle["ev"] +"\" src=\"/gpsmap/static/src/img/"+ icon_status +"\" >";					
 				    if(vehicle["ty"]=="Offline")		
 				    {
-				        img_icon="<a href=\"tel:" + vehicle["phone"] +"\">"+img_icon +"</a>";				        
+				        img_icon="<a href=\"tel:" + vehicle["te"] +"\">"+img_icon +"</a>";				        
 				    }											
 					$("table.select_devices[device_id="+ vehicle["de"] +"] tr td.event_device").html(img_icon);
 				}	
