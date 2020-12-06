@@ -198,8 +198,8 @@ odoo.define('gpsmap', function(require){
                                     }                                
                                     
                                     vehiculo["de"]=device_id;
-                                    vehiculo["dn"]=vehiculo_name,
-                                    vehiculo["te"]=vehiculo["phone"],
+                                    vehiculo["dn"]=vehiculo_name;
+                                    vehiculo["te"]=position.phone;
                                     vehiculo["la"]=position.latitude;
                                     vehiculo["lo"]=position.longitude;
                                     vehiculo["co"]=position.course;
@@ -226,7 +226,7 @@ odoo.define('gpsmap', function(require){
             //if(gpsmap_section!="gpsmaps_maphistory")
         
             console.log("POSITIONS SEARCH ========");
-            var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status','course'];
+            var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status','course','phone'];
             var vehiculo_id;
             var vehiculos       =local.vehicles;
             var iresult;
@@ -279,6 +279,8 @@ odoo.define('gpsmap', function(require){
                             for(iresult in result)
                             {                            
                                 var positions               =result[iresult];                                
+
+
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
             
