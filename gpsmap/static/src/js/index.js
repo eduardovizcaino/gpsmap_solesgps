@@ -1058,7 +1058,7 @@ odoo.define('gpsmap', function(require){
 
 					//icon	="../sitio_web/img/car/vehiculo_" +image+ "/i"+icon+ ".png";		    
 					icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i"+icon+ ".png";		    
-					//if(labels[device_id]==undefined)	
+					if(labels[device_id]==undefined)	
 					{
 
 						labels[device_id]=new MapLabel({
