@@ -43,14 +43,13 @@ class tc_devices(models.Model):
     telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
     
-    """
 class tc_positions(models.Model):
     _name = "tc_positions"
     _description = 'traccar Positions'
     _order = "devicetime DESC"
     _pointOnVertex=""
     protocol                                    = fields.Char('Protocolo', size=15)
-    #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
+    deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
     servertime                                  = fields.Datetime('Server Time')
     devicetime                                  = fields.Datetime('Device Time')
     fixtime                                     = fields.Datetime('Error Time')
@@ -66,7 +65,6 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
 
-    """
 
 
 class vehicle(models.Model):
@@ -189,7 +187,8 @@ class speed(models.Model):
     starttime                                   = fields.Datetime('Start Time')
     endtime                                     = fields.Datetime('End Time')
     speed                                       = fields.Float('Velocidad',digits=(3,2))
-
+    
+    
 class positions(models.Model):
     _name = "gpsmap.positions"
     _description = 'GPS Positions'
