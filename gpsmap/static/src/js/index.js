@@ -245,11 +245,11 @@ odoo.define('gpsmap', function(require){
                     method: "js_positions",
                     fields: fields_select,
                     order:  "devicetime DESC",           
-                    args: Array(["devicetime",">",start_time],["devicetime","<",end_time)                
+                    args: Array(["devicetime",">",start_time],["devicetime","<",end_time])                
                 };                  
                 
-                if(device_active!=0)                
-                    model["args"].push(["deviceid.id","=",device_active]);
+                //if(device_active!=0)                
+                //    model["args"].push(["deviceid.id","=",device_active]);
                 
                 //model["args"].push(["devicetime",">",start_time]);
                 //model["args"].push(["devicetime","<",end_time]);
