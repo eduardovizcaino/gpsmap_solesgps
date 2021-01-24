@@ -43,7 +43,6 @@ class tc_devices(models.Model):
     telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
     
-    #"""
 class tc_positions(models.Model):
     _name = "tc_positions"
     _description = 'traccar Positions'
@@ -66,18 +65,8 @@ class tc_positions(models.Model):
     accuracy                                    = fields.Float('Curso',digits=(3,2))
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
+
     def js_positions(self):
-		return_positions                        ={}
-        #positions_arg                   =[('deviceid','=',vehicle.id)]
-        positions_arg                   =[]                                        
-        positions_data                  =self.search_read(positions_arg, offset=0, limit=30, order='devicetime DESC')        
-        #if len(positions_data)>0:                            
-        #    return_positions[]    		=positions_data[0]        
-
-		return positions_data
-
-
-		"""
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -87,14 +76,14 @@ class tc_positions(models.Model):
 
                 print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
                 positions_arg                   =[('deviceid','=',vehicle.id)]                
-                positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
+                positions_data                  =self.search_read(positions_arg, offset=0, limit=10, order='devicetime DESC')        
                 if len(positions_data)>0:                            
                     return_positions[vehicle.id]    =positions_data[0]        
             
 
         return return_positions
 
-    	#"""
+
 
 
 class vehicle(models.Model):
