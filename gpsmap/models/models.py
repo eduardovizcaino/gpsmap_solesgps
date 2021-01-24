@@ -43,7 +43,7 @@ class tc_devices(models.Model):
     telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
     
-    """
+    #"""
 class tc_positions(models.Model):
     _name = "tc_positions"
     _description = 'traccar Positions'
@@ -66,7 +66,7 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
 
-    """
+    #"""
 
 
 class vehicle(models.Model):
