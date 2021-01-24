@@ -243,12 +243,13 @@ odoo.define('gpsmap', function(require){
                                 
                 //args: [[("devicetime",">",start_time),("devicetime","<",end_time)]]                                
                 //args: [[device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
+                //args: [["deviceid",device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
                 model={   
                     model:  "tc_positions",
                     method: "js_positions",
                     fields: fields_select,
                     order:  "devicetime DESC",           
-                    args: [["deviceid",device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
+                    args: [[device_active,start_time,end_time]]                
                 };                  
                 
                 //if(device_active!=0)                
