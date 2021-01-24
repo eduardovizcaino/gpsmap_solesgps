@@ -250,7 +250,7 @@ odoo.define('gpsmap', function(require){
                     fields: fields_select,
                     order:  "devicetime DESC",           
                     domain: Array(),
-                    variablelalo: "aaaaa",
+                    args:	Array("variablelalo": "aaaaa"),
                     
                 };                  
                 
