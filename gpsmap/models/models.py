@@ -71,10 +71,10 @@ class tc_positions(models.Model):
         #positions_arg                   =[('deviceid','=',vehicle.id)]
         positions_arg                   =[]                                        
         positions_data                  =self.search_read(positions_arg, offset=0, limit=30, order='devicetime DESC')        
-        if len(positions_data)>0:                            
-            return_positions[]    		=positions_data[0]        
+        #if len(positions_data)>0:                            
+        #    return_positions[]    		=positions_data[0]        
 
-		return return_positions
+		return positions_data
 
 
 		"""
