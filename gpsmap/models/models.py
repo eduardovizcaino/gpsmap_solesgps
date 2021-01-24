@@ -181,6 +181,52 @@ class vehicle(models.Model):
             return_positions[tp_deviceid]    =position
             
         return return_positions    
+    @api.model    
+    def js_positions(self):
+    	print("JS_POSITIONS ###########",self)
+    
+    
+    
+    
+        hoy_fecha                               ="%s" %(datetime.datetime.now())
+        hoy                                     =hoy_fecha[0:19]
+    
+        hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=5))        
+        hoy_antes                               =hoy_antes[0:19]
+
+
+        self.env.cr.execute("""
+            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
+                CASE 		                
+                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
+                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
+                    ELSE 1.852 * tp.speed                    
+                END	AS speed_compu,
+                CASE 				            
+	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
+	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
+	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
+	                ELSE 'Stopped'
+                END	as event,                                 
+                CASE 				            
+                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
+                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
+                    ELSE 'Offline'
+                END  as status
+            FROM  fleet_vehicle fv
+                join tc_devices td on fv.gps1_id=td.id
+                join tc_positions tp on td.positionid=tp.id
+        """)
+        return_positions                    ={}
+        positions                           =self.env.cr.dictfetchall()
+        for position in positions:
+            position["de"]            =position["tp_deviceid"]                            
+            tp_deviceid               =position["tp_deviceid"]
+            
+            return_positions[tp_deviceid]    =position
+            
+        return return_positions    
+
 class speed(models.Model):
     _name = "gpsmap.speed"
     _description = 'Positions Speed'
@@ -249,7 +295,7 @@ class positions(models.Model):
         return para_value
     def action_addpositions(self):
         self.run_scheduler()
-        
+    	"""    
     @api.model    
     def js_positions(self):
         vehicle_obj                             =self.env['fleet.vehicle']        
@@ -258,15 +304,13 @@ class positions(models.Model):
         vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:    
-
                 print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
                 positions_arg                   =[('deviceid','=',vehicle.id)]                
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
                 if len(positions_data)>0:                            
-                    return_positions[vehicle.id]    =positions_data[0]        
-            
-
+                    return_positions[vehicle.id]    =positions_data[0]                    
         return return_positions
+        """
     def run_scheduler_del_position(self):
         positions_arg                           =[('leido','=',0)]                
         positions_data                          =self.search(positions_arg, offset=0, limit=1000, order='devicetime DESC')        
