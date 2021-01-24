@@ -249,7 +249,7 @@ odoo.define('gpsmap', function(require){
                     method: "js_positions",
                     fields: fields_select,
                     order:  "devicetime DESC",           
-                    domain: Array()                
+                    args: Array()                
                 };                  
                 
                 //if(device_active!=0)                
