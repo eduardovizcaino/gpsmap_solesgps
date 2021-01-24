@@ -67,7 +67,7 @@ class tc_positions(models.Model):
     read                                        = fields.Integer('Leido',default=0)
 
 
-	@api.model
+	#@api.model
     def js_positions(self,args):
     	print("SELF######", self)
     	print("ARGS######", args)
