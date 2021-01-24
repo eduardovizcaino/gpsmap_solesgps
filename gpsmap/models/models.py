@@ -67,13 +67,12 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
     def js_positions(self):
-
+		return_positions                        ={}
         #positions_arg                   =[('deviceid','=',vehicle.id)]
-        positions_arg                   =[]                                
-        
+        positions_arg                   =[]                                        
         positions_data                  =self.search_read(positions_arg, offset=0, limit=30, order='devicetime DESC')        
         if len(positions_data)>0:                            
-            return_positions[vehicle.id]    =positions_data[0]        
+            return_positions[]    		=positions_data[0]        
 
 		return return_positions
 
