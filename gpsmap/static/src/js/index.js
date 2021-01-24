@@ -244,21 +244,26 @@ odoo.define('gpsmap', function(require){
                 //args: [[("devicetime",">",start_time),("devicetime","<",end_time)]]                                
                 //args: [[device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
                 //args: [["deviceid",device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
+                
+                var variable   	=Array();             
+                          
+                variable["start_time"].push(start_time);
+                variable["end_time"].push(end_time);
+                                
+                
                 model={   
                     model:  "tc_positions",
                     method: "js_positions",
                     fields: fields_select,
                     order:  "devicetime DESC",           
-                    domain: Array(),
-                    args:	Array(["variablelalo","aaaaa"]),
-                    
+                    args:	Array(["variable",variable]),                    
                 };                  
                 
                 //if(device_active!=0)                
                 //    model["args"].push(["deviceid.id","=",device_active]);
                 
-                model["domain"].push(["devicetime",">",start_time]);
-                model["domain"].push(["devicetime","<",end_time]);
+                model["args"].push(["devicetime",">",start_time]);
+                model["args"].push(["devicetime","<",end_time]);
                 //     
                 //domain:   [["deviceid.id","in",device_active]]                  
                 //console.log(model["domain"]); 
