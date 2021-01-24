@@ -66,7 +66,9 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
 
-    def js_positions(self):
+
+	@api.model
+    def js_positions(self, domain=None, fields=None, offset=0, limit=None, order=None):
     	print("SELF######", self)
     	return_positions                        ={}
     	
