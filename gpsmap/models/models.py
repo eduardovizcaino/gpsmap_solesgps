@@ -67,6 +67,12 @@ class tc_positions(models.Model):
     read                                        = fields.Integer('Leido',default=0)
 
     def js_positions(self):
+    	print("SELF######", self)
+    	return_positions                        ={}
+    	
+    	return return_positions
+    	
+    	"""
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
@@ -79,9 +85,10 @@ class tc_positions(models.Model):
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=10, order='devicetime DESC')        
                 if len(positions_data)>0:                            
                     return_positions[vehicle.id]    =positions_data[0]        
-            
-
-        return return_positions
+        
+        return return_positions    
+		"""
+        
 
 
 
