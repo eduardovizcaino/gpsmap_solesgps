@@ -245,7 +245,7 @@ odoo.define('gpsmap', function(require){
                     method: "js_positions",
                     fields: fields_select,
                     order:  "devicetime DESC",           
-                    args: [["devicetime",">",start_time],["devicetime","<",end_time]]                
+                    args: ["&",["devicetime",">",start_time],["devicetime","<",end_time]]                
                 };                  
                 
                 //if(device_active!=0)                
