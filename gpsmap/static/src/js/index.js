@@ -256,6 +256,9 @@ odoo.define('gpsmap', function(require){
                 //     
                 //domain:   [["deviceid.id","in",device_active]]                  
                 //console.log(model["domain"]); 
+                
+                
+                //
             }
             else
             {   
