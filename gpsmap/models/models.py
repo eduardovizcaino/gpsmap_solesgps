@@ -51,6 +51,7 @@ class tc_positions(models.Model):
     _pointOnVertex=""
     protocol                                    = fields.Char('Protocolo', size=15)
     #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
+    deviceid                                       = fields.Integer('Valido')
     servertime                                  = fields.Datetime('Server Time')
     devicetime                                  = fields.Datetime('Device Time')
     fixtime                                     = fields.Datetime('Error Time')
@@ -65,6 +66,22 @@ class tc_positions(models.Model):
     accuracy                                    = fields.Float('Curso',digits=(3,2))
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
+    def js_positions(self):
+        vehicle_obj                             =self.env['fleet.vehicle']        
+        vehicle_args                            =[]        
+        return_positions                        ={}
+        vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
+        if len(vehicle_data)>0:         
+            for vehicle in vehicle_data:    
+
+                print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
+                positions_arg                   =[('deviceid','=',vehicle.id)]                
+                positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
+                if len(positions_data)>0:                            
+                    return_positions[vehicle.id]    =positions_data[0]        
+            
+
+        return return_positions
 
     #"""
 
