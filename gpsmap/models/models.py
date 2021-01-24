@@ -82,8 +82,6 @@ class tc_positions(models.Model):
         #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
 
 
-
-    	
     	return return_positions
     	
     	"""
