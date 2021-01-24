@@ -69,14 +69,14 @@ class tc_positions(models.Model):
 
 	#@api.model
     def js_positions(self,args):
-    	print("SELF######", self)
+    	#print("SELF######", self)
     	print("ARGS######", args)
     	return_positions                        ={}
     	
     	#if(self[0]>0):
     	#	print("VEHICULO######", self)
     	
-        #vehicle_obj                             =self.env['fleet.vehicle']        
+        vehicle_obj                             =self.env['fleet.vehicle']        
         #vehicle_args                            =[('deviceid','=',vehicle.id)]        
         
         #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
