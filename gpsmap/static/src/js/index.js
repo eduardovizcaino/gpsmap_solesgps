@@ -249,14 +249,14 @@ odoo.define('gpsmap', function(require){
                     method: "js_positions",
                     fields: fields_select,
                     order:  "devicetime DESC",           
-                    domain: ["devicetime",">",start_time]
+                    domain: Array()                
                 };                  
                 
                 //if(device_active!=0)                
                 //    model["args"].push(["deviceid.id","=",device_active]);
                 
-                //model["args"].push(["devicetime",">",start_time]);
-                //model["args"].push(["devicetime","<",end_time]);
+                model["args"].push(["devicetime",">",start_time]);
+                model["args"].push(["devicetime","<",end_time]);
                 //     
                 //domain:   [["deviceid.id","in",device_active]]                  
                 //console.log(model["domain"]); 
