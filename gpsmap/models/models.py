@@ -182,7 +182,9 @@ class vehicle(models.Model):
             
         return return_positions    
     @api.model    
-    def js_positions(self):
+    def js_positions(self,option):
+    	print("JS_POSITIONS=",option)
+    
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
     
