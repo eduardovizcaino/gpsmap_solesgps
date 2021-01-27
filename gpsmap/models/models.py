@@ -68,9 +68,9 @@ class tc_positions(models.Model):
 
 
     #@api.model
-    def js_positions(self,args):
+    def js_positions(self):
     	print("SELF######", self)
-    	print("ARGS######", args)
+    	#print("ARGS######", args)
     	return_positions                        ={}
     	
     	#if(self[0]>0):
