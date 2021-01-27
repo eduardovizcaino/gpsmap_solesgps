@@ -220,7 +220,7 @@ class vehicle(models.Model):
     def js_positions(self):
     	return_positions                    ={}
     
-    	return return_positions    
+    	    
 		"""
     @api.model    
     def js_positions(self,args):
@@ -265,6 +265,7 @@ class vehicle(models.Model):
             
         return return_positions    
 		"""
+		return return_positions
 class speed(models.Model):
     _name = "gpsmap.speed"
     _description = 'Positions Speed'
