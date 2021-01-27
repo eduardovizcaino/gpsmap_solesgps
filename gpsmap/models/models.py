@@ -69,7 +69,7 @@ class tc_positions(models.Model):
 
     @api.model
     def js_positions(self,args):
-    	#print("SELF######", self)
+    	print("SELF######", self)
     	print("ARGS######", args)
     	return_positions                        ={}
     	
