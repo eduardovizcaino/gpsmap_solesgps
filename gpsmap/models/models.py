@@ -69,7 +69,6 @@ class tc_positions(models.Model):
 
     #@api.model
     def js_positions(self):
-    	print("aaaaa", self)
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
