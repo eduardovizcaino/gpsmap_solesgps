@@ -65,9 +65,14 @@ class tc_positions(models.Model):
     accuracy                                    = fields.Float('Curso',digits=(3,2))
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
-
-
-    @api.model
+	"""
+    @api.one
+    def _get_speed(self):    
+        vehicle_obj                             =self.env['fleet.vehicle']        
+        vehicle                                 =vehicle_obj.browse(self.deviceid.id)
+	"""
+    #@api.model
+    @api.one
     def js_positions(self,args):
     	print("SELF######", self)
     	print("ARGS######", args)
@@ -76,7 +81,7 @@ class tc_positions(models.Model):
     	#if(self[0]>0):
     	#	print("VEHICULO######", self)
     	
-        #vehicle_obj                             =self.env['fleet.vehicle']        
+        vehicle_obj                             =self.env['fleet.vehicle']        
         #vehicle_args                            =[('deviceid','=',vehicle.id)]        
         
         #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
