@@ -71,8 +71,7 @@ class tc_positions(models.Model):
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle                                 =vehicle_obj.browse(self.deviceid.id)
 	"""
-    #@api.model
-    @api.one
+    @api.model
     def js_positions(self,args):
     	print("SELF######", self)
     	print("ARGS######", args)
