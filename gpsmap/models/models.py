@@ -43,6 +43,68 @@ class tc_devices(models.Model):
     telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
     
+class tc_positions(models.Model):
+    _name = "tc_positions"
+    _description = 'traccar Positions'
+    _order = "devicetime DESC"
+    _pointOnVertex=""
+    protocol                                    = fields.Char('Protocolo', size=15)
+    #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
+    deviceid                                       = fields.Integer('Valido')
+    servertime                                  = fields.Datetime('Server Time')
+    devicetime                                  = fields.Datetime('Device Time')
+    fixtime                                     = fields.Datetime('Error Time')
+    valid                                       = fields.Integer('Valido')
+    latitude                                    = fields.Float('Latitud',digits=(5,10))
+    longitude                                   = fields.Float('Longitud',digits=(5,10))
+    altitude                                    = fields.Float('Altura',digits=(6,2))
+    speed                                       = fields.Float('Velocidad',digits=(3,2))
+    course                                      = fields.Float('Curso',digits=(3,2))
+    address                                     = fields.Char('Calle', size=150)
+    attributes                                  = fields.Char('Atributos', size=5000)
+    accuracy                                    = fields.Float('Curso',digits=(3,2))
+    network                                     = fields.Char('Type', size=4000)
+    read                                        = fields.Integer('Leido',default=0)
+	"""
+    @api.one
+    def _get_speed(self):    
+        vehicle_obj                             =self.env['fleet.vehicle']        
+        vehicle                                 =vehicle_obj.browse(self.deviceid.id)
+	"""
+    #@api.model
+    @api.one
+    def js_positions(self,args):
+    	print("SELF######", self)
+    	print("ARGS######", args)
+    	return_positions                        ={}
+    	
+    	#if(self[0]>0):
+    	#	print("VEHICULO######", self)
+    	
+        #vehicle_obj                             =self.env['fleet.vehicle']        
+        #vehicle_args                            =[('deviceid','=',vehicle.id)]        
+        
+        #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
+
+
+    	return return_positions
+    	
+    	"""
+        vehicle_obj                             =self.env['fleet.vehicle']        
+        vehicle_args                            =[]        
+        return_positions                        ={}
+        vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
+        if len(vehicle_data)>0:         
+            for vehicle in vehicle_data:    
+
+                print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
+                positions_arg                   =[('deviceid','=',vehicle.id)]                
+                positions_data                  =self.search_read(positions_arg, offset=0, limit=10, order='devicetime DESC')        
+                if len(positions_data)>0:                            
+                    return_positions[vehicle.id]    =positions_data[0]        
+        
+        return return_positions    
+		"""
         
 
 
@@ -200,66 +262,6 @@ class vehicle(models.Model):
             return_positions[tp_deviceid]    =position
             
         return return_positions    
-
-class tc_positions(models.Model):
-    _name = "tc_positions"
-    _description = 'traccar Positions'
-    _order = "devicetime DESC"
-    _pointOnVertex=""
-    protocol                                    = fields.Char('Protocolo', size=15)
-    #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
-    deviceid                                       = fields.Integer('Valido')
-    servertime                                  = fields.Datetime('Server Time')
-    devicetime                                  = fields.Datetime('Device Time')
-    fixtime                                     = fields.Datetime('Error Time')
-    valid                                       = fields.Integer('Valido')
-    latitude                                    = fields.Float('Latitud',digits=(5,10))
-    longitude                                   = fields.Float('Longitud',digits=(5,10))
-    altitude                                    = fields.Float('Altura',digits=(6,2))
-    speed                                       = fields.Float('Velocidad',digits=(3,2))
-    course                                      = fields.Float('Curso',digits=(3,2))
-    address                                     = fields.Char('Calle', size=150)
-    attributes                                  = fields.Char('Atributos', size=5000)
-    accuracy                                    = fields.Float('Curso',digits=(3,2))
-    network                                     = fields.Char('Type', size=4000)
-    read                                        = fields.Integer('Leido',default=0)
-	"""
-    @api.one
-    def _get_speed(self):    
-        vehicle_obj                             =self.env['fleet.vehicle']        
-        vehicle                                 =vehicle_obj.browse(self.deviceid.id)
-	"""
-   	@api.model
-    def js_positions(self,args):
-    	print("SELF######", self)
-    	print("ARGS######", args)
-    	return_positions                        ={}
-    	    	
-        #vehicle_obj                             =self.env['fleet.vehicle']        
-        #vehicle_args                            =[('deviceid','=',vehicle.id)]        
-        
-        #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
-
-
-    	return return_positions
-    	
-    	"""
-        vehicle_obj                             =self.env['fleet.vehicle']        
-        vehicle_args                            =[]        
-        return_positions                        ={}
-        vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
-        if len(vehicle_data)>0:         
-            for vehicle in vehicle_data:    
-
-                print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
-                positions_arg                   =[('deviceid','=',vehicle.id)]                
-                positions_data                  =self.search_read(positions_arg, offset=0, limit=10, order='devicetime DESC')        
-                if len(positions_data)>0:                            
-                    return_positions[vehicle.id]    =positions_data[0]        
-        
-        return return_positions    
-		"""
-
 
 class speed(models.Model):
     _name = "gpsmap.speed"
