@@ -261,13 +261,13 @@ odoo.define('gpsmap', function(require){
                 //model["domain"].push(["devicetime","<",end_time]);
                 
                 
-                //
+                /*
                 model={   
                     model:  "fleet.vehicle",
                     method: "js_vehicles",
                     fields: fields_select
                 };                
-
+				*/
 
             }
             else
