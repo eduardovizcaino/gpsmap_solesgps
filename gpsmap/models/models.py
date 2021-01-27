@@ -66,7 +66,8 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
 
-	"""
+
+    #@api.model
     def js_positions(self):
     	print("SELF######", self)
     	#print("ARGS######", args)
@@ -75,7 +76,7 @@ class tc_positions(models.Model):
     	#if(self[0]>0):
     	#	print("VEHICULO######", self)
     	
-        vehicle_obj                             =self.env['fleet.vehicle']        
+        #vehicle_obj                             =self.env['fleet.vehicle']        
         #vehicle_args                            =[('deviceid','=',vehicle.id)]        
         
         #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
@@ -83,7 +84,7 @@ class tc_positions(models.Model):
 
     	return return_positions
     	
-    	###
+    	"""
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
