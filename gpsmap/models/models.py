@@ -217,7 +217,7 @@ class vehicle(models.Model):
             
         return return_positions    
     @api.model    
-    def js_positions(self,args):
+    def js_positions(self):
     	return_positions                    ={}
     
     	return return_positions    
