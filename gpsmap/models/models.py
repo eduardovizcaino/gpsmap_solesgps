@@ -236,7 +236,7 @@ class tc_positions(models.Model):
     	print("ARGS######", args)
     	return_positions                        ={}
     	    	
-        vehicle_obj                             =self.env['fleet.vehicle']        
+        #vehicle_obj                             =self.env['fleet.vehicle']        
         #vehicle_args                            =[('deviceid','=',vehicle.id)]        
         
         #vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
