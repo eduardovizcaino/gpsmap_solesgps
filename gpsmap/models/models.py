@@ -217,15 +217,7 @@ class vehicle(models.Model):
             
         return return_positions    
     @api.model    
-    def js_positions(self):
-    	return_positions                    ={}
-    
-    	    
-		"""
-    @api.model    
     def js_positions(self,args):
-    
-    	
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
     
@@ -233,7 +225,7 @@ class vehicle(models.Model):
         hoy_antes                               =hoy_antes[0:19]
 
 
-        self.env.cr.execute(
+        self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
@@ -254,7 +246,7 @@ class vehicle(models.Model):
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
-        )
+        """)
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
@@ -264,8 +256,7 @@ class vehicle(models.Model):
             return_positions[tp_deviceid]    =position
             
         return return_positions    
-		"""
-		return return_positions
+
 class speed(models.Model):
     _name = "gpsmap.speed"
     _description = 'Positions Speed'
