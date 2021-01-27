@@ -72,6 +72,8 @@ class tc_positions(models.Model):
         vehicle_obj                             =self.env['fleet.vehicle']        
         vehicle_args                            =[]        
         return_positions                        ={}
+        
+        print("SELF===========",self)
         """
         vehicle_data                            =vehicle_obj.search(vehicle_args, offset=0, limit=None, order=None)
         if len(vehicle_data)>0:         
