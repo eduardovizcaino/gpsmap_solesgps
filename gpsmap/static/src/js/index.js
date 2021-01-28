@@ -259,12 +259,12 @@ odoo.define('gpsmap', function(require){
                     method: "search_read",
 				    args: [],				    
 				    kwargs: {
-				        domain: [['devicetime','>',start_time],['devicetime','<',end_time]]
-				        fields: fields_select
+				        domain: [['devicetime','>',start_time],['devicetime','<',end_time]],
+				        fields: fields_select,
 				        /*
 				        order: [{name: 'id', asc: false}],
 				        context: weContext.get(),
-				        */
+				        */	
 				    } 
 				                      
                 };                  
