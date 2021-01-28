@@ -257,15 +257,16 @@ odoo.define('gpsmap', function(require){
                 model={   
                     model:  "tc_positions",
                     method: "search_read",
-				    args: [],
-				    /*
+				    args: [],				    
 				    kwargs: {
 				        domain: [['devicetime','>',start_time],['devicetime','<',end_time]]
 				        fields: fields_select
+				        /*
 				        order: [{name: 'id', asc: false}],
 				        context: weContext.get(),
+				        */
 				    } 
-				    */                   
+				                      
                 };                  
 
                 
