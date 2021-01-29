@@ -79,7 +79,7 @@
 
     <!-- POSITIONS -->
 
-
+	<!--
     <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
         <field name="name">gpsmap.positions.tree</field>
         <field name="model">gpsmap.positions</field>
@@ -98,6 +98,7 @@
             </tree>
         </field>
     </record>
+    -->
     <record id='tc_positions_view_tree' model='ir.ui.view'>
         <field name="name">tc_positions.tree</field>
         <field name="model">tc_positions</field>
@@ -128,6 +129,7 @@
     </record>
     
     -->
+    <!--
     <record id='gpsmap_positions_view_search' model='ir.ui.view'>
         <field name="name">gpsmap.positions.search</field>
         <field name="model">gpsmap.positions</field>
@@ -149,7 +151,7 @@
             </search>
         </field>
     </record>        
-    
+    -->
     <!-- SMTP -->
     <record id="gpsmap_mail_alert" model="ir.mail_server"> 
         <field name="name">gpsmap SMTP Alert</field>
