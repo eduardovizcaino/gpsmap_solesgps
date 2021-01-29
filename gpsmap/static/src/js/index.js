@@ -254,6 +254,14 @@ odoo.define('gpsmap', function(require){
                     method: "js_positions",
                     args: [['devicetime','>',start_time],['devicetime','<',end_time]],
                 };                  
+
+                model={   
+                    model:  "fleet.vehicle",
+                    method: "js_vehicles",
+                    fields: fields_select
+                };                
+
+                /*
 				var fields_select   =['devicetime'];
                 model={   
                     model:  "tc_positions",
@@ -262,14 +270,13 @@ odoo.define('gpsmap', function(require){
 				    kwargs: {
 				    				      
 				        fields: fields_select,
-				        /*
+				        
 				        order: [{name: 'id', asc: false}],
 				        context: weContext.get(),
-				        */	
 				    } 
 				                      
                 };                  
-
+				*/
                 
                 //if(device_active!=0)                
                 //    model["domain"].push(["deviceid.id","=",device_active]);
