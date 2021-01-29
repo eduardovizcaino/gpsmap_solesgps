@@ -247,6 +247,7 @@ odoo.define('gpsmap', function(require){
 
                     //fields: fields_select,
                     //order:  "devicetime DESC",           
+                    //domain: [['devicetime','>',start_time],['devicetime','<',end_time]],
 
                 model={   
                     model:  "tc_positions",
@@ -259,7 +260,7 @@ odoo.define('gpsmap', function(require){
                     method: "search_read",
 				    args: [],				    
 				    kwargs: {
-				        domain: [['devicetime','>',start_time],['devicetime','<',end_time]],
+				    				      
 				        fields: fields_select,
 				        /*
 				        order: [{name: 'id', asc: false}],
