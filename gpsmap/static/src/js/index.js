@@ -253,7 +253,7 @@ odoo.define('gpsmap', function(require){
                     method: "js_positions",
                     args: [['devicetime','>',start_time],['devicetime','<',end_time]],
                 };                  
-
+				var fields_select   =['devicetime'];
                 model={   
                     model:  "tc_positions",
                     method: "search_read",
