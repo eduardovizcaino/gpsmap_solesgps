@@ -78,27 +78,6 @@
 
 
     <!-- POSITIONS -->
-
-	<!--
-    <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
-        <field name="name">gpsmap.positions.tree</field>
-        <field name="model">gpsmap.positions</field>
-        <field name="arch" type="xml">
-            <tree string="Models">
-                <field name="deviceid" />
-                <field name="devicetime_compu"/>
-                <field name="speed_compu"/>                    
-                <field name="gas"/>
-                <field name="address"/>
-                <field name="event"/>
-                <field name="status"/>
-                <field name="attributes"/>
-                <field name="leido"/>
-                
-            </tree>
-        </field>
-    </record>
-    -->
     <record id='tc_positions_view_tree' model='ir.ui.view'>
         <field name="name">tc_positions.tree</field>
         <field name="model">tc_positions</field>
@@ -115,43 +94,6 @@
         </field>
     </record>
 
-   <!-- 
-    <record id='gpsmap_positions_view_graph' model='ir.ui.view'>
-        <field name="name">gpsmap.positions.graph</field>
-        <field name="model">gpsmap.positions</field>
-        <field name="arch" type="xml">
-            <graph string="Sales Order Lines" orientation="vertical" type="bar">               
-                <field name="devicetime" interval="day" type="col"/>
-                <field name="deviceid" />
-                <field name="gas"  type="col"/>
-            </graph>
-        </field>
-    </record>
-    
-    -->
-    <!--
-    <record id='gpsmap_positions_view_search' model='ir.ui.view'>
-        <field name="name">gpsmap.positions.search</field>
-        <field name="model">gpsmap.positions</field>
-        <field name="arch" type="xml">
-            <search string="Vehicles costs" >
-                    
-                <filter name="filter_day" domain="[('devicetime', '>=', (context_today()-datetime.timedelta(days=1)).strftime('%Y-%m-%d'))]" string="Now"/>
-                <filter name="filter_week" domain="[('devicetime', '>=', (context_today()-datetime.timedelta(days=7)).strftime('%Y-%m-%d'))]" string="Week"/>
-                <filter name="filter_in_motion" domain="[('speed','>',5)]" string="In Motion"/>
-                <filter name="filter_stop" domain="[('speed','=',0)]" string="Stop"/>
-                <group expand="1" string="Group By">
-                    <filter name="groupby_devieid" separator="1" context="{'group_by' : 'deviceid'}" string="Vehicle"/>
-                    <filter name="groupby_event" separator="1" context="{'group_by' : 'event'}" string="Event"/>
-                    <separator/>                    
-                    <filter name="groupby_day" context="{'group_by': 'devicetime:day'}" string="Day"/>
-                    <filter name="groupby_week" context="{'group_by': 'devicetime:week'}" string="Week"/>
-                    <filter name="groupby_month" context="{'group_by': 'devicetime:month'}" string="Month"/>
-                </group>
-            </search>
-        </field>
-    </record>        
-    -->
     <!-- SMTP -->
     <record id="gpsmap_mail_alert" model="ir.mail_server"> 
         <field name="name">gpsmap SMTP Alert</field>
