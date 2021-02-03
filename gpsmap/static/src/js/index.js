@@ -240,59 +240,22 @@ odoo.define('gpsmap', function(require){
                 var start_time  =$("input#start").val();
                 var end_time    =$("input#end").val();
                                 
-                                
-                //args: [[("devicetime",">",start_time),("devicetime","<",end_time)]]                                
-                //args: [[device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
-                //args: [["deviceid",device_active,("devicetime",">",start_time),("devicetime","<",end_time)]]                
-
-                    //fields: fields_select,
-                    //order:  "devicetime DESC",           
-                    //domain: [['devicetime','>',start_time],['devicetime','<',end_time]],
-
                 model={   
-                    model:  "tc_positions",
-                    method: "js_positions",
-                    args: [['devicetime','>',start_time],['devicetime','<',end_time]],
-                };                  
-
-                model={   
-                    model:  "fleet.vehicle",
-                    method: "js_vehicles",
-                    fields: fields_select
-                };                
-
-                /*
-				var fields_select   =['devicetime'];
-                model={   
-                    model:  "tc_positions",
+                    model:  "gpsmap.positions",
                     method: "search_read",
-				    args: [],				    
-				    kwargs: {
-				    				      
-				        fields: fields_select,
-				        
-				        order: [{name: 'id', asc: false}],
-				        context: weContext.get(),
-				    } 
-				                      
+                    fields: fields_select,
+                    order:  "devicetime DESC",           
+                    domain: Array()                
                 };                  
-				*/
                 
-                //if(device_active!=0)                
-                //    model["domain"].push(["deviceid.id","=",device_active]);
+                if(device_active!=0)                
+                    model["domain"].push(["deviceid.id","=",device_active]);
                 
-                //model["domain"].push(["devicetime",">",start_time]);
-                //model["domain"].push(["devicetime","<",end_time]);
-                
-                
-                /*
-                model={   
-                    model:  "fleet.vehicle",
-                    method: "js_vehicles",
-                    fields: fields_select
-                };                
-				*/
-
+                model["domain"].push(["devicetime",">",start_time]);
+                model["domain"].push(["devicetime","<",end_time]);
+                //     
+                //domain:   [["deviceid.id","in",device_active]]                  
+                //console.log(model["domain"]); 
             }
             else
             {   
