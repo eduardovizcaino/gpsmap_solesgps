@@ -47,7 +47,7 @@ class tc_devices(models.Model):
 class tc_positions(models.Model):
     _name = "tc_positions"
     _description = 'traccar Positions'
-    _order = "devicetime DESC"
+
     protocol                                    = fields.Char('Protocolo', size=15)
     #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
     servertime                                  = fields.Datetime('Server Time')
