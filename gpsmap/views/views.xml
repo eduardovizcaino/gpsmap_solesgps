@@ -78,26 +78,22 @@
 
 
     <!-- POSITIONS -->
-
-	<!--
-    <record id='gpsmap_positions_view_tree' model='ir.ui.view'>
-        <field name="name">gpsmap.positions.tree</field>
-        <field name="model">gpsmap.positions</field>
+    <record id='gpsmap_tc_positions_view_tree' model='ir.ui.view'>
+        <field name="name">tc_positions.tree</field>
+        <field name="model">tc_positions</field>
         <field name="arch" type="xml">
-            <tree string="Models">
-                <field name="deviceid" />
-                <field name="devicetime_compu"/>
-                <field name="speed_compu"/>                    
-                <field name="gas"/>
+            <tree string="Models">            
+                <field name="protocol" />
+                <field name="devicetime"/>
+                <field name="speed"/>                    
                 <field name="address"/>
-                <field name="event"/>
-                <field name="status"/>
                 <field name="attributes"/>
-                <field name="leido"/>
-                
             </tree>
         </field>
     </record>
+
+
+	<!--
     
     <record id='gpsmap_positions_view_graph' model='ir.ui.view'>
         <field name="name">gpsmap.positions.graph</field>
