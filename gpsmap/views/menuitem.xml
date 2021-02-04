@@ -31,7 +31,7 @@
     </record>
     <menuitem id="menu_gpsmap_maphistory" sequence="3" name="History Map"  parent="gpsmap_geolocation" action="action_gpsmap_maphistory" groups="fleet.fleet_group_manager"/>    
 
-
+<!--
     <record id='fleet_position_action' model='ir.actions.act_window'>
         <field name="name">History Events</field>
         <field name="res_model">gpsmap.positions</field>
@@ -45,7 +45,7 @@
         }</field>
     </record>
     <menuitem action="fleet_position_action" parent="fleet.fleet_vehicles" id="fleet_position_menu" groups="gpsmap.gpsmap_group_admin"/>
-
+-->
 
     <record id='fleet_tc_devices_action' model='ir.actions.act_window'>
         <field name="name">GPS</field>
