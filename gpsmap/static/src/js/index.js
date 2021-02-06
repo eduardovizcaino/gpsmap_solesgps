@@ -249,7 +249,7 @@ odoo.define('gpsmap', function(require){
                 };                  
 */
                 model={   
-                    model:  "gpsmap.positions",
+                    model:  "tc_positions",
                     method: "search_read",
                     fields: fields_select,
                     domain: Array()                
