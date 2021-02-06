@@ -88,7 +88,7 @@ class vehicle(models.Model):
     economic_number                             = fields.Char('Economic Number', size=50)
     #imei                                        = fields.Char('Imei', size=50)
     speed                                       = fields.Char('Exceso de Velocidad', default=100, size=3)   
-    positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)    
+    #positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)    
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
     #devicetime                                  = fields.Datetime('Device Time')
     #devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')

@@ -239,13 +239,19 @@ odoo.define('gpsmap', function(require){
             {
                 var start_time  =$("input#start").val();
                 var end_time    =$("input#end").val();
-                                
+/*                                
                 model={   
                     model:  "gpsmap.positions",
                     method: "search_read",
                     fields: fields_select,
                     order:  "devicetime DESC",           
                     domain: Array()                
+                };                  
+*/
+                model={   
+                    model:  "gpsmap.positions",
+                    method: "search_read",
+                    fields: fields_select,
                 };                  
                 
                 if(device_active!=0)                
