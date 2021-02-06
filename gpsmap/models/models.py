@@ -105,6 +105,39 @@ class vehicle(models.Model):
             self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
         else:    
             self.devicetime_compu=self.devicetime
+
+    def positions(self, model, fields=False, offset=0, limit=False, domain=None, sort=None):
+        self.env.cr.execute("""
+            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
+                CASE 		                
+                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
+                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
+                    ELSE 1.852 * tp.speed                    
+                END	AS speed_compu,
+                CASE 				            
+	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
+	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
+	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
+	                ELSE 'Stopped'
+                END	as event,                                 
+                CASE 				            
+                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
+                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
+                    ELSE 'Offline'
+                END  as status
+            FROM  fleet_vehicle fv
+                join tc_devices td on fv.gps1_id=td.id
+                join tc_positions tp on td.positionid=tp.id
+        """)
+        return_positions                    ={}
+        positions                           =self.env.cr.dictfetchall()
+        for position in positions:
+            position["de"]            =position["tp_deviceid"]                            
+            tp_deviceid               =position["tp_deviceid"]
+            
+            return_positions[tp_deviceid]    =position
+            
+        return return_positions    
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
