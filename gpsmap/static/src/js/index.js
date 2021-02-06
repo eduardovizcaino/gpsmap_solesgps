@@ -251,15 +251,19 @@ odoo.define('gpsmap', function(require){
                 model={   
                     model:  "fleet.vehicle",
                     method: "positions",
+                };                  
+
+				/*                
                     fields: fields_select,
                     domain: Array()                
-                };                  
-                
+
+
                 if(device_active!=0)                
                     model["domain"].push(["deviceid","=",device_active]);
                 
                 model["domain"].push(["devicetime",">",start_time]);
                 model["domain"].push(["devicetime","<",end_time]);
+                */
                 //     
                 //domain:   [["deviceid.id","in",device_active]]                  
                 //console.log(model["domain"]); 
