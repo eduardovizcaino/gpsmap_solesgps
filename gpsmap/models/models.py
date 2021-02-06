@@ -49,6 +49,7 @@ class tc_positions(models.Model):
 
     protocol                                    = fields.Char('Protocolo', size=15)
     #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
+    deviceid                                    = fields.Integer('GPS')
     servertime                                  = fields.Datetime('Server Time')
     devicetime                                  = fields.Datetime('Device Time')
     fixtime                                     = fields.Datetime('Error Time')
