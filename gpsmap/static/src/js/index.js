@@ -252,6 +252,7 @@ odoo.define('gpsmap', function(require){
                     model:  "gpsmap.positions",
                     method: "search_read",
                     fields: fields_select,
+                    domain: Array()                
                 };                  
                 
                 if(device_active!=0)                
