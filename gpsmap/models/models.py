@@ -105,7 +105,7 @@ class vehicle(models.Model):
             self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
         else:    
             self.devicetime_compu=self.devicetime
-    def positions(self, model, fields=False, domain=None):
+    def positions(self, model):
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
