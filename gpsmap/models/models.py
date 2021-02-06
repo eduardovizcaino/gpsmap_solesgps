@@ -106,7 +106,7 @@ class vehicle(models.Model):
         else:    
             self.devicetime_compu=self.devicetime
 
-    #def positions(self, model, fields=False, offset=0, limit=False, domain=None, sort=None):
+	    #def positions(self, model, fields=False, offset=0, limit=False, domain=None, sort=None):
 	def positions(self,domain=None):
 
         self.env.cr.execute("""
