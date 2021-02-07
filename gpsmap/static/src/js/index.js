@@ -259,7 +259,7 @@ odoo.define('gpsmap', function(require){
                 model={   
                     model:  "tc_positions",
                     method: "positions",
-                    args:[[],{"data":option_args}],
+                    args:[[],{"data":option_args,"fields": fields_select}],
                 };                  
 
 
