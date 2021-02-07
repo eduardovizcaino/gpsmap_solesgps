@@ -68,7 +68,7 @@ class tc_positions(models.Model):
     def positions(self,data):		   
         print("aaaaaaaaaaaa",data.domain)
     	
-    	"""
+        """
         account_invoice_domain = [
             ('state', 'in', ['open', 'paid']),
             ('user_id', '=', self.env.uid),
@@ -77,7 +77,7 @@ class tc_positions(models.Model):
         ]
 
         data = self.search_read(account_invoice_domain, ['date_invoice', 'amount_untaxed_signed'])
-    	"""
+        """
     	
 
    
