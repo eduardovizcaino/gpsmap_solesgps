@@ -65,8 +65,8 @@ class tc_positions(models.Model):
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
     @api.multi
-    def positions(self,data):		   
-        print("aaaaaaaaaaaa",data)
+    def positions(self,datas):		   
+        print("aaaaaaaaaaaa",datas["data"]["domain"])
     	
         """
         account_invoice_domain = [
