@@ -103,12 +103,12 @@ class tc_positions(models.Model):
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
-            position["de"]            =position["tp_deviceid"]                            
-            tp_deviceid               =position["tp_deviceid"]
+            position["de"]                  =position["tp_deviceid"]                            
+            tp_deviceid                     =position["tp_deviceid"]
             
-            return_positions[tp_deviceid]    =position
+            return_positions[tp_deviceid]   =position
 
-        return return_positions    
+        return position    
    
 
 
