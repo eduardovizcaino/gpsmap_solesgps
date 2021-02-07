@@ -107,6 +107,8 @@ class vehicle(models.Model):
             self.devicetime_compu=self.devicetime
     @api.model        
     def positions(self):		   
+    	print("AAAAAAAAA")
+    	
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
