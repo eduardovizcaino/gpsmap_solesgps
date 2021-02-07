@@ -108,7 +108,7 @@ class tc_positions(models.Model):
             
             return_positions[tp_deviceid]   =position
 
-        return position    
+        return positions
    
 
 
