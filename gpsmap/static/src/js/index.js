@@ -240,7 +240,10 @@ odoo.define('gpsmap', function(require){
                 var start_time  =$("input#start").val();
                 var end_time    =$("input#end").val();
                 
-                var data={"domain":Array()};
+                var data={
+                    "domain":Array(),
+                    "data":Array(),
+                };
 
                 data["domain"].push(["devicetime",">",start_time]);
                 data["domain"].push(["devicetime","<",end_time]);
