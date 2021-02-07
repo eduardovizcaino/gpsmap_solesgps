@@ -108,7 +108,7 @@ class vehicle(models.Model):
     
     @api.model    
     def positions(self):		   
-        print("aaaaaaaaaaaa")
+        print("aaaaaaaaaaaa",self)
     	
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
