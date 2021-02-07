@@ -66,7 +66,7 @@ class tc_positions(models.Model):
     read                                        = fields.Integer('Leido',default=0)
     @api.multi
     def positions(self,data):		   
-        print("aaaaaaaaaaaa",data.domain)
+        print("aaaaaaaaaaaa",data["domain"])
     	
         """
         account_invoice_domain = [
