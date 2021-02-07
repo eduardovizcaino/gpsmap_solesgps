@@ -70,9 +70,9 @@ class tc_positions(models.Model):
         print("#### FIELDS #######",datas["fields"])
     	
 
-        data = self.search_read(datas["data"]["domain"], datas["fields"])
-        
-        print("#### DATA #######",data)
+        positions_data = self.search_read(datas["data"]["domain"], datas["fields"])
+        for positions in positions_data:
+            print("#### DATA #######",positions)
 
    
 
