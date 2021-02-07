@@ -64,6 +64,21 @@ class tc_positions(models.Model):
     accuracy                                    = fields.Float('Curso',digits=(3,2))
     network                                     = fields.Char('Type', size=4000)
     read                                        = fields.Integer('Leido',default=0)
+    @api.multi
+    def positions(self,data):		   
+        print("aaaaaaaaaaaa",data.domain)
+    	
+    	"""
+        account_invoice_domain = [
+            ('state', 'in', ['open', 'paid']),
+            ('user_id', '=', self.env.uid),
+            ('date_invoice', '>=', date_today.replace(day=1) - relativedelta(months=+1)),
+            ('type', 'in', ['out_invoice', 'out_refund'])
+        ]
+
+        data = self.search_read(account_invoice_domain, ['date_invoice', 'amount_untaxed_signed'])
+    	"""
+    	
 
    
 
@@ -110,6 +125,12 @@ class vehicle(models.Model):
     def positions(self,data):		   
         print("aaaaaaaaaaaa",data)
     	
+    	
+    	
+    	
+    	
+    	
+    	    	
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
@@ -132,6 +153,7 @@ class vehicle(models.Model):
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
         """)
+        
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
