@@ -253,7 +253,6 @@ odoo.define('gpsmap', function(require){
                     method: "positions",
                     args:[[]],
                     data:[]
-//                    kwargs:[]
                 };                  
 
 
