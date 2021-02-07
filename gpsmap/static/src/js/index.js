@@ -251,8 +251,8 @@ odoo.define('gpsmap', function(require){
                 model={   
                     model:  "fleet.vehicle",
                     method: "positions",
-                    args:[],
-                    kwargs:[]
+                    args:[]
+//                    kwargs:[]
                 };                  
 
 
