@@ -77,9 +77,9 @@ class tc_positions(models.Model):
             ('type', 'in', ['out_invoice', 'out_refund'])
         ]
         """
-        data = self.search_read(datas["data"]["domain"], datas["fields"])
+        #data = self.search_read(datas["data"]["domain"], datas["fields"])
         
-    	print("#### DATA #######",data)
+    	#print("#### DATA #######",data)
 
    
 
