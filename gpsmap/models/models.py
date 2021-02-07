@@ -106,8 +106,8 @@ class vehicle(models.Model):
         else:    
             self.devicetime_compu=self.devicetime
     
-    @api.model    
-    def positions(self):		   
+    @api.multi
+    def positions(self,data):		   
         print("aaaaaaaaaaaa",self)
     	
         self.env.cr.execute("""
