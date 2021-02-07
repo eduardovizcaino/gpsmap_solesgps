@@ -292,7 +292,7 @@ odoo.define('gpsmap', function(require){
                     rpc.query(model)
                     .then(function (result) 
                     {
-						/*                    	
+                	
                         del_locations();
                         local.positions=Array();                          
                         {                            	            
@@ -353,8 +353,6 @@ odoo.define('gpsmap', function(require){
                             }                                    
                         }
                         gpsmaps_obj.positions_paint(argument);                                                              
-                        
-                        */
                         
                         
                     });
