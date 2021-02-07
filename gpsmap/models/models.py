@@ -72,7 +72,7 @@ class tc_positions(models.Model):
 
         data = self.search_read(datas["data"]["domain"], datas["fields"])
         
-    	#print("#### DATA #######",data)
+        print("#### DATA #######",data)
 
    
 
