@@ -106,7 +106,7 @@ class vehicle(models.Model):
         else:    
             self.devicetime_compu=self.devicetime
     def positions(self):
-    	
+    	print("DATA###########",self)
     
     
     
