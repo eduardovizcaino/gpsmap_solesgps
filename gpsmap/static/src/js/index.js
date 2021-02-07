@@ -240,13 +240,12 @@ odoo.define('gpsmap', function(require){
                 var start_time  =$("input#start").val();
                 var end_time    =$("input#end").val();
                 
-                var data={
+                var option_args={
                     "domain":Array(),
-                    "data":Array(),
                 };
 
-                data["domain"].push(["devicetime",">",start_time]);
-                data["domain"].push(["devicetime","<",end_time]);
+                option_args["domain"].push(["devicetime",">",start_time]);
+                option_args["domain"].push(["devicetime","<",end_time]);
 
 /*                                
                 model={   
@@ -260,7 +259,7 @@ odoo.define('gpsmap', function(require){
                 model={   
                     model:  "fleet.vehicle",
                     method: "positions",
-                    args:[data,{"data":"aaa"}],
+                    args:[[],{"data":option_args}],
                 };                  
 
 
