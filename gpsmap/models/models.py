@@ -66,7 +66,8 @@ class tc_positions(models.Model):
     read                                        = fields.Integer('Leido',default=0)
     @api.multi
     def positions(self,datas):		   
-        print("aaaaaaaaaaaa",datas["data"]["domain"][0])
+        print("#### DOMAIN #######",datas["data"]["domain"])
+        print("#### FIELDS #######",datas["fields"])
     	
         """
         account_invoice_domain = [
@@ -76,9 +77,9 @@ class tc_positions(models.Model):
             ('type', 'in', ['out_invoice', 'out_refund'])
         ]
         """
-        #data = self.search_read(datas["data"]["domain"][0], ['speed', 'course'])
+        data = self.search_read(datas["data"]["domain"], datas["fields"])
         
-    	
+    	print("#### DATA #######",data)
 
    
 
