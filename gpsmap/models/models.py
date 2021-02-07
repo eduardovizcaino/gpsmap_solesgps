@@ -135,7 +135,7 @@ class vehicle(models.Model):
             tp_deviceid               =position["tp_deviceid"]
             
             return_positions[tp_deviceid]    =position
-        	print('AAAAAAAAAA ====================',position)    
+
         return return_positions    
     def toggle_motor(self):
         try:
