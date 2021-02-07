@@ -105,7 +105,8 @@ class vehicle(models.Model):
             self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
         else:    
             self.devicetime_compu=self.devicetime
-        
+    
+    @api.model    
     def positions(self):		   
 
     	
