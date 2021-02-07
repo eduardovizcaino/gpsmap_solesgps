@@ -105,8 +105,7 @@ class vehicle(models.Model):
             self.devicetime_compu=tz.localize(fields.Datetime.from_string(self.devicetime)).astimezone(pytz.utc)
         else:    
             self.devicetime_compu=self.devicetime
-    def positions(self):
-		print('ALERT ====================',self)   
+    def positions(self):		   
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
@@ -136,7 +135,7 @@ class vehicle(models.Model):
             tp_deviceid               =position["tp_deviceid"]
             
             return_positions[tp_deviceid]    =position
-            
+        	print('AAAAAAAAAA ====================',position)    
         return return_positions    
     def toggle_motor(self):
         try:
