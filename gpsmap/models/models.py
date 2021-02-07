@@ -69,14 +69,7 @@ class tc_positions(models.Model):
         print("#### DOMAIN #######",datas["data"]["domain"])
         print("#### FIELDS #######",datas["fields"])
     	
-        """
-        account_invoice_domain = [
-            ('state', 'in', ['open', 'paid']),
-            ('user_id', '=', self.env.uid),
-            ('date_invoice', '>=', date_today.replace(day=1) - relativedelta(months=+1)),
-            ('type', 'in', ['out_invoice', 'out_refund'])
-        ]
-        """
+
         data = self.search_read(datas["data"]["domain"], datas["fields"])
         
     	#print("#### DATA #######",data)
