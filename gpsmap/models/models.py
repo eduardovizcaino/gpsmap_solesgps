@@ -103,7 +103,7 @@ class tc_positions(models.Model):
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'""" %(start_time,end_time)
-        print("aaaaaaaaaaa=",sql)
+        #print("aaaaaaaaaaa=",sql)
         self.env.cr.execute(sql)
         
         return_positions                    ={}
