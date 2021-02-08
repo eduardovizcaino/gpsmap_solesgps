@@ -251,24 +251,12 @@ odoo.define('gpsmap', function(require){
                     option_args["domain"].push(["deviceid","=",device_active]);
 
 
-
                 model={   
                     model:  "tc_positions",
                     method: "positions",
                     args:[[],{"data":option_args,"fields": fields_select}],
                 };                  
 
-
-				/*                
-                    fields: fields_select,
-                    domain: Array()                
-
-
-                
-                model["domain"].push(["devicetime",">",start_time]);
-                model["domain"].push(["devicetime","<",end_time]);
-                */
-                //     
                 //domain:   [["deviceid.id","in",device_active]]                  
                 //console.log(model["domain"]); 
             }

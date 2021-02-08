@@ -106,7 +106,9 @@ class tc_positions(models.Model):
                 AND tp.devicetime<'%s'
                 AND fv.id='%s'
         """ %(start_time,end_time,deviceid)
-                
+           
+           
+        print(sql)        
 
         self.env.cr.execute(sql)
         return_positions                    =[]
