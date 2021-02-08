@@ -69,6 +69,7 @@ class tc_positions(models.Model):
         print("#### DOMAIN #######",datas["data"]["domain"])
         start_time  =datas["data"]["domain"][0][2]
         end_time    =datas["data"]["domain"][1][2]
+        deviceid    =datas["data"]["domain"][2][2]
         print("#### FIELDS #######",datas["fields"])
     	
 
@@ -102,7 +103,10 @@ class tc_positions(models.Model):
                 join tc_positions tp on td.id=tp.deviceid
             WHERE  1=1          
                 AND tp.devicetime>'%s'
-                AND tp.devicetime<'%s'""" %(start_time,end_time)
+                AND tp.devicetime<'%s'
+                AND fv.id='%s'
+        """ %(start_time,end_time,deviceid)
+                
 
         self.env.cr.execute(sql)
         return_positions                    =[]

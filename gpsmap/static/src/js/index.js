@@ -247,6 +247,10 @@ odoo.define('gpsmap', function(require){
                 option_args["domain"].push(["devicetime",">",start_time]);
                 option_args["domain"].push(["devicetime","<",end_time]);
 
+                if(device_active!=0)                
+                    option_args["domain"].push(["deviceid","=",device_active]);
+
+
 
                 model={   
                     model:  "tc_positions",
@@ -260,8 +264,6 @@ odoo.define('gpsmap', function(require){
                     domain: Array()                
 
 
-                if(device_active!=0)                
-                    model["domain"].push(["deviceid","=",device_active]);
                 
                 model["domain"].push(["devicetime",">",start_time]);
                 model["domain"].push(["devicetime","<",end_time]);
@@ -287,16 +289,13 @@ odoo.define('gpsmap', function(require){
                     .then(function (result) 
                     {
                         
-                	    console.log(result);
+                	    //console.log(result);
                         del_locations();
                         local.positions=Array();                          
                         {
                         
                             for(iresult in result)
                             {                            
-                                
-                                
-                            
                                 var positions               =result[iresult];                                
                                 
                                 
