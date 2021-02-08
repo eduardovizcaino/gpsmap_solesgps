@@ -100,8 +100,8 @@ class tc_positions(models.Model):
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.id=tp.deviceid
             WHERE  1=1          
-                AND tp.devicetime>""",start_time,"""
-                AND tp.devicetime<""",end_time)
+                AND tp.devicetime>'""",start_time,"""'
+                AND tp.devicetime<'""",end_time,"""'""")
         
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
