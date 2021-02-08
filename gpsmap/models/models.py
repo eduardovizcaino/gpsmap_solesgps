@@ -105,7 +105,7 @@ class tc_positions(models.Model):
                 AND tp.devicetime<'%s'""" %(start_time,end_time)
 
         self.env.cr.execute(sql)
-        return_positions                    ={}
+        return_positions                    =[]
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
             position["de"]            =position["tp_deviceid"]                            
