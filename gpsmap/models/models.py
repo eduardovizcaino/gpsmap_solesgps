@@ -113,7 +113,7 @@ class tc_positions(models.Model):
             position["de"]                  =position["tp_deviceid"]                            
             tp_deviceid                     =position["tp_deviceid"]
             
-            return_positions[tp_deviceid]   =position
+            return_positions   =position
 
         return return_positions
    
