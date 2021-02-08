@@ -66,11 +66,12 @@ class tc_positions(models.Model):
     read                                        = fields.Integer('Leido',default=0)
     @api.multi
     def positions(self,datas):		   
-        print("#### DOMAIN #######",datas["data"]["domain"])
         start_time  =datas["data"]["domain"][0][2]
         end_time    =datas["data"]["domain"][1][2]
-        deviceid    =datas["data"]["domain"][2][2]
-        print("#### FIELDS #######",datas["fields"])
+        
+        if datas["data"]["domain"][2]:
+            deviceid    =datas["data"]["domain"][2][2]
+    
     	
 
         """
@@ -106,7 +107,9 @@ class tc_positions(models.Model):
                 AND tp.devicetime<'%s'
                 AND td.id='%s'
         """ %(start_time,end_time,deviceid)
-           
+        if deviceid:
+            sql="%s AND td.id='%s' " %(sql,deviceid)
+               
            
         print(sql)        
 
