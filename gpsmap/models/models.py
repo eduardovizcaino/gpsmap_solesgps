@@ -101,8 +101,7 @@ class tc_positions(models.Model):
                 join tc_positions tp on td.id=tp.deviceid
             WHERE  1=1          
                 AND tp.devicetime>""",start_time,"""
-                AND tp.devicetime<""",end_time,"""
-        """)
+                AND tp.devicetime<""",end_time)
         
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
