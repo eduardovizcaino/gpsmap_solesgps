@@ -287,7 +287,7 @@ odoo.define('gpsmap', function(require){
                     .then(function (result) 
                     {
                         
-                	    
+                	    console.log(result);
                         del_locations();
                         local.positions=Array();                          
                         {
@@ -298,7 +298,7 @@ odoo.define('gpsmap', function(require){
                                 
                             
                                 var positions               =result[iresult];                                
-                                console.log(positions);
+                                
                                 /*
                                 //var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
