@@ -103,9 +103,8 @@ class tc_positions(models.Model):
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'""" %(start_time,end_time)
-        #print("aaaaaaaaaaa=",sql)
+
         self.env.cr.execute(sql)
-        print("aaaaaaaaaaa=",sql)
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
