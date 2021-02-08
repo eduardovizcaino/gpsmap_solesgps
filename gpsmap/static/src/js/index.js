@@ -286,13 +286,17 @@ odoo.define('gpsmap', function(require){
                     rpc.query(model)
                     .then(function (result) 
                     {
-                	    /*
+                        
+                	    
                         del_locations();
                         local.positions=Array();                          
                         {
                         
                             for(iresult in result)
                             {                            
+                                console.log("Crear mapa");
+                                /*
+                            
                                 var positions               =result[iresult];                                
 
 
@@ -344,7 +348,7 @@ odoo.define('gpsmap', function(require){
                                 {   
                                     local.positions[device_id][0]=positions;
                                 }
-                                
+                                */
                             }                                    
                         }
                         
@@ -353,7 +357,7 @@ odoo.define('gpsmap', function(require){
                         
                         gpsmaps_obj.positions_paint(argument);                                                              
                         
-                        */
+                       
                     });
                 }
             },50);
