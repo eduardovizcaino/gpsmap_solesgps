@@ -103,7 +103,6 @@ class tc_positions(models.Model):
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'
-                AND td.id='%s'
         """ %(start_time,end_time,deviceid)
         if deviceid>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
