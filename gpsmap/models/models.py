@@ -78,7 +78,7 @@ class tc_positions(models.Model):
             print("#### DATA #######",positions)
         """
 
-
+        #"SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
@@ -101,8 +101,8 @@ class tc_positions(models.Model):
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.id=tp.deviceid
             WHERE  1=1          
-                AND tp.devicetime>'""",start_time,"""'
-                AND tp.devicetime<'""",end_time,"""'"""
+                AND tp.devicetime>'%s'
+                AND tp.devicetime<'%s'""" %(start_time,end_time)
         print("aaaaaaaaaaa=",sql)
         self.env.cr.execute(sql)
         
