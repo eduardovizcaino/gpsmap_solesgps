@@ -67,10 +67,8 @@ class tc_positions(models.Model):
     @api.multi
     def positions(self,datas):		   
         start_time  =datas["data"]["domain"][0][2]
-        end_time    =datas["data"]["domain"][1][2]
-        
-        if datas["data"]["domain"][2]:
-            deviceid    =datas["data"]["domain"][2][2]
+        end_time    =datas["data"]["domain"][1][2]       
+        deviceid    =datas["data"]["domain"][2][2]
     
     	
 
@@ -107,7 +105,7 @@ class tc_positions(models.Model):
                 AND tp.devicetime<'%s'
                 AND td.id='%s'
         """ %(start_time,end_time,deviceid)
-        if deviceid:
+        if deviceid>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
                
            
