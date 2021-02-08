@@ -104,7 +104,7 @@ class tc_positions(models.Model):
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'
-                AND fv.id='%s'
+                AND td.id='%s'
         """ %(start_time,end_time,deviceid)
            
            
