@@ -67,8 +67,8 @@ class tc_positions(models.Model):
     @api.multi
     def positions(self,datas):		   
         print("#### DOMAIN #######",datas["data"]["domain"])
-        print("#### INICIO #######",datas["data"]["domain"][0][2])
-        print("#### FIN #######",datas["data"]["domain"][1][2])
+        start_time  =datas["data"]["domain"][0][2]
+        end_time    =datas["data"]["domain"][1][2]
         print("#### FIELDS #######",datas["fields"])
     	
 
