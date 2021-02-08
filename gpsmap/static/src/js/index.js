@@ -294,12 +294,12 @@ odoo.define('gpsmap', function(require){
                         
                             for(iresult in result)
                             {                            
-                                console.log("Crear mapa");
-                                /*
+                                
+                                
                             
                                 var positions               =result[iresult];                                
-
-
+                                console.log(positions);
+                                /*
                                 //var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
             
