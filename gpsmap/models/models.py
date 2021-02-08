@@ -78,7 +78,8 @@ class tc_positions(models.Model):
             print("#### DATA #######",positions)
         """
 
-        self.env.cr.execute("""
+
+        sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
@@ -101,7 +102,9 @@ class tc_positions(models.Model):
                 join tc_positions tp on td.id=tp.deviceid
             WHERE  1=1          
                 AND tp.devicetime>'""",start_time,"""'
-                AND tp.devicetime<'""",end_time,"""'""")
+                AND tp.devicetime<'""",end_time,"""'"""
+        print("aaaaaaaaaaa=",sql)
+        self.env.cr.execute(sql)
         
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
