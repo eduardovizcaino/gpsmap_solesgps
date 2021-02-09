@@ -107,19 +107,14 @@ class tc_positions(models.Model):
         if int(deviceid)>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
                
-           
-        print(sql)        
-
         self.env.cr.execute(sql)
         return_positions                    =[]
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
             position["de"]            =position["tp_deviceid"]                            
             tp_deviceid               =position["tp_deviceid"]
-            
-            
+                        
             return_positions.append(position)
-
             
         return return_positions    
 
