@@ -14,7 +14,7 @@
     </record>
 
 
-	<!--	
+
     <data noupdate="1">
         <record forcecreate="True" id="ir_cron_gpsmap_position_get" model="ir.cron">
             <field name="name">GPSMap: Read positions</field>
@@ -31,5 +31,5 @@
 
     </data>        
 
-  -->
+  
 </odoo>
