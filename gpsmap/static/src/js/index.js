@@ -239,21 +239,24 @@ odoo.define('gpsmap', function(require){
             {
                 var start_time  =$("input#start").val();
                 var end_time    =$("input#end").val();
-                                
+                
+                var option_args={
+                    "domain":Array(),
+                };
+
+                option_args["domain"].push(["devicetime",">",start_time]);
+                option_args["domain"].push(["devicetime","<",end_time]);
+
+                //if(device_active!=0)                
+                    option_args["domain"].push(["deviceid","=",device_active]);
+
+
                 model={   
-                    model:  "gpsmap.positions",
-                    method: "search_read",
-                    fields: fields_select,
-                    order:  "devicetime DESC",           
-                    domain: Array()                
+                    model:  "tc_positions",
+                    method: "positions",
+                    args:[[],{"data":option_args,"fields": fields_select}],
                 };                  
-                
-                if(device_active!=0)                
-                    model["domain"].push(["deviceid.id","=",device_active]);
-                
-                model["domain"].push(["devicetime",">",start_time]);
-                model["domain"].push(["devicetime","<",end_time]);
-                //     
+
                 //domain:   [["deviceid.id","in",device_active]]                  
                 //console.log(model["domain"]); 
             }
@@ -273,14 +276,17 @@ odoo.define('gpsmap', function(require){
                     rpc.query(model)
                     .then(function (result) 
                     {
+                        
+                	    //console.log(result);
                         del_locations();
                         local.positions=Array();                          
-                        {                            	            
+                        {
+                        
                             for(iresult in result)
                             {                            
                                 var positions               =result[iresult];                                
-
-
+                                
+                                
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
             
@@ -332,7 +338,13 @@ odoo.define('gpsmap', function(require){
                                 
                             }                                    
                         }
+                        
+                        
+                        
+                        
                         gpsmaps_obj.positions_paint(argument);                                                              
+                        
+                       
                     });
                 }
             },50);
