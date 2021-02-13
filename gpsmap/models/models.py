@@ -43,81 +43,6 @@ class tc_devices(models.Model):
     telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
     
-class tc_positions(models.Model):
-    _name = "tc_positions"
-    _description = 'traccar Positions'
-
-    protocol                                    = fields.Char('Protocolo', size=15)
-    #deviceid                                    = fields.Many2one('tc_devices',ondelete='set null', string="Vehiculo", index=True)
-    deviceid                                    = fields.Integer('GPS')
-    servertime                                  = fields.Datetime('Server Time')
-    devicetime                                  = fields.Datetime('Device Time')
-    fixtime                                     = fields.Datetime('Error Time')
-    valid                                       = fields.Integer('Valido')
-    latitude                                    = fields.Float('Latitud',digits=(5,10))
-    longitude                                   = fields.Float('Longitud',digits=(5,10))
-    altitude                                    = fields.Float('Altura',digits=(6,2))
-    speed                                       = fields.Float('Velocidad',digits=(3,2))
-    course                                      = fields.Float('Curso',digits=(3,2))
-    address                                     = fields.Char('Calle', size=150)
-    attributes                                  = fields.Char('Atributos', size=5000)
-    accuracy                                    = fields.Float('Curso',digits=(3,2))
-    network                                     = fields.Char('Type', size=4000)
-    read                                        = fields.Integer('Leido',default=0)
-    @api.multi
-    def positions(self,datas):		   
-        start_time  =datas["data"]["domain"][0][2]
-        end_time    =datas["data"]["domain"][1][2]       
-        deviceid    =datas["data"]["domain"][2][2]
-    
-    	
-
-        """
-        positions_data   = self.search(datas["data"]["domain"], offset=0, limit=None, order=None)    
-        for positions in positions_data:
-            print("#### DATA #######",positions)
-        """
-
-        #"SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)
-        sql="""
-            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
-                CASE 		                
-                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
-                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
-                    ELSE 1.852 * tp.speed                    
-                END	AS speed_compu,
-                CASE 				            
-	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
-	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
-	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
-	                ELSE 'Stopped'
-                END	as event,                                 
-                CASE 				            
-                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
-                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
-                    ELSE 'Offline'
-                END  as status
-            FROM  fleet_vehicle fv
-                join tc_devices td on fv.gps1_id=td.id
-                join tc_positions tp on td.id=tp.deviceid
-            WHERE  1=1          
-                AND tp.devicetime>'%s'
-                AND tp.devicetime<'%s'
-        """ %(start_time,end_time)
-        if int(deviceid)>0:
-            sql="%s AND td.id='%s' " %(sql,deviceid)
-               
-        self.env.cr.execute(sql)
-        return_positions                    =[]
-        positions                           =self.env.cr.dictfetchall()
-        for position in positions:
-            position["de"]            =position["tp_deviceid"]                            
-            tp_deviceid               =position["tp_deviceid"]
-                        
-            return_positions.append(position)
-            
-        return return_positions    
-
 
 
 class vehicle(models.Model):
@@ -232,6 +157,60 @@ class vehicle(models.Model):
             return_positions[tp_deviceid]    =position
             
         return return_positions    
+    @api.multi
+    def positions(self,datas):		   
+        start_time  =datas["data"]["domain"][0][2]
+        end_time    =datas["data"]["domain"][1][2]       
+        deviceid    =datas["data"]["domain"][2][2]
+    
+    	
+
+        """
+        positions_data   = self.search(datas["data"]["domain"], offset=0, limit=None, order=None)    
+        for positions in positions_data:
+            print("#### DATA #######",positions)
+        """
+
+        #"SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)
+        sql="""
+            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
+                CASE 		                
+                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
+                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
+                    ELSE 1.852 * tp.speed                    
+                END	AS speed_compu,
+                CASE 				            
+	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
+	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
+	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
+	                ELSE 'Stopped'
+                END	as event,                                 
+                CASE 				            
+                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
+                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
+                    ELSE 'Offline'
+                END  as status
+            FROM  fleet_vehicle fv
+                join tc_devices td on fv.gps1_id=td.id
+                join tc_positions tp on td.id=tp.deviceid
+            WHERE  1=1          
+                AND tp.devicetime>'%s'
+                AND tp.devicetime<'%s'
+        """ %(start_time,end_time)
+        if int(deviceid)>0:
+            sql="%s AND td.id='%s' " %(sql,deviceid)
+               
+        self.env.cr.execute(sql)
+        return_positions                    =[]
+        positions                           =self.env.cr.dictfetchall()
+        for position in positions:
+            position["de"]            =position["tp_deviceid"]                            
+            tp_deviceid               =position["tp_deviceid"]
+                        
+            return_positions.append(position)
+            
+        return return_positions    
+
 class speed(models.Model):
     _name = "gpsmap.speed"
     _description = 'Positions Speed'
