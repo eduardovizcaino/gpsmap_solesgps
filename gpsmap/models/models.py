@@ -74,6 +74,50 @@ class vehicle(models.Model):
     
     gps1_id                                     = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
     
+
+
+
+    def run_scheduler_recarga(self):
+        taecel_obj                             =self.env['taecel']
+        
+        ahora = datetime.datetime.utcnow()
+        ayer = ahora - datetime.timedelta(days=25)
+        antes = ahora - datetime.timedelta(minutes=20)
+    
+        vehicle_args                            =[]        
+        return_positions                        ={}
+        vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
+        #vehicle_data                            =self.search(vehicle_args, offset=0, limit=1, order=None)
+
+        for vehicle in vehicle_data:
+            recargar=0
+            
+            print("# VEHICLE ========================",vehicle["name"])
+            if(vehicle["recargado"] not in {"",False}): 
+                if(str(vehicle["recargado"]) < str(ayer)):  
+                    if(str(vehicle["devicetime_compu"]) < str(antes)):        
+                        recargar=1
+            else:
+                recargar=2
+                                
+            if(recargar>0 and vehicle["phone"] not in {"",False}):
+                print("# POSIBLE RECARGA NUEVA=", recargar)
+                taecel_data                     ={}
+                taecel_data["name"]             ="TEL030"
+                taecel_data["referencia"]       =vehicle["phone"]
+
+                taecel_new                      =taecel_obj.create(taecel_data)
+                
+                print("# taecel_new=", taecel_new)
+                  
+                if(taecel_new["status"]!="Error"):                                    
+                    if("mensaje2" in taecel_new and taecel_new["mensaje2"]=="Recarga Exitosa" and taecel_new["status"]=="Exitosa"):              
+                    #if(taecel_new["mensaje2"]=="Recarga Exitosa" and taecel_new["status"]=="Exitosa"):
+                        hoy_fecha    ="%s" %(datetime.datetime.now())
+                        vehicle["recargado"]=hoy_fecha[0:19]                
+                        print("mensaje2==", taecel_new["mensaje2"])
+                        self.write(vehicle)
+
     
     @api.one
     def _get_date(self):      
@@ -125,7 +169,6 @@ class vehicle(models.Model):
         hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=5))        
         hoy_antes                               =hoy_antes[0:19]
 
-
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
@@ -163,15 +206,6 @@ class vehicle(models.Model):
         end_time    =datas["data"]["domain"][1][2]       
         deviceid    =datas["data"]["domain"][2][2]
     
-    	
-
-        """
-        positions_data   = self.search(datas["data"]["domain"], offset=0, limit=None, order=None)    
-        for positions in positions_data:
-            print("#### DATA #######",positions)
-        """
-
-        #"SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
