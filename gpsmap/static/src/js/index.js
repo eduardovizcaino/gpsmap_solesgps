@@ -882,6 +882,7 @@ odoo.define('gpsmap', function(require){
 
 
 		var gas;
+        /*
     	if(item["at"]["totalDistance"]!=undefined)				
     	{
     	    var km = item["at"]["totalDistance"] / 1000;
@@ -892,7 +893,8 @@ odoo.define('gpsmap', function(require){
     		gas								=item["at"]["io3"];
     		//item["ga"]  					=parseInt(gas.substring(0,3));
     		item["mi"]  					=item["at"]["io3"];    	    	
-    	}	
+    	}
+    	*/	
 
 
     	if(item["at"]["io3"]!=undefined)				
