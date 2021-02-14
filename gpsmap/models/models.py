@@ -183,9 +183,11 @@ class vehicle(models.Model):
 	                ELSE 'Stopped'
                 END	as event,                                 
 
+CAST (tp.attributes::json->>'totalDistance' AS INTEGER)
+
                 CASE 				            
-                    WHEN fv.odometer_unit='kilometers' AND tp.attributes::json->>'totalDistance' THEN tp.attributes::json->>'totalDistance' / 1000
-                    WHEN fv.odometer_unit='miles' AND tp.attributes::json->>'totalDistance' THEN tp.attributes::json->>'totalDistance' / 1000 * 0.621371
+                    WHEN fv.odometer_unit='kilometers' AND tp.attributes::json->>'totalDistance' THEN CAST (tp.attributes::json->>'totalDistance' AS INTEGER) / 1000
+                    WHEN fv.odometer_unit='miles' AND tp.attributes::json->>'totalDistance' THEN CAST (tp.attributes::json->>'totalDistance' AS INTEGER) / 1000 * 0.621371
 	                ELSE 0
                 END	as odometer,
 
