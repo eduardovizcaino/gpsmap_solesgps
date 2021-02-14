@@ -183,13 +183,6 @@ class vehicle(models.Model):
 	                ELSE 'Stopped'
                 END	as event,                                 
 
-
-                CASE 				            
-                    WHEN fv.odometer_unit='kilometers' AND tp.attributes::json->>'totalDistance' THEN TO_NUMBER(tp.attributes::json->>'totalDistance') / 1000
-                    WHEN fv.odometer_unit='miles' AND tp.attributes::json->>'totalDistance' THEN TO_NUMBER(tp.attributes::json->>'totalDistance') / 1000 * 0.621371
-	                ELSE 0
-                END	as odometer,
-
                 CASE 				            
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
                     WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
