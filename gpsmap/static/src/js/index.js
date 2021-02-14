@@ -205,6 +205,7 @@ odoo.define('gpsmap', function(require){
                                     vehiculo["co"]=position.course;
                                     vehiculo["sp"]=position.speed_compu;
                                     vehiculo["ty"]=position.status;
+                                    vehiculo["mi"]=position.odometro;
                                     vehiculo["ev"]=position.event;
                                     vehiculo["ti"]=position.devicetime;
                                     vehiculo["im"]=vehiculo_img;
