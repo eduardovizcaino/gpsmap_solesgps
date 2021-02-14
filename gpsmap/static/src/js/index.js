@@ -205,7 +205,7 @@ odoo.define('gpsmap', function(require){
                                     vehiculo["co"]=position.course;
                                     vehiculo["sp"]=position.speed_compu;
                                     vehiculo["ty"]=position.status;
-                                    vehiculo["mi"]=position.odometro;
+//                                    vehiculo["mi"]=position.odometro;
                                     vehiculo["ev"]=position.event;
                                     vehiculo["ti"]=position.devicetime;
                                     vehiculo["im"]=vehiculo_img;
@@ -882,6 +882,19 @@ odoo.define('gpsmap', function(require){
 
 
 		var gas;
+    	if(item["at"]["totalDistance"]!=undefined)				
+    	{
+    	    var km = item["at"]["totalDistance"] / 1000;
+    	
+    	
+    	    item["mi"]  					=item["at"]["io3"];    	    	
+    	
+    		gas								=item["at"]["io3"];
+    		//item["ga"]  					=parseInt(gas.substring(0,3));
+    		item["mi"]  					=item["at"]["io3"];    	    	
+    	}	
+
+
     	if(item["at"]["io3"]!=undefined)				
     	{
     		gas								=item["at"]["io3"];
