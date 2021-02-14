@@ -886,10 +886,12 @@ odoo.define('gpsmap', function(require){
     	if(item["at"]["totalDistance"]!=undefined)				
     	{
     	    var km = parseInt(parseInt(item["at"]["totalDistance"]) / 1000);
-    	
-    	
+    	    	
     	    item["mi"]  					=km;    	    	
-    	
+    	    if(item["odometer_unit"]=="miles")				
+    	    {
+    	        item["mi"]  				=km * 0.621371;    	    	
+    	    }
     	}
     	
 

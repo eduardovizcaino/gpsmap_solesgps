@@ -170,7 +170,7 @@ class vehicle(models.Model):
         hoy_antes                               =hoy_antes[0:19]
 
         self.env.cr.execute("""
-            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
+            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,fv.odometer_unit,
                 CASE 		                
                     WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
                     WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
