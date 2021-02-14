@@ -877,6 +877,9 @@ odoo.define('gpsmap', function(require){
     	else								item["al"]  =0;
     	
 		//if(item["ot"]["battery"])			item["ga"]  =item["ot"]["battery"];
+
+
+
 		var gas;
     	if(item["at"]["io3"]!=undefined)				
     	{
