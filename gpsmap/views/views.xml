@@ -305,16 +305,10 @@
                     <button string="ADD POINT" id ="action_addpoint" custom="click"/>
                     <button string="END POINT" id ="action_endpoint_route" custom="click"/>
                     <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>                    
+                    <field name="name"/>
+                    <field name="points" class="points" invisible="1"/>
                 </header>
 
-                <group  col="6">
-                    <field name="name"/>                            
-                    <field name="hidden"/>                                                                
-                    <field name="points" class="points" invisible="1"/>
-                    <!--
-                    <field name="points" class="points" invisible="1"/>
-                    -->
-                </group>
                 <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
                 <script>
                     local.vehicles      =Array();
