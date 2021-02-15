@@ -306,7 +306,7 @@
                     <button string="END POINT" id ="action_endpoint_route" custom="click"/>
                     <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>                    
                     <field name="name"/>
-                    <field name="company_id"/>
+                    <field name="company_ids"/>
                     <field name="points" class="points" invisible="1"/>
                     
                 </header>
