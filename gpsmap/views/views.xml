@@ -197,7 +197,7 @@
                     <field name="name"/>                            
                     <field name="color"/>                    
                     <field name="hidden"/>                                                                
-                    <field name="points" class="points" invisible="0"/>
+                    <field name="points" class="points" invisible="1"/>
                 </group>
                 <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
                 <script>
