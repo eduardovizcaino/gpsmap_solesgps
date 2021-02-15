@@ -310,7 +310,7 @@
                 <group  col="6">
                     <field name="name"/>                            
                     <field name="hidden"/>                                                                
-                    <field name="points" class="points" />
+                    <field name="points" class="points" invisible="1"/>
                     <!--
                     <field name="points" class="points" invisible="1"/>
                     -->
