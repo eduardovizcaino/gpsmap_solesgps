@@ -42,6 +42,7 @@ class tc_devices(models.Model):
     disabled                                    = fields.Boolean('Disable', default=False)
     telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
+    company_ids = fields.Many2many('res.company', 'route_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
     
 
 
