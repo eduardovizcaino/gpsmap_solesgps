@@ -514,6 +514,7 @@ odoo.define('gpsmap', function(require){
             gpsmaps_obj.vehicles_menu(gpsmap_section);               
             gpsmaps_obj.map();            
 
+            gpsmaps_obj.geofences_paint();
             if(gpsmap_section!="gpsmaps_maphistory")
             {
                 status_device();
@@ -521,7 +522,7 @@ odoo.define('gpsmap', function(require){
 
                 //var obj=$("li.vehicle_active")
                 status_device($("li.vehicle_active"));
-                gpsmaps_obj.geofences_paint();
+                
                 gpsmaps_obj.route_paint();
                 gpsmaps_obj.position();
 
