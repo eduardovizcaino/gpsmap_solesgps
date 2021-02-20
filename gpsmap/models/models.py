@@ -198,7 +198,7 @@ class vehicle(models.Model):
         return_positions                    ={}
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
-            print("device==========",position["devicetime"])
+            print("status==",position["status"]," device==========",position["devicetime"]," server==========",position["servertime"]," fix==========",position["fixtime"])
             position["de"]            =position["tp_deviceid"]                            
             tp_deviceid               =position["tp_deviceid"]
             
