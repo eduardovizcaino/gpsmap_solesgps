@@ -1243,7 +1243,7 @@ odoo.define('gpsmap', function(require){
 		    device_active=vehicle["de"];
 		    		    		    
 		    $("li.vehicle").removeClass("vehicle_active");
-		    $("li.vehicle[device="+ vehicle["de"] +"]").addClass("vehicle_active");			
+		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		    
 		    		    		    
             /*		    		    		    
