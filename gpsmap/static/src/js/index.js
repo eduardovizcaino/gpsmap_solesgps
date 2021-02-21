@@ -1102,7 +1102,7 @@ odoo.define('gpsmap', function(require){
 				}				
 				var marcador 		    = markerMap(posicion, icon);		
 					
-				//var infowindow 		    = messageMap(marcador, vehicle);	
+				var infowindow 		    = messageMap(marcador, vehicle);	
 				fn_localizaciones(marcador, vehicle);
 			}
 			else
