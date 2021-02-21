@@ -1237,7 +1237,7 @@ odoo.define('gpsmap', function(require){
        tracert(origen,destino,waypts);                     
 	}
 
-	function messageMaps(marcador, vehicle, infowindow) 
+	function messageMap(marcador, vehicle, infowindow) 
 	{
 		gMEvent.addListener(marcador, 'click', function() 
 		{
