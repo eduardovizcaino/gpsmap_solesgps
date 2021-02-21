@@ -1245,29 +1245,7 @@ odoo.define('gpsmap', function(require){
 		    $("li.vehicle").removeClass("vehicle_active");
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		    
-		    		    		    
-            /*		    		    		    
-			$(".select_devices").removeClass("device_active");
-			$(".select_devices[device="+ vehicle["de"] +"]").addClass("device_active");			
-			
-			if(vehicle["se"]=="historyMap")	infowindow.open(map,marcador);
-			else							status_device();
-			
-			
-			
-			
-			                    $(\"li.vehicle\").click(function(){\
-			                        tipo   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
-    			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
-    			                    $(this).addClass(\"vehicle_active\");\
-    			                    device_active               =$(this).attr(\"vehicle\");\
-    			                    if(gpsmap_section!=\"gpsmaps_maphistory\")\
-    			                    {\
-                                        status_device(this);\
-                                    }\
-			                    });\
-			
-			*/
+            status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));
 			
 		});							
 	}
