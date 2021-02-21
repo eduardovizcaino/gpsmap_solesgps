@@ -53,7 +53,7 @@ odoo.define('gpsmap', function(require){
     //map                         =undefined;    
     local.vehicles              =Array();
     local.geofences             =Array();
-    local.route             =Array();
+    local.route                 =Array();
     local.positions             =undefined;    
     local.gpsmap                =undefined;
     local.actualizaciones       =0;        
@@ -423,7 +423,7 @@ odoo.define('gpsmap', function(require){
 			            icon="/gpsmap/static/src/img/vehiculo_" +image+ "/i135.png";
 		                opcion_vehiculo =opcion_vehiculo+"\
 		                    <li class=\"vehicle\" position=\"\" latitude=\"\" longitude=\"\" vehicle=\""+vehiculo_id+"\" style=\"padding-left:0px; padding-top:5px; padding-bottom:5px;\">\
-		                    <table width=\"100%\" border=\"0\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
+    		                    <table width=\"100%\" border=\"0\" class=\"select_devices\" device_id=\""+vehiculo_id+"\">\
 		                        <tr>\
 		                            <td height=\"17\" width=\"50\" align=\"center\">\
 		                                <img height=\"18\" src=\"" +icon+ "\">\
@@ -465,7 +465,6 @@ odoo.define('gpsmap', function(require){
     		                $("li > a > span:contains('History Map'):last").parent().parent().append(opcion_vehiculo);  
 		                else if($("li > a > span:contains('Online Street'):last").length>0)   		                	
     		                $("li > a > span:contains('Online Street'):last").parent().parent().append(opcion_vehiculo);  
-    		                
 		            }
 		        }
 		        else 
@@ -1243,11 +1242,33 @@ odoo.define('gpsmap', function(require){
 		{
 		    device_active=vehicle["de"];
 		    		    		    
+		    $("li.vehicle").removeClass("vehicle_active");
+		    $(".select_devices[device="+ vehicle["de"] +"]").addClass("device_active");			
+		    
+		    		    		    
+            /*		    		    		    
 			$(".select_devices").removeClass("device_active");
 			$(".select_devices[device="+ vehicle["de"] +"]").addClass("device_active");			
 			
 			if(vehicle["se"]=="historyMap")	infowindow.open(map,marcador);
 			else							status_device();
+			
+			
+			
+			
+			                    $(\"li.vehicle\").click(function(){\
+			                        tipo   =$(\"li.active > a.oe_menu_leaf\").attr(\"data-menu-xmlid\");\
+    			                    $(\"li.vehicle\").removeClass(\"vehicle_active\");\
+    			                    $(this).addClass(\"vehicle_active\");\
+    			                    device_active               =$(this).attr(\"vehicle\");\
+    			                    if(gpsmap_section!=\"gpsmaps_maphistory\")\
+    			                    {\
+                                        status_device(this);\
+                                    }\
+			                    });\
+			
+			*/
+			
 		});							
 	}
 	function paint_history(iposiciones, section)
