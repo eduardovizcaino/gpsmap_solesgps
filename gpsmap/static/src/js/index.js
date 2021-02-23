@@ -1245,8 +1245,7 @@ odoo.define('gpsmap', function(require){
 		    $("li.vehicle").removeClass("vehicle_active");
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		    
-            status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));
-			
+            status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));			
 		});							
 	}
 	function paint_history(iposiciones, section)
