@@ -593,6 +593,7 @@ odoo.define('gpsmap', function(require){
         events: {
             'click button#action_search': function (e) {
                 gpsmaps_obj.positions_search();            
+                butons_simulation();
             },
             'init input#start': function (e) {
             
@@ -1262,15 +1263,15 @@ odoo.define('gpsmap', function(require){
 	    	}	
 	    	else	
 	    	{
-					if(simulation_stop<20)
-					{
-						simulation_stop=simulation_stop+1;
-						if(simulation_time==600)    simulation_time=300;
-					}	
-					else
-					{
-						if(simulation_time==300)	simulation_time=5;
-					}	
+				if(simulation_stop<20)
+				{
+					simulation_stop=simulation_stop+1;
+					if(simulation_time==600)    simulation_time=300;
+				}	
+				else
+				{
+					if(simulation_time==300)	simulation_time=5;
+				}	
 	    	}	
 	    	
 	    	vehicle["se"]		="simulator";
