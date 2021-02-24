@@ -1307,14 +1307,17 @@ odoo.define('gpsmap', function(require){
 			text: false
 			})
 			.click(function()
-			{			    
+			{	
+			    alert("play");
+			    /*		    
 				if(localizaciones.length>0)                
 				{
 				    simulation_action="play";
 				    del_locations();
 				    $("div#odometro").show();
 					paint_history(isimulacion, historyMap);
-				}    					
+				} 
+				*/   					
 			}
 		);
 	    $("#pause").button({
