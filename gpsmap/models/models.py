@@ -129,6 +129,8 @@ class vehicle(models.Model):
             self.devicetime_compu=self.devicetime
     def toggle_motor(self):
         try:
+        
+            """
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
             
             print("sql=",sql)
@@ -157,12 +159,12 @@ class vehicle(models.Model):
             req                     = requests.post(url, data=json.dumps(payload), headers=headers)
             req.raise_for_status()        
             json_traccar            = req.json()
-            
+            """
             if(self.motor==True):
                 self.motor=False
             else:
                 self.motor=True                        
-
+            
         except Exception:
             print("#####################################################")                
             print("Error al conectar con traccar")                
