@@ -129,7 +129,7 @@ class vehicle(models.Model):
             self.devicetime_compu=self.devicetime
     def toggle_motor(self):
         try:
-        
+            print(" self.id=", self.gps1_id)
             """
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
             
@@ -137,7 +137,7 @@ class vehicle(models.Model):
             self.env.cr.execute(sql)
             devices_id                   =self.env.cr.dictfetchall()[0]["id"]
            
-            print("devices_id=",devices_id , " self.id=", self.gps1_id)
+            
             
             if(self.motor==True):
                 comando="engineStop"
