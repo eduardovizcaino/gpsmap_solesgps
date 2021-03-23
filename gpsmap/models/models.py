@@ -130,6 +130,8 @@ class vehicle(models.Model):
     def toggle_motor(self):
         try:
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
+            
+            print("sql=",sql)
             self.env.cr.execute(sql)
             devices_id                   =self.env.cr.dictfetchall()[0]["id"]
            
