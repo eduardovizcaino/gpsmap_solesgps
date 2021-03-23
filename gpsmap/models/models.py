@@ -129,7 +129,7 @@ class vehicle(models.Model):
             self.devicetime_compu=self.devicetime
     def toggle_motor(self):
         try:
-            print(" self.id=", self.gps1_id.id)
+            print(" self.id=", self.gps1_id["id"])
             """
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
             
