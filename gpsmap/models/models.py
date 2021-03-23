@@ -132,6 +132,8 @@ class vehicle(models.Model):
             sql="SELECT id FROM tc_devices td WHERE td.uniqueid='%s' " %(self.imei)    
             self.env.cr.execute(sql)
             devices_id                   =self.env.cr.dictfetchall()[0]["id"]
+           
+            print("devices_id=",devices_id , " self.id=", self.gps1_id)
             
             if(self.motor==True):
                 comando="engineStop"
@@ -190,7 +192,7 @@ class vehicle(models.Model):
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
                     WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
                     ELSE 'Offline'
-                END  as status
+                END  as status                
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.positionid=tp.id
