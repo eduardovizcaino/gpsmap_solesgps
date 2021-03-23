@@ -130,14 +130,12 @@ class vehicle(models.Model):
     def toggle_motor(self):
         try:
             devices_id                   =self.gps1_id["id"])
-           
-            
-            
+                        
             if(self.motor==True):
                 comando="engineStop"
             else:
                 comando="engineResume"
-
+            """
             url = "http://odoo.solesgps.com:8082/api/commands/send"
             payload = {
                 "id"            :0,
@@ -147,7 +145,7 @@ class vehicle(models.Model):
                 "textChannel"   :"false",
                 "attributes"    :{}
             }                        
-            """
+            
             ##headers = {	"Authorization": "Basic " + encoded		}
             headers                 = {	"Authorization": "Basic YWRtaW46YWRtaW4=","content-type": "application/json"}        
 
