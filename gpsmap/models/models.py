@@ -129,14 +129,17 @@ class vehicle(models.Model):
             self.devicetime_compu=self.devicetime
     def toggle_motor(self):
         try:
+            traccar_host                 =self.env['ir.config_parameter'].get_param('traccar_host','')
             devices_id                   =self.gps1_id["id"]
             
             if(self.motor==True):
                 comando="engineStop"
             else:
                 comando="engineResume"
-            
-            url = "http://odoo.solesgps.com:8082/api/commands/send"
+
+            path="/api/commands/send"
+            #url = "http://odoo.solesgps.com:8082/api/commands/send"
+            url = "%s%s" %(traccar_host,path)
             payload = {
                 "id"            :0,
                 "description"   :"Nuevo...",
