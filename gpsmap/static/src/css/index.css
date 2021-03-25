@@ -15,8 +15,19 @@
     float:left;
 	height: 120px;
 }
-.vehicle_active, .type_report {
+.vehicle_active{
     background-color: #7c7bad;
+    border-radius: 0;
+    color: white;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left:15px;
+}
+.select{
+    background-color: #7c7bad;
+}
+
+.type_report {
     border-radius: 0;
     color: white;
     padding-top:5px;
