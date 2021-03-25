@@ -15,7 +15,7 @@
                                     <span class="fa fa-bars"></span>
                                 </button>                            
                                 <ul class="dropdown-menu o_group_by_menu" role="menu">
-                                    <li class="selected"><a href="#">Reporte</a></li>
+                                    <li class="type_report selected"><a href="#">Reporte</a></li>
                                     <li><a href="#">Movimiento</a></li>
                                     <li><a href="#">Stop</a></li>
                                 </ul>                                                    

@@ -15,7 +15,7 @@
     float:left;
 	height: 120px;
 }
-.vehicle_active {
+.vehicle_active, .type_report {
     background-color: #7c7bad;
     border-radius: 0;
     color: white;
