@@ -219,6 +219,9 @@ class vehicle(models.Model):
         
         if(type_report=="stop"):
             where_report="AND tp.speed<2"
+        if(type_report=="alarm"):
+            where_report="AND tp.attributes::json->>'alarm'!=''"
+
     
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,

@@ -18,6 +18,7 @@
                                     <li filter="report" class="type_report select">Reporte</li>
                                     <li filter="moving" class="type_report">Movimiento</li>
                                     <li filter="stop" class="type_report">Stop</li>
+                                    <li filter="alarm" class="type_report">Alarm</li>
                                 </ul>                                                    
                             </div>
                         </td>
