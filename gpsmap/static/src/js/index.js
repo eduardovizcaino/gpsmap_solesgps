@@ -269,7 +269,7 @@ odoo.define('gpsmap', function(require){
                     fields: fields_select
                 };                
             }
-            
+            /*
             setTimeout(function()
             {
                 if(vehiculos!= null && vehiculos.length>0)
@@ -339,6 +339,7 @@ odoo.define('gpsmap', function(require){
                     });
                 }
             },50);
+            */
         },
 
         //////////////////////////////////////////////////////////////
