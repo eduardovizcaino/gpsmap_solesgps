@@ -247,7 +247,9 @@ class vehicle(models.Model):
         """ %(start_time,end_time)
         if int(deviceid)>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
-               
+        
+        
+        print(sql)       
         self.env.cr.execute(sql)
         return_positions                    =[]
         positions                           =self.env.cr.dictfetchall()
