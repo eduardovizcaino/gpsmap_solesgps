@@ -242,14 +242,14 @@ odoo.define('gpsmap', function(require){
                 var end_time    =$("input#end").val();
                 var filter    =$("li[class='type_report select']").attr("filter");
                 
-                alert(filter);
                 
                 var option_args={
                     "domain":Array(),
                 };
 
                 option_args["domain"].push(["devicetime",">",start_time]);
-                option_args["domain"].push(["devicetime","<",end_time]);
+                option_args["domain"].push(["devicetime","<",end_time]);                
+                option_args["domain"].push(["type_report",">",filter]);
 
                 //if(device_active!=0)                
                     option_args["domain"].push(["deviceid","=",device_active]);
