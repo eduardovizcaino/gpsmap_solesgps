@@ -64,7 +64,7 @@ odoo.define('gpsmap', function(require){
     class_gpsmap = Widget.extend({
         //////////////////////////////////////////////////////////////
         willStart: function () {
-            console.log(odoo.session_info.user_companies.allowed_companies);
+            //console.log(odoo.session_info.user_companies.allowed_companies);
             var self = this;            
             ////      
             var data={
@@ -320,8 +320,7 @@ odoo.define('gpsmap', function(require){
                                 positions.ev                =positions["event"]; 
                                 positions.ge                ="geofence"; 
                                 positions.ni                ="nivel";
-                
-                                
+                                                
                                 if(gpsmap_section=="gpsmaps_maphistory")
                                 {
                                     local.positions[device_id].push(positions);
@@ -373,6 +372,17 @@ odoo.define('gpsmap', function(require){
 			        
 			        if($("div#odometro").length>0)
     			        $("div#odometro").hide();
+			        if($("li.type_report").length>0)
+    			        $("li.type_report").click(function()
+		                {
+
+
+	                        $("li.type_report").removeClass("select");
+	                        $(this).addClass("select");
+
+		                
+		                			    
+                        });
 
 		        }
 		        else return gpsmaps_obj.CreateMap(iZoom,iMap,coordinates,object);	   
@@ -578,6 +588,10 @@ odoo.define('gpsmap', function(require){
 
         start: function() {
             this.startTime();
+            
+            
+            
+            
             
             gpsmap_section="gpsmaps_maphistory";
             gpsmaps_obj.positions_online();
