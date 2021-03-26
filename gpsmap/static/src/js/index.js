@@ -240,6 +240,9 @@ odoo.define('gpsmap', function(require){
             {
                 var start_time  =$("input#start").val();
                 var end_time    =$("input#end").val();
+                var filter    =$("li[class='type_report select']").attr("filter");
+                
+                alert(filter);
                 
                 var option_args={
                     "domain":Array(),
@@ -375,13 +378,9 @@ odoo.define('gpsmap', function(require){
 			        if($("li.type_report").length>0)
     			        $("li.type_report").click(function()
 		                {
-
-
 	                        $("li.type_report").removeClass("select");
 	                        $(this).addClass("select");
-
-		                
-		                			    
+			    
                         });
 
 		        }
