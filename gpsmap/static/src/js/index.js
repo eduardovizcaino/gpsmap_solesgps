@@ -248,7 +248,8 @@ odoo.define('gpsmap', function(require){
                 };
 
                 option_args["domain"].push(["devicetime",">",start_time]);
-                option_args["domain"].push(["devicetime","<",end_time]);
+                option_args["domain"].push(["devicetime","<",end_time]);                
+                option_args["domain"].push(["type_report",">",filter]);
 
                 //if(device_active!=0)                
                     option_args["domain"].push(["deviceid","=",device_active]);
@@ -338,6 +339,7 @@ odoo.define('gpsmap', function(require){
                     });
                 }
             },50);
+            
         },
 
         //////////////////////////////////////////////////////////////

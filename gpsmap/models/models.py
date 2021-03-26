@@ -212,7 +212,13 @@ class vehicle(models.Model):
     def positions(self,datas):		   
         start_time  =datas["data"]["domain"][0][2]
         end_time    =datas["data"]["domain"][1][2]       
-        deviceid    =datas["data"]["domain"][2][2]
+        type_report =datas["data"]["domain"][2][2]
+        deviceid    =datas["data"]["domain"][3][2]
+    
+        where_report=""
+        
+        if(type_report=="stop"):
+            where_report="AND tp.speed<2"
     
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
@@ -238,7 +244,8 @@ class vehicle(models.Model):
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'
-        """ %(start_time,end_time)
+                %s
+        """ %(start_time,end_time,where_report)
         if int(deviceid)>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
                
