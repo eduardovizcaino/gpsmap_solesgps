@@ -212,13 +212,7 @@ class vehicle(models.Model):
     def positions(self,datas):		   
         start_time  =datas["data"]["domain"][0][2]
         end_time    =datas["data"]["domain"][1][2]       
-        type_report =datas["data"]["domain"][2][2]
-        deviceid    =datas["data"]["domain"][3][2]
-    
-        where_report=""
-        
-        #if(type_report=="stop"):
-        #    where_report="AND tp.speed<2"
+        deviceid    =datas["data"]["domain"][2][2]
     
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
@@ -247,9 +241,7 @@ class vehicle(models.Model):
         """ %(start_time,end_time)
         if int(deviceid)>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
-        
-        
-        print(sql)       
+               
         self.env.cr.execute(sql)
         return_positions                    =[]
         positions                           =self.env.cr.dictfetchall()
