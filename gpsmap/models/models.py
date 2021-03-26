@@ -222,9 +222,9 @@ class vehicle(models.Model):
         if(type_report=="alarm"):
             where_report="AND tp.attributes::json->>'alarm'!=''"
         if(type_report=="alarm_PowerCut"):
-            where_report="AND tp.attributes::json->>'alarm'=='powerCut'"
+            where_report="AND tp.attributes::json->>'alarm'='powerCut'"
         if(type_report=="alarm_PowerOff"):
-            where_report="AND tp.attributes::json->>'alarm'=='powerOff'"
+            where_report="AND tp.attributes::json->>'alarm'='powerOff'"
             
             
             
