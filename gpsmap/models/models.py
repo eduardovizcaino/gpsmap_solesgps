@@ -218,7 +218,7 @@ class vehicle(models.Model):
         where_report=""
         
         #if(type_report=="stop"):
-        #    where_report="AND (tp.attributes::json->>'motion'='false' OR tp.speed<2)"
+        #    where_report="AND tp.speed<2"
     
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
@@ -244,8 +244,7 @@ class vehicle(models.Model):
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'
-                %s
-        """ %(start_time,end_time,where_report)
+        """ %(start_time,end_time)
         if int(deviceid)>0:
             sql="%s AND td.id='%s' " %(sql,deviceid)
                
