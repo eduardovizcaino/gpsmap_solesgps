@@ -41,7 +41,6 @@
     var class_gpsmap;
     var actualizaciones         =0;
     var gpsmap_section          ="";
-    var infowindow              = new google.maps.InfoWindow();
         
 odoo.define('gpsmap', function(require){
     "use strict";
@@ -817,12 +816,12 @@ odoo.define('gpsmap', function(require){
 		
 		Polygon.setMap(map);
 	} 	   
-	/*
+	
 	function map_info(objeto)  
 	{
 		return new google.maps.InfoWindow(objeto);				
 	} 
-	*/
+	
 	
 	function LatLng(co)  
 	{
@@ -1123,10 +1122,8 @@ odoo.define('gpsmap', function(require){
 					} 
 				}				
 				var marcador 		    = markerMap(posicion, icon);		
-					
+				var infowindow 		    = messageMap(marcador, vehicle);
 				
-						
-				messageMap(marcador, vehicle, infowindow);	
 				fn_localizaciones(marcador, vehicle);
 			}
 			else
@@ -1261,9 +1258,8 @@ odoo.define('gpsmap', function(require){
        tracert(origen,destino,waypts);                     
 	}
 
-	function messageMap(marcador, vehicle, infowindow) 
+	function messageMaps(marcador, vehicle, infowindow) 
 	{
-	    //alert(vehicle["ti"]);
 		gMEvent.addListener(marcador, 'click', function() 
 		{
 		    device_active=vehicle["de"];
@@ -1271,38 +1267,28 @@ odoo.define('gpsmap', function(require){
 		    $("li.vehicle").removeClass("vehicle_active");
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		                           
-            if(gpsmap_section=="gpsmaps_maphistory")
-            {
-                var cont="<b>" + vehicle["dn"] + "</b><br>\
-                " + vehicle["ti"] + "<br>\
-<b>Speed:</b>                " + vehicle["sp"] + "<br>\
-<b>Event:</b>                " + vehicle["ev"] + "<br>\
-                ";
-
-/*
-                                    vehiculo["de"]=device_id;
-                                    vehiculo["dn"]=vehiculo_name;
-                                    vehiculo["te"]=position.phone;
-                                    vehiculo["la"]=position.latitude;
-                                    vehiculo["lo"]=position.longitude;
-                                    vehiculo["co"]=position.course;
-                                    vehiculo["sp"]=position.speed_compu;
-                                    vehiculo["ty"]=position.status;
-//                                    vehiculo["mi"]=position.odometro;
-                                    vehiculo["ev"]=position.event;
-                                    vehiculo["ti"]=position.devicetime;
-                                    vehiculo["im"]=vehiculo_img;
-                                    vehiculo["at"]=position.attributes;
-
-*/
-            
-                infowindow.setContent(cont);
-                infowindow.open(map,marcador);            
-            }
-            else
-                status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));		            	
+            if(gpsmap_section=="gpsmaps_maphistory")    infowindow.open(map,marcador);            
+            else                                        status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));		            	
 		});							
 	}
+
+	function messageMap(marcador, vehicle) 
+	{
+		var contentString = '<div id="contentIW"> \
+								<table> \
+									<tr> <th align=\"left\"> DISPOSITIVO	</th>  <td> '+vehicle["na"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> FECHA	</th>  <td> '+vehicle["ti"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> VELOCIDAD </th> <td> '+vehicle["sp"]+'</td> 	</tr> \
+									<tr> <th align=\"left\"> CORDENADAS </th> <td> ('+vehicle["la"]+','+vehicle["lo"]+')</td> 	</tr> \
+								</table> \
+							</div>';
+
+		var infowindow = map_info({content: contentString});
+		
+		messageMaps(marcador, vehicle,infowindow);		
+	}	
+	
+	
 	function paint_history(iposiciones, section)
 	{			    
         if(vehicle_data[device_active].length>isimulacion)                
