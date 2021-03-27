@@ -1265,13 +1265,12 @@ odoo.define('gpsmap', function(require){
 		    $("li.vehicle").removeClass("vehicle_active");
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		    
-            status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));		
             
-            /*            
-			if(vehicle["se"]=="historyMap")	infowindow.open(map,marcador);
-			else							status_device();
-			*/
-            	
+            
+            if(gpsmap_section=="gpsmaps_maphistory")
+                infowindow.open(map,marcador);            
+            else
+                status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));		            	
 		});							
 	}
 	function paint_history(iposiciones, section)
