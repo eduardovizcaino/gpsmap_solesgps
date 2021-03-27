@@ -41,6 +41,7 @@
     var class_gpsmap;
     var actualizaciones         =0;
     var gpsmap_section          ="";
+    var infowindow              = new google.maps.InfoWindow();
         
 odoo.define('gpsmap', function(require){
     "use strict";
@@ -816,10 +817,12 @@ odoo.define('gpsmap', function(require){
 		
 		Polygon.setMap(map);
 	} 	   
+	/*
 	function map_info(objeto)  
 	{
 		return new google.maps.InfoWindow(objeto);				
 	} 
+	*/
 	
 	function LatLng(co)  
 	{
@@ -1121,7 +1124,9 @@ odoo.define('gpsmap', function(require){
 				}				
 				var marcador 		    = markerMap(posicion, icon);		
 					
-				var infowindow 		    = messageMap(marcador, vehicle);	
+				
+						
+				messageMap(marcador, vehicle, infowindow);	
 				fn_localizaciones(marcador, vehicle);
 			}
 			else
@@ -1264,9 +1269,7 @@ odoo.define('gpsmap', function(require){
 		    		    		    
 		    $("li.vehicle").removeClass("vehicle_active");
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
-		    
-            
-            
+		                           
             if(gpsmap_section=="gpsmaps_maphistory")
                 infowindow.open(map,marcador);            
             else
