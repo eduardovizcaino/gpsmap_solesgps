@@ -1276,10 +1276,11 @@ odoo.define('gpsmap', function(require){
 	{
 		var contentString = '<div id="contentIW"> \
 								<table> \
-									<tr> <th align=\"left\"> DISPOSITIVO	</th>  <td>['+vehicle["license_plate"]+'] '+vehicle["dn"]+'	</td> 	</tr> \
-									<tr> <th align=\"left\"> FECHA	</th>  <td> '+vehicle["ti"]+'	</td> 	</tr> \
-									<tr> <th align=\"left\"> VELOCIDAD </th> <td> '+vehicle["sp"]+'</td> 	</tr> \
-									<tr> <th align=\"left\"> CORDENADAS </th> <td> ('+vehicle["la"]+','+vehicle["lo"]+')</td> 	</tr> \
+									<tr> <th align=\"left\"> DISPOSITIVO</th><td>['+vehicle["license_plate"]+'] '+vehicle["dn"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> EVENTO</th><td>'+vehicle["ev"]+' '+vehicle["ty"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> FECHA	    </th><td>'+vehicle["ti"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> VELOCIDAD  </th><td>'+vehicle["sp"]+'</td> 	</tr> \
+									<tr> <th align=\"left\"> CORDENADAS </th><td>('+vehicle["la"]+','+vehicle["lo"]+')</td> 	</tr> \
 								</table> \
 							</div>';
 
