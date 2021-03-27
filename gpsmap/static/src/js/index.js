@@ -1027,7 +1027,8 @@ odoo.define('gpsmap', function(require){
 				localizacion_anterior[device_id]={ti:"2000-01-01 00:00:01"}			
 			}									
 			//if(vehicle["se"]=="historyMap" || vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
-			if(vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
+			//if(vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
+			if(vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
 			{
 			    //alert("1");
 				//if(vehicle["ti"] > localizacion_anterior[device_id]["ti"] && vehicle["se"]!="simulator")
@@ -1107,7 +1108,8 @@ odoo.define('gpsmap', function(require){
 					//alert("2");
 					labels[device_id].set('position', posicion);
 			
-					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator" || vehicle["se"]=="historyForm") 
+					//if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator" || vehicle["se"]=="historyForm") 
+					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator")
 					{
 					    centerMap(posicion);			
 					    odometro(vehicle);
