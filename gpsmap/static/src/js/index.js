@@ -1273,8 +1273,27 @@ odoo.define('gpsmap', function(require){
             if(gpsmap_section=="gpsmaps_maphistory")
             {
                 var cont="<b>" + vehicle["dn"] + "</b><br>\
-                " + vehicle["ti"] + "\
+                " + vehicle["ti"] + "<br>\
+<b>Speed:</b>                " + vehicle["sp"] + "<br>\
+<b>Event:</b>                " + vehicle["ev"] + "<br>\
                 ";
+
+
+                                    vehiculo["de"]=device_id;
+                                    vehiculo["dn"]=vehiculo_name;
+                                    vehiculo["te"]=position.phone;
+                                    vehiculo["la"]=position.latitude;
+                                    vehiculo["lo"]=position.longitude;
+                                    vehiculo["co"]=position.course;
+                                    vehiculo["sp"]=position.speed_compu;
+                                    vehiculo["ty"]=position.status;
+//                                    vehiculo["mi"]=position.odometro;
+                                    vehiculo["ev"]=position.event;
+                                    vehiculo["ti"]=position.devicetime;
+                                    vehiculo["im"]=vehiculo_img;
+                                    vehiculo["at"]=position.attributes;
+
+
             
                 infowindow.setContent(cont);
                 infowindow.open(map,marcador);            
