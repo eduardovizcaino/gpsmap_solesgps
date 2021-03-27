@@ -1272,7 +1272,11 @@ odoo.define('gpsmap', function(require){
 		                           
             if(gpsmap_section=="gpsmaps_maphistory")
             {
-                infowindow.setContent("PRUEBA");
+                var cont="<b>" + vehicle["dn"] + "</b><br>\
+                " + vehicle["ti"] + "\
+                ";
+            
+                infowindow.setContent(cont);
                 infowindow.open(map,marcador);            
             }
             else
