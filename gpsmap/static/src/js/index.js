@@ -191,13 +191,13 @@ odoo.define('gpsmap', function(require){
 	                                    ni: "nivel"
                                     };                                
                                     */
-                                    
+                                    /*
                                     if(typeof argument=="number")
                                     {
                                         alert("PASA 1");
                                         v.se="historyForm";
                                     }                                
-                                    
+                                    */
                                     vehiculo["de"]=device_id;
                                     vehiculo["dn"]=vehiculo_name;
                                     vehiculo["te"]=position.phone;
@@ -291,13 +291,15 @@ odoo.define('gpsmap', function(require){
             
                                 if(typeof device_id!="number")
                                     var device_id           =positions["deviceid"][0];
+                                    
+                                /*    
                             	if(method=="read")          
                             	{
                             	    alert("PASA 2");
                             	    positions.se            ="historyForm";    
                             	    device_active           =device_id;
                             	}                   
-
+                            	*/
                                 if(local.positions[device_id]==undefined)
                                 {
                                     local.positions[device_id]=Array();
@@ -1111,6 +1113,7 @@ odoo.define('gpsmap', function(require){
 					//if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator" || vehicle["se"]=="historyForm") 
 					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator")
 					{
+					    alert("PASA 3"):
 					    centerMap(posicion);			
 					    odometro(vehicle);
 					} 
