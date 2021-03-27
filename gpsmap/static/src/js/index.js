@@ -194,7 +194,7 @@ odoo.define('gpsmap', function(require){
                                     
                                     if(typeof argument=="number")
                                     {
-                                        alert("pasa");
+                                        alert("PASA 1");
                                         v.se="historyForm";
                                     }                                
                                     
@@ -293,6 +293,7 @@ odoo.define('gpsmap', function(require){
                                     var device_id           =positions["deviceid"][0];
                             	if(method=="read")          
                             	{
+                            	    alert("PASA 2");
                             	    positions.se            ="historyForm";    
                             	    device_active           =device_id;
                             	}                   
