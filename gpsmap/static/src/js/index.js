@@ -1276,15 +1276,14 @@ odoo.define('gpsmap', function(require){
 	{
 		var contentString = '<div id="contentIW"> \
 								<table> \
-									<tr> <th align=\"left\"> DISPOSITIVO	</th>  <td> '+vehicle["na"]+'	</td> 	</tr> \
+									<tr> <th align=\"left\"> DISPOSITIVO	</th>  <td>['+vehicle["license_plate"]+'] '+vehicle["dn"]+'	</td> 	</tr> \
 									<tr> <th align=\"left\"> FECHA	</th>  <td> '+vehicle["ti"]+'	</td> 	</tr> \
 									<tr> <th align=\"left\"> VELOCIDAD </th> <td> '+vehicle["sp"]+'</td> 	</tr> \
 									<tr> <th align=\"left\"> CORDENADAS </th> <td> ('+vehicle["la"]+','+vehicle["lo"]+')</td> 	</tr> \
 								</table> \
 							</div>';
 
-		var infowindow = map_info({content: contentString});
-		
+		var infowindow = map_info({content: contentString});		
 		messageMaps(marcador, vehicle,infowindow);		
 	}	
 	
