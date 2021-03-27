@@ -226,9 +226,6 @@ class vehicle(models.Model):
         if(type_report=="alarm_PowerOff"):
             where_report="AND tp.attributes::json->>'alarm'='powerOff'"
             
-            
-            
-
     
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,

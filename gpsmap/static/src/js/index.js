@@ -194,6 +194,7 @@ odoo.define('gpsmap', function(require){
                                     
                                     if(typeof argument=="number")
                                     {
+                                        alert("pasa");
                                         v.se="historyForm";
                                     }                                
                                     
@@ -588,11 +589,7 @@ odoo.define('gpsmap', function(require){
 
         start: function() {
             this.startTime();
-            
-            
-            
-            
-            
+                        
             gpsmap_section="gpsmaps_maphistory";
             gpsmaps_obj.positions_online();
             gpsmaps_obj.geofences_paint();
@@ -928,7 +925,7 @@ odoo.define('gpsmap', function(require){
     		gas								=item["at"]["fuel1"];
     		//item["ga"]  					=parseInt(gas.substring(0,3));
     		item["ga"]  					=gas;    	    	
-    	}
+    	}   
     	else								item["ga"]  =0;
     	
     	if(item["ba"]>100) item["ba"]=125;    
@@ -1028,7 +1025,8 @@ odoo.define('gpsmap', function(require){
 			{
 				localizacion_anterior[device_id]={ti:"2000-01-01 00:00:01"}			
 			}									
-			if(vehicle["se"]=="historyMap" || vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
+			//if(vehicle["se"]=="historyMap" || vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
+			if(vehicle["se"]=="historyForm" || vehicle["ti"] >= localizacion_anterior[device_id]["ti"])
 			{
 			    //alert("1");
 				//if(vehicle["ti"] > localizacion_anterior[device_id]["ti"] && vehicle["se"]!="simulator")
@@ -1260,7 +1258,13 @@ odoo.define('gpsmap', function(require){
 		    $("li.vehicle").removeClass("vehicle_active");
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		    
-            status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));			
+            status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));		
+            
+            /*            
+			if(vehicle["se"]=="historyMap")	infowindow.open(map,marcador);
+			else							status_device();
+			*/
+            	
 		});							
 	}
 	function paint_history(iposiciones, section)
