@@ -1271,7 +1271,10 @@ odoo.define('gpsmap', function(require){
 		    $("li.vehicle[vehicle="+ vehicle["de"] +"]").addClass("vehicle_active");			
 		                           
             if(gpsmap_section=="gpsmaps_maphistory")
+            {
+                infowindow.content="PRUEBA";
                 infowindow.open(map,marcador);            
+            }
             else
                 status_device($("li.vehicle[vehicle="+ vehicle["de"] +"]"));		            	
 		});							
