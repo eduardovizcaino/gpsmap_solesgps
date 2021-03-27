@@ -1113,7 +1113,7 @@ odoo.define('gpsmap', function(require){
 					//if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator" || vehicle["se"]=="historyForm") 
 					if(device_active==vehicle["de"] && vehicle["se"]==undefined || vehicle["se"]=="simulator")
 					{
-					    alert("PASA 3");
+					    //alert("PASA 3");
 					    centerMap(posicion);			
 					    odometro(vehicle);
 					} 
