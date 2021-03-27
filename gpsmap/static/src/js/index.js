@@ -1278,7 +1278,7 @@ odoo.define('gpsmap', function(require){
 <b>Event:</b>                " + vehicle["ev"] + "<br>\
                 ";
 
-
+/*
                                     vehiculo["de"]=device_id;
                                     vehiculo["dn"]=vehiculo_name;
                                     vehiculo["te"]=position.phone;
@@ -1293,7 +1293,7 @@ odoo.define('gpsmap', function(require){
                                     vehiculo["im"]=vehiculo_img;
                                     vehiculo["at"]=position.attributes;
 
-
+*/
             
                 infowindow.setContent(cont);
                 infowindow.open(map,marcador);            
