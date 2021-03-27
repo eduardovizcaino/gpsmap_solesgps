@@ -1263,6 +1263,7 @@ odoo.define('gpsmap', function(require){
 
 	function messageMap(marcador, vehicle, infowindow) 
 	{
+	    alert(vehicle["ti"]);
 		gMEvent.addListener(marcador, 'click', function() 
 		{
 		    device_active=vehicle["de"];
