@@ -221,6 +221,8 @@ class vehicle(models.Model):
             where_report="AND tp.speed<2"
         if(type_report=="alarm"):
             where_report="AND tp.attributes::json->>'alarm'!=''"
+        if(type_report=="offline"):
+            where_report="AND tp.devicetime + INTERVAL '3' MINUTE < tp.servertime"
         if(type_report=="alarm_PowerCut"):
             where_report="AND tp.attributes::json->>'alarm'='powerCut'"
         if(type_report=="alarm_PowerOff"):
