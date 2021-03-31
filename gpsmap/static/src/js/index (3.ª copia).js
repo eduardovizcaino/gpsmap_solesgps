@@ -1285,7 +1285,7 @@ odoo.define('gpsmap', function(require){
 		messageMaps(marcador, vehicle,infowindow);		
 	}	
 	
-	/*
+	
 	function paint_history(iposiciones, section)
 	{			    
         if(vehicle_data[device_active].length>isimulacion)                
@@ -1324,7 +1324,6 @@ odoo.define('gpsmap', function(require){
             },simulation_time);
         }
 	}
-	*/
 
 	function butons_simulation()
 	{
@@ -1346,13 +1345,16 @@ odoo.define('gpsmap', function(require){
 			})
 			.click(function()
 			{	
+			
+			
+			
                 if(local.positions.length>0)
 				//if(localizaciones.length>0)                
 				{
 				    simulation_action="play";
 				    del_locations();
 				    $("div#odometro").show();
-					// paint_history(isimulacion, historyMap);
+					paint_history(isimulacion, historyMap);
 				} 
 			}
 		);
