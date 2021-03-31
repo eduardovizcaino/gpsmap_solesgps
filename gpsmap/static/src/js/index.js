@@ -417,7 +417,7 @@ odoo.define('gpsmap', function(require){
 			        simulation_action="play";
 			        del_locations();
 			        $("div#odometro").show();
-				    //paint_history(isimulacion, historyMap);
+				    paint_history(isimulacion);
 			    } 			       					
 		    });
 	        $("#pause").button({
