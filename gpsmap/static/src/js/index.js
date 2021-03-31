@@ -141,7 +141,7 @@ odoo.define('gpsmap', function(require){
             },1000);
         },
         //////////////////////////////////////////////////////////////
-        positions_paint:function()
+        positions_paint:function(argument)
         {               
             var ipositions;
             var iposition;
@@ -222,7 +222,7 @@ odoo.define('gpsmap', function(require){
             }
         },
         //////////////////////////////////////////////////////////////
-        positions_search:function(){
+        positions_search:function(argument){
             
             //alert(gpsmap_section);
             //if(gpsmap_section!="gpsmaps_maphistory")
@@ -339,7 +339,7 @@ odoo.define('gpsmap', function(require){
                                 
                             }                                    
                         }
-                        gpsmaps_obj.positions_paint();
+                        gpsmaps_obj.positions_paint(argument);                                                              
                     });
                 }
             },50);
@@ -488,32 +488,35 @@ odoo.define('gpsmap', function(require){
             },50);
 		},
         //////////////////////////////////////////////////////////////
-        position: function() {
+        position: function(argument) {
             console.log("POSITION ========");
             setTimeout(function()
             {  
-                gpsmaps_obj.positions();
+                if(argument==undefined)                 gpsmaps_obj.positions(argument);
                 else if($("#data_tablero").length==0)   
                 {
                     console.log("tablero");
-                    gpsmaps_obj.position();         
+                    gpsmaps_obj.position(argument);         
                 }    
             },100);
         },
         ////////////////////////////////////////////////////////////
-        positions: function() {
+        positions: function(argument) {
             var time=1000;  	    
 
             if(gpsmap_section!="gpsmaps_maphistory" && $("div#maponline").length>0)
             { 
                 console.log("POSITIONS ====== lalo =");
                 time=15000;        
-                gpsmaps_obj.positions_search();         
+                gpsmaps_obj.positions_search(argument);         
             }
-            setTimeout(function()
-            {            
-                gpsmaps_obj.positions();
-            },time);
+            if(typeof argument!="number")
+            {
+                setTimeout(function()
+                {            
+                    gpsmaps_obj.positions(argument);
+                },time);
+            }
         },    
         ////////////////////////////////////////////////////////////
         positions_online: function() {
@@ -536,7 +539,7 @@ odoo.define('gpsmap', function(require){
                 gpsmaps_obj.position();
 
                 setTimeout(function()    {
-                    this.$("div#filtro").hide();
+                this.$("div#filtro").hide();
                 },100);    
             }                
             else  
@@ -1345,17 +1348,16 @@ odoo.define('gpsmap', function(require){
 			})
 			.click(function()
 			{	
-			
-			
-			
-                if(local.positions.length>0)
-				//if(localizaciones.length>0)                
+			    alert("play");
+			    /*		    
+				if(localizaciones.length>0)                
 				{
 				    simulation_action="play";
 				    del_locations();
 				    $("div#odometro").show();
 					paint_history(isimulacion, historyMap);
 				} 
+				*/   					
 			}
 		);
 	    $("#pause").button({
