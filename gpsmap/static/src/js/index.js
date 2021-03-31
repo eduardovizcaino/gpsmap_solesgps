@@ -1355,9 +1355,11 @@ odoo.define('gpsmap', function(require){
 	
 	
 	function paint_history(iposiciones)
-	{			    
+	{			
+	    alert("pruea");    
         if(vehicle_data[device_active].length>isimulacion)                
-        {        	
+        {    
+            /*    	
         	localizacion_anterior=undefined;
 	    	var vehicle			=vehicle_data[device_active][isimulacion];	    	
 	    		    	
@@ -1390,6 +1392,7 @@ odoo.define('gpsmap', function(require){
             	if(simulation_action=="play")		
             		paint_history(isimulacion);
             },simulation_time);
+            */
         }
 	}
 	
