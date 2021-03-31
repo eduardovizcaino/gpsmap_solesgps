@@ -393,6 +393,73 @@ odoo.define('gpsmap', function(require){
 	        },50);
         },
         //////////////////////////////////////////////////////////////
+        butons_simulation: function(object) {
+
+		    var butons_html=" \
+			    <font id=\"back\"> -- </font>\
+			    <font id=\"play\">Play</font>\
+			    <font id=\"pause\">Pause</font>\
+			    <font id=\"stop\">Stop</font>\
+			    <font id=\"next\"> ++ </font>\
+		    ";
+		    $("#tablero2").html(butons_html);
+		    $("#tablero").html("");
+	    
+	        $("#play").button({
+			    icons: {      primary: "ui-icon-play"    },
+			    text: false
+		    })
+		    .click(function()
+		    {	
+		        alert("play");
+		        /*		    
+			    if(localizaciones.length>0)                
+			    {
+			        simulation_action="play";
+			        del_locations();
+			        $("div#odometro").show();
+				    paint_history(isimulacion, historyMap);
+			    } 
+			    */   					
+		    });
+	        $("#pause").button({
+			    icons: {      primary: "ui-icon-pause"    },
+			    text: false
+		    })
+		    .click(function()
+		    {			    
+		        simulation_action="pause";
+		    });
+		    
+	        $("#next").button({
+			    icons: {      primary: "ui-icon-seek-next"    },
+			    text: false
+		    })
+		    .click(function()
+		    {
+			    if(simulation_time>=50)
+				    simulation_time=simulation_time-50;
+		    });
+	        $("#back").button({
+			    icons: {      primary: "ui-icon-seek-prev"    },
+			    text: false
+		    })
+		    .click(function()
+		    {
+			    simulation_time=simulation_time+50;
+		    });				
+	        $("#stop").button({
+			    icons: {      primary: "ui-icon-stop"    },
+			    text: false
+		    })
+		    .click(function()
+		    {
+			    isimulacion=1;
+			    simulation_action="stop";
+		    });		
+        },
+
+        //////////////////////////////////////////////////////////////
         map: function(object) {
             console.log("MAP ===========");
             if(object==undefined)   object="maponline";
@@ -1330,83 +1397,6 @@ odoo.define('gpsmap', function(require){
 
 	function butons_simulation()
 	{
-		var butons_html=" \
-			<font id=\"back\"> -- </font>\
-			<font id=\"play\">Play</font>\
-			<font id=\"pause\">Pause</font>\
-			<font id=\"stop\">Stop</font>\
-			<font id=\"next\"> ++ </font>\
-		";
-		$("#tablero2").html(butons_html);
-		$("#tablero").html("");
-	
-	    $("#play").button({
-			icons: {
-				primary: "ui-icon-play"
-			},
-			text: false
-			})
-			.click(function()
-			{	
-			    alert("play");
-			    /*		    
-				if(localizaciones.length>0)                
-				{
-				    simulation_action="play";
-				    del_locations();
-				    $("div#odometro").show();
-					paint_history(isimulacion, historyMap);
-				} 
-				*/   					
-			}
-		);
-	    $("#pause").button({
-			icons: {
-				primary: "ui-icon-pause"
-			},
-			text: false
-			})
-			.click(function()
-			{			    
-			    simulation_action="pause";
-			}
-		);
-		
-	    $("#next").button({
-			icons: {
-				primary: "ui-icon-seek-next"
-			},
-			text: false
-			})
-			.click(function()
-			{
-				if(simulation_time>=50)
-					simulation_time=simulation_time-50;
-			}
-		);
-	    $("#back").button({
-			icons: {
-				primary: "ui-icon-seek-prev"
-			},
-			text: false
-			})
-			.click(function()
-			{
-				simulation_time=simulation_time+50;
-			}
-		);				
-	    $("#stop").button({
-			icons: {
-				primary: "ui-icon-stop"
-			},
-			text: false
-			})
-			.click(function()
-			{
-				isimulacion=1;
-				simulation_action="stop";
-			}
-		);		
 	
 	}
 	
