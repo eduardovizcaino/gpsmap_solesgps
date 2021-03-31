@@ -674,7 +674,7 @@ odoo.define('gpsmap', function(require){
         events: {
             'click button#action_search': function (e) {
                 gpsmaps_obj.positions_search();            
-                butons_simulation();
+                gpsmaps_obj.butons_simulation();
             },
             'init input#start': function (e) {
             
