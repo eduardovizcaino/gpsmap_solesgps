@@ -488,7 +488,8 @@ odoo.define('gpsmap', function(require){
             },50);
 		},
         //////////////////////////////////////////////////////////////
-        butons_simulation: function() {
+        butons_simulation: function() 
+        {
 
 		    var butons_html=" \
 			    <font id=\"back\"> -- </font>\
@@ -499,7 +500,7 @@ odoo.define('gpsmap', function(require){
 		    ";
 		    $("#tablero2").html(butons_html);
 		    $("#tablero").html("");
-	    
+            /*	    
 	        $("#play").button({
 			    icons: {        primary: "ui-icon-play"		    },
 			    text: false
@@ -549,6 +550,7 @@ odoo.define('gpsmap', function(require){
 			    isimulacion=1;
 			    simulation_action="stop";
 		    });		
+		    */
         },
 
         //////////////////////////////////////////////////////////////
