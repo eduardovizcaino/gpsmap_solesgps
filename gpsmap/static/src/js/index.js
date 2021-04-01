@@ -1355,14 +1355,14 @@ odoo.define('gpsmap', function(require){
 	
 	
 	function paint_history(iposiciones)
-	{			
-	    alert("pruea");    
+	{				    
         if(vehicle_data[device_active].length>isimulacion)                
         {    
-            /*    	
+                alert("pruea");    	
         	localizacion_anterior=undefined;
 	    	var vehicle			=vehicle_data[device_active][isimulacion];	    	
-	    		    	
+	    	
+	    	/*	    	
 	    	if(vehicle["sp"]>4)	
 	    	{
 	    		simulation_stop=0;
