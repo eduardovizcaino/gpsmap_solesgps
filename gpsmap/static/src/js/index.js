@@ -1362,7 +1362,7 @@ odoo.define('gpsmap', function(require){
         	localizacion_anterior=undefined;
 	    	var vehicle			=vehicle_data[device_active][isimulacion];	    	
 	    	
-	    	/*	    	
+	    		    	
 	    	if(vehicle["sp"]>4)	
 	    	{
 	    		simulation_stop=0;
@@ -1380,7 +1380,7 @@ odoo.define('gpsmap', function(require){
 					if(simulation_time==300)	simulation_time=5;
 				}	
 	    	}	
-	    	
+	    	/*
 	    	vehicle["se"]		="simulator";
 	    	locationsMap(vehicle); 
 
