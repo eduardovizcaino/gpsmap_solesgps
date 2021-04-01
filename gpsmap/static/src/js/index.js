@@ -1380,7 +1380,7 @@ odoo.define('gpsmap', function(require){
 					if(simulation_time==300)	simulation_time=5;
 				}	
 	    	}	
-	    	/*
+	    	
 	    	vehicle["se"]		="simulator";
 	    	locationsMap(vehicle); 
 
@@ -1392,7 +1392,7 @@ odoo.define('gpsmap', function(require){
             	if(simulation_action=="play")		
             		paint_history(isimulacion);
             },simulation_time);
-            */
+            
         }
 	}
 	
