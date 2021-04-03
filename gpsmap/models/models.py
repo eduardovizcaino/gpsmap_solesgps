@@ -157,6 +157,12 @@ class vehicle(models.Model):
             print("#####################################################")                
             print("Error al conectar con traccar")                
     @api.model    
+    def cron_js_vehicles(self):
+        
+
+
+
+    @api.model    
     def js_vehicles(self):
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
@@ -182,7 +188,8 @@ class vehicle(models.Model):
 
                 CASE 				            
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
-                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
+                    WHEN tp.fixtime between tp.devicetime - INTERVAL '3' MINUTE AND tp.devicetime + INTERVAL '3' MINUTE THEN 'OfflineGPS'
+                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'                    
                     ELSE 'Offline'
                 END  as status                
             FROM  fleet_vehicle fv
