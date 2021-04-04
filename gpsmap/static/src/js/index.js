@@ -1115,12 +1115,12 @@ odoo.define('gpsmap', function(require){
 				if(vehicle["ty"]=="Stopped")		                    icon_status="stop.png";
 				if(vehicle["ty"]=="Moving")		                        icon_status="car_signal1.png";
 				if(vehicle["ty"]=="Online")		                        icon_status="car_signal1.png";
-				if(vehicle["ty"]=="Offline" || vehicle["ty"]=="OfflineGPS")		
-				{   
+				if(vehicle["ty"]=="Offline")		
+				{
+				    
 					icon_status="car_signal0.png";
 					if(vehicle["ho"]==1)	                            icon_status="car_signal1.png";
 				}	
-
 				if(vehicle["ty"]=="ignitionOn")			                icon_status="swich_on.png";
 				if(vehicle["ty"]=="ignitionOff")		                icon_status="swich_off.png";
 				
@@ -1130,7 +1130,7 @@ odoo.define('gpsmap', function(require){
 				if(icon_status!="")
 				{				    
 					img_icon="<img width=\"20\" title=\""+ vehicle["ev"] +"\" src=\"/gpsmap/static/src/img/"+ icon_status +"\" >";					
-				    if(vehicle["ty"]=="Offline" || vehicle["ty"]=="OfflineGPS")
+				    if(vehicle["ty"]=="Offline")		
 				    {
 				        img_icon="<a href=\"tel:" + vehicle["te"] +"\">"+img_icon +"</a>";				        
 				    }											

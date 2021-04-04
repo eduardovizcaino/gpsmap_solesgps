@@ -63,15 +63,21 @@ class vehicle(models.Model):
         ('93', 'Red  Phone')
         ], 'Img GPS', default='01', help='Image of GPS Vehicle', required=True)
     temporal_id                                 = fields.Many2one('res.partner', 'temporal')
-
+    #phone                                       = fields.Char('Phone', size=50)    
     economic_number                             = fields.Char('Economic Number', size=50)
+    #imei                                        = fields.Char('Imei', size=50)
     speed                                       = fields.Char('Exceso de Velocidad', default=100, size=3)   
     positionid                                  = fields.Many2one('gpsmap.positions',ondelete='set null', string="Position", index=True)    
     motor                                       = fields.Boolean('Motor', default=True, track_visibility="onchange")
-        
-    gps1_id                                     = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
-    #gps2_id                                     = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
+    #devicetime                                  = fields.Datetime('Device Time')
+    #devicetime_compu                            = fields.Datetime('Device Time', compute='_get_date')
     
+    
+    gps1_id                                     = fields.Many2one('tc_devices',ondelete='set null', string="GPS", index=True)
+    
+
+
+
     def run_scheduler_recarga(self):
         taecel_obj                             =self.env['taecel']
         
@@ -82,6 +88,7 @@ class vehicle(models.Model):
         vehicle_args                            =[]        
         return_positions                        ={}
         vehicle_data                            =self.search(vehicle_args, offset=0, limit=None, order=None)
+        #vehicle_data                            =self.search(vehicle_args, offset=0, limit=1, order=None)
 
         for vehicle in vehicle_data:
             recargar=0
@@ -111,6 +118,7 @@ class vehicle(models.Model):
                         vehicle["recargado"]=hoy_fecha[0:19]                
                         print("mensaje2==", taecel_new["mensaje2"])
                         self.write(vehicle)
+
     
     @api.one
     def _get_date(self):      
@@ -157,12 +165,6 @@ class vehicle(models.Model):
             print("#####################################################")                
             print("Error al conectar con traccar")                
     @api.model    
-    def cron_js_vehicles(self):
-        
-
-
-
-    @api.model    
     def js_vehicles(self):
         hoy_fecha                               ="%s" %(datetime.datetime.now())
         hoy                                     =hoy_fecha[0:19]
@@ -188,8 +190,7 @@ class vehicle(models.Model):
 
                 CASE 				            
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
-                    WHEN tp.fixtime between tp.devicetime - INTERVAL '3' MINUTE AND tp.devicetime + INTERVAL '3' MINUTE THEN 'OfflineGPS'
-                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'                    
+                    WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
                     ELSE 'Offline'
                 END  as status                
             FROM  fleet_vehicle fv
@@ -200,8 +201,7 @@ class vehicle(models.Model):
         positions                           =self.env.cr.dictfetchall()
         for position in positions:
             if(position["status"]=="Offline"):
-                
-                print("prueba status==",position["status"]," device==",position["devicetime"]," server===",position["servertime"]," fix==",position["fixtime"])
+                print("status==",position["status"]," device==",position["devicetime"]," server===",position["servertime"]," fix==",position["fixtime"])
             position["de"]            =position["tp_deviceid"]                            
             tp_deviceid               =position["tp_deviceid"]
             
