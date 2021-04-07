@@ -1111,7 +1111,7 @@ odoo.define('gpsmap', function(require){
 					.attr("lon", vehicle["lo"]);
 					
 				icon_status="";	
-				if(vehicle["ty"]=="alarm")				                icon_status="sirena.png";
+				if(vehicle["ty"]=="alarm" || vehicle["ty"]=="OfflineGPS")	 icon_status="sirena.png";
 				if(vehicle["ty"]=="Stopped")		                    icon_status="stop.png";
 				if(vehicle["ty"]=="Moving")		                        icon_status="car_signal1.png";
 				if(vehicle["ty"]=="Online")		                        icon_status="car_signal1.png";
