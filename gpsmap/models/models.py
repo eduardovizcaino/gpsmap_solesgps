@@ -183,17 +183,14 @@ class vehicle(models.Model):
                 END	AS speed_compu,
                 CASE 				            
 	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
-	                WHEN tp.devicetime NOT BETWEEN tp.fixtime - INTERVAL '7' MINUTE AND tp.fixtime + INTERVAL '7' MINUTE THEN 'Offline GPS'
 	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
 	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
-	                
 	                ELSE 'Stopped'
                 END	as event,                                 
 
                 CASE 				            
                     WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
                     WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
-                    WHEN tp.devicetime NOT BETWEEN tp.fixtime - INTERVAL '7' MINUTE AND tp.fixtime + INTERVAL '7' MINUTE THEN 'OfflineGPS'
                     ELSE 'Offline'
                 END  as status                
             FROM  fleet_vehicle fv
