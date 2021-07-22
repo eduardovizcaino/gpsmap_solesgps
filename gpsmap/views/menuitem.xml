@@ -9,9 +9,6 @@
     <menuitem action="fleet.fleet_vehicle_service_types_action" parent="fleet.fleet_configuration" id="fleet.fleet_vehicle_service_types_menu" groups="fleet.fleet_group_manager" sequence="3"/>
     <menuitem action="fleet.fleet_vehicle_contract_types_action" parent="fleet.fleet_configuration" id="fleet.fleet_vehicle_contract_types_menu" groups="fleet.fleet_group_manager" sequence="4"/>    
     <menuitem action="fleet.fleet_vehicle_costs_action" parent="fleet.fleet_vehicles" id="fleet.fleet_vehicle_costs_menu" groups="gpsmap.gpsmap_group_admin"/>
-
-
-
         
     <record id="action_gpsmap_maponline" model="ir.actions.client">
         <field name="name">Map Online</field>
