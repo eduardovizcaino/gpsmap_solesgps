@@ -73,6 +73,21 @@
         </field>
     </record>
 
+    <record id='tc_positions_view_tree' model='ir.ui.view'>
+        <field name="name">tc_positions.tree</field>
+        <field name="model">tc_positions</field>
+        <field name="arch" type="xml">
+            <tree string="Models">
+                <field name="protocol" />
+                <field name="devicetime"/>
+                <field name="latitude"/>                    
+                <field name="longitude"/>
+                <field name="speed"/>
+                <field name="attributes"/>
+            </tree>
+        </field>
+    </record>
+
 
     <!-- POSITIONS -->
 
