@@ -51,11 +51,6 @@
     <menuitem action="fleet_tc_devices_action" parent="fleet.fleet_configuration" id="fleet_tc_devices_menu" groups="gpsmap.gpsmap_group_admin"/>
 
 
-    <record id='fleet_tc_positions_action' model='ir.actions.act_window'>
-        <field name="name">GPS Position</field>
-        <field name="res_model">tc_positions</field>
-    </record>
-    <menuitem action="fleet_tc_positions_action" parent="fleet.fleet_configuration" id="fleet_tc_positions_menu" groups="gpsmap.gpsmap_group_admin"/>
 
 
     <!--
