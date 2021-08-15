@@ -29,7 +29,6 @@
 
 
     <data noupdate="1">
-        <!--
         <record forcecreate="True" id="ir_cron_gpsmap_position_get" model="ir.cron">
             <field name="name">GPSMap: Read positions</field>
             <field name="model_id" ref="model_gpsmap_positions"/>
@@ -42,7 +41,7 @@
             <field eval="False" name="doall" />
             <field name="active" eval="False"/>
         </record>
-        -->
+
     </data>        
 
   

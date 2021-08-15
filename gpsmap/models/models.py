@@ -30,6 +30,50 @@ class vehicle_model_brand(models.Model):
 class odometer(models.Model):
     _inherit = "fleet.vehicle.odometer"
 
+
+class tc_positions(models.Model):
+    _name = "tc_positions"
+    _description = 'traccar position'
+        
+    protocol                                    = fields.Char('Protocolo', size=15)
+    #deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
+    servertime                                  = fields.Datetime('Server Time')
+    devicetime                                  = fields.Datetime('Device Time')
+    fixtime                                     = fields.Datetime('Error Time')
+    valid                                       = fields.Integer('Valido')
+    latitude                                    = fields.Float('Latitud',digits=(5,10))
+    longitude                                   = fields.Float('Longitud',digits=(5,10))
+    altitude                                    = fields.Float('Altura',digits=(6,2))
+    speed                                       = fields.Float('Velocidad',digits=(3,2))
+    course                                      = fields.Float('Curso',digits=(3,2))
+    address                                     = fields.Char('Calle', size=150)
+    attributes                                  = fields.Char('Atributos', size=5000)
+
+    def run_scheduler_get_mile(self):    
+        now                                     = datetime.datetime.now()
+                
+        positions_obj                           =self.env['gpsmap.positions']
+        vehicle_obj                             =self.env['fleet.vehicle']
+        speed_obj                               =self.env['gpsmap.speed']
+        #mail_obj                                =self.env['mail.message']
+        geofence_obj                            =self.env['gpsmap.geofence']
+                
+        alerts_data                             =geofence_obj.geofences()
+        
+        positions_arg                           =[('leido','!=',1)]                
+        positions_data                          =positions_obj.search(positions_arg, offset=0, limit=200, order='devicetime DESC')        
+        
+        
+        #if type(positions_data) is list and len(positions_data)>0:     
+        if len(positions_data)>0:
+            #print('=============== READ POSITIONS ===================',len(positions_data))  
+            for position in positions_data:
+                vehicle_arg                     =[('id','=',position.deviceid.id)]                
+                vehicle                         =vehicle_obj.search(vehicle_arg)        
+                
+
+
+
 class tc_devices(models.Model):
     _name = "tc_devices"
     _description = 'traccar devices'
