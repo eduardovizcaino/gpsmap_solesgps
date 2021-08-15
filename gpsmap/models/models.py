@@ -17,8 +17,6 @@ class cost(models.Model):
     _inherit = "fleet.vehicle.cost"
 class contract(models.Model):
     _inherit = "fleet.vehicle.log.contract"
-class odometer(models.Model):
-    _inherit = "fleet.vehicle.odometer"
 class vehicle_model(models.Model):
     _inherit = "fleet.vehicle.model"
 class vehicle_model_brand(models.Model):
@@ -29,6 +27,8 @@ class vehicle_model_brand(models.Model):
 # GRANT CONNECT ON DATABASE solesgps TO odoo;
 # GRANT CONNECT ON DATABASE solesgps TO admin_evigra;
 
+class odometer(models.Model):
+    _inherit = "fleet.vehicle.odometer"
 
 class tc_devices(models.Model):
     _name = "tc_devices"
@@ -277,8 +277,9 @@ class speed(models.Model):
     starttime                                   = fields.Datetime('Start Time')
     endtime                                     = fields.Datetime('End Time')
     speed                                       = fields.Float('Velocidad',digits=(3,2))
-    
-    
+
+
+    """    
 class positions(models.Model):
     _name = "gpsmap.positions"
     _description = 'GPS Positions'
@@ -306,17 +307,6 @@ class positions(models.Model):
     leido                                       = fields.Integer('Leido',default=0)
     event                                       = fields.Char('Evento', size=70)
     online                                      = fields.Boolean('Online', default=True)
-    """
-    @api.one
-    def _get_status(self):    
-        tz = pytz.timezone(self.env.user.tz) if self.env.user.tz else pytz.utc                            
-        hoy=tz.localize(fields.Datetime.from_string(datetime.now())).astimezone(pytz.utc)
-
-        ahora = datetime.datetime.utcnow()
-        ayer = ahora - datetime.timedelta(days=1)
-
-        print("Hoy=",hoy, "  ahora=", ahora,"   ayer=",ayer)
-    """
     @api.one
     def _get_speed(self):    
         vehicle_obj                             =self.env['fleet.vehicle']        
@@ -422,17 +412,6 @@ class positions(models.Model):
                                 speed_obj.write(speed)                        
                                 #print('Saliendo del exceso de velocidad')
                         #if len(speed_data)>0:
-                    """                    
-                    if len(alerts_data)>0:                     
-                        for alerts in alerts_data:                        
-                            for devices in alerts.device_ids:                 
-                                if(position.deviceid.id==devices.id):
-                                    print('==',alerts.name)
-                                    print('===========position device id======',position.deviceid.id)                                   
-                                    print('===========alert device id======',devices.id)
-                                    for geofences in alerts.geofence_ids:                 
-                                        print('===========',geofences)                                
-                    """                                        
                     attributes = json.loads(position.attributes)
                     
                     if("io3" in attributes):                    gas     =attributes["io3"]        
@@ -448,6 +427,7 @@ class positions(models.Model):
                 position["leido"]                           =1                                
                 positions_obj.write(position)
                 vehicle_obj.write(vehicle)
+    """
 class route(models.Model):
     _name = "gpsmap.route"
     _description = 'GPS Route'
