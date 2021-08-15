@@ -279,7 +279,6 @@ class speed(models.Model):
     speed                                       = fields.Float('Velocidad',digits=(3,2))
 
 
-    """    
 class positions(models.Model):
     _name = "gpsmap.positions"
     _description = 'GPS Positions'
@@ -427,7 +426,7 @@ class positions(models.Model):
                 position["leido"]                           =1                                
                 positions_obj.write(position)
                 vehicle_obj.write(vehicle)
-    """
+
 class route(models.Model):
     _name = "gpsmap.route"
     _description = 'GPS Route'
