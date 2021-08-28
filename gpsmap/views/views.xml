@@ -12,6 +12,8 @@
     </template>
     <!-- FLEET -->
     
+    
+    
     <record id="view_gpsmap_vehicle_form_inherit" model="ir.ui.view">
         <field name="name">gpsmap.vehicle.form</field>
         <field name="model">fleet.vehicle</field>
@@ -40,6 +42,20 @@
     </record>        
 
 
+
+    <record id="view_gpsmap_vehicle_odometer_tree_inherit" model="ir.ui.view">
+        <field name="name">gpsmap.vehicle.tree</field>
+        <field name="model">fleet.vehicle.odometer</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_odometer_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='driver_id']" position="before">            
+                <field name="activeTime"/>                
+            </xpath> 
+        </field>
+    </record>
+
+    
+    
     <record id='tc_devices_view_form' model='ir.ui.view'>
         <field name="name">tc_devices.form</field>
         <field name="model">tc_devices</field>
