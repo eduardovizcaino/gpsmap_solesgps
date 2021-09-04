@@ -43,8 +43,7 @@ FROM (
 	SELECT fv.id as vehicle_id, tp.deviceid, date_trunc('minute', tp.devicetime) as fecha,  max(tp.attributes::json->>'totalDistance') as distance
 	FROM tc_positions tp JOIN fleet_vehicle fv on fv.gps1_id=tp.deviceid
 	WHERE tp.attributes::json->>'motion'='true' AND tp.speed>2 	
-	
-	AND  date_trunc('day', tp.devicetime)<'2021-09-04'
+	AND  date_trunc('day', now())=date_trunc('day', tp.devicetime)
 	GROUP BY tp.deviceid, date_trunc('minute', tp.devicetime),fv.id
 	ORDER BY date_trunc('minute', tp.devicetime) DESC
 ) tabla
