@@ -34,8 +34,6 @@ class odometer(models.Model):
     
     @api.model    
     def run_scheduler_set_odometer(self):    
-        print("PASAS")
-    
         self.env.cr.execute("""
 
 SELECT  vehicle_id,deviceid,date_trunc('day', fecha) as fecha,  ROUND(count(fecha)/60::numeric,2) as horas, round(max(distance)::numeric / 1000,3) as km
