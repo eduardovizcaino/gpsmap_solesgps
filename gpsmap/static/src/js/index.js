@@ -284,7 +284,6 @@ odoo.define('gpsmap', function(require){
                             {                            
                                 var positions               =result[iresult];                                
 
-
                                 var device                  =positions.deviceid;		                
                                 var device_id               =positions["deviceid"];
             
@@ -421,7 +420,6 @@ odoo.define('gpsmap', function(require){
 	            	vehicle["se"]		="simulator";
 	            	locationsMap(vehicle);
 	            	
-
 	            	//if(section=="historyStreet")			execute_streetMap(vehicle);
                     setTimeout(function()
                     {   
@@ -1308,17 +1306,21 @@ odoo.define('gpsmap', function(require){
         {
             for(idvehicle in localizaciones)
             {
-                var positions_vehicle			= localizaciones[idvehicle];                    
+                //if(simulation_action=="play")                               
+                    var positions_vehicle			= localizaciones[idvehicle];                    
+                    
+                    
                 if(positions_vehicle.length>0)                
                 {
                     for(iposiciones in positions_vehicle)
-                    {    
-                        if(iposiciones>0)
+                    {  
+                        alert(iposiciones);  
+                        //if(iposiciones>0)
                         {	
-	                    	localizaciones[idvehicle][iposiciones].setVisible(false);								
+                        	localizaciones[idvehicle][iposiciones].setVisible(false);								
                     		localizaciones[idvehicle][iposiciones].setMap(null);                     
                         	//if(iposiciones>0)	                        	localizaciones[idvehicle]=[]; 
-	                    } 	                    
+                        } 	                    
                     }                    
                 }
             }
