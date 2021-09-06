@@ -1314,7 +1314,6 @@ odoo.define('gpsmap', function(require){
                 {
                     for(iposiciones in positions_vehicle)
                     {  
-                        alert(iposiciones);  
                         //if(iposiciones>0)
                         {	
                         	localizaciones[idvehicle][iposiciones].setVisible(false);								
