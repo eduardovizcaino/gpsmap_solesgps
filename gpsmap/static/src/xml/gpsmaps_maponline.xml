@@ -37,8 +37,28 @@
             </div>
 
             <div style="z-index:100; text-align:left; position:absolute; bottom:0px; left:0px; width:100%; height:70px; background-color:#222; color:#aaa; padding:10px;">                                       
+		        <div id="buttons_history"  style="float:left;">
+		        
+                    <button id="action_play" custom="click"  string="ADD pruea" aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-play"></span>
+                    </button>		        
+                    <button id="action_pause" custom="click"  string="ADD pruea" aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-pause"></span>
+                    </button>
+                    <button id="action_stop" custom="click"  string="ADD pruea" aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                        <span class="fa fa-stop"></span>
+                    </button>
+
+			        <font id="back"> -- </font>
+			        <font id="next"> ++ </font>		        
+		        </div>
+
+
 		        <div id="tablero2"  style="float:left;"></div>                       
 		        <div id="tablero"  style="float:left;"></div>
+		        
+
+		        
             </div>  
             <center>          
                 <div id="odometro" style="z-index:101; position:absolute; bottom:0px; height:0px; width:300px; right:160px;  ">

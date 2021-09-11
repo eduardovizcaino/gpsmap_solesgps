@@ -63,14 +63,13 @@ ORDER BY date_trunc('day', fecha) DESC
                 
             print("Device==",position["deviceid"]," fecha==",position["fecha"]," horas===",position["horas"]," km==",position["km"])
 
-
 class tc_devices(models.Model):
     _name = "tc_devices"
     _description = 'traccar devices'
     _order = "name DESC"
         
     name                                        = fields.Char('Name', size=128)
-    uniqueid                                    = fields.Char('IMEI', size=50)
+    uniqueid                                    = fields.Char('IMEI', size=128)
     icc                                         = fields.Char('ICC', size=30)
     phone                                       = fields.Char('Phone', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
@@ -289,9 +288,15 @@ class vehicle(models.Model):
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'
                 %s
+                 
         """ %(start_time,end_time,where_report)
         if int(deviceid)>0:
-            sql="%s AND td.id='%s' " %(sql,deviceid)
+            sql="%s and td.id='%s' " %(sql,deviceid)
+            
+        sql="%s ORDER BY devicetime ASC" %(sql)    
+        
+        print("SQL==========")
+        print(sql)
                
         self.env.cr.execute(sql)
         return_positions                    =[]

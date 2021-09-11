@@ -254,7 +254,6 @@ odoo.define('gpsmap', function(require){
                 //if(device_active!=0)                
                     option_args["domain"].push(["deviceid","=",device_active]);
 
-
                 model={   
                     model:  "fleet.vehicle",
                     method: "positions",
@@ -438,41 +437,8 @@ odoo.define('gpsmap', function(require){
 
         //////////////////////////////////////////////////////////////
         butons_simulation: function(object) {
-
-		    var butons_html=" \
-			    <font id=\"back\"> -- </font>\
-			    <font id=\"play\">Play</font>\
-			    <font id=\"pause\">Pause</font>\
-			    <font id=\"stop\">Stop</font>\
-			    <font id=\"next\"> ++ </font>\
-		    ";
-		    $("#tablero2").html(butons_html);
 		    $("#tablero").html("");
 	    
-	        $("#play")
-	            .button({
-			        icons: {      primary: "ui-icon-play"    },
-			        text: false
-    		    })
-		        .click(function()
-		        {			        		    
-		            if(local.positions.length>0)
-			        {
-			            simulation_action="play";
-			            del_locations();
-			            $("div#odometro").show();
-				        gpsmaps_obj.paint_history(isimulacion);
-			        } 			       					
-		        });
-	        $("#pause")
-	            .button({
-			        icons: {      primary: "ui-icon-pause"    },
-			        text: false
-		        })
-		        .click(function()
-		        {			    
-		            simulation_action="pause";
-		        });		    
 	        $("#next")
 	            .button({
 			        icons: {      primary: "ui-icon-seek-next"    },
@@ -492,16 +458,6 @@ odoo.define('gpsmap', function(require){
 		        {
 			        simulation_time=simulation_time+50;
 		        });				
-	        $("#stop")
-	            .button({
-			        icons: {      primary: "ui-icon-stop"    },
-			        text: false
-		        })
-		        .click(function()
-		        {
-			        isimulacion=1;
-			        simulation_action="stop";
-		        });		
         },
 
         //////////////////////////////////////////////////////////////
@@ -651,7 +607,8 @@ odoo.define('gpsmap', function(require){
                 gpsmaps_obj.position();
 
                 setTimeout(function()    {
-                this.$("div#filtro").hide();
+                    this.$("div#filtro").hide();
+                    this.$("div#buttons_history").hide();
                 },100);    
             }                
             else  
@@ -721,6 +678,24 @@ odoo.define('gpsmap', function(require){
                 gpsmaps_obj.positions_search();            
                 gpsmaps_obj.butons_simulation();
             },
+            'click button#action_play': function (e) {
+
+	            if(local.positions.length>0)
+		        {
+		            simulation_action="play";
+		            del_locations();
+		            $("div#odometro").show();
+			        gpsmaps_obj.paint_history(isimulacion);
+		        } 			       					
+            },
+            'click button#action_pause': function (e) {
+                simulation_action="pause";
+            },            
+            'click button#action_stop': function (e) {
+		        isimulacion=1;
+		        simulation_action="stop";
+            },            
+
             'init input#start': function (e) {
             
                 //e.stopPropagation();
