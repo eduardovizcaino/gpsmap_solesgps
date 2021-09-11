@@ -392,6 +392,7 @@ odoo.define('gpsmap', function(require){
         //////////////////////////////////////////////////////////////
         paint_history:function(isimulacion) 
 	    {	
+	        //alert("alert_paint_history");
 	    	if(device_active>0)
 	    	{		  
 	            if(local.positions[device_active].length>isimulacion)                  
@@ -682,6 +683,7 @@ odoo.define('gpsmap', function(require){
 
 	            if(local.positions.length>0)
 		        {
+		            //alert("alert_play");
 		            simulation_action="play";
 		            del_locations();
 		            $("div#odometro").show();
@@ -973,18 +975,14 @@ odoo.define('gpsmap', function(require){
 	
     function odometro(item)	 
     {    	
-        if(item["at"]==undefined)           item["at"]=new Array();
-        else      item["at"]                = JSON.parse(item["at"]);
+        if(item["at"]==undefined)                       item["at"]=new Array();
+        //else                                            item["at"]= JSON.parse(item["at"]);
     
-    	if(item["at"]["battery"])			item["ba"]  =item["at"]["battery"];
-    	else								item["ba"]  =0;
-    	if(item["al"])						item["al"]  =item["al"];
-    	else								item["al"]  =0;
+    	if(item["at"]["battery"]==undefined)			item["ba"]  =0;
+    	else								            item["ba"]  =item["at"]["battery"];
+    	if(item["al"]==undefined)						item["al"]  =0;
+    	else					            			item["al"]  =item["al"];
     	
-		//if(item["ot"]["battery"])			item["ga"]  =item["ot"]["battery"];
-
-
-
 		var gas;
         
     	if(item["at"]["totalDistance"]!=undefined)				
@@ -998,8 +996,6 @@ odoo.define('gpsmap', function(require){
     	    }
     	}
     	
-
-
     	if(item["at"]["io3"]!=undefined)				
     	{
     		gas								=item["at"]["io3"];
@@ -1094,7 +1090,8 @@ odoo.define('gpsmap', function(require){
     }
 
 	function locationsMap(vehicle, type)
-	{	
+	{
+	    //alert("alert_locationsMap");	
 		if(type==undefined)     type="icon";
 		else                    type="marker";
 
@@ -1283,8 +1280,6 @@ odoo.define('gpsmap', function(require){
             {
                 //if(simulation_action=="play")                               
                     var positions_vehicle			= localizaciones[idvehicle];                    
-                    
-                    
                 if(positions_vehicle.length>0)                
                 {
                     for(iposiciones in positions_vehicle)

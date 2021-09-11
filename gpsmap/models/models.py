@@ -294,10 +294,7 @@ class vehicle(models.Model):
             sql="%s and td.id='%s' " %(sql,deviceid)
             
         sql="%s ORDER BY devicetime ASC" %(sql)    
-        
-        print("SQL==========")
-        print(sql)
-               
+                       
         self.env.cr.execute(sql)
         return_positions                    =[]
         positions                           =self.env.cr.dictfetchall()
