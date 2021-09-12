@@ -106,7 +106,7 @@ odoo.define('gpsmap', function(require){
         {
             setTimeout(function()
             {       
-                console.log("Pinta las geocercas");
+                //console.log("Pinta las geocercas");
                 var iroute;
                 var routes   =local.route;
                 for(iroute in routes)
@@ -125,7 +125,7 @@ odoo.define('gpsmap', function(require){
         {
             setTimeout(function()
             {       
-                console.log("Pinta las geocercas");
+                //console.log("Pinta las geocercas");
                 var igeofences;
                 var geofences   =local.geofences;
                 for(igeofences in geofences)
@@ -147,7 +147,7 @@ odoo.define('gpsmap', function(require){
             var iposition;
             if(local.positions.length>0)
             {   
-                console.log("POSITIONS PAINT ========");
+                //console.log("POSITIONS PAINT ========");
                 var vehiculo_id;
                 var vehiculos       =local.vehicles;
                 var ivehiculos;
@@ -177,20 +177,6 @@ odoo.define('gpsmap', function(require){
                                     if($("li.vehicle[vehicle='"+device_id+"']").length>0)                        
                                         $("li.vehicle[vehicle='"+device_id+"']").attr(coordinates);
                                         
-                                    /*
-	                                var v 	={
-	                                    mo: "", 
-	                                    st: "1", 
-	                                    na: "name",
-	                                    mi: "milage", 
-	                                    ba: "batery", 
-	                                    ho: "icon_online", 
-	                                    ad: position.address, 
-	                                    //ot: position.other, 
-	                                    ge: "geofence", 
-	                                    ni: "nivel"
-                                    };                                
-                                    */
                                     /*
                                     if(typeof argument=="number")
                                     {
@@ -227,7 +213,7 @@ odoo.define('gpsmap', function(require){
             //alert(gpsmap_section);
             //if(gpsmap_section!="gpsmaps_maphistory")
         
-            console.log("POSITIONS SEARCH ========");
+            //console.log("POSITIONS SEARCH ========");
             var fields_select   =['deviceid','devicetime','latitude','longitude','speed_compu','attributes','address','event','status','course','phone'];
             var vehiculo_id;
             var vehiculos       =local.vehicles;
@@ -301,10 +287,20 @@ odoo.define('gpsmap', function(require){
                                 {
                                     local.positions[device_id]=Array();
                                 }                                
+                                
+//        if(item["at"]==undefined)                       item["at"]=new Array();
+        //else                                            item["at"]= JSON.parse(item["at"]);
+    
+//    	if(item["at"]["battery"]==undefined)			item["ba"]  =0;                                
+
+//                                if(positions["at"]==undefined)      positions["at"] =new Array();
+//                                else                                positions["at"] =JSON.parse(positions["at"]);
+
+                                
 
                                 positions.mo                ="";
                                 positions.st                =1;
-                                positions.te                ="d_telefono";
+                                positions.te                =positions["phone"];
                                 ////positions.dn                =vehiculo_name;
                                 positions.ty                =positions["status"];
                                 positions.na                ="name";
@@ -312,7 +308,7 @@ odoo.define('gpsmap', function(require){
                                 positions.la                =positions["latitude"];
                                 positions.lo                =positions["longitude"]; 
                                 positions.co                =positions["course"]; 
-                                positions.mi                ="milage"; 
+                                //positions.mi                ="milage 2"; 
                                 positions.sp                =positions["speed_compu"]; 
                                 positions.ba                ="batery"; 
                                 positions.ti                =positions["devicetime"]; 
@@ -320,20 +316,14 @@ odoo.define('gpsmap', function(require){
                                 positions.ho                ="icon_online"; 
                                 positions.ad                =positions["address"]; 
                                 positions.at                =positions["attributes"]; 
-                                ////positions.im                =vehiculos[device_id].image_vehicle; 
+                                positions.im                =positions["image_vehicle"];     
                                 positions.ev                =positions["event"]; 
-                                positions.ge                ="geofence"; 
+                                positions.ge                ="geofence";
+                                positions.ge                ="";  
                                 positions.ni                ="nivel";
                                                 
-                                if(gpsmap_section=="gpsmaps_maphistory")
-                                {
-                                    local.positions[device_id].push(positions);
-                                }
-                                else
-                                {   
-                                    local.positions[device_id][0]=positions;
-                                }
-                                
+                                if(gpsmap_section=="gpsmaps_maphistory")        local.positions[device_id].push(positions);
+                                else                                            local.positions[device_id][0]=positions;
                             }                                    
                         }
                         gpsmaps_obj.positions_paint(argument);                                                              
@@ -350,7 +340,7 @@ odoo.define('gpsmap', function(require){
 	        {  
 	            if(google!=null)
 	            {                
-	                console.log("Crear mapa");  
+	                //console.log("Crear mapa");  
 			        if(iMap=="ROADMAP")	            	var tMap = google.maps.MapTypeId.ROADMAP;
 			        if(iMap=="HYBRID")	            	var tMap = google.maps.MapTypeId.HYBRID;								
 			        var directionsService;	
@@ -463,7 +453,7 @@ odoo.define('gpsmap', function(require){
 
         //////////////////////////////////////////////////////////////
         map: function(object) {
-            console.log("MAP ===========");
+            //console.log("MAP ===========");
             if(object==undefined)   object="maponline";
 	        var iZoom               =5;
 	        var iMap                ="ROADMAP";
@@ -484,7 +474,7 @@ odoo.define('gpsmap', function(require){
 		        		        
 		        if(vehiculos!= null && vehiculos.length>0)
 		        {		            
-		            console.log("Crea menu de vehiculos con la variable");
+		            //console.log("Crea menu de vehiculos con la variable");
 		            for(ivehiculos in vehiculos)
 		            {		                
 		                var vehiculo        =vehiculos[ivehiculos];		                
@@ -976,7 +966,8 @@ odoo.define('gpsmap', function(require){
     function odometro(item)	 
     {    	
         if(item["at"]==undefined)                       item["at"]=new Array();
-        //else                                            item["at"]= JSON.parse(item["at"]);
+        else if(item["at"]["totalDistance"]==undefined) item["at"]= JSON.parse(item["at"]);
+        
     
     	if(item["at"]["battery"]==undefined)			item["ba"]  =0;
     	else								            item["ba"]  =item["at"]["battery"];

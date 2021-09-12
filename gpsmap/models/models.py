@@ -72,6 +72,7 @@ class tc_devices(models.Model):
     uniqueid                                    = fields.Char('IMEI', size=128)
     icc                                         = fields.Char('ICC', size=30)
     phone                                       = fields.Char('Phone', size=128)
+    model                                       = fields.Char('Model', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
     disabled                                    = fields.Boolean('Disable', default=False)
     telcel                                      = fields.Boolean('Telcel', default=True)
@@ -209,21 +210,21 @@ class vehicle(models.Model):
         print("fecha=======",hoy)
 
         self.env.cr.execute("""
-            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,fv.odometer_unit,
+            SELECT tp.*, tp.deviceid as tp_deviceid, td.phone, fv.odometer_unit,
                 CASE 		                
-                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
-                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
+                    WHEN fv.odometer_unit='kilometers'                          THEN 1.852 * tp.speed
+                    WHEN fv.odometer_unit='miles'                               THEN 1.15 * tp.speed
                     ELSE 1.852 * tp.speed                    
                 END	AS speed_compu,
                 CASE 				            
-	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
-	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
-	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
+	                WHEN tp.attributes::json->>'alarm'!=''                      THEN tp.attributes::json->>'alarm'
+	                WHEN tp.attributes::json->>'motion'='false'                 THEN 'Stopped'
+	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2   THEN 'Moving'
 	                ELSE 'Stopped'
                 END	as event,                                 
 
                 CASE 				            
-                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
+                    WHEN tp.attributes::json->>'alarm'!=''                      THEN 'alarm'
                     WHEN now() between tp.devicetime - INTERVAL '15' MINUTE AND tp.devicetime + INTERVAL '15' MINUTE THEN 'Online'
                     ELSE 'Offline'
                 END  as status                
@@ -266,29 +267,28 @@ class vehicle(models.Model):
         sql="""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone,
                 CASE 		                
-                    WHEN fv.odometer_unit='kilometers' THEN 1.852 * tp.speed
-                    WHEN fv.odometer_unit='miles' THEN 1.15 * tp.speed
+                    WHEN fv.odometer_unit='kilometers'                          THEN 1.852 * tp.speed
+                    WHEN fv.odometer_unit='miles'                               THEN 1.15 * tp.speed
                     ELSE 1.852 * tp.speed                    
                 END	AS speed_compu,
                 CASE 				            
-	                WHEN tp.attributes::json->>'alarm'!='' THEN tp.attributes::json->>'alarm'
-	                WHEN tp.attributes::json->>'motion'='false' THEN 'Stopped'
-	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2 THEN 'Moving'
+	                WHEN tp.attributes::json->>'alarm'!=''                      THEN tp.attributes::json->>'alarm'
+	                WHEN tp.attributes::json->>'motion'='false'                 THEN 'Stopped'
+	                WHEN tp.attributes::json->>'motion'='true' AND tp.speed>2   THEN 'Moving'
 	                ELSE 'Stopped'
                 END	as event,                                 
                 CASE 				            
-                    WHEN tp.attributes::json->>'alarm'!='' THEN 'alarm'
-                    WHEN tp.devicetime + INTERVAL '3' MINUTE < tp.servertime THEN 'Offline'
+                    WHEN tp.attributes::json->>'alarm'!=''                      THEN 'alarm'
+                    WHEN tp.devicetime + INTERVAL '3' MINUTE < tp.servertime    THEN 'Offline'
                     ELSE 'Online'
-                END  as status
+                END  as status, fv.image_vehicle
             FROM  fleet_vehicle fv
                 join tc_devices td on fv.gps1_id=td.id
                 join tc_positions tp on td.id=tp.deviceid
             WHERE  1=1          
                 AND tp.devicetime>'%s'
                 AND tp.devicetime<'%s'
-                %s
-                 
+                %s                 
         """ %(start_time,end_time,where_report)
         if int(deviceid)>0:
             sql="%s and td.id='%s' " %(sql,deviceid)
