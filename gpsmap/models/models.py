@@ -83,7 +83,7 @@ class tc_positions(models.Model):
     _name = "tc_positions"
     _description = 'GPS Positions'
     protocol                                    = fields.Char('Protocolo', size=15)
-    deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
+    #deviceid                                    = fields.Many2one('fleet.vehicle',ondelete='set null', string="Vehiculo", index=True)
     servertime                                  = fields.Datetime('Server Time')
     devicetime                                  = fields.Datetime('Device Time')
     fixtime                                     = fields.Datetime('Error Time')
