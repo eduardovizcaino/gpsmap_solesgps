@@ -77,7 +77,7 @@
     
     <record id='fleet_geofence_action' model='ir.actions.act_window'>
         <field name="name">Geofence</field>
-        <field name="res_model">gpsmap.geofence</field>
+        <field name="res_model">tc_geofences</field>
     </record>
     <menuitem action="fleet_geofence_action" parent="fleet.fleet_configuration" id="fleet_geofence_menu" groups="fleet.fleet_group_user"/>
 

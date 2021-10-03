@@ -163,7 +163,7 @@
 
         <record id="rule_gpsmap_geofence_template" model="ir.rule">
             <field name="name">User can only see his/her manager geofence</field>
-            <field name="model_id" ref="model_gpsmap_geofence"/>
+            <field name="model_id" ref="model_tc_geofences"/>
             <field name="domain_force"></field>            
             <field name="groups" eval="[(4, ref('gpsmap_group_template'))]"/>
             <field name="perm_read" eval="True"/>

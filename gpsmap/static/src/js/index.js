@@ -68,7 +68,7 @@ odoo.define('gpsmap', function(require){
             var self = this;            
             ////      
             var data={
-                model: 'gpsmap.geofence',
+                model: 'tc_geofences',
                 method: 'search_read',
                 context: session.user_context,
             }
@@ -131,10 +131,10 @@ odoo.define('gpsmap', function(require){
                 for(igeofences in geofences)
                 {		                
                     var geofence                    =geofences[igeofences];		                
-                    var geofence_id                 =geofence["points"];
+                    var geofence_id                 =geofence["area"];
                     if(geofence["hidden"]==false)
                     {                        
-                        var flightPlanCoordinates=array_points(geofence["points"]);                             
+                        var flightPlanCoordinates=array_points(geofence["area"]);                             
                         poligono(flightPlanCoordinates,{color:geofence["color"],geofence:geofence["name"]});	
                     }    
                 }
@@ -719,7 +719,7 @@ odoo.define('gpsmap', function(require){
                 GeoMarker.push(coordinate);
                 GeoMarker1.push(point);		                
                 polilinea(GeoMarker1);                			
-                $("textarea[name='points']")
+                $("textarea[name='area']")
                     .focus()
                     .change();                    
                 limpiar_virtual();				
@@ -753,7 +753,7 @@ odoo.define('gpsmap', function(require){
 					tracert(origen,destino,waypts);
 					//distance(origen,destino,waypts);
 
-                    $("textarea[name='points']")
+                    $("textarea[name='area']")
                         .focus()
                         .change();                    
 
@@ -1291,14 +1291,17 @@ odoo.define('gpsmap', function(require){
 	function array_points(points) 
 	{
 	    var array_points=new Array();
-        var vec_points  =points.split("|");
+
+        points=points.substring(9, points.length - 2);   // Returns "ell" 	    
+	    
+        var vec_points  =points.split(", ");
         for(i_vec_points in vec_points)
         {                   
             var point       =vec_points[i_vec_points];
             if(point!="")
             {                
-                var vec_point   =point.split(",");	                   
-                var obj_point={lat:parseFloat(vec_point[1]),lng:parseFloat(vec_point[0])};
+                var vec_point   =point.split(" ");	                   
+                var obj_point={lat:parseFloat(vec_point[0]),lng:parseFloat(vec_point[1])};
                 array_points.push(obj_point);
             }
         }        
@@ -1507,10 +1510,11 @@ odoo.define('gpsmap', function(require){
 		for(index in GeoMarker)
 		{		
 			punto	=GeoMarker[index];
-			puntos	+=punto["latitude"]+","+punto["longitude"]+"|"; 
-			console.log("field points="+puntos);    			
-		    $("textarea[name='points']").val(puntos);
+			if(puntos=="")  puntos=punto["longitude"]+" "+punto["latitude"];
+			else            puntos+=", "+punto["longitude"]+" "+punto["latitude"];			
 		}
+		puntos="POLYGON(("+puntos+"))";
+		$("textarea[name='area']").val(puntos);
 		return puntos;
 	}
 	function limpiar_virtual()
@@ -1525,7 +1529,7 @@ odoo.define('gpsmap', function(require){
 	function limpiar_real()
 	{	
 		limpiar_virtual();
-		$("input#points").val("");		
+		$("input#area").val("");		
 		for(ilineas in lineas)
 		{			
 			lineas[ilineas].setMap(null);									

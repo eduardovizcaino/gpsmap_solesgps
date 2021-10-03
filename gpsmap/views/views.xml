@@ -129,9 +129,9 @@
 
 
     <!-- ############################### -->    
-    <record id='gpsmap_geofence_view_form' model='ir.ui.view'>
-        <field name="name">gpsmap.geofence.form</field>
-        <field name="model">gpsmap.geofence</field>
+    <record id='gpsmap_tc_geofences_view_form' model='ir.ui.view'>
+        <field name="name">tc_geofences.form</field>
+        <field name="model">tc_geofences</field>
         <field name="arch" type="xml">
             <form string="Geofence">
                 <header>
@@ -144,7 +144,7 @@
                     <field name="name"/>                            
                     <field name="color"/>                    
                     <field name="hidden"/>                                                                
-                    <field name="points" class="points" invisible="1"/>
+                    <field name="area" class="points" invisible="1"/>
                 </group>
                 <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
                 <script>
@@ -155,7 +155,7 @@
                     {                
                         limpiar_virtual();
                         limpiar_real();	        
-                        if($("textarea[name='points']").length>0)
+                        if($("textarea[name='area']").length>0)
                         {
                             google.maps.event.addListener(map, 'click', function(event) 
                             { 		                   
@@ -170,8 +170,8 @@
                         }
                         else
                         {
-                            var flightPlanCoordinates=array_points($("span[name='points']").html());                             
-                            poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:"aaaaaaaaaa"});	
+                            var flightPlanCoordinates=array_points($("span[name='area']").html());                             
+                            poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:$("span[name='name']").html()});	
                         }    
 
                         limpiar_virtual();
@@ -184,9 +184,9 @@
         </field>
     </record>
 
-    <record id='gpsmap_geofence_view_tree' model='ir.ui.view'>
-        <field name="name">gpsmap.geofence.tree</field>
-        <field name="model">gpsmap.geofence</field>
+    <record id='gpsmap_tc_geofences_view_tree' model='ir.ui.view'>
+        <field name="name">tc_geofences.tree</field>
+        <field name="model">tc_geofences</field>
         <field name="arch" type="xml">
             <tree string="Models">
                 <field name="name" />
@@ -252,7 +252,6 @@
                     <button string="END POINT" id ="action_endpoint_route" custom="click"/>
                     <button string="CLEAR POINT" id ="action_clearpoint" custom="click"/>                    
                     <field name="name"/>
-                    <field name="points" class="points"/>                    
                 </header>
                 <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
                 <script>
@@ -263,7 +262,7 @@
                     {                
                         limpiar_virtual();
                         limpiar_real();	        
-                        if($("textarea[name='points']").length>0)
+                        if($("textarea[name='area']").length>0)
                         {
                             google.maps.event.addListener(map, 'click', function(event) 
                             { 		                   
@@ -278,7 +277,7 @@
                         }
                         else
                         {
-                            array_route($("span[name='points']").html());                        
+                            array_route($("span[name='area']").html());                        
                         }    
 
                         limpiar_virtual();
