@@ -206,7 +206,7 @@ class vehicle(models.Model):
         hoy_antes                               ="%s" %(datetime.datetime.now() - datetime.timedelta(minutes=5))        
         hoy_antes                               =hoy_antes[0:19]
 
-        print("fecha=======",hoy)
+        #print("fecha=======",hoy)
 
         self.env.cr.execute("""
             SELECT tp.*, tp.deviceid as tp_deviceid, td.phone, fv.odometer_unit,

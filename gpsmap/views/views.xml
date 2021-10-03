@@ -195,7 +195,7 @@
         </field>
     </record>
 
-    <!-- ############################### -->    
+    <!-- ###############################     
     <record id='gpsmap_geofence_device_view_form' model='ir.ui.view'>
         <field name="name">gpsmap.geofence_device.form</field>
         <field name="model">gpsmap.geofence_device</field>
@@ -236,7 +236,7 @@
         </field>
     </record>
 
-    <!-- ROUTE -->
+     ROUTE -->
 
 
 
