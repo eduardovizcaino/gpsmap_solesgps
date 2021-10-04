@@ -61,7 +61,7 @@ ORDER BY date_trunc('day', fecha) DESC
             
             self.create(odometer_data)            
                 
-            print("Device==",position["deviceid"]," fecha==",position["fecha"]," horas===",position["horas"]," km==",position["km"])
+            #print("Device==",position["deviceid"]," fecha==",position["fecha"]," horas===",position["horas"]," km==",position["km"])
 
 class tc_devices(models.Model):
     _name = "tc_devices"
@@ -127,7 +127,7 @@ class vehicle(models.Model):
         for vehicle in vehicle_data:
             recargar=0
             
-            print("# VEHICLE ========================",vehicle["name"])
+            #print("# VEHICLE ========================",vehicle["name"])
             if(vehicle["recargado"] not in {"",False}): 
                 if(str(vehicle["recargado"]) < str(ayer)):  
                     if(str(vehicle["devicetime_compu"]) < str(antes)):        
@@ -136,21 +136,21 @@ class vehicle(models.Model):
                 recargar=2
                                 
             if(recargar>0 and vehicle["phone"] not in {"",False}):
-                print("# POSIBLE RECARGA NUEVA=", recargar)
+                #print("# POSIBLE RECARGA NUEVA=", recargar)
                 taecel_data                     ={}
                 taecel_data["name"]             ="TEL030"
                 taecel_data["referencia"]       =vehicle["phone"]
 
                 taecel_new                      =taecel_obj.create(taecel_data)
                 
-                print("# taecel_new=", taecel_new)
+                #print("# taecel_new=", taecel_new)
                   
                 if(taecel_new["status"]!="Error"):                                    
                     if("mensaje2" in taecel_new and taecel_new["mensaje2"]=="Recarga Exitosa" and taecel_new["status"]=="Exitosa"):              
                     #if(taecel_new["mensaje2"]=="Recarga Exitosa" and taecel_new["status"]=="Exitosa"):
                         hoy_fecha    ="%s" %(datetime.datetime.now())
                         vehicle["recargado"]=hoy_fecha[0:19]                
-                        print("mensaje2==", taecel_new["mensaje2"])
+                        #print("mensaje2==", taecel_new["mensaje2"])
                         self.write(vehicle)
 
     
@@ -373,7 +373,7 @@ class positions(models.Model):
         if len(vehicle_data)>0:         
             for vehicle in vehicle_data:    
 
-                print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
+                #print("Anterior VEHICULO JS POSITION=== ", vehicle.positionid)
                 positions_arg                   =[('deviceid','=',vehicle.id)]                
                 positions_data                  =self.search_read(positions_arg, offset=0, limit=1, order='devicetime DESC')        
                 if len(positions_data)>0:                            
@@ -545,11 +545,26 @@ class tc_geofences(models.Model):
         ('black', 'Black'),
         ('grey', 'Grey'),
         ('yellow', 'Yellow'),
-        ], 'Color', default='green', help='Color of geofence', required=True)
+        ], 'Color', default='green', help='Color of geofence')
     hidden = fields.Boolean('Hidden')   
     company_ids = fields.Many2many('res.company', 'tc_geofences_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
-                 
-                 
+
+    
+    def create(self, vals):
+        res = super(tc_geofences, self).create(vals)
+        return res
+                
+    
+    def write(self, vals):        
+        vals["attributes"]={}
+        if("color" in vals):                  
+            vals["attributes"]["color"]=vals["color"]
+    
+        res = super(tc_geofences, self).write(vals)
+        return res
+                         
+
+
                  
                  
     
