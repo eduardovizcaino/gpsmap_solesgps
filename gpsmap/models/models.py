@@ -545,7 +545,7 @@ class tc_geofences(models.Model):
         ('black', 'Black'),
         ('grey', 'Grey'),
         ('yellow', 'Yellow'),
-        ], 'Color', default='green', help='Color of geofence', required=True)
+        ], 'Color', default='green', help='Color of geofence')
     hidden = fields.Boolean('Hidden')   
     company_ids = fields.Many2many('res.company', 'tc_geofences_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
 
