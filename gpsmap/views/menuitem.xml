@@ -83,4 +83,17 @@
 
     <!-- ############################### -->    
 
+    
+    <record id='fleet_gpsmap_device_action' model='ir.actions.act_window'>
+        <field name="name">Device</field>
+        <field name="res_model">gpsmap_device</field>
+    </record>    
+    <menuitem action="fleet_gpsmap_device_action" parent="fleet.fleet_configuration" id="fleet_gpsmap_device_menu" groups="fleet.fleet_group_manager"/>
+
+    <record id='fleet_gpsmap_commands_action' model='ir.actions.act_window'>
+        <field name="name">Commands</field>
+        <field name="res_model">gpsmap_commands</field>
+    </record>    
+    <menuitem action="fleet_gpsmap_commands_action" parent="fleet.fleet_configuration" id="fleet_gpsmap_device_menu" groups="fleet.fleet_group_manager"/>
+
 </odoo>

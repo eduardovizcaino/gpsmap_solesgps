@@ -551,20 +551,20 @@ class tc_geofences(models.Model):
 
     
     def create(self, vals):
-        res = super(tc_geofences, self).create(vals)
-        return res
-                
-    
+        return self.save(vals)                
     def write(self, vals):        
+        return self.save(vals)
+
+
+    def save(self, vals):        
         vals["attributes"]={}
         if("color" in vals):                  
-            vals["attributes"]["color"]=vals["color"]
+            vals["attributes"]["color"]=vals["color"]    
+    
+        vals["attributes"] = json.dumps(vals["attributes"])
     
         res = super(tc_geofences, self).write(vals)
         return res
-                         
-
-
                  
                  
     
@@ -581,4 +581,16 @@ class tc_geofences(models.Model):
         return alerts_data
                 
         
-    
+class gpsmap_device(models.Model):
+    _name = "gpsmap_device"
+    _description = 'GPS Device'
+    name = fields.Char('Device Name', size=75)
+    protocol = fields.Char('protocol', size=75)
+    #geofence_ids = fields.Many2many('gpsmap.geofence', 'alert_geofence', 'geofence_id', 'alert_id', string='Geofence')
+    geofence_ids = fields.Many2many('gpsmap_commands', 'device_commands', 'device_id', 'alert_id', string='Geofence')
+
+class gpsmap_commands(models.Model):
+    _name = "gpsmap_commands"
+    _description = 'GPS Commands'
+    name        = fields.Char('Command', size=75)
+    deviceid    = fields.Many2one('gpsmap_device',ondelete='set null', string="Device", index=True)
