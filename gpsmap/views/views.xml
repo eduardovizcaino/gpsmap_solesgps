@@ -333,8 +333,17 @@
         <field name="arch" type="xml">
             <tree string="Models">
                 <field name="name" />
-                <field name="deviceid"/>
             </tree>
+        </field>
+    </record>
+
+    <record id='device_commands_view_form' model='ir.ui.view'>
+        <field name="name">device_commands.form</field>
+        <field name="model">device_commands</field>
+        <field name="arch" type="xml">
+            <form string="Commands">
+                <field name="commands_id"/>
+            </form>
         </field>
     </record>
 

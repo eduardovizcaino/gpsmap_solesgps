@@ -584,13 +584,19 @@ class tc_geofences(models.Model):
 class gpsmap_device(models.Model):
     _name = "gpsmap_device"
     _description = 'GPS Device'
-    name = fields.Char('Device Name', size=75)
-    protocol = fields.Char('protocol', size=75)
-    #geofence_ids = fields.Many2many('gpsmap.geofence', 'alert_geofence', 'geofence_id', 'alert_id', string='Geofence')
-    geofence_ids = fields.Many2many('gpsmap_commands', 'device_commands', 'device_id', 'alert_id', string='Geofence')
+    name        = fields.Char('Device Name', size=75)
+    protocol    = fields.Char('protocol', size=75)
 
 class gpsmap_commands(models.Model):
     _name = "gpsmap_commands"
     _description = 'GPS Commands'
-    name        = fields.Char('Command', size=75)
-    deviceid    = fields.Many2one('gpsmap_device',ondelete='set null', string="Device", index=True)
+    name            = fields.Char('Command', size=75)
+    priority        = fields.Char('priority', size=75)
+    #deviceid    = fields.Many2one('gpsmap_device',ondelete='set null', string="Device", index=True)
+
+class device_commands(models.Model):
+    _name = "device_commands"
+    _description = 'GPS Device Commands'
+    commands_id = fields.Many2many('gpsmap_device', 'gpsmap_commands', 'device_id', 'command_id', string='Commands')
+
+
