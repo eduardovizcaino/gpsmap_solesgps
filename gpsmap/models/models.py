@@ -549,12 +549,16 @@ class tc_geofences(models.Model):
     hidden = fields.Boolean('Hidden')   
     company_ids = fields.Many2many('res.company', 'tc_geofences_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
 
-    
-    def create(self, vals):
-        return self.save(vals)                
-    def write(self, vals):        
-        return self.save(vals)
 
+
+    @api.model
+    def create(self, vals):
+        rec = super(tc_geofences, self).create(self.save(vals))
+        return rec
+    @api.model
+    def write(self, vals):        
+        rec = super(tc_geofences, self).write(self.save(vals))
+        return rec
 
     def save(self, vals):        
         vals["attributes"]={}
@@ -563,10 +567,7 @@ class tc_geofences(models.Model):
     
         vals["attributes"] = json.dumps(vals["attributes"])
     
-        res = super(tc_geofences, self).write(vals)
-        return res
-                 
-                 
+        return vals
     
     def geofences(self):
         alerts_obj      =self.env['gpsmap.geofence_device']

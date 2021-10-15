@@ -28,6 +28,7 @@ Main Features
 """,
     'depends': [
         'fleet',
+        
     ],
     'data': [
         'data/data.xml',
