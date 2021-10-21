@@ -117,7 +117,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="False"/>            
+            <field name="perm_unlink" eval="True"/>            
         </record>        
 
         <record id="rule_fleet_vehicle_log_services" model="ir.rule">
@@ -128,7 +128,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="False"/>            
+            <field name="perm_unlink" eval="True"/>            
         </record>        
 
         <record id="rule_fleet_vehicle_log_contract" model="ir.rule">
@@ -139,7 +139,7 @@
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
-            <field name="perm_unlink" eval="False"/>            
+            <field name="perm_unlink" eval="True"/>            
         </record>        
 
 

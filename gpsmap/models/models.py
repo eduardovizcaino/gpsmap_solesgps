@@ -557,7 +557,7 @@ class tc_geofences(models.Model):
         return rec
     @api.model
     def write(self, vals):        
-        rec = super(tc_geofences, self).write(self.save(vals))
+        rec = super(tc_geofences, self).writ(self.save(vals))
         return rec
 
     def save(self, vals):        
