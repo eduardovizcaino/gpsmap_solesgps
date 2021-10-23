@@ -29,7 +29,7 @@ class vehicle_model_brand(models.Model):
 
 class odometer(models.Model):
     _inherit = "fleet.vehicle.odometer"
-    
+    _order = "date ASC"    
     activeTime                                       = fields.Float('Active Time',digits=(3,2))
     
     @api.model    
