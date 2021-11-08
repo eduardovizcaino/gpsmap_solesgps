@@ -68,14 +68,13 @@ class tc_devices(models.Model):
     _description = 'traccar devices'
     _order = "name DESC"
         
-    name                                        = fields.Char('Name', size=128)
-    uniqueid                                    = fields.Char('IMEI', size=128)
+    name                                        = fields.Char('Name', size=128, required=True)
+    uniqueid                                    = fields.Char('IMEI', size=128, required=True)
     icc                                         = fields.Char('ICC', size=30)
     phone                                       = fields.Char('Phone', size=128)
     model                                       = fields.Char('Model', size=128)
     lastupdate                                  = fields.Datetime('Lastupdate')
     disabled                                    = fields.Boolean('Disable', default=False)
-    telcel                                      = fields.Boolean('Telcel', default=True)
     signal                                      = fields.Boolean('Good signal', default=True)
     company_ids                                 = fields.Many2many('res.company', 'tcdevices_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
     
@@ -236,12 +235,11 @@ class vehicle(models.Model):
         for position in positions:
             
             #if(position["status"]=="Offline"):
-            #    print("status==",position["status"]," device==",position["devicetime"]," server===",position["servertime"]," fix==",position["fixtime"])
+            print("status==",position["status"]," device==",position["devicetime"]," server===",position["servertime"]," fix==",position["fixtime"])
             position["de"]            =position["tp_deviceid"]                            
             tp_deviceid               =position["tp_deviceid"]
             
-            return_positions[tp_deviceid]    =position
-            
+            return_positions[tp_deviceid]    =position            
         return return_positions    
     @api.multi
     def positions(self,datas):		   
@@ -534,10 +532,12 @@ class tc_geofences(models.Model):
     _name = "tc_geofences"
     _description = 'GPS Geofence'
     
-    name = fields.Char('Name', size=75)
-    description = fields.Char('Description', size=150)
-    area = fields.Text('area')
-    attributes = fields.Text('Attributes')
+    name                = fields.Char('Name', size=75)
+    description         = fields.Char('Description', size=150)
+    area                = fields.Text('area')
+    attributes          = fields.Text('Attributes')
+    hidden              = fields.Boolean('Hidden') 
+    distributor         = fields.Boolean('Distributor')  
     color = fields.Selection([
         ('green', 'Green'),
         ('red', 'Red'),
@@ -546,10 +546,8 @@ class tc_geofences(models.Model):
         ('grey', 'Grey'),
         ('yellow', 'Yellow'),
         ], 'Color', default='green', help='Color of geofence')
-    hidden = fields.Boolean('Hidden')   
+    
     company_ids = fields.Many2many('res.company', 'tc_geofences_res_company_rel', 'user_id', 'cid', string='Companies', default=lambda self: self.env.user.company_id)
-
-
 
     @api.model
     def create(self, vals):
@@ -557,9 +555,9 @@ class tc_geofences(models.Model):
         return rec
     @api.model
     def write(self, vals):        
-        rec = super(tc_geofences, self).writ(self.save(vals))
+        rec = super(tc_geofences, self).write(self.save(vals))
         return rec
-
+    @api.model
     def save(self, vals):        
         vals["attributes"]={}
         if("color" in vals):                  

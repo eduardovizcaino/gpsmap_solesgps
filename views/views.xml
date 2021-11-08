@@ -83,7 +83,7 @@
                                         
                     <field name="phone"/>
                     <field name="disabled"/>
-                    <field name="telcel"/>
+
                     <field name="signal"/>                   
                 </group>                
             </form>
@@ -100,7 +100,6 @@
                 <field name="lastupdate"/>                    
                 <field name="phone"/>
                 <field name="disabled"/>
-                <field name="telcel"/>
                 <field name="signal"/>
             </tree>
         </field>

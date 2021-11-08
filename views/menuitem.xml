@@ -2,6 +2,7 @@
 <odoo>
     <menuitem name="GPS" id="menu_root" groups="gpsmap_group_template" web_icon="fleet,static/description/icon.png"/>    
     <menuitem name="Geolocation" parent="menu_root" id="gpsmap_geolocation" sequence="2" groups="gpsmap_group_template"/>
+    <menuitem name="Configuration" parent="menu_root" id="gpsmap_configuration" sequence="3" groups="gpsmap_group_admin"/>
     
     <menuitem name="Configuration" parent="fleet.menu_root" id="fleet.fleet_configuration" sequence="100" groups="gpsmap.gpsmap_group_admin"/>
     <menuitem action="fleet.fleet_vehicle_model_action" parent="fleet.fleet_configuration" id="fleet.fleet_vehicle_model_menu" groups="fleet.fleet_group_manager" sequence="1"/>
@@ -45,12 +46,22 @@
     -->
 
     <record id='fleet_tc_devices_action' model='ir.actions.act_window'>
-        <field name="name">GPS</field>
+        <field name="name">GPS Devices</field>
         <field name="res_model">tc_devices</field>
     </record>
-    <menuitem action="fleet_tc_devices_action" parent="fleet.fleet_configuration" id="fleet_tc_devices_menu" groups="gpsmap.gpsmap_group_admin"/>
+    <menuitem action="fleet_tc_devices_action" parent="gpsmap_configuration" id="fleet_tc_devices_menu" sequence="1" groups="gpsmap.gpsmap_group_admin"/>
 
+    <record id='fleet_geofence_action' model='ir.actions.act_window'>
+        <field name="name">Geofence</field>
+        <field name="res_model">tc_geofences</field>
+    </record>
+    <menuitem action="fleet_geofence_action" parent="gpsmap_configuration" id="fleet_geofence_menu" sequence="2" groups="fleet.fleet_group_user"/>
 
+    <record id='fleet_geofence_device_action' model='ir.actions.act_window'>
+        <field name="name">Alerts Geofence</field>
+        <field name="res_model">gpsmap.geofence_device</field>
+    </record>
+    <menuitem action="fleet_geofence_device_action" parent="gpsmap_configuration" id="fleet_geofence_device_menu" sequence="3" groups="fleet.fleet_group_user"/>
 
 
     <!--
@@ -65,21 +76,11 @@
         <field name="name">Route</field>
         <field name="res_model">gpsmap.route</field>
     </record>
-    <menuitem action="gpsmap_route_action" parent="fleet.fleet_configuration" id="gpsmap_route_menu" groups="gpsmap.gpsmap_group_admin"/>
+    <menuitem action="gpsmap_route_action" parent="gpsmap_configuration" id="gpsmap_route_menu" groups="gpsmap.gpsmap_group_admin"/>
 
     
-    <record id='fleet_geofence_device_action' model='ir.actions.act_window'>
-        <field name="name">Alerts Geofence</field>
-        <field name="res_model">gpsmap.geofence_device</field>
-    </record>
-    <menuitem action="fleet_geofence_device_action" parent="fleet.fleet_configuration" id="fleet_geofence_device_menu" groups="fleet.fleet_group_user"/>
     
     
-    <record id='fleet_geofence_action' model='ir.actions.act_window'>
-        <field name="name">Geofence</field>
-        <field name="res_model">tc_geofences</field>
-    </record>
-    <menuitem action="fleet_geofence_action" parent="fleet.fleet_configuration" id="fleet_geofence_menu" groups="fleet.fleet_group_user"/>
 
     <!-- ############################### -->    
 
@@ -88,7 +89,7 @@
         <field name="name">Device</field>
         <field name="res_model">gpsmap_device</field>
     </record>    
-    <menuitem action="fleet_gpsmap_device_action" parent="fleet.fleet_configuration" id="fleet_gpsmap_device_menu" groups="fleet.fleet_group_manager"/>
+    <menuitem action="fleet_gpsmap_device_action" parent="gpsmap_configuration" id="fleet_gpsmap_device_menu" groups="fleet.fleet_group_manager"/>
 
     <record id='fleet_gpsmap_commands_action' model='ir.actions.act_window'>
         <field name="name">Commands</field>

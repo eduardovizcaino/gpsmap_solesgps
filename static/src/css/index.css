@@ -19,9 +19,6 @@
     background-color: #7c7bad;
     border-radius: 0;
     color: white;
-    padding-top:5px;
-    padding-bottom:5px;
-    padding-left:15px;
 }
 .select{
     background-color: #7c7bad;
@@ -65,17 +62,32 @@ div#filtro{
     background-color:#efefef;
 }
 
-
-
 div#maponline{        
     z-index:        100; 
     position:       absolute; 
     bottom:         0px; 
-    left:           0px;   
-    width:          100%;     
-    height:         100%;
+    left:           0px;     
+}      
+div#maponline2{        
+    z-index:        900; 
+    position:       absolute; 
+    bottom:         0px; 
+    left:           0px; 
+    /*
+    background: radial-gradient(circle at 50%, transparent, transparent 49%,  #eee 47%,  #000 51%);
+    background: radial-gradient(circle at 50%, transparent, transparent 35%,  #777 42%,  #000 45%);
+    background: radial-gradient(circle at 50%, transparent, transparent 38%,  #555 42%,  #eee 43%,  #000 48%);
+    */
+    
+    
+    background: radial-gradient(circle at 50%, transparent, transparent 38%,  #555 42%,  #888 43%,  #000 48%);
 }      
 
+td#menu_map{            
+    width: -o-calc(100% - 200px); 
+    width: -webkit-calc(100% - 200px); 
+    width: -moz-calc(100% - 200px); 
+}      
 
 /* ####################################### */
 /* ######      DESKTOP GRANDE       ###### */
@@ -94,7 +106,6 @@ div#maponline{
         width: -webkit-calc(100% - 290px); /* google, safari */
         width: -moz-calc(100% - 290px); /* firefox */    
     }
-
 }
 
 
@@ -115,7 +126,6 @@ div#maponline{
         width: -webkit-calc(100% - 290px); /* google, safari */
         width: -moz-calc(100% - 290px); /* firefox */    
     }
-
 }
 
 
@@ -170,12 +180,4 @@ div#maponline{
         width: -webkit-calc(100% - 350px); /* google, safari */
         width: -moz-calc(100% - 350px); /* firefox */    
     }
-
 }
-
-
-
-
-
-
-
