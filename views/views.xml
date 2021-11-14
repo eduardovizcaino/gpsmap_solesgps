@@ -161,8 +161,20 @@
                 </group>
                 <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
                 <script>
+                    odoo.gpsmap
+                
+
+
+/*                
+                    var AbstractAction  = require('web.AbstractAction');
+                
+                    var gpsmaps_obj         =new class_gpsmap(); 
+                    
                     local.vehicles      =Array();
                     local.positions     =undefined;    
+                    
+                    
+                    
                     gpsmaps_obj.map("map_tree");
                     setTimeout(function()
                     {                
@@ -191,7 +203,7 @@
                         limpiar_real();	                 
                         
                     },1000);
-                    
+*/                    
                 </script>
             </form>
         </field>

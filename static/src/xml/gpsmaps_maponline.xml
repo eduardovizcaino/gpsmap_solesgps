@@ -6,7 +6,7 @@
         <table border="0" style="width:100%; height:100%;">
             <tr>
                 <td id="menu_vehicle" valign="top" width="200" height="100%" style="background-color:#f9f9f9;">                    
-                    <div class="vehicle vehicle_active" position="" latitude="" longitude="" vehicle="" style="float:left; width:200px: display: block;">
+                    <div class="vehicle vehicle_active" vehicle="0" style="float:left; width:200px: display: block;">
                         Todos los vehiculos
                     </div><br/>
                     <div id="menu_vehicle" style="overflow-y: scroll;"> 
@@ -41,9 +41,14 @@
                                     <td class="filtro"><input id="start" name="start" type="text" placeholder="0000-00-00 00:00:00" value=""/></td>
                                     <td class="filtro"><input id="end" name="end" type="text" placeholder="0000-00-00 00:00:00" value=""/></td>
                                     <td>
-                                        <button id="action_search" custom="click"  string="ADD pruea" aria-expanded="true" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
+                                        <button id="action_search" custom="click" string="ADD pruea" class="btn btn-secondary" aria-label="View kanban"  title="" tabindex="-1" type="button">
+                                            <span class="fa fa-search"></span>
+                                        </button>                                    
+                                        <!--                                    
+                                        <button id="action_search" custom="click"  string="ADD pruea" class="o_dropdown_toggler_btn btn btn-sm dropdown-toggle" data-toggle="dropdown">
                                             <span class="fa fa-search"></span>
                                         </button>                        
+                                        -->
                                     </td>    
                                 </tr>
                             </table>
