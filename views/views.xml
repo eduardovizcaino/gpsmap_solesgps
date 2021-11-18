@@ -161,10 +161,49 @@
                 </group>
                 <div id="map_tree" style="width:100%; height:350px;"> MAPA</div>
                 <script>
-                    odoo.gpsmap
-                
+                    odoo.define('gpsmap_geofence', function (require) {
+                        
+                        
+                        var gpsmap_class        = require('gpsmap');
+                        
+                        
+                        var gps = new gpsmap_class();
+                        gps.map("map_tree");
+                        
+                        if($("textarea[name='area']").length>0)
+                        {
+                        	console.log("EDITAR GEOCERCA");
+                        	console.log(google.maps.event);
+                        	
+                        	
+                            google.maps.event.addListener(gps.map, 'click', function(event) 
+                            { 		  
+                                elocation   =event.latLng;
+	                            latitud     = new String(event.latLng.lng());
+	                            longitud    = new String(event.latLng.lat());	                            
+	                            coordinate  ={latitude:latitud,longitude:longitud};
+	                            gps.limpiar_virtual();
+                                marker          =gps.markerMap(elocation);
+	                            gps.locationsMarker.push(marker);						
 
+                            });
+                                
+                        }
+                        else
+                        {
+                        	console.log("VER GEOCERCA");
+                        	
+                        	/*
+                            var flightPlanCoordinates=array_points($("span[name='area']").html());                             
+                            poligono(flightPlanCoordinates,{color:$("span[name='color']").html(),geofence:$("span[name='name']").html()});	
+                            */
+                        }    
+                        
+                        
 
+                           
+                    });                
+                    
 /*                
                     var AbstractAction  = require('web.AbstractAction');
                 
@@ -172,8 +211,6 @@
                     
                     local.vehicles      =Array();
                     local.positions     =undefined;    
-                    
-                    
                     
                     gpsmaps_obj.map("map_tree");
                     setTimeout(function()
