@@ -235,7 +235,7 @@ class vehicle(models.Model):
         for position in positions:
             
             #if(position["status"]=="Offline"):
-            print("status==",position["status"]," device==",position["devicetime"]," server===",position["servertime"]," fix==",position["fixtime"])
+            #print("status==",position["status"]," device==",position["devicetime"]," server===",position["servertime"]," fix==",position["fixtime"])
             position["de"]            =position["tp_deviceid"]                            
             tp_deviceid               =position["tp_deviceid"]
             
@@ -437,7 +437,7 @@ class positions(models.Model):
                             
                             #ail_obj.create(mail)        
                             print('Exceso de velocidad===================')
-                            print(mail)                                                
+                            #print(mail)                                                
                     else:
                         if(len(speed_data)>0):
                             speed                       ={}
@@ -532,7 +532,7 @@ class tc_geofences(models.Model):
     _name = "tc_geofences"
     _description = 'GPS Geofence'
     
-    name                = fields.Char('Name', size=75)
+    name                = fields.Char('Name', size=75, required=True)
     description         = fields.Char('Description', size=150)
     area                = fields.Text('area')
     attributes          = fields.Text('Attributes')
@@ -551,13 +551,15 @@ class tc_geofences(models.Model):
 
     @api.model
     def create(self, vals):
-        rec = super(tc_geofences, self).create(self.save(vals))
+        data=self.save(vals)
+        rec = super(tc_geofences, self).create(data)
         return rec
-    @api.model
-    def write(self, vals):        
-        rec = super(tc_geofences, self).write(self.save(vals))
+    #@api.model
+    def write(self, vals):  
+        data=self.save(vals)      
+        rec = super(tc_geofences, self).write(data)
         return rec
-    @api.model
+    #@api.model
     def save(self, vals):        
         vals["attributes"]={}
         if("color" in vals):                  

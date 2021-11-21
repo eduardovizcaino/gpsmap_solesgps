@@ -18,26 +18,42 @@ odoo.define('gpsmap', function (require) {
     var isimulacion				=1;
     var simulation_stop			=0;
     var simulation_time			=100;
+    var Polygon;
     
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////    
 
     var class_gpsmap = AbstractAction.extend({
-        positions_online: function () {
-
-        },        
         willStart: function () {
             //console.log("class_gpsmap.willStart");
             this.locationsMarker 		=new Array();              
+			this.GeoMarker				=Array();
+			this.GeoMarker1				=Array();
+			this.lineas					=Array();	
+			this.Polyline				=undefined;
+            
             this.map;            
             this.device_active=0;
             self = this;            
+
+            
             var data={
-                model: 'tc_geofences',
                 method: 'search_read',
                 context: session.user_context,
-            }
+            };
+            /*
+            data["model"]="tc_geofences";
+            
+        
+        
+            this._rpc(data).then(function(res)   {  
+                console.log("########### RPC GEOFENCES ###############");
+                self.geofences     =res;      
+                console.log(self.geofences);
+            });
+            */
+                        
             data["model"]="fleet.vehicle";            
             var def= this._rpc(data)
             .then(function(res) 
@@ -47,6 +63,15 @@ odoo.define('gpsmap', function (require) {
             });
                     
             return this._super.apply(this, arguments);
+        },        
+        datas_rpc: function(data, model)
+        {	    	
+            data["model"]=model;
+            return this._rpc(data).then(function(res)   {  
+                console.log("########### DATAS ############### "+ model);
+                console.log(res);
+                return res;                
+            });
         },        
         ////////////////////////////////////////////////
 
@@ -91,6 +116,15 @@ odoo.define('gpsmap', function (require) {
 		        isimulacion=1;
 		        simulation_action="stop";
             },            
+            'click button#action_addpoint': function (e) {                        
+                this.GeoMarker.push(coordinate);
+                this.GeoMarker1.push(elocation);
+                if(this.GeoMarker1.length>1)			
+                {
+                    this.puntos();
+                    this.polilinea(this.GeoMarker1);
+                }
+            },            
         
         },        
         ////////////////////////////////////////////////
@@ -106,6 +140,9 @@ odoo.define('gpsmap', function (require) {
                 });
                 return;
             }          
+			this.GeoMarker				=Array();
+			this.GeoMarker1				=Array();     
+			this.lineas					=Array();	      
             this.locationsMarker 		=new Array();              
             this.map();
             this.status_device();
@@ -343,7 +380,7 @@ odoo.define('gpsmap', function (require) {
         positions_paint:function(argument)
         {       
         
-            console.log("class_gpsmap.positions_paint");
+            //console.log("class_gpsmap.positions_paint");
             var ipositions;
             var iposition;
             if(local.positions.length>0)
@@ -356,7 +393,7 @@ odoo.define('gpsmap', function (require) {
                 {	
                     var positions       =local.positions[ipositions];
                     
-                    console.log(positions);
+                    //console.log(positions);
                     for(iposition in positions)
                     {	
                         var position    	=positions[iposition];                    
@@ -869,51 +906,266 @@ odoo.define('gpsmap', function (require) {
 			this.locationsMarker.length = 0;		
 			this.locationsMarker=Array();
 		},
+		limpiar_real: function ()
+		{	
+
+			this.limpiar_virtual();
+			$("input#area").val("");		
+			
+			this.limpiar_lineas();			
+			
+			this.GeoMarker		=Array();
+			this.GeoMarker1		=Array();
+		},		
+		limpiar_lineas: function ()
+		{	
+			var ilineas;			
+			for(ilineas in this.lineas)
+			{			
+				this.lineas[ilineas].setMap(null);
+			}
+			this.lineas.length	=0;
+			this.lineas			=Array();	
+						
+		},		
+
+		puntos: function()
+		{
+			var index;
+			var punto	=new String();
+			var puntos	=new String();
+			for(index in this.GeoMarker)
+			{		
+				punto	=this.GeoMarker[index];
+				if(puntos=="")  puntos=punto["longitude"]+" "+punto["latitude"];
+				else            puntos+=", "+punto["longitude"]+" "+punto["latitude"];			
+			}
+			puntos="POLYGON(("+puntos+"))";
+			$("textarea[name='area']").val(puntos);
+			return puntos;
+		},	
+		polilinea: function (LocationsLine,color)
+		{	
+			this.limpiar_lineas();
 		
-		
+			var auxiliar=LocationsLine;
+
+			var punto= this.GeoMarker1[this.GeoMarker1.length -1]			
+			auxiliar.push(this.GeoMarker1[0]);
+			auxiliar.push(punto);
+						
+			if(color==undefined)	var color="#FF0000";
+			if(color=="") 			var color="#FF0000";
+
+			var data_linea={
+				path: auxiliar,
+				geodesic: true,
+				strokeColor: color,
+				strokeOpacity: 1.0,
+				strokeWeight: 2,
+				map:this.map
+			};
+
+			this.lineas.push(new google.maps.Polyline(data_linea));
+		}, 					
+	    show_poligono: function (LocationsLine,option) 
+	    {	
+	        console.log("###########SHOW POLYGON###############");           
+		    if(option==undefined)			option={};
+		    if(option.color==undefined)		option.color="#FF0000";		
+		    if(option.color=="") 			option.color="#FF0000";
+		    
+		    if(option.opacity==undefined)	option.opacity=0.8;		
+		    if(option.opacity=="") 			option.opacity=0.8;
+
+		    this.Polygon = new google.maps.Polygon({
+			    paths:          LocationsLine,
+			    map:            self.map,
+			    strokeColor:    option.color,
+			    strokeOpacity:  option.color,
+			    strokeWeight:   2,
+			    fillColor:      option.color,
+			    fillOpacity:    0.35
+		    });	
+
+		    if(option.geofence!=undefined)
+		    {
+			    var total_lat   =0;
+			    var total_lng   =0;
+			    var may_lat     =0;
+			    var may_lng     =0;
+			    var iLocationsLine;
+			    for(iLocationsLine in LocationsLine)
+			    {	
+				    if(LocationsLine[iLocationsLine].lat>may_lat)
+				    { 
+					    may_lat = LocationsLine[iLocationsLine].lat
+					    may_lng = LocationsLine[iLocationsLine].lng
+				    }	
+				    total_lat   =total_lat + LocationsLine[iLocationsLine].lat;
+				    total_lng   =total_lng + LocationsLine[iLocationsLine].lng;																						
+			    }			    
+			    may_lat         =may_lat - 0.00005;
+			    
+			    iLocationsLine	=parseInt(iLocationsLine)+1;
+			    
+			    var t_lat	    =(total_lat / (iLocationsLine));
+			    var t_lng		=total_lng / (iLocationsLine);
+			    
+			    var posicion 	= this.LatLng({latitude:t_lat,longitude:t_lng});						    	
+		        
+			    var mapLabel = new MapLabel({
+				    text: 			option.geofence,
+				    position: 		posicion,
+				    map: 			self.map,
+				    fontSize: 		14,
+				    fontColor:		"#000000",
+				    align: 			"center",
+				    strokeWeight:	5,
+			    });
+		    }			
+		    //Polygon.setMap(map);
+	    }, 	   
+		poligon: function (elocation,color)
+		{	
+		    if (typeof this.Polygon === 'object')
+			{
+			    this.Polygon.setMap(null);
+			}			
+			{
+				//this.map.setZoom(16);
+				this.map.panTo(elocation);
+				
+				var triangleCoords = [
+					new google.maps.LatLng(parseFloat(elocation.lat()), 	parseFloat(elocation.lng())),
+					new google.maps.LatLng(parseFloat(elocation.lat()-0.01), parseFloat(elocation.lng()-0.01)),
+					new google.maps.LatLng(parseFloat(elocation.lat()-0.01), parseFloat(elocation.lng()+0.01))
+				];	
+				
+				this.Polygon = new google.maps.Polygon({
+					paths:          triangleCoords,
+					draggable:      true, // turn off if it gets annoying
+					editable:       true,
+					strokeColor:    '#FF0000',
+					strokeOpacity:  0.8,
+					strokeWeight:   2,
+					fillColor:      '#FF0000',
+					fillOpacity:    0.35,
+					map:	        this.map
+				});
+				self = this;
+			}
+			google.maps.event.addListener(this.Polygon.getPath(), "set_at", this.getPolygonCoords);
+			google.maps.event.addListener(this.Polygon.getPath(), "insert_at", this.getPolygonCoords);			
+		}, 					
+        getPolygonCoords: function () 
+        {
+            console.log("###########PUNTOS COORDENADAS###############");           
+            var puntos  = "";            
+            var len     = self.Polygon.getPath().getLength();
+            
+            for (var i = 0; i < len; i++) 
+            {
+                var punto=self.Polygon.getPath().td[i];
+			    if(puntos=="")  puntos  =punto.lat()+" "+punto.lng();
+			    else            puntos  +=", "+punto.lat()+" "+punto.lng();
+            }
+    		puntos="POLYGON(("+puntos+"))";
+    		$("textarea[name='area']")
+    		    .val(puntos)
+                .change();                    
+        },
+        async geofences_paint()
+        {
+            console.log("########### GEOFENCES PAINT ###############");
+            
+            var data={
+                model:  "tc_geofences",
+                method: "search_read",
+                context: session.user_context,
+            };
+            self.geofences= this._rpc(data).then(function(res)   {  
+                var igeofences;
+                for(igeofences in res)
+                {		                
+                    var geofence                    =res[igeofences];		                               
+                    console.log(geofence);
+                    var geofence_id                 =geofence["area"];
+                    if(geofence["hidden"]==false)
+                    {                        
+                        var flightPlanCoordinates=self.array_points(geofence["area"]);                             
+                        self.show_poligono(flightPlanCoordinates,{color:geofence["color"],geofence:geofence["name"]});	
+                    }    
+                }
+            });            
+        },        
+	    array_points: function (points) 
+	    {
+	        var i_vec_points;
+	        console.log("###########ARRAY POINTS###############");
+	        var array_points    =new Array();
+            points              =points.substring(9, points.length - 2);   // Returns "ell" 	    
+            var vec_points      =points.split(", ");
+            
+            console.log(vec_points);
+            for(i_vec_points in vec_points)
+            {                   
+                var point       =vec_points[i_vec_points];
+                if(point!="")
+                {                
+                    var vec_point   =point.split(" ");	                   
+                    var obj_point   ={lat:parseFloat(vec_point[0]),lng:parseFloat(vec_point[1])};
+                    array_points.push(obj_point);
+                }
+            }        
+            return array_points;
+	    },
+        		
         ////////////////////////////////////////////////
         async CreateMap(iZoom,iMap,coordinates,object) 
         {
-                console.log("class_gpsmap.CreateMap");
-		        if(iMap=="ROADMAP")	            	var tMap = google.maps.MapTypeId.ROADMAP;
-		        if(iMap=="HYBRID")	            	var tMap = google.maps.MapTypeId.HYBRID;								
-		        var directionsService;	
-		        
-		        var position		            	=this.LatLng(coordinates);
-		        var mapOptions 		            	= new Object();
-        
-		        if(iZoom!="")		            	mapOptions.zoom			=iZoom;
-		        if(position!="")	            	mapOptions.center		=position;
-		        if(iMap!="")		            	mapOptions.mapTypeId	=tMap;	            
-		        
-		        mapOptions.ScaleControlOptions		={position: google.maps.ControlPosition.TOP_RIGHT}
-		        mapOptions.RotateControlOptions		={position: google.maps.ControlPosition.TOP_RIGHT}
-		        mapOptions.zoomControlOptions		={position: google.maps.ControlPosition.TOP_LEFT};
-		        mapOptions.streetViewControlOptions	={position: google.maps.ControlPosition.TOP_RIGHT}
+            //console.log("class_gpsmap.CreateMap");
+	        if(iMap=="ROADMAP")	            	var tMap = google.maps.MapTypeId.ROADMAP;
+	        if(iMap=="HYBRID")	            	var tMap = google.maps.MapTypeId.HYBRID;								
+	        var directionsService;	
+	        
+	        var position		            	=this.LatLng(coordinates);
+	        var mapOptions 		            	= new Object();
+    
+	        if(iZoom!="")		            	mapOptions.zoom			=iZoom;
+	        if(position!="")	            	mapOptions.center		=position;
+	        if(iMap!="")		            	mapOptions.mapTypeId	=tMap;	            
+	        
+	        mapOptions.ScaleControlOptions		={position: google.maps.ControlPosition.TOP_RIGHT}
+	        mapOptions.RotateControlOptions		={position: google.maps.ControlPosition.TOP_RIGHT}
+	        mapOptions.zoomControlOptions		={position: google.maps.ControlPosition.TOP_LEFT};
+	        mapOptions.streetViewControlOptions	={position: google.maps.ControlPosition.TOP_RIGHT}
 
-                //var mapC = this.$("#" + object);
-                var mapC = $("#" + object);
-		        this.map    				        = new google.maps.Map(mapC.get(0), mapOptions);        
-		        this.geocoder 		   				= new google.maps.Geocoder();      
-		        var trafficLayer 					= new google.maps.TrafficLayer();						
-      			trafficLayer.setMap(this.map);
-      					    
-		        this.gMEvent                         	= google.maps.event;			        			        			        
+            var mapC = $("#" + object);
+	        this.map    				        = new google.maps.Map(mapC.get(0), mapOptions);        
+	        this.geocoder 		   				= new google.maps.Geocoder();      
+	        var trafficLayer 					= new google.maps.TrafficLayer();						
+  			trafficLayer.setMap(this.map);
+  					    
+	        this.gMEvent                         	= google.maps.event;			        			        			        
         },
         ////////////////////////////////////////////////
         async map(object) {        
             this.locationsMarker 		=new Array();
+			this.GeoMarker				=Array();
+			this.GeoMarker1				=Array();        
+			this.lineas					=Array();	  
+			this.Polygon;      
+            
             if(object==undefined)   object="maponline";
             
-            console.log("class_gpsmap.map :: " + object);
+            //console.log("class_gpsmap.map :: " + object);
 	        var iZoom               =3;
 	        var iMap                ="HYBRID";  //ROADMAP
 	        var coordinates         ={latitude:19.057522756727606,longitude:-104.29785901920393};
 	        
 	        if($("div#"+object).length>0)
                 this.CreateMap(iZoom,iMap,coordinates,object);
-                
-                
         },
 
         ////////////////////////////////////////////////
@@ -928,15 +1180,23 @@ odoo.define('gpsmap', function (require) {
 
     });
     
+
+
+
+
+
+    
+    
    //////////////////////////////////////////////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////////////////////
     local.maponline = class_gpsmap.extend({
         template: 'gpsmaps_maponline',   
         willStart: function () {
-            //console.log("maponline.willStart");
-            
-            return this._super.apply(this, arguments);
+            var retornar=this._super.apply(this, arguments);
+            this.geofences_paint();
+            //console.log("maponline.willStart");            
+            return retornar;
         },
     });   
     core.action_registry.add('gpsmap.maponline',local.maponline);
@@ -946,9 +1206,10 @@ odoo.define('gpsmap', function (require) {
     local.streetonline = class_gpsmap.extend({
         template: 'gpsmaps_streetonline',   
         willStart: function () {
-            //console.log("streetonline.willStart");
-            
-            return this._super.apply(this, arguments);
+            var retornar=this._super.apply(this, arguments);
+            this.geofences_paint();
+            //console.log("maponline.willStart");            
+            return retornar;
         },
     });   
     core.action_registry.add('gpsmap.streetonline', local.streetonline);
