@@ -147,7 +147,7 @@
         <!-- MODULE gpsmap_positions -->
 
         <!-- MODULE gpsmap_speed -->
-
+		<!--
         <record id="rule_gpsmap_speed_template" model="ir.rule">
             <field name="name">User can only see his/her manager speed</field>
             <field name="model_id" ref="model_gpsmap_speed"/>
@@ -158,7 +158,7 @@
             <field name="perm_create" eval="False"/>
             <field name="perm_unlink" eval="False"/>
         </record>
-        
+        -->
         <!-- MODULE gpsmap_geofence -->
 
         <record id="rule_gpsmap_geofence_template" model="ir.rule">

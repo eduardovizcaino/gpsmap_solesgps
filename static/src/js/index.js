@@ -244,15 +244,19 @@ odoo.define('gpsmap', function (require) {
         ////////////////////////////////////////////////
         position: function(argument) {
             //console.log("POSITION ========");
+            /*
             setTimeout(function()
-            {  
+            { 
+            */ 
                 if(argument==undefined)                 self.positions(argument);
                 else if($("#data_tablero").length==0)   
                 {
                     //console.log("tablero");
                     selfs.position(argument);         
                 }    
+            /*    
             },100);
+            */
         },
         ////////////////////////////////////////////////
         positions: function(argument) {
@@ -512,8 +516,10 @@ odoo.define('gpsmap', function (require) {
 				    if(vehicle["sp"]<5 && vehicle["ty"]=="Online")	        icon_status="stop.png";
 				    if(vehicle["sp"]>5 && vehicle["ty"]=="Online")	        icon_status="car_signal1.png";
 				    
+				    console.log("function locationsMap" + vehicle);    
 				    if(icon_status!="")
-				    {				    
+				    {				
+				    	
 					    var img_icon="<img width=\"20\" title=\""+ vehicle["ev"] +"\" src=\"/gpsmap/static/src/img/"+ icon_status +"\" >";					
 				        if(vehicle["ty"]=="Offline")		
 				        {
@@ -1060,7 +1066,7 @@ odoo.define('gpsmap', function (require) {
 		}, 					
         getPolygonCoords: function () 
         {
-            console.log("###########PUNTOS COORDENADAS###############");           
+            //console.log("###########PUNTOS COORDENADAS###############");           
             var puntos  = "";            
             var len     = self.Polygon.getPath().getLength();
             
@@ -1160,7 +1166,7 @@ odoo.define('gpsmap', function (require) {
             if(object==undefined)   object="maponline";
             
             //console.log("class_gpsmap.map :: " + object);
-	        var iZoom               =3;
+	        var iZoom               =2;
 	        var iMap                ="HYBRID";  //ROADMAP
 	        var coordinates         ={latitude:19.057522756727606,longitude:-104.29785901920393};
 	        
