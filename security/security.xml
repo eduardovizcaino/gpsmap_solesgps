@@ -9,6 +9,14 @@
             <field name="category_id" ref="fleet.module_fleet_category"/>
             <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
         </record>
+        
+        <record id="fleet_group_user" model="res.groups">
+            <field name="name">User</field>
+            <field name="category_id" ref="base.module_category_human_resources_fleet"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        
+        
         <record id="fleet.fleet_group_user" model="res.groups">
             <field name="implied_ids" eval="[(4, ref('gpsmap.gpsmap_group_template'))]"/>
         </record>
