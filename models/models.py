@@ -345,3 +345,42 @@ class tc_geofences(models.Model):
         
         return alerts_data
 
+    def pointInPolygon(self, point, polygon, pointOnVertex=True):
+        _pointOnVertex = pointOnVertex
+        point = self.pointStringToCoordinates(self, point)
+
+        vertices = []
+        for vertex in polygon:
+            vertices.append(self.pointStringToCoordinates(self, vertex))
+
+        intersections = 0
+        for i in range(len(vertices)):
+
+            vertex1 = vertices[i - 1]
+            vertex2 = vertices[i]
+            if float(vertex1['y']) == float(vertex2['y']) and float(vertex1['y']) == float(point['y']) and float(
+                    point['x']) > min(float(vertex1['x']), float(vertex2['x'])) and float(point['x']) < max(
+                    float(vertex1['x']), float(vertex2['x'])):
+                return 'BORDE'
+
+            if float(point['y']) > min(float(vertex1['y']), float(vertex2['y'])) and float(point['y']) <= max(
+                    float(vertex1['y']), float(vertex2['y'])) and float(point['x']) <= max(float(vertex1['x']), float(
+                    vertex2['x'])) and float(vertex1['y']) != float(vertex2['y']):
+                xinters = (float(point['y']) - float(vertex1['y'])) * (float(vertex2['x']) - float(vertex1['x'])) / (
+                            float(vertex2['y']) - float(vertex1['y'])) + float(vertex1['x'])
+                if xinters == float(point['x']):
+                    return 'BORDE'
+                if float(vertex1['x']) == float(vertex2['x']) or float(point['x']) <= float(xinters):
+                    intersections = intersections + 1
+
+        if intersections % 2 != 0:
+            return 'IN'
+        else:
+            return 'OUT'
+
+    def pointStringToCoordinates(self, point):
+        coordinates = string.split(point, ' ')
+        coordinate = {}
+        coordinate['x'] = coordinates[0]
+        coordinate['y'] = coordinates[1]
+        return coordinate

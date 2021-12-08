@@ -525,7 +525,9 @@ odoo.define('gpsmap', function (require) {
 				        {
 				            img_icon="<a href=\"tel:" + vehicle["te"] +"\">"+img_icon +"</a>";				        
 				        }											
-					    $("table.select_devices[device_id="+ vehicle["de"] +"] tr td.event_device").html(img_icon);
+					    //$("table.select_devices[device_id="+ vehicle["de"] +"] tr td.event_device").html(img_icon);
+					    //$("div.vehicle[device_id="+ vehicle["de"] +"] table tr td.event_device").html(img_icon);
+					    $("div.vehicle[device_id="+ vehicle["de"] +"] table tr td.event_device").html(img_icon);
 				    }	
 							    
 				    var icon        		=undefined;
@@ -1067,15 +1069,19 @@ odoo.define('gpsmap', function (require) {
         getPolygonCoords: function () 
         {
             //console.log("###########PUNTOS COORDENADAS###############");           
-            var puntos  = "";            
+            var puntos  = "";
+            var punto;                        
             var len     = self.Polygon.getPath().getLength();
             
             for (var i = 0; i < len; i++) 
             {
-                var punto=self.Polygon.getPath().td[i];
+                var punto   =self.Polygon.getPath().td[i];
 			    if(puntos=="")  puntos  =punto.lat()+" "+punto.lng();
 			    else            puntos  +=", "+punto.lat()+" "+punto.lng();
             }
+            punto=self.Polygon.getPath().td[0];
+            puntos+=", "+punto.lat()+" "+punto.lng();
+
     		puntos="POLYGON(("+puntos+"))";
     		$("textarea[name='area']")
     		    .val(puntos)
