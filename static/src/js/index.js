@@ -1105,11 +1105,16 @@ odoo.define('gpsmap', function (require) {
                     var geofence                    =res[igeofences];		                               
                     console.log(geofence);
                     var geofence_id                 =geofence["area"];
-                    if(geofence["hidden"]==false)
+                    console.log("geofence[hidden]" + geofence["hidden"]);    
+                    
+                    if(geofence["hidden"]==false && geofence["area"]!=false)
                     {                        
+                        console.log("geofence[area]" + geofence["area"]);
+                            
                         var flightPlanCoordinates=self.array_points(geofence["area"]);                             
                         self.show_poligono(flightPlanCoordinates,{color:geofence["color"],geofence:geofence["name"]});	
-                    }    
+                    } 
+                       
                 }
             });            
         },        
