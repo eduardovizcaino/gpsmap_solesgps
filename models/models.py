@@ -223,7 +223,7 @@ class vehicle(models.Model):
             if(position["status"]=="Offline"):
                 print("Fuera de linea")
             else:
-                if(position["fv_speed"] < position["speed_compu"]):
+                if(float(position["fv_speed"]) < float(position["speed_compu"])):
                     print("Exceso de velocidad")
 
                 
