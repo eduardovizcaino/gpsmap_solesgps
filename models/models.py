@@ -165,8 +165,8 @@ class vehicle(models.Model):
             geofences       =alert["geofence_ids"]
             for device in devices:
                 dev_id          =device["id"]
-                if(device["id"]==position["fv_id"]):
-                    print("VEHICULO VERIFICADO", device["name"])                   
+                #if(device["id"]==position["fv_id"]):
+                #    print("VEHICULO VERIFICADO", device["name"])                   
 
             polygons = []
             for geofence in geofences:
@@ -174,11 +174,11 @@ class vehicle(models.Model):
                 print("GEOFENCE", geofence["name"])
                 str_area    =area[9:len(area)-2]
                 print("AREA2 ", str_area)
-                coordinates = string.split(str_area, ',')
+                #coordinates = string.split(str_area, ',')
                 polygon = []
-                for coordinate in coordinates:
-                    polygon.append(coordinate)
-                polygons.append([polygon])
+                #for coordinate in coordinates:
+                #    polygon.append(coordinate)
+                #polygons.append([polygon])
         
                 
         #geofence_ids = fields.Many2many('tc_geofences', 'alert_geofence', 'geofence_id', 'alert_id', string='Geofence')
