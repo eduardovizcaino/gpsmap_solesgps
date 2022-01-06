@@ -1062,12 +1062,17 @@ odoo.define('gpsmap', function (require) {
 				});
 				self = this;
 			}
-			google.maps.event.addListener(this.Polygon.getPath(), "set_at", this.getPolygonCoords);
-			google.maps.event.addListener(this.Polygon.getPath(), "insert_at", this.getPolygonCoords);			
+			console.log("poligon=" + typeof this.Polygon);
+			if (typeof this.Polygon === 'object')
+			{
+				google.maps.event.addListener(this.Polygon.getPath(), "set_at", this.getPolygonCoords);
+				google.maps.event.addListener(this.Polygon.getPath(), "insert_at", this.getPolygonCoords);			
+			}
 		}, 					
-        getPolygonCoords: function () 
+        getPolygonCoords: function() 
         {
-		    if (typeof this.Polygon === 'object')
+        	console.log("getPolygonCoords=" + typeof this.Polygon);
+		    //if (typeof this.Polygon === 'object')
 			{
                 var puntos  = "";
                 var punto;                        
@@ -1082,11 +1087,18 @@ odoo.define('gpsmap', function (require) {
                 punto=self.Polygon.getPath().td[0];
                 puntos+=", "+punto.lat()+" "+punto.lng();
 
+				console.log(puntos);
         		puntos="POLYGON(("+puntos+"))";
         		$("textarea[name='area']")
         		    .val(puntos)
                     .change();                    
 			}
+			/*
+			else
+			{
+				console.log("ERROR getPolygonCoords");
+			}
+			*/
             //console.log("###########PUNTOS COORDENADAS###############");           
         },
         async geofences_paint()
