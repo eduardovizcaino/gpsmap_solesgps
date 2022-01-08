@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!--    
+      <record id="fleet_plana" model="fleet.vehicle"> 
+          <field name="image_vehicle">02</field>
+          
+          <field name="licence_plate"></field>
+          <field name="gps1_id" ref="gps_freiplana"/>
+          <field name="economic_number"></field>          
+      </record>
+    -->
+
+
+
+
+    <record id="brand_international" model="fleet.vehicle.model.brand">
+        <field name="name">International</field>
+        <field name="image_medium" type="base64" file="gpsmap_solesgps/static/img/international.png"/>
+    </record>
+    <record id="brand_freightliner" model="fleet.vehicle.model.brand">
+        <field name="name">Freightliner</field>
+        <field name="image_medium" type="base64" file="gpsmap_solesgps/static/img/international.png"/>
+    </record>
+    <record id="brand_kenworth" model="fleet.vehicle.model.brand">
+        <field name="name">Kenworth</field>
+        <field name="image_medium" type="base64" file="gpsmap_solesgps/static/img/kenworth.png"/>
+    </record>        
+
+   
+   <record id="vehicle_model_versa_nissan" model="fleet.vehicle.model">
+        <field name="name">Versa</field>
+        <field name="brand_id" ref="fleet.brand_nissan"/>
+    </record>   
+   
+   <record id="vehicle_model_tracto_international" model="fleet.vehicle.model">
+        <field name="name">Tracto</field>
+        <field name="brand_id" ref="brand_international"/>
+    </record>
+   <record id="vehicle_model_tracto_freightliner" model="fleet.vehicle.model">
+        <field name="name">Tracto</field>
+        <field name="brand_id" ref="brand_freightliner"/>
+    </record>   
+   <record id="vehicle_model_tracto_kenworth" model="fleet.vehicle.model">
+        <field name="name">Tracto</field>
+        <field name="brand_id" ref="brand_kenworth"/>
+    </record>       
+    
+    
+    
+</odoo>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="company_lamichoacana" model="res.company"> 
+        <field name="name">La michoacana</field>
+        <field name="vat"></field>
+        <field name="company_registry">Edgar Roel Valencia Diaz</field>
+        <field name="phone">+5213315178658</field>
+        <field name="email">colimalamichoacana15@gmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_lamixteca" model="res.company"> 
+        <field name="name">La Mixteca</field>
+        <field name="vat"></field>
+        <field name="company_registry">Oscar Ricardo Vazquez Avila</field>
+        <field name="phone">314 120 9984</field>
+        <field name="email">lamixtecafacturacion@gmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_proguz" model="res.company"> 
+        <field name="name">Proveedora Organica de Guzman</field>
+        <field name="phone"></field>
+        <field name="email">colimalamichoacana15@gmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_taxirogelio" model="res.company"> 
+        <field name="name">Taxi Rogelio</field>
+        <field name="phone">+52 1 312 318 0113</field>
+        <field name="email">roboba@gmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_transportesbucio" model="res.company"> 
+        <field name="name">Transportes Bucio</field>
+        <field name="vat">BUFL601221HN4</field>
+        <field name="company_registry"></field>
+        <field name="street"></field>
+        <field name="phone"></field>
+        <field name="email">lbufer@hotmail.com</field>
+        <field name="zip">28984</field>
+    </record>
+        
+    <record id="company_transportesdiaz" model="res.company"> 
+        <field name="name">Transportes Diaz</field>
+        <field name="phone"></field>
+        <field name="email">danieldiaz_facturacion@hotmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_transportesflores" model="res.company"> 
+        <field name="name">Transportes Flores</field>
+        <field name="phone"></field>
+        <field name="email"></field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_transportesgarcia" model="res.company"> 
+        <field name="name">Transportes Garcia</field>
+        <field name="phone">353 131 4415</field>
+        <field name="email"></field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_transportessamudio" model="res.company"> 
+        <field name="name">Transportes Samudio</field>
+        <field name="vat">SATJ670627HIA</field>
+        <field name="company_registry">Juan Manuel Samudio Tellez</field>
+        <field name="street">Mirlo #234</field>
+        <field name="phone">3414137444</field>
+        <field name="email">transportes_samudio@hotmail.com</field>
+        <field name="zip">49093</field>
+    </record>
+    <record id="company_transporteessandoval" model="res.company"> 
+        <field name="name">Transportes Sandoval</field>
+        <field name="phone">+52 1 314 146 3974</field>
+        <field name="email">jsandovalmagallon@gmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_uhcam" model="res.company"> 
+        <field name="name">UHCAM</field>
+        <field name="phone">+52 1 314 133 8086</field>
+        <field name="email">jeremy_1186@hotmail.com</field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_uhcamirma" model="res.company"> 
+        <field name="name">UHCAM Irma</field>
+        <field name="phone"></field>
+        <field name="email"></field>
+        <field name="zip"></field>
+    </record>
+    <record id="company_uhcamlucero" model="res.company"> 
+        <field name="name">UHCAM Lucero</field>
+        <field name="vat">CILL900530MC5</field>
+        <field name="company_registry">Lucero Cisneros Lemus</field>
+        <field name="street">Kilometro 10, S/C</field>
+        <field name="street2">Solera de agua</field>
+
+        <field name="phone">52 1 753 103 1887</field>
+        <field name="email">lucerocl_0412@live.com</field>
+        <field name="zip">60982</field>
+    </record>
+
+    
+</odoo>

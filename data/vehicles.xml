@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+      <record id="vehicle_tsan01" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">17-AH-8Z</field>
+          <field name="company_id" ref="company_transporteessandoval"/>
+          <field name="gps1_id" ref="gps_tsandoval"/>
+          <field name="image_vehicle">01</field>
+          <field name="economic_number">SAND 01</field>
+      </record>
+      
+      <record id="vehicle_uhcam02" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">17AL6J</field>
+          <field name="company_id" ref="company_uhcam"/>
+          <field name="gps1_id" ref="gps_uh02"/>
+          <field name="image_vehicle">01</field>
+          <field name="economic_number">UHCAM 02</field>
+      </record>    
+      
+      <record id="vehicle_trogelio" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_versa_nissan"/>
+          <field name="license_plate">298-DVB</field>
+          <field name="company_id" ref="company_taxirogelio"/>
+          <field name="gps1_id" ref="gps_trogelio"/>
+          <field name="image_vehicle">01</field>
+          <field name="economic_number">TAX 01</field>
+      </record>    
+</odoo>

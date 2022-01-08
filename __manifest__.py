@@ -17,10 +17,14 @@ entries, costs and many other features necessary to the management
 of your fleet of vehicle(s)
 """,
     'depends': [
-        'gpsmap',        
+        'gpsmap','purchase','sale_management'        
     ],
     'data': [
-        'data/data.xml',
+        'data/brand.xml',
+        'data/company.xml',
+        'data/tc_devices.xml',
+        'data/vehicles.xml',
+
     ],
     'installable': True,
     'application': True,
