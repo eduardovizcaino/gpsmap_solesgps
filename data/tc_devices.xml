@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-
     <record id="gps_uh12" model="tc_devices"> 
         <field name="name">UHCAM 12</field>
         <field name="icc">8934075200004312227</field>
@@ -17,16 +15,8 @@
           <field name="licence_plate"></field>
           <field name="gps1_id" ref="gps_freiplana"/>
           <field name="economic_number"></field>
-          
-          
-          
       </record>
-    
-    
     -->
-    
-    
-    
     
     <record id="gps_freiplana" model="tc_devices"> 
         <field name="name">UHCAM Frei plana</field>
@@ -67,6 +57,7 @@
         <field name="icc">8934071200001588724</field>
         <field name="uniqueid">352672103174736</field>
         <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcamlucero'))]"/>
     </record>
     <record id="gps_uh02" model="tc_devices"> 
         <field name="name">UHCAM 02</field>
@@ -108,4 +99,30 @@
         <field name="phone">3141437569</field>
         <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_taxirogelio'))]"/>
     </record>
+
+    <record id="gps_tgarcia" model="tc_devices"> 
+        <field name="name">Garcia 01</field>
+        <field name="icc"></field>
+        <field name="uniqueid">864895034395457</field>
+        <field name="phone">3121984170</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesgarcia'))]"/>
+    </record>
+    
+    
+    <record id="gps_norma" model="tc_devices"> 
+        <field name="name">Movil Norma</field>
+        <field name="icc">8934071500003828550</field>
+        <field name="uniqueid">864926030226170</field>
+        <field name="phone">3321912535</field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>  
+    
+    <record id="gps_versa" model="tc_devices"> 
+        <field name="name">Versa yo</field>
+        <field name="icc">8934071200001482985</field>
+        <field name="uniqueid">868683027591142</field>
+        <field name="phone">3141005662</field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>    
+    
 </odoo>

@@ -66,7 +66,7 @@
         <field name="zip">49093</field>
     </record>
     <record id="company_transporteessandoval" model="res.company"> 
-        <field name="name">Transportes Sandoval</field>
+        <field name="name">Transportes sandoval</field>
         <field name="phone">+52 1 314 146 3974</field>
         <field name="email">jsandovalmagallon@gmail.com</field>
         <field name="zip"></field>
@@ -95,5 +95,22 @@
         <field name="zip">60982</field>
     </record>
 
+
+    <record id="base.main_company" model="res.company"> 
+        <field name="name">SolesGPS</field>
+        <field name="vat">VIGE850830GKA</field>
+        <field name="company_registry">Eduardo Vizcaino Granados</field>
+        <field name="street">Priv Bugambilias #144</field>
+        <field name="street2">Jardinez de Bugambilias</field>
+        <field name="city">Villa de Alvarez</field>
+        <field name="phone">52 (312) 454 - 9998</field>
+        <field name="email">contacto@solesgps.com</field>
+        <field name="zip">28978</field>
+        
+        <field name="website">http://solesgps.com</field>
+    </record>
+    
+    
+    
     
 </odoo>
