@@ -11,8 +11,8 @@
       </record>
 
       <record id="vehicle_uhcam01" model="fleet.vehicle"> 
-          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
-          <field name="license_plate">17AL6J</field>
+          <field name="model_id" ref="vehicle_model_tracto_freightliner"/>
+          <field name="license_plate">76AL3W</field>
           <field name="company_id" ref="company_uhcam"/>
           <field name="gps1_id" ref="gps_uh01"/>
           <field name="image_vehicle">01</field>
@@ -27,8 +27,8 @@
           <field name="economic_number">UHCAM 02</field>
       </record>    
       <record id="vehicle_uhcam12" model="fleet.vehicle"> 
-          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
-          <field name="license_plate">17AL6J</field>
+          <field name="model_id" ref="vehicle_model_tracto_international"/>
+          <field name="license_plate">724EW3</field>
           <field name="company_id" ref="company_uhcam"/>
           <field name="gps1_id" ref="gps_uh12"/>
           <field name="image_vehicle">01</field>
@@ -36,7 +36,7 @@
       </record>          
       <record id="vehicle_uhcam62" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_tracto_international"/>
-          <field name="license_plate"></field>
+          <field name="license_plate">710EH7</field>
           <field name="company_id" ref="company_uhcam"/>
           <field name="gps1_id" ref="gps_uh62"/>
           <field name="image_vehicle">01</field>
@@ -52,7 +52,7 @@
       </record>    
       <record id="vehicle_uhcam64" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_tracto_international"/>
-          <field name="license_plate"></field>
+          <field name="license_plate">742EW3</field>
           <field name="company_id" ref="company_uhcamirma"/>
           <field name="gps1_id" ref="gps_uh64"/>
           <field name="image_vehicle">01</field>
@@ -60,7 +60,7 @@
       </record>    
       <record id="vehicle_uhcam65" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_tracto_international"/>
-          <field name="license_plate"></field>
+          <field name="license_plate">743EW3</field>
           <field name="company_id" ref="company_uhcamirma"/>
           <field name="gps1_id" ref="gps_uh65"/>
           <field name="image_vehicle">01</field>
@@ -68,7 +68,7 @@
       </record>    
       <record id="vehicle_uhcam412" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_tracto_international"/>
-          <field name="license_plate"></field>
+          <field name="license_plate">99AJ5D</field>
           <field name="company_id" ref="company_uhcamirma"/>
           <field name="gps1_id" ref="gps_uh412"/>
           <field name="image_vehicle">01</field>
@@ -98,16 +98,16 @@
           <field name="license_plate">822-DU-3</field>
           <field name="company_id" ref="company_transportesgarcia"/>
           <field name="gps1_id" ref="gps_tgarcia"/>
-          <field name="image_vehicle">01</field>
+          <field name="image_vehicle">02</field>
           <field name="economic_number">GAR 01</field>
       </record>               
       <record id="vehicle_versayo" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_versa_nissan"/>
-          <field name="license_plate">822-DU-3</field>
+          <field name="license_plate">FTB5754</field>
           <field name="company_id" ref="base.main_company"/>
           <field name="gps1_id" ref="gps_versa"/>
           <field name="image_vehicle">01</field>
-          <field name="economic_number">GAR 01</field>
+          <field name="economic_number">VERSA 01</field>
       </record>      
-       
+     
 </odoo>
