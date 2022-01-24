@@ -17,7 +17,12 @@ entries, costs and many other features necessary to the management
 of your fleet of vehicle(s)
 """,
     'depends': [
-        'gpsmap','purchase','sale_management'        
+        'crm',
+        'gpsmap',
+        'purchase',
+        'sale_management',
+        'website',
+        'website_crm'        
     ],
     'data': [
         'data/brand.xml',

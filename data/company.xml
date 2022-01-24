@@ -6,7 +6,7 @@
         <field name="company_registry">Edgar Roel Valencia Diaz</field>
         <field name="phone">+5213315178658</field>
         <field name="email">colimalamichoacana15@gmail.com</field>
-        <field name="zip"></field>
+        <field name="zip">44730</field>
     </record>
     <record id="company_lamixteca" model="res.company"> 
         <field name="name">La Mixteca</field>
@@ -19,7 +19,7 @@
     <record id="company_proguz" model="res.company"> 
         <field name="name">Proveedora Organica de Guzman</field>
         <field name="phone"></field>
-        <field name="email">colimalamichoacana15@gmail.com</field>
+        <field name="email"></field>
         <field name="zip"></field>
     </record>
     <record id="company_taxirogelio" model="res.company"> 

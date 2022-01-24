@@ -24,6 +24,13 @@
         <field name="uniqueid">352887079005835</field>
         <field name="phone">3122703953</field>
     </record>
+    <record id="gps_freiplana" model="tc_devices"> 
+        <field name="name">SolesGPS Jorge Ramos</field>
+        <field name="icc"></field>
+        <field name="uniqueid">358899059234313</field>
+        <field name="phone">8112360882</field>
+    </record>    
+    
     <record id="gps_uh65" model="tc_devices" forcecreate="True"> 
         <field name="name">UHCAM 65 - 743EW3</field>
         <field name="icc">8934071200001483009</field>
@@ -32,7 +39,7 @@
         <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
     </record>
     <record id="gps_uh64" model="tc_devices"> 
-        <field name="name">UHCAM 64 - 742EW3</field>
+        <field name="name">UHCAM 6{"text":"public.ir_ui_view","objUrl":"/browser/table/obj/1/2/198476/2200/42183","nodeType":"table","cur":{"from":17,"to":17}}4 - 742EW3</field>
         <field name="icc">8934071200001588716</field>
         <field name="uniqueid">864895032998484</field>
         <field name="phone"></field>
