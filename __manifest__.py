@@ -29,7 +29,8 @@ of your fleet of vehicle(s)
         'data/company.xml',
         'data/tc_devices.xml',
         'data/vehicles.xml',
-
+        'data/vehicles.xml',
+        'views/home.xml',
     ],
     'installable': True,
     'application': True,
