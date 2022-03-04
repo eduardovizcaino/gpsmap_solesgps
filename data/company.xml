@@ -2,7 +2,7 @@
 <odoo>
     <record id="company_lamichoacana" model="res.company"> 
         <field name="name">La michoacana</field>
-        <field name="vat"></field>
+        <field name="vat">VADE780703EC1</field>
         <field name="company_registry">Edgar Roel Valencia Diaz</field>
         <field name="phone">+5213315178658</field>
         <field name="email">colimalamichoacana15@gmail.com</field>
@@ -10,16 +10,16 @@
     </record>
     <record id="company_lamixteca" model="res.company"> 
         <field name="name">La Mixteca</field>
-        <field name="vat"></field>
+        <field name="vat">VAAO831213UI9</field>
         <field name="company_registry">Oscar Ricardo Vazquez Avila</field>
         <field name="phone">314 120 9984</field>
         <field name="email">lamixtecafacturacion@gmail.com</field>
-        <field name="zip"></field>
+        <field name="zip">28870</field>
     </record>
     <record id="company_proguz" model="res.company"> 
         <field name="name">Proveedora Organica de Guzman</field>
-        <field name="phone"></field>
-        <field name="email"></field>
+        <field name="phone">+52 1 341 110 0179</field>
+        <field name="email">Proveorguzman@outlook.com</field>
         <field name="zip"></field>
     </record>
     <record id="company_taxirogelio" model="res.company"> 
@@ -33,14 +33,14 @@
         <field name="vat">BUFL601221HN4</field>
         <field name="company_registry"></field>
         <field name="street"></field>
-        <field name="phone"></field>
+        <field name="phone">312 100 3216</field>
         <field name="email">lbufer@hotmail.com</field>
         <field name="zip">28984</field>
     </record>
         
     <record id="company_transportesdiaz" model="res.company"> 
         <field name="name">Transportes Diaz</field>
-        <field name="phone"></field>
+        <field name="phone">+52 1 33 2681 1037</field>
         <field name="email">danieldiaz_facturacion@hotmail.com</field>
         <field name="zip"></field>
     </record>
@@ -67,9 +67,11 @@
     </record>
     <record id="company_transporteessandoval" model="res.company"> 
         <field name="name">Transportes sandoval</field>
+        <field name="company_registry">Juan Manuel Sandoval Magallon</field>
+        <field name="vat">SAMJ700707EPA</field>
         <field name="phone">+52 1 314 146 3974</field>
         <field name="email">jsandovalmagallon@gmail.com</field>
-        <field name="zip"></field>
+        <field name="zip">59040</field>
     </record>
     <record id="company_uhcam" model="res.company"> 
         <field name="name">UHCAM</field>

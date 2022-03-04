@@ -93,14 +93,67 @@
           <field name="image_vehicle">01</field>
           <field name="economic_number">SAM 01</field>
       </record>         
-      <record id="vehicle_tgarcia01" model="fleet.vehicle"> 
+      <record id="vehicle_tgar01" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_tracto_freightliner"/>
           <field name="license_plate">822-DU-3</field>
           <field name="company_id" ref="company_transportesgarcia"/>
-          <field name="gps1_id" ref="gps_tgarcia"/>
+          <field name="gps1_id" ref="gps_tgar01"/>
           <field name="image_vehicle">02</field>
           <field name="economic_number">GAR 01</field>
+      </record>                     
+      <record id="vehicle_tgar02" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">JK99041</field>
+          <field name="company_id" ref="company_transportesgarcia"/>
+          <field name="gps1_id" ref="gps_tgar02"/>
+          <field name="image_vehicle">02</field>
+          <field name="economic_number">GAR 02</field>
       </record>               
+
+      <record id="vehicle_buc02" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">943EK8</field>
+          <field name="company_id" ref="company_transportesbucio"/>
+          <field name="gps1_id" ref="gps_bucio01"/>
+          <field name="image_vehicle">02</field>
+          <field name="economic_number">BUC 02</field>
+      </record>   
+      <record id="vehicle_mich01" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">F8RR2</field>
+          <field name="company_id" ref="company_lamichoacana"/>
+          <field name="gps1_id" ref="gps_mic01"/>
+          <field name="image_vehicle">02</field>
+          <field name="economic_number">MIC 01</field>
+      </record>         
+
+      <record id="vehicle_mich02" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">5530</field>
+          <field name="company_id" ref="company_lamichoacana"/>
+          <field name="gps1_id" ref="gps_mic02"/>
+          <field name="image_vehicle">02</field>
+          <field name="economic_number">MIC 02</field>
+      </record>         
+
+      <record id="vehicle_mix01" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_tracto_kenworth"/>
+          <field name="license_plate">FE-2694-A</field>
+          <field name="company_id" ref="company_lamixteca"/>
+          <field name="gps1_id" ref="gps_mix01"/>
+          <field name="image_vehicle">02</field>
+          <field name="economic_number">MIX 01</field>
+      </record>         
+
+      <record id="gps_jorge" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_versa_nissan"/>
+          <field name="license_plate"> </field>
+          <field name="company_id" ref="base.main_company"/>
+          <field name="gps1_id" ref="gps_jorge"/>
+          <field name="image_vehicle">02</field>
+          <field name="economic_number">Jorge Ramos</field>
+      </record>                     
+
       <record id="vehicle_versayo" model="fleet.vehicle"> 
           <field name="model_id" ref="vehicle_model_versa_nissan"/>
           <field name="license_plate">FTB5754</field>
@@ -109,5 +162,30 @@
           <field name="image_vehicle">01</field>
           <field name="economic_number">VERSA 01</field>
       </record>      
-     
+      <record id="vehicle_norma" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_versa_nissan"/>
+          <field name="license_plate">NORMA</field>
+          <field name="company_id" ref="base.main_company"/>
+          <field name="gps1_id" ref="gps_norma"/>
+          <field name="image_vehicle">01</field>
+          <field name="economic_number">NORMA 01</field>
+      </record>      
+
+
+      <record id="vehicle_gv300" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_versa_nissan"/>
+          <field name="license_plate">GV300 local</field>
+          <field name="company_id" ref="base.main_company"/>
+          <field name="gps1_id" ref="gps_gv300"/>
+          <field name="image_vehicle">01</field>
+          <field name="economic_number">GV300 local</field>
+      </record>      
+      <record id="vehicle_fiesta" model="fleet.vehicle"> 
+          <field name="model_id" ref="vehicle_model_versa_nissan"/>
+          <field name="license_plate">Fiesta</field>
+          <field name="company_id" ref="base.main_company"/>
+          <field name="gps1_id" ref="gps_fiesta"/>
+          <field name="image_vehicle">01</field>
+          <field name="economic_number">Fiesta</field>
+      </record>           
 </odoo>

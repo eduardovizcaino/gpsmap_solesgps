@@ -1,11 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="gps_versa" model="tc_devices"> 
+        <field name="name">Versa yo</field>
+        <field name="icc">8934071200001482985</field>
+        <field name="uniqueid">868683027591142</field>
+        <field name="phone">3141005662</field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>    
+    <record id="gps_tdiaz01" model="tc_devices"> 
+        <field name="name">T-DIAZ 22AM1S</field>
+        <field name="icc">8934071200001482977</field>
+        <field name="uniqueid">864895032995696</field>
+        <field name="phone">3122703953</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesdiaz'))]"/>
+    </record>  
+    <record id="gps_uh65" model="tc_devices" forcecreate="True"> 
+        <field name="name">UHCAM 65 - 743EW3</field>
+        <field name="icc">8934071200001483009</field>
+        <field name="uniqueid">864180035485049</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
+    </record>
+    <record id="gps_uh01" model="tc_devices"> 
+        <field name="name">UHCAM 01</field>
+        <field name="icc">8934071200001499666</field>
+        <field name="uniqueid">352672103173167</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
+    </record> 
+    <record id="gps_uh62" model="tc_devices"> 
+        <field name="name">UHCAM 62 - 710EH7</field>
+        <field name="icc">8934071200001499633</field>
+        <field name="uniqueid">864895032998823</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
+    </record>
+    <record id="gps_bucio02" model="tc_devices"> 
+        <field name="name">T-BUC01 943EK8</field>
+        <field name="icc">8934071200001499674</field>
+        <field name="uniqueid">864895034394401</field>
+        <field name="phone">3141005662</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesbucio'))]"/>
+    </record>
+    <record id="gps_tflo02" model="tc_devices"> 
+        <field name="name">T-FLO JK12129</field>
+        <field name="icc">8934071200001499658</field>
+        <field name="uniqueid">864895034394435</field>
+        <field name="phone">3122703953</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesflores'))]"/>
+    </record>  
+    <record id="gps_proguz01" model="tc_devices"> 
+        <field name="name">PROGUZ JV87579</field>
+        <field name="icc">8934071200001499682</field>
+        <field name="uniqueid">864180035422802</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_proguz'))]"/>
+    </record>    
+    <record id="gps_tsamudio1" model="tc_devices"> 
+        <field name="name">T Samudio - JW88376</field>
+        <field name="icc">8934071200001499724</field>
+        <field name="uniqueid">864895032997759</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportessamudio'))]"/>
+    </record> 
+    <record id="gps_tsamudio1-" model="tc_devices"> 
+        <field name="name">T Samudio - JW88376-1</field>
+        <field name="icc">8934071200001499716</field>
+        <field name="uniqueid">864895032999599</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportessamudio'))]"/>
+    </record> 
+    <record id="gps_bucio01" model="tc_devices"> 
+        <field name="name">T-BUC02 942EK8</field>
+        <field name="icc">8934071200001500406</field>
+        <field name="uniqueid">864895034394492</field>
+        <field name="phone">3141005662</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesbucio'))]"/>
+    </record> 
+    <record id="gps_proguz02" model="tc_devices"> 
+        <field name="name">PROGUZ JV44009</field>
+        <field name="icc">8934071200001588682</field>
+        <field name="uniqueid">864180036785603</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_proguz'))]"/>
+    </record>
+    <record id="gps_uh02" model="tc_devices"> 
+        <field name="name">UHCAM 02</field>
+        <field name="icc">8934071200001588690</field>
+        <field name="uniqueid">864895034507333</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
+    </record>    
+    <record id="gps_uh64" model="tc_devices"> 
+        <field name="name">UHCAM 64 - 742EW3</field>
+        <field name="icc">8934071200001588716</field>
+        <field name="uniqueid">864895032998484</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
+    </record>    
+    <record id="gps_uh63" model="tc_devices"> 
+        <field name="name">UHCAM 63</field>
+        <field name="icc">8934071200001588708</field>
+        <field name="uniqueid">864895034506178</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcamirma'))]"/>
+    </record>    
+    <record id="gps_mic01" model="tc_devices"> 
+        <field name="name">MIC 01 </field>
+        <field name="icc">8934071200001588724</field>
+        <field name="uniqueid">352672103888947</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_lamichoacana'))]"/>
+    </record>    
+   <record id="gps_uh412" model="tc_devices"> 
+        <field name="name">UHCAM 412</field>
+        <field name="icc">8934071200001588732</field>
+        <field name="uniqueid">352672103174736</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcamlucero'))]"/>
+    </record>    
+    <record id="gps_tflo01" model="tc_devices"> 
+        <field name="name">T-FLO JK99041</field>
+        <field name="icc">8934071200001588757</field>
+        <field name="uniqueid">864895034393437</field>
+        <field name="phone">3122703953</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesflores'))]"/>
+    </record>    
+    <record id="gps_mic02" model="tc_devices"> 
+        <field name="name">MIC 02 </field>
+        <field name="icc">8934075200004313712</field>
+        <field name="uniqueid">352672103889515</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_lamichoacana'))]"/>
+    </record>    
+    <record id="gps_trogelio" model="tc_devices"> 
+        <field name="name">Taxi Rogelio</field>
+        <field name="icc">8934075200004238406</field>
+        <field name="uniqueid">864895034504801</field>
+        <field name="phone">3141437569</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_taxirogelio'))]"/>
+    </record>    
     <record id="gps_uh12" model="tc_devices"> 
         <field name="name">UHCAM 12</field>
         <field name="icc">8934075200004312227</field>
         <field name="uniqueid">864180037466427</field>
         <field name="phone"></field>
     </record>
+    <record id="gps_norma" model="tc_devices"> 
+        <field name="name">Movil Norma</field>
+        <field name="icc">8934071500003828550</field>
+        <field name="uniqueid">864926030226170</field>
+        <field name="phone">3321912535</field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record> 
+    <record id="gps_fiesta" model="tc_devices"> 
+        <field name="name">Fiesta 67</field>
+        <field name="icc">8934071500003828139</field>
+        <field name="uniqueid">352672102191467</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
     
     <!--
     
@@ -17,62 +200,21 @@
           <field name="economic_number"></field>
       </record>
     -->
-    
+   
     <record id="gps_freiplana" model="tc_devices"> 
         <field name="name">UHCAM Frei plana</field>
         <field name="icc"></field>
         <field name="uniqueid">352887079005835</field>
         <field name="phone">3122703953</field>
     </record>
-    <record id="gps_freiplana" model="tc_devices"> 
+    <record id="gps_jorge" model="tc_devices"> 
         <field name="name">SolesGPS Jorge Ramos</field>
         <field name="icc"></field>
         <field name="uniqueid">358899059234313</field>
         <field name="phone">8112360882</field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
     </record>    
-    
-    <record id="gps_uh65" model="tc_devices" forcecreate="True"> 
-        <field name="name">UHCAM 65 - 743EW3</field>
-        <field name="icc">8934071200001483009</field>
-        <field name="uniqueid">864180035485049</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
-    </record>
-    <record id="gps_uh64" model="tc_devices"> 
-        <field name="name">UHCAM 6{"text":"public.ir_ui_view","objUrl":"/browser/table/obj/1/2/198476/2200/42183","nodeType":"table","cur":{"from":17,"to":17}}4 - 742EW3</field>
-        <field name="icc">8934071200001588716</field>
-        <field name="uniqueid">864895032998484</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
-    </record>
-    <record id="gps_uh63" model="tc_devices"> 
-        <field name="name">UHCAM 63</field>
-        <field name="icc">8934071200001588708</field>
-        <field name="uniqueid">864895034506178</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
-    </record>
-    <record id="gps_uh62" model="tc_devices"> 
-        <field name="name">UHCAM 62 - 710EH7</field>
-        <field name="icc">8934071200001499633</field>
-        <field name="uniqueid">864895032998823</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
-    </record>
-    <record id="gps_uh412" model="tc_devices"> 
-        <field name="name">UHCAM 412</field>
-        <field name="icc">8934071200001588724</field>
-        <field name="uniqueid">352672103174736</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcamlucero'))]"/>
-    </record>
-    <record id="gps_uh02" model="tc_devices"> 
-        <field name="name">UHCAM 02</field>
-        <field name="icc">8934071200001588690</field>
-        <field name="uniqueid">864895034507333</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
-    </record>
+ 
     <record id="gps_uh01_" model="tc_devices"> 
         <field name="name">UHCAM 01 - ant</field>
         <field name="icc"></field>
@@ -80,56 +222,127 @@
         <field name="phone"></field>
         <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
     </record>
-    <record id="gps_uh01" model="tc_devices"> 
-        <field name="name">UHCAM 01</field>
-        <field name="icc">8934071200001499666</field>
-        <field name="uniqueid">352672103173167</field>
-        <field name="phone"></field>
-        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_uhcam'))]"/>
-    </record>    
+   
     <record id="gps_tsandoval" model="tc_devices"> 
         <field name="name">T Sandoval</field>
         <field name="icc"></field>
         <field name="uniqueid">864895031419375</field>
         <field name="phone">3121247155</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transporteessandoval'))]"/>     
     </record>    
-    <record id="gps_tsamudio1" model="tc_devices"> 
-        <field name="name">T Samudio - JW88376</field>
-        <field name="icc">8934071200001499724</field>
-        <field name="uniqueid">864895032997759</field>
-        <field name="phone"></field>
-    </record>    
+   
+    <!--
     <record id="gps_trogelio" model="tc_devices"> 
         <field name="name">Taxi Rogelio</field>
-        <field name="icc">8934071200001499666</field>
-        <field name="uniqueid">864895034504801</field>
+        <field name="icc">8934071200001499682</field>
+        <field name="uniqueid">864180035422802</field>
         <field name="phone">3141437569</field>
         <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_taxirogelio'))]"/>
-    </record>
+    </record>    
+    -->
 
-    <record id="gps_tgarcia" model="tc_devices"> 
-        <field name="name">Garcia 01</field>
+    <record id="gps_tgar01" model="tc_devices"> 
+        <field name="name">TGAR 01 822-DU-3</field>
         <field name="icc"></field>
         <field name="uniqueid">864895034395457</field>
         <field name="phone">3121984170</field>
         <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesgarcia'))]"/>
-    </record>
+    </record>        
+    <record id="gps_tgar02" model="tc_devices"> 
+        <field name="name">TGAR 02 6145</field>
+        <field name="icc"></field>
+        <field name="uniqueid">864895034506145</field>
+        <field name="phone">8112730426</field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_transportesgarcia'))]"/>
+    </record>        
     
-    
-    <record id="gps_norma" model="tc_devices"> 
-        <field name="name">Movil Norma</field>
-        <field name="icc">8934071500003828550</field>
-        <field name="uniqueid">864926030226170</field>
+ 
+    <record id="gps_iman" model="tc_devices"> 
+        <field name="name">Movil Iman</field>
+        <field name="icc">8934071200001588724</field>
+        <field name="uniqueid">864925030143039</field>
         <field name="phone">3321912535</field>
         <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
     </record>  
-    
-    <record id="gps_versa" model="tc_devices"> 
-        <field name="name">Versa yo</field>
-        <field name="icc">8934071200001482985</field>
-        <field name="uniqueid">868683027591142</field>
-        <field name="phone">3141005662</field>
+    <record id="gps_mix01" model="tc_devices"> 
+        <field name="name">MIX01 FE-2694-A</field>
+        <field name="icc">8934071200001588724</field>
+        <field name="uniqueid">864180034378708</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_lamixteca'))]"/>
+    </record>  
+    <record id="gps_mic01" model="tc_devices"> 
+        <field name="name">MIC01 F8RR2</field>
+        <field name="icc"></field>
+        <field name="uniqueid">027045391778</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_lamichoacana'))]"/>
+    </record>  
+    <record id="gps_mic02" model="tc_devices"> 
+        <field name="name">MIC02 5530</field>
+        <field name="icc"></field>
+        <field name="uniqueid">027044975530</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('gpsmap_solesgps.company_lamichoacana'))]"/>
+    </record>          
+
+    <record id="gps_chil02" model="tc_devices"> 
+        <field name="name">GV300w Chile</field>
+        <field name="icc"></field>
+        <field name="uniqueid">863457050090073</field>
+        <field name="phone"></field>
         <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
-    </record>    
+    </record>          
     
+    <record id="gps_gv300" model="tc_devices"> 
+        <field name="name">GV300</field>
+        <field name="icc"></field>
+        <field name="uniqueid">861074022305513</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>              
+    <record id="gps_minimichi" model="tc_devices"> 
+        <field name="name">Mini Michoacana</field>
+        <field name="icc"></field>
+        <field name="uniqueid">352672103513222</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>     
+    <record id="gps_mini" model="tc_devices"> 
+        <field name="name">Mini</field>
+        <field name="icc"></field>
+        <field name="uniqueid">864180031484806</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>     
+     
+    <record id="gps_desconocido1" model="tc_devices"> 
+        <field name="name">Desconocido1</field>
+        <field name="icc"></field>
+        <field name="uniqueid">864895031244070</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>     
+    <record id="gps_desconocido2" model="tc_devices"> 
+        <field name="name">Desconocido2</field>
+        <field name="icc"></field>
+        <field name="uniqueid">3758096384</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>     
+
+    <record id="gps_desconocido3" model="tc_devices"> 
+        <field name="name">86AK6A</field>
+        <field name="icc"></field>
+        <field name="uniqueid">864895031325432</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record> 
+    <record id="gps_desconocido4" model="tc_devices"> 
+        <field name="name">8542</field>
+        <field name="icc"></field>
+        <field name="uniqueid">864895032998542</field>
+        <field name="phone"></field>
+        <field name="company_ids" eval="[(4, ref('base.main_company'))]"/>
+    </record>
 </odoo>
